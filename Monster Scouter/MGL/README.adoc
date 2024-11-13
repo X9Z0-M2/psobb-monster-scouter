@@ -1,0 +1,271 @@
+= MGL
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:toc: left
+:toclevels: 5
+
+**M**athematics for **G**raphics in pure **L**ua (or **M**athematics for Open**GL**, also an anagram of https://glm.g-truc.net/0.9.9/index.html[GLM]; an inspiration for the library with https://en.wikipedia.org/wiki/OpenGL_Shading_Language[GLSL]) is a math library for graphics purposes.
+
+It depends on the dynamic https://github.com/ImagicTheCat/lua-xtype[xtype] system.
+
+It aims to be simple, generic and optimized (mostly for LuaJIT).
+
+See link:examples[].
+
+== Install
+
+See link:src[], link:rockspecs[] or https://luarocks.org/modules/imagicthecat-0a6b669a3a/mgl[luarocks].
+
+== API
+
+=== Module
+
+[source,lua]
+----
+-- Add MGL loader.
+-- pattern: Lua pattern
+-- callback(...): called when an undefined field is accessed with the specified pattern
+--- ...: pattern captures (returned by string.match)
+--- should return the field value
+mgl.addLoader(pattern, callback)
+
+-- Generate function.
+-- name: identify the generated function for debug
+mgl.genfunc(code, name)
+
+-- Initialize operation multifunctions.
+-- ...: list of identifiers
+mgl.initmfs(...)
+----
+
+=== Types
+
+.MGL types may have predefined metamethods such as:
+[horizontal]
+__tostring:: tostring
+__unm:: unm
+__add:: xtype add
+__sub:: xtype sub
+__mul:: xtype mul
+__div:: xtype div
+__mod:: xtype mod
+__pow:: xtype pow
+__eq:: xtype eq
+__lt:: xtype lt
+__le:: xtype le
+
+Types can have specialized metamethods; for example, to implement accessors.
+
+NOTE: Accessors are implemented as simple as possible, they are check free.
+
+==== vec(D)
+
+Generic vector type of dimension `D`, stored as an array/list of scalars (table).
+
+[source,lua]
+----
+-- Require vec(D) vector type.
+-- D: (optional) dimension
+-- return vec(D) or vec xtype
+mgl.require_vec(D)
+
+-- Loader pattern.
+mgl.vecD
+
+-- Accessors.
+-- vec.x / vec.r (vec[1])
+-- vec.y / vec.g (vec[2])
+-- vec.z / vec.b (vec[3])
+-- vec.w / vec.a (vec[4])
+
+#vec -- dimension
+----
+
+==== mat(N)x(M) / mat(N)
+
+Generic matrix type of dimension `N x M`, stored as an array/list of row-major ordered scalars (table). Columns are vectors.
+
+NOTE: The choice of the row-major order is about reading/writing a matrix content as we read/write text/code in English/Lua (left to right, top to bottom). +
+The choice of columns as vectors is about following mathematical conventions (`M*v` to transform a vector).
+
+[source,lua]
+----
+-- Require mat(N)(M)/mat(N) vector type.
+-- Matrix values are stored as a row-major ordered list; columns are vectors.
+-- N: (optional) columns
+-- M: (optional) rows (default: N)
+-- return mat(N)(M)/mat(N) or mat xtype
+mgl.require_mat(N, M)
+
+-- Loader patterns.
+mgl.matNxM
+mgl.matN -- square
+
+-- Vector accessor (get/set column vector).
+-- idx: column index
+-- vec: (optional) vec(M), set column
+mat:v(idx, vec)
+----
+
+=== Operators
+
+Binary operators are implemented through *xtype* op multifunctions.
+
+==== tostring
+
+`(vec(D): a): string`:: -
+`(mat(N)x(M): a): string`:: -
+
+==== equal
+
+`(vec(D): a, vec(D): b): boolean`:: -
+`(mat(N)x(M): a, mat(N)x(M): b): boolean`:: -
+
+==== unm
+
+Unary minus.
+
+`(vec(D): a): vec(D)`:: -
+`(mat(N)x(M): a): mat(N)x(M)`:: -
+
+==== add
+
+`(vec(D): a, vec(D): b): vec(D)`:: -
+`(mat(N)x(M): a, mat(N)x(M): b): mat(N)x(M)`:: -
+
+==== sub
+
+`(vec(D): a, vec(D): b): vec(D)`:: -
+`(mat(N)x(M): a, mat(N)x(M): b): mat(N)x(M)`:: -
+
+==== mul
+
+`(vec(D): a, vec(D): b): vec(D)`:: Component-wise multiplication.
+`(vec(D): a, number: b): vec(D)`:: -
+`(number: a, vec(D): b): vec(D)`:: -
+`(mat(N)x(M): a, mat(O)x(N) or vec(N): b): mat(O)x(M) or vec(M)`:: Matrix/vector general multiplication. Will return a vector if the result has a single column.
+`(mat(N)x(M): a, number: b): mat(N)x(M)`:: -
+`(number: a, mat(N)x(M): b): mat(N)x(M)`:: -
+
+==== div
+
+`(vec(D): a, vec(D): b): vec(D)`:: Component-wise division.
+`(vec(D): a, number: b): vec(D)`:: -
+`(mat(N)x(M): a, number: b): mat(N)x(M)`:: -
+
+=== Operations
+
+Operations are *xtype* multifunctions.
+
+==== vec(D)
+
+Vector constructor.
+
+`(number: scalar): vec(D)`:: Scalar constructor.
+`(table: list): vec(D)`:: List constructor. `#list >= D`
+`(number or vec(D): ...): vec(D)`:: Composed constructor. Any combination of scalars and vectors matching the result vector size.
+`(vec(D+x): v): vec(D)`:: Truncate constructor.
+
+==== mat(N)x(M) / mat(N)
+
+Matrix constructor.
+
+`(number: scalar): mat(N)x(M)`:: Scalar constructor. Create matrix with `scalar` along the identity diagonal.
+`(table: list): mat(N)x(M)`:: List constructor. `#list >= N*M`
+`(vec(M): columns...): mat(N)x(M)`:: Column vectors constructor. `#columns... == N`
+`(mat(Na, Ma): a): mat(N)x(M)`:: Generic matrix constructor. Copy/extend/truncate a same/smaller/bigger matrix (fill with identity when extending).
+
+==== copy
+
+`(vec(D): dst, vec(D): src)`:: -
+`(mat(N)x(M): dst, mat(N)x(M): src)`:: -
+
+==== length
+
+`(vec(D): a): number`:: Vector length (Euclidean).
+
+==== normalize
+
+`(vec(D): a): vec(D)`:: Vector normalization.
+
+==== dot
+
+`(vec(D): a, vec(D): b): number`:: Dot product.
+
+==== cross
+
+`(vec3: a, vec3: b): vec3`:: Cross product.
+
+==== transpose
+
+`(mat(N)x(M): a): mat(M)x(N)`:: -
+
+==== determinant
+
+`(mat2: a): number`:: -
+`(mat3: a): number`:: -
+`(mat4: a): number`:: -
+
+==== inverse
+
+`(mat2: a): mat2, number`:: Compute inverse matrix. Also returns determinant.
+`(mat3: a): mat3, number`:: Compute inverse matrix. Also returns determinant.
+`(mat4: a): mat4, number`:: Compute inverse matrix. Also returns determinant.
+
+==== translate
+
+`(vec2: a): mat3`:: Translate identity (2D homogeneous).
+`(vec3: a): mat4`:: Translate identity (3D homogeneous).
+
+==== rotate
+
+`(number: theta): mat3`:: Rotate identity (2D homogeneous). `theta` is in radians.
+`(vec3: axis, number: theta): mat4`:: Rotate identity (3D homogeneous). `axis` is a unit vector; `theta` is in radians.
+
+==== scale
+
+`(vec2: a): mat3`:: Scale identity (2D homogeneous).
+`(vec3: a): mat4`:: Scale identity (3D homogeneous).
+
+==== orthographic
+
+Orthographic projection.
+
+`(number: left, number: right, number: bottom, number: top, number: near, number: far): mat4`:: Build GL compatible orthographic projection.
+
+==== perspective
+
+Perspective projection.
+
+`(number: hfov, number: aspect, number: near, number: far): mat4`:: Build GL compatible perspective projection. `hfov` is in radians.
+
+== Performances
+
+TIP: An operator/operation definition can be retrieved and cached with `multifunction:resolve(...)` when optimizations are needed.
+
+=== Comparisons
+
+Here are some comparisons with other libraries (only aims to give clues about MGL performances). +
+See link:compare/benchmark.lua[].
+
+- Measures are made on a `x86_64 i5-6500 3.6GHz 16Go DDR4` machine.
+- The minimum time and the maximum memory of 3 measures is kept.
+- Allocation of entities is measured, but should be negligible.
+
+.Transform 5000 entities at 60 FPS for 20s (1200 ticks).
+|===
+|name|wtime (s) footnote:[Wall-clock time.] |utime (s) footnote:[CPU user time.] |mem (kB) footnote:[Maximum resident set size] |~ ms/tick |~ frame % |code
+
+|GLM GCC -O2 |0.98 |0.98 |3456 |0.817 |5 |link:compare/glm/bench_transform.cpp[]
+|MGL LuaJIT (JIT on) |2.56 |2.51 |11032 |2.133 |13 |link:examples/bench_transform.lua[]
+|CPML LuaJIT (JIT on) |4.25 |4.24 |9780 |3.542 |21 |link:compare/cpml/bench_transform.lua[]
+|CPML LuaJIT (JIT off) |27.59 |27.57 |14396 |22.992 |138 |link:compare/cpml/bench_transform.lua[]
+|MGL LuaJIT (JIT off) |27.8 |27.77 |9972 |23.167 |139 |link:examples/bench_transform.lua[]
+|===
+
+MGL is around 2-3x slower than GLM in this benchmark. It seems fine considering that MGL works on raw tables with a straightforward API (thanks to LuaJIT optimizations like http://wiki.luajit.org/Allocation-Sinking-Optimization[Allocation Sinking]).

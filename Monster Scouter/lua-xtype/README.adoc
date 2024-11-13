@@ -1,0 +1,189 @@
+= xtype
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:toc: left
+:toclevels: 5
+
+*xtype*, or Extended Type, is a dynamic type system library for Lua.
+
+Sometimes, advanced type checking code is needed to implement specific abstractions; *xtype* aims to fulfill that need.
+
+.Incentives:
+Simplification:: Prevent writing redundant type checking code.
+Interoperability:: Having a general low-level type system library can ease the interactions of third-party code.
+Metaprogramming / Genericity:: Exploit the dynamic nature of Lua to generate definitions on-the-fly.
+
+See link:src[], link:rockspecs[] or https://luarocks.org/modules/imagicthecat-0a6b669a3a/xtype[luarocks].
+
+== Concepts
+
+=== Type
+
+A **xtype**'s type is either primitive or non-primitive.
+
+A primitive type is a string. It can be any Lua types from `type()` or additional types like `xtype` or `multifunction`.
+
+A non-primitive type is a table defining the type. It contains the `xtype_name`, `xtype_stack` and `xtype_set` fields and should identify as a `xtype`.
+
+==== Value
+
+Any Lua value has a type; we will call this the terminal type of the value as opposed to inherited types.
+
+If the metatable of a `table` or `userdata` value has a `xtype` field, then the type is the value of that field.
+
+If the value is a `cdata`, its type is defined by `xtype.ctype()` or the `\__xtype` field (e.g. through the metatype `__index`) which will call `xtype.ctype()` when encountered.
+
+Otherwise, the type is the Lua type returned by `type()`.
+
+==== Inheritance
+
+A non-primitive type can inherit from other types, building a stack of types. This stack defines the order in which the types are evaluated, from the terminal type to the least specific inherited types.
+
+=== Multifunction
+
+A multifunction is a function that can have multiple definitions, each associated to a specific signature. When called, it resolves the call by selecting a matching definition from the call signature.
+
+==== Metaprogramming
+
+We can use Lua as its own metaprogramming language: we can generate Lua code from Lua.
+
+A multifunction can have generators that are called when no definitions could be found, allowing to generate definitions for specific call signatures on-the-fly.
+
+== API
+
+=== xtype
+
+[source, lua]
+----
+-- Create a type.
+--
+-- The created type is a table with 3 fields: xtype_name, xtype_stack and xtype_set.
+-- The table can be modified as long as the xtype fields are left untouched.
+-- A default metatable is set; it can be replaced at the condition that the
+-- type would still be recognized as a "xtype".
+--
+-- name: human-readable string (doesn't have to be unique)
+-- ...: base types, ordered by descending proximity, to the least specific type
+-- return created type
+xtype.create(name, ...)
+
+-- Get/bind a type to a ctype (LuaJIT FFI).
+--
+-- This can't be changed afterwards.
+-- The same type can be bound to different ctypes; it can be useful when
+-- different ctype qualifiers should match the same type.
+--
+-- ctype: cdata ctype object
+-- t: (optional) type
+-- return bound type
+xtype.ctype(ctype, t)
+
+-- Check if a value is a valid type.
+xtype.check(t)
+
+-- Get the name of a type.
+-- return string or nothing if not a type
+xtype.name(t)
+
+-- Get terminal type of a value.
+xtype.get(v)
+
+-- Check if a value is of type t.
+xtype.is(v, t)
+
+-- Check if a type is of type ot.
+xtype.of(t, ot)
+
+-- Create a multifunction.
+xtype.multifunction()
+
+-- Global multifunctions namespace for binary operators.
+-- For interoperability between third-party types.
+-- Equality (eq) has a default behavior defined as: eq(any, any) -> false
+--
+-- map of Lua binary op name => multifunction
+-- (add, sub, mul, div, mod, pow, concat, eq, lt, le, idiv, band, bor, bxor, shl, shr)
+xtype.op
+
+-- Low-level API.
+
+-- The type's xtype_stack field is a list of types ordered from the terminal
+-- type to the least specific inherited types.
+
+-- Stack distance to another type from a terminal type.
+-- ot: support "any" keyword
+-- return distance or nil/nothing if not of type ot
+xtype.typeDist(t, ot)
+
+-- Check and return signature (list of types).
+-- ...: types
+xtype.checkSign(...)
+
+-- Distance to another signature from a call signature.
+-- osign: support "any" keyword
+-- return distance or nothing if not generalizable to osign
+xtype.signDist(sign, osign)
+
+-- Return formatted signature string.
+xtype.formatSign(sign)
+
+-- Code generation tools.
+
+-- Generate "a1, a2, a3, a4..." list string.
+-- tpl: string where "$" will be replaced by the index
+-- i: start index
+-- j: end index
+-- separator: (optional) default: ", "
+xtype.tpllist(tpl, i, j, separator)
+
+-- Template substitution.
+-- tpl: string with $... parameters
+-- args: map of param => value
+-- return processed template
+xtype.tplsub(tpl, args)
+----
+
+=== Multifunction
+
+[source, lua]
+----
+-- Define a multifunction signature.
+-- The keyword "any" matches any type. It is the least specific match for a
+-- given terminal type.
+--
+-- f: definition function; nil to undefine
+-- ...: signature, list of types
+multifunction:define(f, ...)
+
+-- Add a generator function.
+--
+-- All generators are called when no matching definition has been found to
+-- eventually define new signatures.
+--
+-- f(multifunction, ...): called to generate new definitions
+--- ...: call signature, list of (terminal) types
+multifunction:addGenerator(f)
+
+-- Get the resolved function for a specific signature.
+-- ...: call signature, list of (terminal) types
+-- return function or nil without a matching definition
+multifunction:resolve(...)
+
+-- Call the multifunction.
+multifunction(...)
+multifunction:call(...)
+
+-- Low-level API.
+
+multifunction.definitions = {} -- map of sign hash => {.f, .sign}
+
+-- Hash function signature.
+-- sign: signature, list of types
+-- return number
+multifunction:hashSign(sign)
+----

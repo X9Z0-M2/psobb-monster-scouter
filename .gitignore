@@ -1,0 +1,7 @@
+**/options.lua
+Dropbox Tracker/lua-xtype/examples/**
+Dropbox Tracker/lua-xtype/rockspecs/**
+Dropbox Tracker/lua-xtype/*test*.lua
+Dropbox Tracker/MGL/examples/**
+Dropbox Tracker/MGL/compare/**
+Dropbox Tracker/MGL/rockspecs/**
