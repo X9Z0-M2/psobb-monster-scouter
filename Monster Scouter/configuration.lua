@@ -3,6 +3,8 @@ local cfgMonsters = require("Monster Scouter.monsters")
 
 local function getMonstersBySegment()
     local mt = {}
+    mt["General"] = {}
+    table.insert(mt["General"], {id=-1, cate = "Default" } )
     for k,v in pairs(cfgMonsters.m) do
         if v.seg then
             v.id = k
@@ -15,6 +17,19 @@ local function getMonstersBySegment()
     return mt
 end
 monstersBySegment = getMonstersBySegment()
+monsterSegmentOrder = {
+    "General",
+    "Forest",
+    "Cave",
+    "Mine",
+    "Ruins",
+    "VR Temple",
+    "VR Spaceship",
+    "Central Control Area",
+    "Seabed",
+    "Crater",
+    "Desert",
+}
 
 
 local function clampVal(clamp, min, max)
@@ -160,6 +175,11 @@ local function ConfigurationWindow(configuration)
                 this.changed = true
             end
 
+            if category ~= -1 and imgui.Checkbox("Override General > Default", cateTabl.overriden) then
+                cateTabl.overriden = not cateTabl.overriden
+                this.overriden = true
+            end
+
             -- imgui.SameLine(0, 4)
             -- if imgui.Checkbox("Show in Current Room Only", cateTabl.showName) then
             --     cateTabl.showName = not cateTabl.showName
@@ -186,6 +206,10 @@ local function ConfigurationWindow(configuration)
                 cateTabl.showDamage = not cateTabl.showDamage
                 this.changed = true
             end
+            if imgui.Checkbox("Show Hit", cateTabl.showHit) then
+                cateTabl.showHit = not cateTabl.showHit
+                this.changed = true
+            end
             if imgui.Checkbox("Show Weakness", cateTabl.showWeakness) then
                 cateTabl.showWeakness = not cateTabl.showWeakness
                 this.changed = true
@@ -196,6 +220,21 @@ local function ConfigurationWindow(configuration)
             end
             if imgui.Checkbox("Show Rare Drops", cateTabl.showRares) then
                 cateTabl.showRares = not cateTabl.showRares
+                this.changed = true
+            end
+
+            local SWidthP = 110
+            imgui.PushItemWidth(SWidthP)
+            success, cateTabl.targetHardThreshold = imgui.SliderInt("Target Hard Damage Threshold", cateTabl.targetHardThreshold, 1, 100)
+            imgui.PopItemWidth()
+            if success then
+                this.changed = true
+            end
+
+            imgui.PushItemWidth(SWidthP)
+            success, cateTabl.targetSpecialThreshold = imgui.SliderInt("Target Special Damage Threshold", cateTabl.targetSpecialThreshold, 1, 100)
+            imgui.PopItemWidth()
+            if success then
                 this.changed = true
             end
 
@@ -473,7 +512,9 @@ local function ConfigurationWindow(configuration)
                 local SWidth = 110
                 local SWidthP = SWidth + 16
 
-                for segment,monsters in pairs(monstersBySegment) do
+                for i=1, #monsterSegmentOrder, 1 do
+                    local segment = monsterSegmentOrder[i]
+                    local monsters = monstersBySegment[monsterSegmentOrder[i]]
                     if imgui.TreeNodeEx(segment) then
 
                         for i,monster in pairs(monsters) do

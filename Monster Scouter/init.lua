@@ -15,6 +15,7 @@ local drop_charts = {
     ["Very Hard"] = require("Monster Scouter/Drops.very-hard"),
     ["Ultimate"] = require("Monster Scouter/Drops.ultimate")
   }
+cfgMonsters.m[-1] = {cate = "Default", segment = "General"}
 
 local optionsFileName = "addons/Monster Scouter/options.lua"
 local ConfigurationWindow
@@ -98,13 +99,20 @@ local function LoadOptions()
                 options[section][id] = {}
             end
             SetDefaultValue( options[section][id], "enabled", true )
+            SetDefaultValue( options[section][id], "overriden", false )
             SetDefaultValue( options[section][id], "showName", true )
             SetDefaultValue( options[section][id], "showHealthBar", true )
-            --SetDefaultValue( options[section][id], "showDamage", true )
-            options[section][id]["showDamage"] = false
+            SetDefaultValue( options[section][id], "showDamage", false )
+            SetDefaultValue( options[section][id], "showHit", false )
+            -- options[section][id]["showDamage"] = true
+            -- options[section][id]["showHit"] = true
+            -- options[section][id]["targetHardThreshold"] = 90
+            -- options[section][id]["targetSpecialThreshold"] = 90
             SetDefaultValue( options[section][id], "showWeakness", true )
             SetDefaultValue( options[section][id], "showStatusEffects", true )
             SetDefaultValue( options[section][id], "showRares", true )
+            SetDefaultValue( options[section][id], "targetHardThreshold", 90 )
+            SetDefaultValue( options[section][id], "targetSpecialThreshold", 90 )
         end
     end
 
@@ -190,6 +198,9 @@ local playerSelfCoords = nil
 local playerSelfDirs = nil
 local playerSelfNormDir = nil
 local pCoord = nil
+local pEquipData = {}
+local lData = {}
+local pData = {}
 local cameraCoords = nil
 local cameraDirs = nil
 local cameraNormDirVec2 = nil
@@ -289,13 +300,15 @@ local _Room = 0x28
 local _Room2 = 0x2E
 local _PosX = 0x38
 local _PosY = 0x3C
+local _PosH = 0x78
 local _PosZ = 0x40
 
 local _targetPointerOffset = 0x18
 local _targetOffset = 0x108C
 
 local _EntityCount = 0x00AAE164
-local _EntityArray = 0
+local _EntityArrayBasePointer = 0x7B4BA0 + 2
+local _EntityArray = 0 -- obtained later from base pointer contents
 
 local _MonsterUnitxtID = 0x378
 local _MonsterHP = 0x334
@@ -344,6 +357,9 @@ local _MonsterBarbaRayShellHPMax = 0x1C
 -- Special address for Ephinea
 local _ephineaMonsterArrayPointer = 0x00B5F800
 local _ephineaMonsterHPScale = 0x00B5F804
+
+-- addresses for enemy state / animation state
+local _MonsterTargeting = 0xC4
 
 -- read side message from memory buffer
 local function get_side_text()
@@ -436,6 +452,7 @@ local function CopyMonster(monster)
     copy.room     = monster.room
     copy.posX     = monster.posX
     copy.posY     = monster.posY
+    copy.posH     = monster.posH
     copy.posZ     = monster.posZ
     copy.unitxtID = monster.unitxtID
     copy.HP       = monster.HP
@@ -453,6 +470,21 @@ local function CopyMonster(monster)
     copy.Eic	  = monster.Eic
     copy.Elt	  = monster.Elt
     copy.Edk	  = monster.Edk
+    
+    copy.Atp	  = monster.Atp
+    copy.Dfp	  = monster.Dfp
+    copy.Evp	  = monster.Evp
+    copy.Mst	  = monster.Mst
+    copy.Ata	  = monster.Ata
+    copy.Lck	  = monster.Lck
+    copy.Esp	  = monster.Esp
+    copy.Exp	  = monster.Exp
+    
+    copy.targetingVal	  = monster.targetingVal
+    copy.screenX          = monster.screenX
+    copy.screenY          = monster.screenY
+    copy.screenShow       = monster.screenShow
+    copy.curPlayerDistance = monster.curPlayerDistance
 
     return copy
 end
@@ -461,13 +493,12 @@ local function GetMonsterDataDeRolLe(monster)
     local maxDataPtr = pso.read_u32(_BPDeRolLeData)
     local skullMaxHP = 0
     local shellMaxHP = 0
-    local newName = monster.name
     local ephineaMonsters = pso.read_u32(_ephineaMonsterArrayPointer)
     local ephineaHPScale = 1.0
-    
+
     if maxDataPtr ~= 0 then
-        skullMaxHP = pso.read_u32(maxDataPtr + _MonsterDeRolLeSkullHPMax)
-        shellMaxHP = pso.read_u32(maxDataPtr + _MonsterDeRolLeShellHPMax)
+        skullMaxHP = pso.read_i32(maxDataPtr + _MonsterDeRolLeSkullHPMax)
+        shellMaxHP = pso.read_i32(maxDataPtr + _MonsterDeRolLeShellHPMax)
         if ephineaMonsters ~= 0 then
             ephineaHPScale = pso.read_f64(_ephineaMonsterHPScale)
             skullMaxHP = math.floor(skullMaxHP * ephineaHPScale)
@@ -476,13 +507,13 @@ local function GetMonsterDataDeRolLe(monster)
     end
 
     if monster.index == 0 then
-        monster.HP = pso.read_u32(monster.address + _MonsterDeRolLeHP)
-        monster.HPMax = pso.read_u32(monster.address + _MonsterDeRolLeHPMax)
+        monster.HP = pso.read_i32(monster.address + _MonsterDeRolLeHP)
+        monster.HPMax = pso.read_i32(monster.address + _MonsterDeRolLeHPMax)
 
-        monster.HP2 = pso.read_u32(monster.address + _MonsterDeRolLeSkullHP)
+        monster.HP2 = pso.read_i32(monster.address + _MonsterDeRolLeSkullHP)
         monster.HP2Max = skullMaxHP
     else
-        monster.HP = pso.read_u32(monster.address + _MonsterDeRolLeShellHP)
+        monster.HP = pso.read_i32(monster.address + _MonsterDeRolLeShellHP)
         monster.HPMax = shellMaxHP
         monster.name = monster.name .. " Shell"
     end
@@ -490,17 +521,36 @@ local function GetMonsterDataDeRolLe(monster)
     return monster
 end
 
+-- The body, skull, and shell segments all have Barba Ray's unitxt ID. The game doesn't load the 
+-- animations aka movement BP into a static address like it does for De Rol Le, so we
+-- have to differentiate the objects by their class type.
 local function GetMonsterDataBarbaRay(monster)
-    local maxDataPtr = pso.read_u32(_BPBarbaRayData)
+    local animationsBPPtr = 0
+    local barbaTypeId = pso.read_u32(monster.address + 0x04)
+
+    local isMainBody = false
+    local isSkull = false
+    local isShell = false
+    if 0xA47AF8 == barbaTypeId then
+        -- Main body and Skull (same class type)
+        animationsBPPtr = pso.read_u32(monster.address + 0x628)
+        isMainBody = true
+        isSkull = true
+    elseif 0xA47B0C == barbaTypeId then
+        -- Shell segment
+        local barbaRayParentObj = pso.read_u32(monster.address + 0x14)
+        animationsBPPtr = pso.read_u32(barbaRayParentObj + 0x628)
+        isShell = true
+    end
+
     local skullMaxHP = 0
     local shellMaxHP = 0
-    local newName = monster.name
     local ephineaMonsters = pso.read_u32(_ephineaMonsterArrayPointer)
     local ephineaHPScale = 1.0
 
-    if maxDataPtr ~= 0 then
-        skullMaxHP = pso.read_u32(maxDataPtr + _MonsterBarbaRaySkullHPMax)
-        shellMaxHP = pso.read_u32(maxDataPtr + _MonsterBarbaRayShellHPMax)
+    if animationsBPPtr ~= 0 then
+        skullMaxHP = pso.read_i32(animationsBPPtr + _MonsterBarbaRaySkullHPMax)
+        shellMaxHP = pso.read_i32(animationsBPPtr + _MonsterBarbaRayShellHPMax)
         if ephineaMonsters ~= 0 then
             ephineaHPScale = pso.read_f64(_ephineaMonsterHPScale)
             skullMaxHP = math.floor(skullMaxHP * ephineaHPScale)
@@ -508,14 +558,15 @@ local function GetMonsterDataBarbaRay(monster)
         end
     end
 
-    if monster.index == 0 then
-        monster.HP = pso.read_u32(monster.address + _MonsterBarbaRayHP)
-        monster.HPMax = pso.read_u32(monster.address + _MonsterBarbaRayHPMax)
+    -- Check against the type ID in case a server modifies the monster set for the floor.
+    if isMainBody or isSkull then
+        monster.HP = pso.read_i32(monster.address + _MonsterBarbaRayHP)
+        monster.HPMax = pso.read_i32(monster.address + _MonsterBarbaRayHPMax)
 
-        monster.HP2 = pso.read_u32(monster.address + _MonsterBarbaRaySkullHP)
+        monster.HP2 = pso.read_i32(monster.address + _MonsterBarbaRaySkullHP)
         monster.HP2Max = skullMaxHP
-    else
-        monster.HP = pso.read_u32(monster.address + _MonsterBarbaRayShellHP)
+    elseif isShell then
+        monster.HP = pso.read_i32(monster.address + _MonsterBarbaRayShellHP)
         monster.HPMax = shellMaxHP
         monster.name = monster.name .. " Shell"
     end
@@ -577,6 +628,7 @@ local function GetMonsterData(monster)
     monster.room = pso.read_u16(monster.address + _Room)
     monster.posX = pso.read_f32(monster.address + _PosX)
     monster.posY = pso.read_f32(monster.address + _PosY)
+    monster.posH = pso.read_f32(monster.address + _PosH)
     monster.posZ = pso.read_f32(monster.address + _PosZ)
         
     -- Other stuff
@@ -587,6 +639,8 @@ local function GetMonsterData(monster)
     end
     monster.color = 0xFFFFFFFF
     monster.display = true
+    --print(string.format("%x",monster.address),string.format("%x",monster.address + _PosH))
+    monster.targetingVal = pso.read_f32(monster.address + _MonsterTargeting)
 
     if monster.unitxtID == 45 then
         monster = GetMonsterDataDeRolLe(monster)
@@ -712,6 +766,10 @@ local function GetMonsterList(section)
         if monster.address ~= 0 then
             monster = GetMonsterData(monster)
 
+            -- if monster.name == 'Mothmant' then
+            --     print(string.format("%x",monster.address))
+            -- end
+
             if cfgMonsters.m[monster.unitxtID] ~= nil 
                 and options[section][monster.unitxtID] ~= nil
                 and options[section][monster.unitxtID].enabled
@@ -719,7 +777,18 @@ local function GetMonsterList(section)
                 monster.color = cfgMonsters.m[monster.unitxtID].color
                 monster.display = cfgMonsters.m[monster.unitxtID].display
                 monster.width = cfgMonsters.m[monster.unitxtID].width
-                monster.height = cfgMonsters.m[monster.unitxtID].height
+
+                if monster.targetingVal == 20 then -- monster 'idle'
+                    monster.height = cfgMonsters.m[monster.unitxtID].height
+                elseif cfgMonsters.m[monster.unitxtID].heightTarg ~= nil then
+                    monster.height = cfgMonsters.m[monster.unitxtID].heightTarg
+                else
+                    monster.height = cfgMonsters.m[monster.unitxtID].height
+                end
+
+                if monster.posH then
+                    monster.posY = monster.posH
+                end
 
                 -- Calculate the distance between it and the player
                 -- And hide the monster if its too far
@@ -783,6 +852,9 @@ local function GetMonsterList(section)
                 -- If we have De Rol Le, make a copy for the body HP
                 if monster.unitxtID == 45 and monster.index == 0 then
                     local head = CopyMonster(monster)
+                    head.curPlayerDistance = 0
+                    if head.screenY then head.screenY = head.screenY - 80 end
+                    head.bossCore = true
                     table.insert(monsterList, head)
 
                     monster.index = monster.index + 1
@@ -791,6 +863,9 @@ local function GetMonsterList(section)
                     monster.name = monster.name .. " Skull"
                 elseif monster.unitxtID == 73 and monster.index == 0 then
                     local head = CopyMonster(monster)
+                    head.curPlayerDistance = 0
+                    if head.screenY then head.screenY = head.screenY - 80 end
+                    head.bossCore = true
                     table.insert(monsterList, head)
 
                     monster.index = monster.index + 1
@@ -802,6 +877,7 @@ local function GetMonsterList(section)
                 if monster.screenShow then
                     table.insert(monsterList, monster)
                 end
+
             end
         end
         i = i + 1
@@ -990,238 +1066,238 @@ local function getWText(wText,Default)
     end
 end
 
-local function PresentBoxTracker(item,section,curCount)
-    local textC = {{"",nil}}
-
-
-    local windowW,windowH = imgui.GetWindowSize()
-    local padding     = 6
-    local sizeX       = trackerBox.sizeX - padding
-    local sizeY       = trackerBox.sizeY
-    local windowWP    = windowW - padding
-
-    -- if should show string "name" above item
-    -- if options[section].showNameOverride then
-    --     if curCount <= options[section].showNameClosestItemsNum then
-    --         if options[section].showNameClosestDist <= 0 then
-    --             textC = getWText(item.wName,item.name)
-    --         elseif item.curPlayerDistance <= options[section].showNameClosestDist then
-    --             textC = getWText(item.wName,item.name)
-    --         end
-    --     end
-    -- else
-    --     if curCount <= options[section].showNameClosestItemsNum then
-    --         if options[section].showNameClosestDist <= 0 then
-    --             textC = getWText(item.wName,item.name)
-    --         else
-    --             if item.curPlayerDistance <= options[section].showNameClosestDist and not item.screenShouldNotShow then
-    --                 textC = getWText(item.wName,item.name)
-    --             elseif cateTabl.showName and not item.screenShouldNotShow then
-    --                 textC = getWText(item.wName,item.name)
-    --             end
-    --         end
-    --     elseif cateTabl.showName and not item.screenShouldNotShow then
-    --         textC = getWText(item.wName,item.name)
-    --     end
-    -- end
-    textC = getWText(item.wName,item.name)
-
-    local textW = imgui.CalcTextSize(getUnWText(textC)) -- get text width as simple string
-    imgui.SetCursorPosX( (windowW - textW) * 0.5 ) -- center text
-    PrintWText(textC)
-    
-    local cursorPosTY = imgui.GetCursorPosY() -- Don't change lines, need cursor pos After imgui.Text()
-    local cursorPosY = clampVal( windowH * 0.5 - sizeY*0.5 + cursorPosTY*0.5, cursorPosTY, windowH )
-
-    sizeX = clampVal( sizeX, 0,  windowWP - 2 )
-    sizeY = clampVal( sizeY, 0,  windowH - cursorPosTY )
-
-    --if cateTabl.showBox and cateTabl.enabled and not item.screenShouldNotShow then
-        -- if cateTabl.useCustomColor then
-        --     TrackerColor = shiftHexColor(cateTabl.customBorderColor)
-        -- else
-        --     TrackerColor = shiftHexColor(options[section].customTrackerColorMarker)
-        -- end
-
-        --imgui.PushStyleColor("Border", TrackerColor[2]/255, TrackerColor[3]/255, TrackerColor[4]/255, TrackerColor[1]/255)
-        
-        imgui.PushStyleColor("ChildWindowBg",0, 0, 0, 0)
-        local borderSize = clampVal(5, 1, math.floor(sizeX*0.5) - 2)
-        borderSize       = clampVal(borderSize,          1, math.floor(sizeY*0.5) - 2)
-        for border=1, borderSize-1, 1 do
-            imgui.SetCursorPosX( windowW*0.5 - sizeX*0.5 + border +1 )
-            imgui.SetCursorPosY( cursorPosY + border - 1 )
-            imgui.BeginChild( "itembox##" .. border, sizeX - border*2 - 2, sizeY - border*2 - 2, true, {"NoInputs"} )
-            imgui.EndChild()
+local function UpdatePlayerItemStats()
+    local equipData = { -- fill in data to represent no data for items equipped
+        NAstat = 0,
+        ABstat = 0,
+        MAstat = 0,
+        DAstat = 0,
+        weapSpecial = 0,
+        weapSpecialName = "",
+        weapSpecialColor = 0xFFFFFFFF,
+        weapName = "",
+        specRedux = 1,
+        ataPenalty = 0,
+        EqSmartlink = 0,
+        EqVjaya = 0,
+        v50xHellBoost = 1,
+        v50xStatusBoost = 1,
+        weapSpecialCategory = 0,
+        isWeapHPSteal = false,
+        isWeapTPSteal = false,
+        isWeapEXPSteal = false,
+        isWeapSacrificial = false,
+        isWeapFrozenSE = false,
+        isWeapParalysisSE = false,
+        isWeapFireElement = false,
+        isWeapLightningElement = false,
+        isWeapInstantKill = false,
+        isWeapConfusionSE = false,
+        isWeapHPCut = false,
+    }
+    for i=1,invItemCount,1 do -- process currently equipped items
+        local item = cache_inventory.items[i]
+        if item.equipped then
+            equipData.item = item
+            if item.data[1] == 0x00 then -- is weapon
+                if not item.weapon.isSRank then
+                    equipData.NAstat = item.weapon.stats[2]/100
+                    equipData.ABstat = item.weapon.stats[3]/100
+                    equipData.MAstat = item.weapon.stats[4]/100
+                    equipData.DAstat = item.weapon.stats[5]/100
+                end
+                equipData.weapSpecial = item.weapon.special
+                equipData.weapSpecialName = lib_unitxt.GetSpecialName(item.weapon.special)
+                equipData.weapSpecialColor = lib_items_cfg.weaponSpecial[item.weapon.special + 1]
+                equipData.weapName = item.name
+                local weapon_group = pso.read_u8(item.address + 0xf3)
+                local pmt_data = pso.read_u32(0xA8DC94)
+                local pmt_weapon_animations = pso.read_u32(pmt_data + 0x14)
+                equipData.weapon_animation_type = pso.read_u8(pmt_weapon_animations + weapon_group)
+                if     (equipData.weapon_animation_type > 4  -- 5,6,7,8,9
+                    and equipData.weapon_animation_type < 10)
+                    or  equipData.weapon_animation_type == 18
+                then
+                    equipData.ataPenalty = 1
+                end
+                if (0x1 < item.data[2]) then -- is special reduced weapon
+                    if (item.data[2] < 0x5) then
+                        equipData.specRedux = 0.50
+                    elseif (item.data[2] == 0x5) or (7 < item.data[2] and (item.data[2] < 0xA)) then
+                        equipData.specRedux = 0.33
+                    end
+                end
+                if item.weapon.special > 0 and item.weapon.special < 5 then -- Draw, Drain, Fill, Gush - HP Steal
+                    equipData.isWeapHPSteal = true
+                    equipData.weapSpecialCategory = 1
+                elseif item.weapon.special > 4 and item.weapon.special < 9 then -- Heart, Mind, Soul, Geist - TP Steal
+                    equipData.isWeapTPSteal = true
+                    equipData.weapSpecialCategory = 2
+                elseif item.weapon.special > 8 and item.weapon.special < 12 then -- Master's, Lord's, King's - EXP Steal
+                    equipData.isWeapEXPSteal = true
+                    equipData.weapSpecialCategory = 3
+                elseif item.weapon.special > 11 and item.weapon.special < 15 then -- Charge, Spirit, Berserk - Sacrificial
+                    equipData.isWeapSacrificial = true
+                    equipData.weapSpecialCategory = 4
+                elseif item.weapon.special > 14 and item.weapon.special < 19 then -- Ice, Frost, Freeze, Blizzard - Frozen Status Effect
+                    equipData.isWeapFrozenSE = true
+                    equipData.weapSpecialCategory = 5
+                elseif item.weapon.special > 18 and item.weapon.special < 23 then -- Bind, Hold, Seize, Arrest - Paralysis Status Effect
+                    equipData.isWeapParalysisSE = true
+                    equipData.weapSpecialCategory = 6
+                elseif item.weapon.special > 22 and item.weapon.special < 27 then -- Heat, Fire, Flame, Burning - Fire Elemental Damage
+                    equipData.isWeapFireElement = true
+                    equipData.weapSpecialCategory = 7
+                elseif item.weapon.special > 26 and item.weapon.special < 31 then -- Shock, Thunder, Storm, Tempest - Lightning Elemental Damage
+                    equipData.isWeapLightningElement = true
+                    equipData.weapSpecialCategory = 8
+                elseif item.weapon.special > 30 and item.weapon.special < 35 then -- Dim, Shadow, Dark, Hell - Instant Kill
+                    equipData.isWeapInstantKill = true
+                    equipData.weapSpecialCategory = 9
+                elseif item.weapon.special > 34 and item.weapon.special < 39 then -- Panic, Riot, Havoc, Chaos - Confusion Status Effect
+                    equipData.isWeapConfusionSE = true
+                    equipData.weapSpecialCategory = 10
+                elseif item.weapon.special > 38 and item.weapon.special < 41 then -- Devil's, Demon's - HP Cut
+                    equipData.isWeapHPCut = true
+                    equipData.weapSpecialCategory = 11
+                end
+            end
+            if item.hex == 0x010351 then -- is "Smartlink" unit
+                equipData.EqSmartlink = 1
+            end
+            if item.hex == 0x000406 then -- Vjaya weapon
+			    equipData.EqVjaya = 1
+            end
+            if item.data[1] == 0x01 and item.data[2] == 0x03 then -- is special enhancing unit
+                -- V501
+                if item.data[3] == 0x4A then
+                    equipData.v50xHellBoost = 1.5
+                    equipData.v50xStatusBoost = 1.5
+                -- V502
+                elseif item.data[3] == 0x4B then
+                    equipData.v50xHellBoost = 2.0
+                    equipData.v50xStatusBoost = 1.5
+                end
+            end
         end
-        imgui.PopStyleColor()
-        
-        local border = borderSize
-        imgui.SetCursorPosX( windowW*0.5 - sizeX*0.5 + border +1 )
-        imgui.SetCursorPosY( cursorPosY + border - 1 )
-        imgui.BeginChild( "itembox##" .. border, sizeX - border*2 - 2, sizeY - border*2 - 2, true, {"NoInputs"} )
-        imgui.EndChild()
-        --imgui.PopStyleColor()
-    --end
+    end
+    pEquipData = equipData
 end
+
+local function UpdateLevelData()
+    lData = {
+        difficulty = pso.read_u32(_Difficulty),
+    }
+end
+
+local function UpdatePlayerData()
+    if playerSelfAddr == 0 then return end
+
+    pData = {
+        maxTP  = lib_characters.GetPlayerMaxTP( playerSelfAddr),
+        maxAtp = lib_characters.GetPlayerMaxATP(playerSelfAddr,0),
+        minAtp = lib_characters.GetPlayerMinATP(playerSelfAddr,0),
+        ata    = lib_characters.GetPlayerATA(   playerSelfAddr),
+        lck    = lib_characters.GetPlayerLCK(   playerSelfAddr),
+        zalure = lib_characters.GetPlayerTechniqueLevel(playerSelfAddr, lib_characters.Techniques.Zalure),
+        isCast = lib_characters.GetPlayerIsCast(playerSelfAddr),
+        specPower = pso.read_u16(playerSelfAddr + 0x118),
+        level  = lib_characters.GetPlayerLevel( playerSelfAddr),
+        normalDmgMult       =  0.9,
+        heavyDmgMult        = 17/9,
+        specialDmgMult      =  5/9,
+        sacrificialDmgMult  = 10/3,
+        vjayaDmgMult        = 17/3,
+    }
+    pData.ataNormAtk1 = pData.ata         -- ata * 1.0 * 1.0
+    pData.ataHardAtk1 = pData.ata * 0.7   -- ata * 0.7 * 1.0
+    pData.ataSpecAtk1 = pData.ata * 0.5   -- ata * 0.5 * 1.0
+    pData.ataNormAtk2 = pData.ata * 1.3   -- ata * 1.0 * 1.3
+    pData.ataHardAtk2 = pData.ata * 0.91  -- ata * 0.7 * 1.3
+    pData.ataSpecAtk2 = pData.ata * 0.65  -- ata * 0.5 * 1.3
+    pData.ataNormAtk3 = pData.ata * 1.69  -- ata * 1.0 * 1.69
+    pData.ataHardAtk3 = pData.ata * 1.183 -- ata * 0.7 * 1.69
+    pData.ataSpecAtk3 = pData.ata * 0.845 -- ata * 0.5 * 1.69
+
+    if pData.isCast == true and lData.difficulty == 3 then
+        pData.castBoost = 30
+    else
+        pData.castBoost = 0
+    end
+    
+    if lData.difficulty == 3 then
+        pData.ailRedux = 2.5
+    else
+        pData.ailRedux = 6.67
+    end
+end
+
 local function PresentTargetMonster(monster, section)
     if monster ~= nil then
-        local playerAddr = lib_characters.GetSelf()
-        if playerAddr == 0 then
-            return
-        end
+        if playerSelfAddr == 0 then return end
         
         local moptions = options[section][monster.unitxtID]
 		
         local mHP = monster.HP
         local mHPMax = monster.HPMax
-		
-		local difficulty = pso.read_u32(_Difficulty)
-
-		local PposX = pso.read_f32(playerAddr + _PosX)
-		local PposZ = pso.read_f32(playerAddr + _PosZ)
 
         local atkTech = lib_characters.GetPlayerTechniqueStatus(monster.address, 0)
         local defTech = lib_characters.GetPlayerTechniqueStatus(monster.address, 1)
-		
-		local zalure = lib_characters.GetPlayerTechniqueLevel(playerAddr, lib_characters.Techniques.Zalure)
 
         local frozen = lib_characters.GetPlayerFrozenStatus(monster.address)
         local confused = lib_characters.GetPlayerConfusedStatus(monster.address)
         local paralyzed = lib_characters.GetPlayerParalyzedStatus(monster.address)
 		local shocked = lib_characters.GetPlayerShockedStatus(monster.address)
 		
-		local myMaxTP = lib_characters.GetPlayerMaxTP(playerAddr)
-		local myMaxAtp = lib_characters.GetPlayerMaxATP(playerAddr,0)
-		local myMinAtp = lib_characters.GetPlayerMinATP(playerAddr,0)
-		local myAta = lib_characters.GetPlayerATA(playerAddr)
-		local myLck = lib_characters.GetPlayerLCK(playerAddr)
-		
-		local inventory = lib_items.GetInventory(lib_items.Me)
-        local itemCount = table.getn(inventory.items)
-		
-		local NAstat = 0
-		local ABstat = 0
-		local MAstat = 0
-		local DAstat = 0
-		local weapon_group = 0
-		local pmt_data = 0
-		local pmt_weapon_animations = 0
-		local weapon_animation_type = 0
-		local ataPenalty = 0
-		local EqSmartlink = 0
 		local MDistance = 0
-		local weapSpecial = ""
-		local weapName = ""
-		local weapEquipped = 0
-		local numTargets = 0
-		local numHits = 0
-        local androidBoost = 0
-		local specRedux = 1
 		local specDMG = -1
 		local specAilment = 0
 		local specDraw = 0
-		local weapHex = 0
-		local v50xHellBoost = 1
-        local v50xStatusBoost = 1
-		local ailRedux = 1
-		local specPower = pso.read_u16(playerAddr + 0x118)
 		
-		
-		for i=1,itemCount,1 do
-            local item = inventory.items[i]
-            if item.equipped and item.data[1] == 0x00 then
-				if not item.weapon.isSRank then
-					NAstat = item.weapon.stats[2]/100
-					ABstat = item.weapon.stats[3]/100
-					MAstat = item.weapon.stats[4]/100
-					DAstat = item.weapon.stats[5]/100
-				end
-				weapEquipped = item.weapon.special
-				weapSpecial = lib_unitxt.GetSpecialName(weapEquipped)
-				weapHex = item.data[2]
-				weapName = item.name
-				weapon_group = pso.read_u8(item.address + 0xf3)
-				pmt_data = pso.read_u32(0xA8DC94)
-				pmt_weapon_animations = pso.read_u32(pmt_data + 0x14)
-				weapon_animation_type = pso.read_u8(pmt_weapon_animations + weapon_group)
-				if weapon_animation_type == 5 or weapon_animation_type == 6 or weapon_animation_type == 7 or weapon_animation_type == 8 or weapon_animation_type == 9 or weapon_animation_type == 18 then
-					ataPenalty = 1
-				end
-			end
-			if item.equipped and item.name == "Smartlink" then
-				EqSmartlink = 1
-			end
-			if item.equipped and item.data[1] == 0x01 and item.data[2] == 0x03 then
-                -- V501
-                if item.data[3] == 0x4A then
-                    v50xHellBoost = 1.5
-                    v50xStatusBoost = 1.5
-                -- V502
-                elseif item.data[3] == 0x4B then
-                    v50xHellBoost = 2.0
-                    v50xStatusBoost = 1.5
-                end
-            end
-		end
-		
+
 		if monster.attribute == 1 then
-			myMaxAtp = lib_characters.GetPlayerMaxATP(playerAddr,NAstat)
-			myMinAtp = lib_characters.GetPlayerMinATP(playerAddr,NAstat)
+			pData.maxAtp = lib_characters.GetPlayerMaxATP(playerSelfAddr,pEquipData.NAstat)
+			pData.minAtp = lib_characters.GetPlayerMinATP(playerSelfAddr,pEquipData.NAstat)
 		elseif monster.attribute == 2 then
-			myMaxAtp = lib_characters.GetPlayerMaxATP(playerAddr,ABstat)
-			myMinAtp = lib_characters.GetPlayerMinATP(playerAddr,ABstat)
+			pData.maxAtp = lib_characters.GetPlayerMaxATP(playerSelfAddr,pEquipData.ABstat)
+			pData.minAtp = lib_characters.GetPlayerMinATP(playerSelfAddr,pEquipData.ABstat)
 		elseif monster.attribute == 4 then
-			myMaxAtp = lib_characters.GetPlayerMaxATP(playerAddr,MAstat)
-			myMinAtp = lib_characters.GetPlayerMinATP(playerAddr,MAstat)
+			pData.maxAtp = lib_characters.GetPlayerMaxATP(playerSelfAddr,pEquipData.MAstat)
+			pData.minAtp = lib_characters.GetPlayerMinATP(playerSelfAddr,pEquipData.MAstat)
 		elseif monster.attribute == 8 then
-			myMaxAtp = lib_characters.GetPlayerMaxATP(playerAddr,DAstat)
-			myMinAtp = lib_characters.GetPlayerMinATP(playerAddr,DAstat)
+			pData.maxAtp = lib_characters.GetPlayerMaxATP(playerSelfAddr,pEquipData.DAstat)
+			pData.minAtp = lib_characters.GetPlayerMinATP(playerSelfAddr,pEquipData.DAstat)
+		end
+--TODO: obtain min and maxWeapon base ATP and grind in formula
+        -- weapons with high base atp will not correctly calculate damage
+        -- ... might also be related to weapon attributes...? more testing needed, but damage numbers are still incorrect..
+		
+		local myMaxBaseDamage = ((pData.maxAtp - monster.Dfp)/5)
+		local myMinBaseDamage = ((pData.minAtp - monster.Dfp)/5)
+		if defTech.type ~= 0 then -- monster zalured? 
+			myMaxBaseDamage = ((pData.maxAtp - (monster.Dfp*(1-((((pData.zalure-1)*1.3)+10)/100))))/5)
+			myMinBaseDamage = ((pData.minAtp - (monster.Dfp*(1-((((pData.zalure-1)*1.3)+10)/100))))/5)
 		end
 		
-		local myMaxDamage = ((myMaxAtp - monster.Dfp)/5)*.9
-		local myMinDamage = ((myMinAtp - monster.Dfp)/5)*.9
-		
-		if defTech.type == 0 then
-		
-		else
-			myMaxDamage = ((myMaxAtp - (monster.Dfp*(1-((((zalure-1)*1.3)+10)/100))))/5)*.9
-			myMinDamage = ((myMinAtp - (monster.Dfp*(1-((((zalure-1)*1.3)+10)/100))))/5)*.9
-		end
-		
-		if myMinDamage < 1 then
-			myMinDamage = 0
-		end
-		
-		if myMaxDamage < 1 then
-			myMaxDamage = 0
-		end
-		
-		if (string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerAddr)),1,2) == "FO" or string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerAddr)),1,2) == "HU") and EqSmartlink == 0 and ataPenalty == 1 then
-			MDistance = (math.sqrt(((monster.posX-PposX)^2)+((monster.posZ-PposZ)^2)))*0.33
-		end
-		
-		if lib_characters.GetPlayerIsCast(playerAddr) == true and difficulty == 3 then
-            androidBoost = 30
-        end
-		
-		if (0x1 < weapHex) then
-			if (weapHex < 0x5) then
-				specRedux = 0.50
-			elseif (weapHex == 0x5) or (7 < weapHex and (weapHex < 0xA)) then
-				specRedux = 0.33
-			end
-		end
-		
-		if difficulty == 3 then
-			ailRedux = 2.5
-		else
-			ailRedux = 6.67
+        local myMinNormalDamage = myMinBaseDamage * pData.normalDmgMult
+        local myMaxNormalDamage = myMaxBaseDamage * pData.normalDmgMult
+        local myMinHeavyDamage  = myMinBaseDamage * pData.heavyDmgMult
+        local myMaxHeavyDamage  = myMaxBaseDamage * pData.heavyDmgMult
+        local myMinSpecDamage   = 0
+		local myMaxSpecDamage   = 0
+		if myMinNormalDamage < 1 then myMinNormalDamage = 0 end
+		if myMaxNormalDamage < 1 then myMaxNormalDamage = 0 end
+		if myMinHeavyDamage  < 1 then myMinHeavyDamage  = 0 end
+		if myMaxHeavyDamage  < 1 then myMaxHeavyDamage  = 0 end
+
+-- convert from text string analysis to integer
+		if (string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerSelfAddr)),1,2) == "FO" or string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerSelfAddr)),1,2) == "HU") and pEquipData.EqSmartlink == 0 and pEquipData.ataPenalty == 1 then
+			MDistance = (math.sqrt(((monster.posX-playerSelfCoords.x)^2)+((monster.posZ-playerSelfCoords.z)^2)))*0.33
 		end
 		
         local curX = imgui.GetCursorPosX()
 		if moptions.showName then
-            if moptions.showWeakness then
+            if moptions.showWeakness and not monster.bossCore then
                 if (monster.Efr <= monster.Eth) and (monster.Efr <= monster.Eic) then
                     lib_helpers.TextC(true, 0xFFFF6600, monster.name)
                 elseif (monster.Eth <= monster.Efr) and (monster.Eth <= monster.Eic) then
@@ -1264,104 +1340,178 @@ local function PresentTargetMonster(monster, section)
             end
         end
 
-		imgui.NextColumn()
+        local function calcSpecDamage()
+            if specDMG >= 0 then
+                myMinSpecDamage = specDMG
+                myMaxSpecDamage = specDMG
+            elseif specDMG < 0 then
+                myMinSpecDamage = myMinBaseDamage * pData.specialDmgMult
+                myMaxSpecDamage = myMaxBaseDamage * pData.specialDmgMult
+            end
+        end
 
-		-- Calculate all 9 types of attack combinations
-		local normAtk1_Acc = math.max(math.min((myAta * 1.0 * 1.0 ) - (monster.Evp * 0.2) - MDistance,100),0)
-		local hardAtk1_Acc = math.max(math.min((myAta * 0.7 * 1.0 ) - (monster.Evp * 0.2) - MDistance,100),0)
-		local specAtk1_Acc = math.max(math.min((myAta * 0.5 * 1.0 ) - (monster.Evp * 0.2) - MDistance,100),0)
-		local normAtk2_Acc = math.max(math.min((myAta * 1.0 * 1.3 ) - (monster.Evp * 0.2) - MDistance,100),0)
-		local hardAtk2_Acc = math.max(math.min((myAta * 0.7 * 1.3 ) - (monster.Evp * 0.2) - MDistance,100),0)
-		local specAtk2_Acc = math.max(math.min((myAta * 0.5 * 1.3 ) - (monster.Evp * 0.2) - MDistance,100),0)
-		local normAtk3_Acc = math.max(math.min((myAta * 1.0 * 1.69) - (monster.Evp * 0.2) - MDistance,100),0)
-		local hardAtk3_Acc = math.max(math.min((myAta * 0.7 * 1.69) - (monster.Evp * 0.2) - MDistance,100),0)
-		local specAtk3_Acc = math.max(math.min((myAta * 0.5 * 1.69) - (monster.Evp * 0.2) - MDistance,100),0)
-		
-		if weapSpecial == "Heat" or weapSpecial == "Fire" or weapSpecial == "Flame" or weapSpecial == "Burning" then
-			specDMG = (((lib_characters.GetPlayerLevel(playerAddr)-1)+((specPower+1)*20))*(100-(monster.Efr))*0.01)
+        if pEquipData.isWeapHPSteal then -- Draw, Drain, Fill, Gush - HP Steal
+			specDraw = math.min(((pData.specPower+pData.castBoost)/100)*mHP,(lData.difficulty+1)*30)*pEquipData.specRedux
 			specAilment = 100
-		elseif weapSpecial == "Ice" or weapSpecial == "Frost" or weapSpecial == "Freeze" or weapSpecial == "Blizzard" then
-			specAilment = math.min((((specPower+androidBoost)-monster.Esp)*specRedux),40)*v50xStatusBoost
-		elseif weapSpecial == "Shock" or weapSpecial == "Thunder" or weapSpecial == "Storm" or weapSpecial == "Tempest" then
-			specDMG = (((lib_characters.GetPlayerLevel(playerAddr)-1)+((specPower+1)*20))*(100-(monster.Eth))*0.01)
-			specAilment = 100
-		elseif weapSpecial == "Bind" or weapSpecial == "Hold" or weapSpecial == "Seize" or weapSpecial == "Arrest" then
-			specAilment = ((specPower+androidBoost)-monster.Esp)*specRedux*v50xStatusBoost
-		elseif weapSpecial == "Panic" or weapSpecial == "Riot" or weapSpecial == "Havoc" or weapSpecial == "Chaos" then
-			specAilment = ((specPower+androidBoost)-monster.Esp)*specRedux*v50xStatusBoost
-		elseif (weapSpecial == "Dim" or weapSpecial == "Shadow" or weapSpecial == "Dark" or weapSpecial == "Hell") and monster.isBoss == 0 then
-			specAilment = (specPower-monster.Edk)*specRedux*v50xHellBoost
-			specDMG = mHP
-		elseif weapSpecial == "Draw" or weapSpecial == "Drain" or weapSpecial == "Fill" or weapSpecial == "Gush" then
-			specDraw = math.min(((specPower+androidBoost)/100)*mHP,(difficulty+1)*30)*specRedux
-			specAilment = 100
-		elseif weapSpecial == "Heart" or weapSpecial == "Mind" or weapSpecial == "Soul" or weapSpecial == "Geist" then
-			if lib_characters.GetPlayerIsCast(playerAddr) == false then
-				specDraw = math.min((specPower/100)*myMaxTP,(difficulty+1)*25)*specRedux
+            calcSpecDamage()
+
+		elseif pEquipData.isWeapTPSteal then -- Heart, Mind, Soul, Geist - TP Steal
+			if pData.isCast == false then
+				specDraw = math.min((pData.specPower/100)*pData.maxTP,(lData.difficulty+1)*25)*pEquipData.specRedux
 				specAilment = 100
-			else
-				weapSpecial = "None"
 			end
-		elseif weapSpecial == "Master's" or weapSpecial == "Lord's" or weapSpecial == "King's" then
-			specDraw = math.min(((specPower+androidBoost)/100)*monster.Exp,(difficulty+1)*20)*specRedux
+            calcSpecDamage()
+
+		elseif pEquipData.isWeapEXPSteal then -- Master's, Lord's, King's - EXP Steal
+			specDraw = math.min(((pData.specPower+pData.castBoost)/100)*monster.Exp,(lData.difficulty+1)*20)*pEquipData.specRedux
 			specAilment = 100
-		elseif (weapSpecial == "Devil's" or weapSpecial == "Demon's") and monster.isBoss == 0 then
-			specDMG = (mHP*(1-(((specPower+androidBoost)/100))))*specRedux
-			specAilment = 50
-		elseif weapSpecial == "Charge" or weapSpecial == "Spirit" or weapSpecial == "Berserk" or weapName == "Vjaya" then
+            calcSpecDamage()
+
+		elseif pEquipData.isWeapSacrificial then -- Charge, Spirit, Berserk - Sacrificial
+            if pEquipData.EqVjaya == 1 then
+			    specAilment = 100
+                myMinSpecDamage = myMinBaseDamage * pData.vjayaDmgMult
+                myMaxSpecDamage = myMaxBaseDamage * pData.vjayaDmgMult
+            else
+                myMinSpecDamage = myMinBaseDamage * pData.sacrificialDmgMult
+                myMaxSpecDamage = myMaxBaseDamage * pData.sacrificialDmgMult
+            end
+
+		elseif pEquipData.isWeapFrozenSE then -- Ice, Frost, Freeze, Blizzard - Frozen Status Effect
+			specAilment = math.min((((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux),40)*pEquipData.v50xStatusBoost
+            calcSpecDamage()
+            
+		elseif pEquipData.isWeapParalysisSE then -- Bind, Hold, Seize, Arrest - Paralysis Status Effect
+			specAilment = ((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux*pEquipData.v50xStatusBoost
+            calcSpecDamage()
+
+        elseif pEquipData.isWeapFireElement then -- Heat, Fire, Flame, Burning - Fire Elemental Damage
+			specDMG = (((pData.level-1)/(5-pData.specPower)+((pData.specPower+1)*20))*(100-(monster.Efr))*0.01)
 			specAilment = 100
+            calcSpecDamage()
+
+		elseif pEquipData.isWeapLightningElement then -- Shock, Thunder, Storm, Tempest - Lightning Elemental Damage
+			specDMG = (((pData.level-1)/(5-pData.specPower)+((pData.specPower+1)*20))*(100-(monster.Eth))*0.01)
+			specAilment = 100
+            calcSpecDamage()
+            
+		elseif pEquipData.isWeapInstantKill then -- Dim, Shadow, Dark, Hell - Instant Kill
+			if monster.isBoss == 0 then
+                specAilment = (pData.specPower-monster.Edk)*pEquipData.specRedux*pEquipData.v50xHellBoost
+			    specDMG = mHP
+            end
+            calcSpecDamage()
+
+		elseif pEquipData.isWeapConfusionSE then -- Panic, Riot, Havoc, Chaos - Confusion Status Effect
+			specAilment = ((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux*pEquipData.v50xStatusBoost
+            calcSpecDamage()
+            print(specDMG, myMinSpecDamage, myMaxSpecDamage, pData.specPower+1, monster.Efr)
+
+		elseif pEquipData.isWeapHPCut then -- Devil's, Demon's - HP Cut
+			if monster.isBoss == 0 then
+                specDMG = (mHP*(1-(((pData.specPower+pData.castBoost)/100))))*pEquipData.specRedux
+                specAilment = 50
+            end
+            calcSpecDamage()
 		end
+
+        -- Calculate all 9 types of attack combinations
+        local mEvp = monster.Evp * 0.2 - MDistance
+        local normAtk1_Acc = clampVal(pData.ataNormAtk1 - mEvp, 0, 100)
+        local hardAtk1_Acc = clampVal(pData.ataHardAtk1 - mEvp, 0, 100)
+        local specAtk1_Acc = clampVal(pData.ataSpecAtk1 - mEvp, 0, 100)
+        local normAtk2_Acc = clampVal(pData.ataNormAtk2 - mEvp, 0, 100)
+        local hardAtk2_Acc = clampVal(pData.ataHardAtk2 - mEvp, 0, 100)
+        local specAtk2_Acc = clampVal(pData.ataSpecAtk2 - mEvp, 0, 100)
+        local normAtk3_Acc = clampVal(pData.ataNormAtk3 - mEvp, 0, 100)
+        local hardAtk3_Acc = clampVal(pData.ataHardAtk3 - mEvp, 0, 100)
+        local specAtk3_Acc = clampVal(pData.ataSpecAtk3 - mEvp, 0, 100)
+        
+        local specAtk1_Hit = clampVal(specAtk1_Acc*specAilment/100,0,100)
+        local specAtk2_Hit = clampVal(specAtk2_Acc*specAilment/100,0,100)
+        local specAtk3_Hit = clampVal(specAtk3_Acc*specAilment/100,0,100)
 
 		
 		if moptions.showHealthBar then
 			-- Draw enemy HP bar
-            local mHPRatio = mHP/mHPMax
-            local NDmgRatio = myMinDamage/mHPMax
-            local HDmgRatio = myMinDamage*1.89/mHPMax
-            local SDmgRatio
-            local bWidth = 220
+            local mHPRatio  = clampVal(mHP/mHPMax,0,1)
+            local NDmgRatio = clampVal(myMinNormalDamage/mHPMax,0,1)
+            local HDmgRatio = clampVal(myMinHeavyDamage/mHPMax,0,1)
+            local SDmgRatio = clampVal(myMinSpecDamage/mHPMax,0,1)
+            local bWidth -- = 220
             local dmgBHeigth = imgui.GetFontSize()/3
+            local wPaddingX = 8
 
-            if weapSpecial == "Charge" or weapSpecial == "Spirit" or weapSpecial == "Berserk" then
-                if weapName == "Vjaya" then
-                    SDmgRatio = myMinDamage*5.67/mHPMax
-                else
-                    SDmgRatio = myMinDamage*3.33/mHPMax
-                end
-            elseif specDMG >= 0 then
-                SDmgRatio = specDMG/mHPMax
-            elseif specDMG < 0 then
-                SDmgRatio = myMinDamage*0.56/mHPMax
-            end
-            
             local curY = imgui.GetCursorPosY()
 			lib_helpers.imguiProgressBar(true, mHPRatio, -1, imgui.GetFontSize(), lib_helpers.HPToGreenRedGradient(mHPRatio), nil, mHP)
-            imgui.SameLine()
-            local endCurX = imgui.GetCursorPosX()
+            --local endCurX = imgui.GetCursorPosX()
+            local windowSizeX = imgui.GetWindowSize()
+            local endCurX = windowSizeX - 1
             
             imgui.PushStyleColor("FrameBg", 0, 0, 0, 0)
 
-            local curLen = (endCurX - curX) - 8
+
+            local curLen = (endCurX - curX) - wPaddingX
             bWidth = curLen
-            local xSPos = (curLen)*mHPRatio - curLen * SDmgRatio + 8
-            local xSClamp = clampVal(xSPos, 8, bWidth+8)
-            imgui.SetCursorPosX(xSClamp)
-            imgui.SetCursorPosY(curY - dmgBHeigth)
-            lib_helpers.imguiProgressBar(true, 1.0, curLen * SDmgRatio - math.abs(xSPos-xSClamp), dmgBHeigth, lib_items_cfg.weaponSpecial[weapEquipped + 1], nil)
+            local xSPos = (curLen)*mHPRatio - curLen * SDmgRatio + wPaddingX
+            local xSClamp = clampVal(xSPos, wPaddingX, bWidth+wPaddingX)
+            local specDmgBarWidth = math.max(curLen * SDmgRatio - math.abs(xSPos-xSClamp),0)
+            
+            local xHPos = (curLen)*mHPRatio - curLen * HDmgRatio + wPaddingX
+            local xHClamp = clampVal(xHPos, wPaddingX, bWidth+wPaddingX)
+            local heavyDmgBarWidth = math.max(curLen * HDmgRatio - math.abs(xHPos-xHClamp),0)
 
-            local xHPos = (curLen)*mHPRatio - curLen * HDmgRatio + 8
-            local xHClamp = clampVal(xHPos, 8, bWidth+8)
-            imgui.SetCursorPosX(xHClamp)
-            imgui.SetCursorPosY(curY - dmgBHeigth)
-            lib_helpers.imguiProgressBar(true, 1.0, curLen * HDmgRatio - math.abs(xHPos-xHClamp), dmgBHeigth, 0xFFFFAA00, nil)
+            local xNPos = (curLen)*mHPRatio - curLen * NDmgRatio + wPaddingX
+            local xNClamp = clampVal(xNPos, wPaddingX, bWidth+wPaddingX)
+            local normalDmgBarWidth = math.max(curLen * NDmgRatio - math.abs(xNPos-xNClamp),0)
 
-            local xNPos = (curLen)*mHPRatio - curLen * NDmgRatio + 8
-            local xNClamp = clampVal(xNPos, 8, bWidth+8)
-            imgui.SetCursorPosX(xNClamp)
-            imgui.SetCursorPosY(curY - dmgBHeigth)
-            lib_helpers.imguiProgressBar(true, 1.0, curLen * NDmgRatio - math.abs(xNPos-xNClamp), dmgBHeigth, 0xFF00FF00, nil)  
+            local function showSpecDmgBar()
+                if specDmgBarWidth > 0 then
+                    imgui.SetCursorPosX(xSClamp)
+                    imgui.SetCursorPosY(curY - dmgBHeigth)
+                    lib_helpers.imguiProgressBar(true, 1.0, specDmgBarWidth, dmgBHeigth, pEquipData.weapSpecialColor, nil)
+                end
+            end
+            local function showHeavyDmgBar()
+                if heavyDmgBarWidth > 0 then
+                    imgui.SetCursorPosX(xHClamp)
+                    imgui.SetCursorPosY(curY - dmgBHeigth)
+                    lib_helpers.imguiProgressBar(true, 1.0, heavyDmgBarWidth, dmgBHeigth, 0xFFFFAA00, nil)
+                end
+            end
+            local function showNormalDmgBar()
+                if normalDmgBarWidth > 0 then
+                    imgui.SetCursorPosX(xNClamp)
+                    imgui.SetCursorPosY(curY - dmgBHeigth)
+                    lib_helpers.imguiProgressBar(true, 1.0, normalDmgBarWidth, dmgBHeigth, 0xFF00FF00, nil)  
+                end
+            end
 
-            imgui.SetCursorPosY(curY+ imgui.GetFontSize())
+            local damageBars = {
+                {
+                    width = specDmgBarWidth,
+                    showBar = showSpecDmgBar,
+                },
+                {
+                    width = normalDmgBarWidth,
+                    showBar = showNormalDmgBar,
+                },
+                {
+                    width = heavyDmgBarWidth,
+                    showBar = showHeavyDmgBar,
+                },
+            }
+
+            local function sortByWidth(a,b)
+                return a.width > b.width
+            end
+            table.sort(damageBars, sortByWidth)
+            for i=1, table.getn(damageBars), 1 do
+                damageBars[i].showBar()
+            end
+            
+
+            imgui.SetCursorPosY(curY + imgui.GetFontSize())
             
             -- imgui.SetCursorPosX(curX)
             -- imgui.SetCursorPosY(curY)
@@ -1371,82 +1521,72 @@ local function PresentTargetMonster(monster, section)
 		end
 
 		if moptions.showDamage then
-			lib_helpers.Text(true, "%i", myMinDamage)
+			lib_helpers.Text(true, "%i", myMinNormalDamage)
 			lib_helpers.Text(false, "-")
-			lib_helpers.Text(false, "%i", myMaxDamage)
-			lib_helpers.Text(false, " Weak Hit")		
-			lib_helpers.Text(true, "%i", (myMinDamage*1.89))
+			lib_helpers.Text(false, "%i", myMaxNormalDamage)
+			lib_helpers.Text(false, " Weak Hit")
+			lib_helpers.Text(true, "%i", myMinHeavyDamage)
 			lib_helpers.Text(false, "-")
-			lib_helpers.Text(false, "%i", (myMaxDamage*1.89))
+			lib_helpers.Text(false, "%i", myMaxHeavyDamage)
 			lib_helpers.Text(false, " Heavy Hit")
 		end
 	
 		
-		if weapSpecial ~= "None" then
+		if pEquipData.weapSpecial > 0 then
 			if moptions.showDamage then
-				if weapSpecial == "Charge" or weapSpecial == "Spirit" or weapSpecial == "Berserk" then
-					if weapName == "Vjaya" then
-						lib_helpers.Text(true, "%i", (myMinDamage*5.67))
-						lib_helpers.Text(false, "-")
-						lib_helpers.Text(false, "%i", (myMaxDamage*5.67))
-					else
-						lib_helpers.Text(true, "%i", (myMinDamage*3.33))
-						lib_helpers.Text(false, "-")
-						lib_helpers.Text(false, "%i", (myMaxDamage*3.33))
-					end
-				elseif specDMG >= 0 then
-					lib_helpers.TextC(true, lib_items_cfg.weaponSpecial[weapEquipped + 1], "%i", specDMG)
-				elseif specDMG < 0 then
-					lib_helpers.Text(true, "%i", (myMinDamage*0.56))
+                if myMinSpecDamage == myMaxSpecDamage then
+					lib_helpers.TextC(true, pEquipData.weapSpecialColor, "%i", specDMG)
+				else
+					lib_helpers.Text(true, "%i", myMinSpecDamage)
 					lib_helpers.Text(false, "-")
-					lib_helpers.Text(false, "%i", (myMaxDamage*0.56))
+					lib_helpers.Text(false, "%i", myMaxSpecDamage)
 				end
 				lib_helpers.Text(false, " Special Hit [")
-				lib_helpers.TextC(false, lib_items_cfg.weaponSpecial[weapEquipped + 1], lib_unitxt.GetSpecialName(weapEquipped))
+				lib_helpers.TextC(false, pEquipData.weapSpecialColor, pEquipData.weapSpecialName)
 				lib_helpers.Text(false, "] ")
 				if specAilment > 0 then
-						if weapSpecial == "Master's" or weapSpecial == "Lord's" or weapSpecial == "King's" then
-							lib_helpers.Text(false, "steal ")
-							lib_helpers.TextC(false, lib_items_cfg.weaponSpecial[weapEquipped + 1], "%i", math.max(specDraw,0))
-							lib_helpers.Text(false, " EXP")
-						elseif (weapSpecial == "Heart" or weapSpecial == "Mind" or weapSpecial == "Soul" or weapSpecial == "Geist") and lib_characters.GetPlayerIsCast(playerAddr) == false then
-							lib_helpers.Text(false, "steal ")
-							lib_helpers.TextC(false, lib_items_cfg.weaponSpecial[weapEquipped + 1], "%i", math.max(specDraw,0))
-							lib_helpers.Text(false, " TP")
-						elseif weapSpecial == "Draw" or weapSpecial == "Drain" or weapSpecial == "Fill" or weapSpecial == "Gush" then	
-							lib_helpers.Text(false, "steal ")
-							lib_helpers.TextC(false, lib_items_cfg.weaponSpecial[weapEquipped + 1], "%i", math.max(specDraw,0))
-							lib_helpers.Text(false, " HP")
-						elseif (weapSpecial == "Dim" or weapSpecial == "Shadow" or weapSpecial == "Dark" or weapSpecial == "Hell") and monster.isBoss == 0 then	
-							lib_helpers.Text(false, "chance to Instant Kill")
-						elseif weapSpecial == "Panic" or weapSpecial == "Riot" or weapSpecial == "Havoc" or weapSpecial == "Chaos"  and monster.isBoss == 0 then
-							lib_helpers.Text(false, "chance to Confuse")
-						elseif weapSpecial == "Bind" or weapSpecial == "Hold" or weapSpecial == "Seize" or weapSpecial == "Arrest" and (monster.attribute == 1 or monster.attribute == 2 or monster.attribute == 8) and monster.isBoss == 0 then	
-							lib_helpers.Text(false, "chance to Paralyze")
-						elseif weapSpecial == "Shock" or weapSpecial == "Thunder" or weapSpecial == "Storm" or weapSpecial == "Tempest" and monster.attribute == 4 and monster.isBoss == 0 and monster.name ~= "Epsilon" then	
-							specAilment = ailRedux*v50xStatusBoost
-							lib_helpers.Text(false, "chance to Shock")
-						elseif weapSpecial == "Ice" or weapSpecial == "Frost" or weapSpecial == "Freeze" or weapSpecial == "Blizzard" and not (monster.isBoss == 1 or monster.name == "Epsilon" or monster.name == "Zu" or monster.name == "Pazuzu" or monster.name == "Dorphon" or monster.name == "Dorphon Eclair" or monster.name == "Girtablulu" ) then
-							lib_helpers.Text(false, "chance to Freeze")
-						end
+                    if pEquipData.isWeapEXPSteal then
+                        lib_helpers.Text(false, "steal ")
+                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(specDraw,0))
+                        lib_helpers.Text(false, " EXP")
+                    elseif pEquipData.isWeapTPSteal and pData.isCast == false then
+                        lib_helpers.Text(false, "steal ")
+                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(specDraw,0))
+                        lib_helpers.Text(false, " TP")
+                    elseif pEquipData.isWeapHPSteal then	
+                        lib_helpers.Text(false, "steal ")
+                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(specDraw,0))
+                        lib_helpers.Text(false, " HP")
+                    elseif pEquipData.isWeapInstantKill and monster.isBoss == 0 then	
+                        lib_helpers.Text(false, "chance to Instant Kill")
+                    elseif pEquipData.isWeapConfusionSE and monster.isBoss == 0 then
+                        lib_helpers.Text(false, "chance to Confuse")
+                    elseif pEquipData.isWeapParalysisSE and (monster.attribute == 1 or monster.attribute == 2 or monster.attribute == 8) and monster.isBoss == 0 then
+                        lib_helpers.Text(false, "chance to Paralyze")
+                    elseif pEquipData.isWeapLightningElement and monster.attribute == 4 and monster.isBoss == 0 and monster.name ~= "Epsilon" then	
+                        specAilment = pData.ailRedux*pEquipData.v50xStatusBoost
+                        lib_helpers.Text(false, "chance to Shock")
+                    elseif pEquipData.isWeapFrozenSE and not (monster.isBoss == 1 or monster.name == "Epsilon" or monster.name == "Zu" or monster.name == "Pazuzu" or monster.name == "Dorphon" or monster.name == "Dorphon Eclair" or monster.name == "Girtablulu" ) then
+                        lib_helpers.Text(false, "chance to Freeze")
+                    end
 				end
 			end
 			if moptions.showHit then
 				lib_helpers.Text(true, "Spec1: ")
-				lib_helpers.TextC(false, lib_items_cfg.weaponSpecial[weapEquipped + 1], "%i%% ", math.min(specAtk1_Acc*(math.max(specAilment,0)/100),100))
+				lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", specAtk1_Hit)
 				lib_helpers.Text(false, " > Spec2: ")
-				lib_helpers.TextC(false, lib_items_cfg.weaponSpecial[weapEquipped + 1], "%i%% ", math.min(specAtk2_Acc*(math.max(specAilment,0)/100),100))
+				lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", specAtk2_Hit)
 				lib_helpers.Text(false, " > Spec3: ")
-				lib_helpers.TextC(false, lib_items_cfg.weaponSpecial[weapEquipped + 1], "%i%% ", math.min(specAtk3_Acc*(math.max(specAilment,0)/100),100))
+				lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", specAtk3_Hit)
 			end
 		end
 		
 		if moptions.showHit then
 			-- Display best first attack
 			lib_helpers.Text(true, "[")
-			if specAtk1_Acc >= options.targetSpecialThreshold and weapSpecial ~= "None" then
+			if specAtk1_Acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
 				lib_helpers.TextC(false, 0xFFFF2031, "Spec1: %i%% ", specAtk1_Acc)
-			elseif hardAtk1_Acc >= options.targetHardThreshold then
+			elseif hardAtk1_Acc >= moptions.targetHardThreshold then
 				lib_helpers.TextC(false, 0xFFFFAA00, "Hard1: %i%% ", hardAtk1_Acc)
 			elseif normAtk1_Acc > 0 then
 				lib_helpers.TextC(false, 0xFF00FF00, "Norm1: %i%% ", normAtk1_Acc)
@@ -1456,9 +1596,9 @@ local function PresentTargetMonster(monster, section)
 
 			-- Display best second attack
 			lib_helpers.Text(false, " > ")
-			if specAtk2_Acc >= options.targetSpecialThreshold and weapSpecial ~= "None" then
+			if specAtk2_Acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
 				lib_helpers.TextC(false, 0xFFFF2031, "Spec2: %i%% ", specAtk2_Acc)
-			elseif hardAtk2_Acc >= options.targetHardThreshold then
+			elseif hardAtk2_Acc >= moptions.targetHardThreshold then
 				lib_helpers.TextC(false, 0xFFFFAA00, "Hard2: %i%% ", hardAtk2_Acc)
 			elseif normAtk2_Acc > 0 then
 				lib_helpers.TextC(false, 0xFF00FF00, "Norm2: %i%% ", normAtk2_Acc)
@@ -1468,9 +1608,9 @@ local function PresentTargetMonster(monster, section)
 
 			-- Display best third attack
 			lib_helpers.Text(false, "> ")
-			if specAtk3_Acc >= options.targetSpecialThreshold and weapSpecial ~= "None" then
+			if specAtk3_Acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
 				lib_helpers.TextC(false, 0xFFFF2031, "Spec3: %i%%", specAtk3_Acc)
-			elseif hardAtk3_Acc >= options.targetHardThreshold then
+			elseif hardAtk3_Acc >= moptions.targetHardThreshold then
 				lib_helpers.TextC(false, 0xFFFFAA00, "Hard3: %i%%", hardAtk3_Acc)
 			elseif normAtk3_Acc > 0 then
 				lib_helpers.TextC(false, 0xFF00FF00, "Norm3: %i%%", normAtk3_Acc)
@@ -1622,7 +1762,7 @@ local function present()
     if _EntityArray == 0 then
         -- Get the address of the entity array from one of the instructions that references it.
         -- Works on base client and on a client patched with a different array.
-        _EntityArray = pso.read_u32(0x7B4BA0 + 2)
+        _EntityArray = pso.read_u32(_EntityArrayBasePointer)
     end
     refresh_side_text()
 
@@ -1630,9 +1770,12 @@ local function present()
     UpdateInventoryCache()
     monsterCount      = table.getn(cache_monster)
     invItemCount      = table.getn(cache_inventory.items)
+    UpdateLevelData()
+    UpdatePlayerItemStats()
+    UpdatePlayerData()
 
     local monsterIdx = 0
-    local windowParams = { "NoTitleBar", "NoResize", "NoMove", "NoInputs", "NoSavedSettings" }
+    local windowParams = { "NoTitleBar", "NoResize", "NoMove", "NoInputs", "NoSavedSettings", "AlwaysAutoResize" }
 
     for i=1, options.numTrackers, 1 do
         monsterIdx = monsterIdx + 1
@@ -1643,6 +1786,9 @@ local function present()
             and (options[section].HideWhenSymbolChat == false or lib_menu.IsSymbolChatOpen() == false)
             and (options[section].HideWhenMenuUnavailable == false or lib_menu.IsMenuUnavailable() == false)
         then
+            local monster = cache_monster[monsterIdx]
+            --print(monster.HP, monster.HPMax, monster.name, monster.index, monster.screenShow )
+
             if cache_monster[monsterIdx].screenShow then
 
                 if options[section].customTrackerColorEnable == true then
@@ -1712,17 +1858,12 @@ local function present()
                                     resolutionWidth.clampBoxLowest, resolutionWidth.clampBoxHighest )
                     sy = clampVal(  sy,
                                     resolutionHeight.clampBoxLowest + tyh, resolutionHeight.clampBoxHighest - tyh)
-                else
-
                 end
 
-                local ps =  lib_helpers.GetPosBySizeAndAnchor( sx, sy, wx, wy, 5 ) -- 5 is "center" window anchor
-                imgui.SetNextWindowPos( ps[1], ps[2], "Always" )
-                imgui.SetNextWindowSize( wx, wy, "Always" )
                 
                 --local windowName = "Monster Scouter - Hud" .. cache_monster[monsterIdx].windowNameId
                 imgui.PushStyleVar_2("WindowPadding", 8.0, 1.0)
-                local windowName = "Monster Scouter - Hud" .. monsterIdx
+                local windowName = "Monster Scouter - Hud" .. cache_monster[monsterIdx].id .. cache_monster[monsterIdx].index
                 if imgui.Begin( windowName,
                     nil, windowParams )
                 then
@@ -1732,6 +1873,9 @@ local function present()
                         imgui.SetWindowFontScale(1.0)
                     end
                     PresentTargetMonster(cache_monster[monsterIdx], section)
+                    local wx, wy = imgui.GetWindowSize()
+                    local ps =  lib_helpers.GetPosBySizeAndAnchor( sx, sy, wx, wy, 5 )
+                    imgui.SetWindowPos( windowName, ps[1], ps[2]-wy/2, "Always" )
                     --PresentBoxTracker(cache_monster[monsterIdx],section,monsterIdx)
                 end
                 imgui.End()
@@ -1770,7 +1914,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.0.1",
+        version = "0.1.0",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,

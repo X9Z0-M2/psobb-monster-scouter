@@ -12,23 +12,23 @@ m[0] =      { color = 0xFFFFFFFF, display = false } -- Unknown
 
 -- Forest
 local segment = "Forest"
-m[1] =      { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Hildebear / Hildelt",    seg = segment } -- Hildebear / Hildelt
-m[2] =      { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Hildeblue / Hildetorr",  seg = segment } -- Hildeblue / Hildetorr
-m[3] =      { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Mothmant / Mothvert",    seg = segment } -- Mothmant / Mothvert
-m[4] =      { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Monest / Mothvist",      seg = segment } -- Monest / Mothvist
-m[5] =      { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Rag Rappy / El Rappy",   seg = segment } -- Rag Rappy / El Rappy
-m[6] =      { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Al Rappy / Pal Rappy",   seg = segment } -- Al Rappy / Pal Rappy
-m[7] =      { color = 0xFFFFFFFF, display = true, height = 18, width = 5, cate = "Savage Wolf / Gulgus",   seg = segment } -- Savage Wolf / Gulgus
-m[8] =      { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Barbarous Wolf / Gulgus-gue",     seg = segment } -- Barbarous Wolf / Gulgus-gue
-m[9] =      { color = 0xFFFFFFFF, display = true, height = 21, width = 5, cate = "Booma / Bartle",         seg = segment } -- Booma / Bartle
-m[10] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Gobooma / Barble",       seg = segment } -- Gobooma / Barble
-m[11] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Gigobooma / Tollaw",     seg = segment } -- Gigobooma / Tollaw
+m[1] =      { color = 0xFFFFFFFF, display = true, height = 20, width = 5, cate = "Hildebear / Hildelt",    seg = segment } -- Hildebear / Hildelt
+m[2] =      { color = 0xFFFFFF00, display = true, height = 20, width = 5, cate = "Hildeblue / Hildetorr",  seg = segment } -- Hildeblue / Hildetorr
+m[3] =      { color = 0xFFFFFFFF, display = true, height = 2.6, width = 5, cate = "Mothmant / Mothvert",    seg = segment } -- Mothmant / Mothvert
+m[4] =      { color = 0xFFFFFFFF, display = true, height = 10, width = 5, cate = "Monest / Mothvist",      seg = segment } -- Monest / Mothvist
+m[5] =      { color = 0xFFFFFFFF, display = true, height = 8, width = 5, cate = "Rag Rappy / El Rappy",   seg = segment } -- Rag Rappy / El Rappy
+m[6] =      { color = 0xFFFFFF00, display = true, height = 8, width = 5, cate = "Al Rappy / Pal Rappy",   seg = segment } -- Al Rappy / Pal Rappy
+m[7] =      { color = 0xFFFFFFFF, display = true, height = 5, width = 5, cate = "Savage Wolf / Gulgus",   seg = segment } -- Savage Wolf / Gulgus
+m[8] =      { color = 0xFFFFFFFF, display = true, height = 5, width = 5, cate = "Barbarous Wolf / Gulgus-gue",     seg = segment } -- Barbarous Wolf / Gulgus-gue
+m[9] =      { color = 0xFFFFFFFF, display = true, height = 8, width = 5, cate = "Booma / Bartle",         seg = segment } -- Booma / Bartle
+m[10] =     { color = 0xFFFFFFFF, display = true, height = 8, width = 5, cate = "Gobooma / Barble",       seg = segment } -- Gobooma / Barble
+m[11] =     { color = 0xFFFFFFFF, display = true, height = 8, width = 5, cate = "Gigobooma / Tollaw",     seg = segment } -- Gigobooma / Tollaw
 
 -- Cave
 segment = "Cave"
-m[12] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Grass Assassin / Crimson Assassin", seg = segment } -- Grass Assassin / Crimson Assassin
-m[13] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Poison Lily / Ob Lily",  seg = segment } -- Poison Lily / Ob Lily
-m[14] =     { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Nar Lily / Mil Lily",    seg = segment } -- Nar Lily / Mil Lily
+m[12] =     { color = 0xFFFFFFFF, display = true, height = 26, width = 5, cate = "Grass Assassin / Crimson Assassin", seg = segment } -- Grass Assassin / Crimson Assassin
+m[13] =     { color = 0xFFFFFFFF, display = true, height = 27, heightTarg = 15, width = 5, cate = "Poison Lily / Ob Lily",  seg = segment } -- Poison Lily / Ob Lily
+m[14] =     { color = 0xFFFFFF00, display = true, height = 27, heightTarg = 15, width = 5, cate = "Nar Lily / Mil Lily",    seg = segment } -- Nar Lily / Mil Lily
 m[15] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Nano Dragon",            seg = segment } -- Nano Dragon
 m[16] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Evil Shark / Vulmer",    seg = segment } -- Evil Shark / Vulmer
 m[17] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Pal Shark / Govulmer",   seg = segment } -- Pal Shark / Govulmer
@@ -41,14 +41,14 @@ m[23] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate =
 
 -- Mine
 segment = "Mine"
-m[24] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Dubchic / Dubchich",      seg = segment } -- Dubchic / Dubchich
+m[24] =     { color = 0xFFFFFFFF, display = true, height = 4, width = 5, cate = "Dubchic / Dubchich",      seg = segment } -- Dubchic / Dubchich
 m[25] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Garanz / Baranz",         seg = segment } -- Garanz / Baranz
 m[26] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Sinow Beat / Sinow Blue", seg = segment } -- Sinow Beat / Sinow Blue
 m[27] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Sinow Gold / Sinow Red",  seg = segment } -- Sinow Gold / Sinow Red
 m[28] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Canadine / Canabin",      seg = segment } -- Canadine / Canabin
 m[29] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Canane / Canune",         seg = segment } -- Canane / Canune
-m[49] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Dubwitch",                seg = segment } -- Dubwitch
-m[50] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Gillchic / Gillchich",    seg = segment } -- Gillchic / Gillchich
+m[49] =     { color = 0xFFFFFFFF, display = true, height = 3, width = 5, cate = "Dubwitch",                seg = segment } -- Dubwitch
+m[50] =     { color = 0xFFFFFFFF, display = true, height = 4, width = 5, cate = "Gillchic / Gillchich",    seg = segment } -- Gillchic / Gillchich
 
 -- Ruins
 segment = "Ruins"
@@ -59,13 +59,13 @@ m[33] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate =
 m[34] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Dark Gunner",             seg = segment } -- Dark Gunner
 m[35] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Death Gunner",            seg = segment } -- Death Gunner
 m[36] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Dark Bringer",            seg = segment } -- Dark Bringer
-m[37] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Indi Belra",              seg = segment } -- Indi Belra
+m[37] =     { color = 0xFFFFFFFF, display = true, height = 18, width = 5, cate = "Indi Belra",              seg = segment } -- Indi Belra
 m[38] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Claw",                    seg = segment } -- Claw
 m[39] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Bulk",                    seg = segment } -- Bulk
 m[40] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Bulclaw",                 seg = segment } -- Bulclaw
-m[41] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Dimenian / Arlan",        seg = segment } -- Dimenian / Arlan
-m[42] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "La Dimenian / Merlan",    seg = segment } -- La Dimenian / Merlan
-m[43] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "So Dimenian / Del-D",     seg = segment } -- So Dimenian / Del-D
+m[41] =     { color = 0xFFFFFFFF, display = true, height = 13, width = 5, cate = "Dimenian / Arlan",        seg = segment } -- Dimenian / Arlan
+m[42] =     { color = 0xFFFFFFFF, display = true, height = 13, width = 5, cate = "La Dimenian / Merlan",    seg = segment } -- La Dimenian / Merlan
+m[43] =     { color = 0xFFFFFFFF, display = true, height = 13, width = 5, cate = "So Dimenian / Del-D",     seg = segment } -- So Dimenian / Del-D
 
 -- Episode 1 Bosses
 m[44] =     { color = 0xFFFF0000, display = true, height = 14, width = 5, cate = "Dragon / Sil Dragon",     seg = "Forest", boss = true } -- Dragon / Sil Dragon
@@ -75,13 +75,13 @@ m[47] =     { color = 0xFFFF0000, display = true, height = 14, width = 5, cate =
 
 -- VR Temple
 segment = "VR Temple"
-m[51] =     { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Love Rappy",      seg = segment } -- Love Rappy
-m[73] =     { color = 0xFFFF0000, display = true, height = 14, width = 5, cate = "Barba Ray",       seg = segment,  boss = true } -- Barba Ray
-m[74] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Pig Ray",         seg = segment } -- Pig Ray
-m[75] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Ul Ray",          seg = segment } -- Ul Ray
-m[79] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "St. Rappy",       seg = segment } -- St. Rappy
-m[80] =     { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Hallo Rappy",     seg = segment } -- Hallo Rappy
-m[81] =     { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Egg Rappy",       seg = segment } -- Egg Rappy
+m[51] =     { color = 0xFFFFFF00, display = true, height = 8, width = 5, cate = "Love Rappy",      seg = segment } -- Love Rappy
+m[73] =     { color = 0xFFFF0000, display = true, height = 36, width = 5, cate = "Barba Ray",       seg = segment,  boss = true } -- Barba Ray
+m[74] =     { color = 0xFFFFFFFF, display = true, height = 20, width = 5, cate = "Pig Ray",         seg = segment } -- Pig Ray
+m[75] =     { color = 0xFFFFFFFF, display = true, height = 20, width = 5, cate = "Ul Ray",          seg = segment } -- Ul Ray
+m[79] =     { color = 0xFFFFFFFF, display = true, height = 8, width = 5, cate = "St. Rappy",       seg = segment } -- St. Rappy
+m[80] =     { color = 0xFFFFFF00, display = true, height = 8, width = 5, cate = "Hallo Rappy",     seg = segment } -- Hallo Rappy
+m[81] =     { color = 0xFFFFFF00, display = true, height = 8, width = 5, cate = "Egg Rappy",       seg = segment } -- Egg Rappy
 
 -- VR Spaceship
 segment = "VR Spaceship"
@@ -125,26 +125,26 @@ m[86] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate =
 -- Crater
 segment = "Crater"
 m[88] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Astark",      seg = segment } -- Astark
-m[89] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Yowie",       seg = segment } -- Yowie
-m[90] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Satellite Lizard", seg = segment } -- Satellite Lizard
-m[94] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Zu",          seg = segment } -- Zu
+m[89] =     { color = 0xFFFFFFFF, display = true, height = 5, width = 5, cate = "Yowie",       seg = segment } -- Yowie
+m[90] =     { color = 0xFFFFFFFF, display = true, height = 5, width = 5, cate = "Satellite Lizard", seg = segment } -- Satellite Lizard
+m[94] =     { color = 0xFFFFFFFF, display = true, height = 70, width = 5, cate = "Zu",          seg = segment } -- Zu
 m[95] =     { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Pazuzu",      seg = segment } -- Pazuzu
-m[96] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Boota",       seg = segment } -- Boota
-m[97] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Za Boota",    seg = segment } -- Za Boota
-m[98] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Ba Boota",    seg = segment } -- Ba Boota
-m[99] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Dorphon",     seg = segment } -- Dorphon
-m[100] =    { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Dorphon Eclair", seg = segment } -- Dorphon Eclair
-m[104] =    { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Sand Rappy",  seg = segment } -- Sand Rappy
-m[105] =    { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Del Rappy",   seg = segment } -- Del Rappy
+m[96] =     { color = 0xFFFFFFFF, display = true, height = 5, width = 5, cate = "Boota",       seg = segment } -- Boota
+m[97] =     { color = 0xFFFFFFFF, display = true, height = 10, width = 5, cate = "Ze Boota",    seg = segment } -- Ze Boota
+m[98] =     { color = 0xFFFFFFFF, display = true, height = 12, width = 5, cate = "Ba Boota",    seg = segment } -- Ba Boota
+m[99] =     { color = 0xFFFFFFFF, display = true, height = 32, width = 5, cate = "Dorphon",     seg = segment } -- Dorphon
+m[100] =    { color = 0xFFFFFF00, display = true, height = 32, width = 5, cate = "Dorphon Eclair", seg = segment } -- Dorphon Eclair
+m[104] =    { color = 0xFFFFFFFF, display = true, height = -1, width = 5, cate = "Sand Rappy",  seg = segment } -- Sand Rappy
+m[105] =    { color = 0xFFFFFF00, display = true, height = -1, width = 5, cate = "Del Rappy",   seg = segment } -- Del Rappy
 
 -- Desert
 segment = "Desert"
-m[91] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Merissa A",   seg = segment } -- Merissa A
-m[92] =     { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Merissa AA",  seg = segment } -- Merissa AA
-m[93] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Girtablulu",  seg = segment } -- Girtablulu
-m[101] =    { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Goran",       seg = segment } -- Goran
-m[102] =    { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Goran Detonator", seg = segment } -- Goran Detonator
-m[103] =    { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Pyro Goran",  seg = segment } -- Pyro Goran
+m[91] =     { color = 0xFFFFFFFF, display = true, height = 15, width = 5, cate = "Merissa A",   seg = segment } -- Merissa A
+m[92] =     { color = 0xFFFFFF00, display = true, height = 15, width = 5, cate = "Merissa AA",  seg = segment } -- Merissa AA
+m[93] =     { color = 0xFFFFFFFF, display = true, height = 24, width = 5, cate = "Girtablulu",  seg = segment } -- Girtablulu
+m[101] =    { color = 0xFFFFFFFF, display = true, height = 9, width = 5, cate = "Goran",       seg = segment } -- Goran
+m[102] =    { color = 0xFFFFFFFF, display = true, height = 33, width = 5, cate = "Goran Detonator", seg = segment } -- Goran Detonator
+m[103] =    { color = 0xFFFFFFFF, display = true, height = 9, width = 5, cate = "Pyro Goran",  seg = segment } -- Pyro Goran
 m[106] =    { color = 0xFFFF0000, display = true, height = 14, width = 5, cate = "Saint-Milion",seg = segment, boss = true } -- Saint-Milion
 m[107] =    { color = 0xFFFF0000, display = true, height = 14, width = 5, cate = "Shambertin",  seg = segment, boss = true } -- Shambertin
 m[108] =    { color = 0xFFFF8000, display = true, height = 14, width = 5, cate = "Kondrieu",    seg = segment, boss = true } -- Kondrieu
