@@ -294,6 +294,7 @@ local _Episode2 = 0x00A9B1C8
 
 local party = { }
 local cacheSide = false
+local lua_biginteger = 4294967295 -- current compiled interpreter makes a sad panda...
 
 local _ID = 0x1C
 local _Room = 0x28
@@ -732,6 +733,23 @@ local function computePixelCoordinates(pWorld, eyeWorld, eyeDir, determinant)
     return pRaster, vis
 end
 
+local function isMonsterShowEnabled(monster, section)
+    if  cfgMonsters.m[monster.unitxtID] ~= nil
+    and options[section][monster.unitxtID] ~= nil
+    then
+        if options[section][monster.unitxtID].overriden then
+            if options[section][monster.unitxtID].enabled then
+                return true
+            end
+        else -- overriden is false
+            if options[section][-1].enabled then
+                return true
+            end
+        end
+    end
+    return false
+end
+
 local function GetMonsterList(section)
     local monsterList = {}
 
@@ -770,9 +788,7 @@ local function GetMonsterList(section)
             --     print(string.format("%x",monster.address))
             -- end
 
-            if cfgMonsters.m[monster.unitxtID] ~= nil 
-                and options[section][monster.unitxtID] ~= nil
-                and options[section][monster.unitxtID].enabled
+            if isMonsterShowEnabled(monster, section)
             then
                 monster.color = cfgMonsters.m[monster.unitxtID].color
                 monster.display = cfgMonsters.m[monster.unitxtID].display
@@ -974,6 +990,7 @@ local lastFontScale = options["tracker"].fontScale
 local cache_inventory = nil
 local invItemCount = 0
 local windowTextSizes = {}
+local usedWindowNameIdLookup = {}
 
 local function sortByDistanceP(a,b)
     return a.curPlayerDistance < b.curPlayerDistance
@@ -984,45 +1001,36 @@ local function UpdateMonsterCache(section)
         cache_monster = GetMonsterList(section)
          table.sort(cache_monster, sortByDistanceP)
         -- reassign a tracker window to its monster
-        local trackerNum = 1
         local prevTrackerWindowLookup = trackerWindowLookup
         trackerWindowLookup = {}
         local cache_monster_notracker = {}
-        local usedWindowNameIdLookup = {}
-        local windowNameIdCurIdx = 1
         local function nextWindowNameId()
-            for i=windowNameIdCurIdx, options.numTrackers, 1 do
-                if not usedWindowNameIdLookup[i] then
-                    windowNameIdCurIdx = 1 + i
-                    return i
-                end
-                windowNameIdCurIdx = i
-            end
+            local idx
+            local retries = 0
+            repeat
+                idx = math.random(0, lua_biginteger)
+                retries = retries + 1
+            until not usedWindowNameIdLookup[idx] or retries > 10
+            usedWindowNameIdLookup[idx] = true
+            return idx
         end
         for i=1, #cache_monster, 1 do
-            if trackerNum > options.numTrackers then break end
             local monster = cache_monster[i]
             local windowNameId = prevTrackerWindowLookup[monster.id]
             if windowNameId then
-                usedWindowNameIdLookup[windowNameId] = true
                 trackerWindowLookup[monster.id] = windowNameId
                 monster.windowNameId = windowNameId
-                trackerNum = trackerNum + 1
             else
                 table.insert(cache_monster_notracker, monster)
             end
         end
         -- assign a tracker window to an monster
         for i=1, #cache_monster_notracker, 1 do
-            if trackerNum > options.numTrackers then break end
             local monster = cache_monster_notracker[i]
             local windowNameId = nextWindowNameId()
             if windowNameId then
                 trackerWindowLookup[monster.id] = windowNameId
                 monster.windowNameId = windowNameId
-                trackerNum = trackerNum + 1
-            else
-                break -- no more trackers
             end
         end
         last_monster_time = current_time
@@ -1236,7 +1244,12 @@ local function PresentTargetMonster(monster, section)
     if monster ~= nil then
         if playerSelfAddr == 0 then return end
         
-        local moptions = options[section][monster.unitxtID]
+        local moptions
+        if options[section][monster.unitxtID].overriden then
+            moptions = options[section][monster.unitxtID]
+        else -- not overridden, so use default
+            moptions = options[section][-1]
+        end
 		
         local mHP = monster.HP
         local mHPMax = monster.HPMax
@@ -1294,51 +1307,6 @@ local function PresentTargetMonster(monster, section)
 		if (string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerSelfAddr)),1,2) == "FO" or string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerSelfAddr)),1,2) == "HU") and pEquipData.EqSmartlink == 0 and pEquipData.ataPenalty == 1 then
 			MDistance = (math.sqrt(((monster.posX-playerSelfCoords.x)^2)+((monster.posZ-playerSelfCoords.z)^2)))*0.33
 		end
-		
-        local curX = imgui.GetCursorPosX()
-		if moptions.showName then
-            if moptions.showWeakness and not monster.bossCore then
-                if (monster.Efr <= monster.Eth) and (monster.Efr <= monster.Eic) then
-                    lib_helpers.TextC(true, 0xFFFF6600, monster.name)
-                elseif (monster.Eth <= monster.Efr) and (monster.Eth <= monster.Eic) then
-                    lib_helpers.TextC(true, 0xFFFFFF00, monster.name)
-                elseif (monster.Eic <= monster.Efr) and (monster.Eic <= monster.Eth) then
-                    lib_helpers.TextC(true, 0xFF00FFFF, monster.name)
-                else
-                    lib_helpers.TextC(true, monster.color, monster.name)
-                end
-            else
-                lib_helpers.TextC(true, monster.color, monster.name)
-            end
-		end
-		
-		-- Show J/Z status and Frozen, Confuse, or Paralyzed status
-        if moptions.showStatusEffects then
-            if atkTech.type == 0 then
-                lib_helpers.TextC(true, 0, "    ")
-            else
-                lib_helpers.TextC(true, 0xFFFF2031, atkTech.name .. atkTech.level .. string.rep(" ", 2 - #tostring(atkTech.level)) .. " ")
-            end
-
-            if defTech.type == 0 then
-                lib_helpers.TextC(false, 0, "    ")
-            else
-                lib_helpers.TextC(false, 0xFF0088F4, defTech.name .. defTech.level .. string.rep(" ", 2 - #tostring(defTech.level)) .. " ")
-            end
-
-            if frozen then
-                lib_helpers.TextC(false, 0xFF00FFFF, "F ")
-            elseif confused then
-                lib_helpers.TextC(false, 0xFFFF00FF, "C ")
-            elseif shocked then
-                lib_helpers.TextC(false, 0xFFFFFF00, "S ")
-            else
-                lib_helpers.TextC(false, 0, "  ")
-            end
-            if paralyzed then
-                lib_helpers.TextC(false, 0xFFFF4000, "P ")
-            end
-        end
 
         local function calcSpecDamage()
             if specDMG >= 0 then
@@ -1431,6 +1399,54 @@ local function PresentTargetMonster(monster, section)
         local specAtk2_Hit = clampVal(specAtk2_Acc*specAilment/100,0,100)
         local specAtk3_Hit = clampVal(specAtk3_Acc*specAilment/100,0,100)
 
+
+        local curX = imgui.GetCursorPosX()
+
+		if moptions.showName then
+            --local mName = monster.name .. " " .. monster.id .. " " .. string.format("%X",monster.windowNameId)
+            local mName = monster.name
+            if moptions.showWeakness and not monster.bossCore then
+                if (monster.Efr <= monster.Eth) and (monster.Efr <= monster.Eic) then
+                    lib_helpers.TextC(true, 0xFFFF6600, mName)
+                elseif (monster.Eth <= monster.Efr) and (monster.Eth <= monster.Eic) then
+                    lib_helpers.TextC(true, 0xFFFFFF00, mName)
+                elseif (monster.Eic <= monster.Efr) and (monster.Eic <= monster.Eth) then
+                    lib_helpers.TextC(true, 0xFF00FFFF, mName)
+                else
+                    lib_helpers.TextC(true, monster.color, mName)
+                end
+            else
+                lib_helpers.TextC(true, monster.color, mName)
+            end
+		end
+		
+		-- Show J/Z status and Frozen, Confuse, or Paralyzed status
+        if moptions.showStatusEffects then
+            if atkTech.type == 0 then
+                lib_helpers.TextC(true, 0, "    ")
+            else
+                lib_helpers.TextC(true, 0xFFFF2031, atkTech.name .. atkTech.level .. string.rep(" ", 2 - #tostring(atkTech.level)) .. " ")
+            end
+
+            if defTech.type == 0 then
+                lib_helpers.TextC(false, 0, "    ")
+            else
+                lib_helpers.TextC(false, 0xFF0088F4, defTech.name .. defTech.level .. string.rep(" ", 2 - #tostring(defTech.level)) .. " ")
+            end
+
+            if frozen then
+                lib_helpers.TextC(false, 0xFF00FFFF, "F ")
+            elseif confused then
+                lib_helpers.TextC(false, 0xFFFF00FF, "C ")
+            elseif shocked then
+                lib_helpers.TextC(false, 0xFFFFFF00, "S ")
+            else
+                lib_helpers.TextC(false, 0, "  ")
+            end
+            if paralyzed then
+                lib_helpers.TextC(false, 0xFFFF4000, "P ")
+            end
+        end
 		
 		if moptions.showHealthBar then
 			-- Draw enemy HP bar
@@ -1863,7 +1879,7 @@ local function present()
                 
                 --local windowName = "Monster Scouter - Hud" .. cache_monster[monsterIdx].windowNameId
                 imgui.PushStyleVar_2("WindowPadding", 8.0, 1.0)
-                local windowName = "Monster Scouter - Hud" .. cache_monster[monsterIdx].id .. cache_monster[monsterIdx].index
+                local windowName = "Monster Scouter - Hud"  .. string.format("%x",cache_monster[monsterIdx].windowNameId)
                 if imgui.Begin( windowName,
                     nil, windowParams )
                 then
@@ -1914,7 +1930,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.1.0",
+        version = "0.1.1",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,

@@ -29,10 +29,10 @@ segment = "Cave"
 m[12] =     { color = 0xFFFFFFFF, display = true, height = 26, width = 5, cate = "Grass Assassin / Crimson Assassin", seg = segment } -- Grass Assassin / Crimson Assassin
 m[13] =     { color = 0xFFFFFFFF, display = true, height = 27, heightTarg = 15, width = 5, cate = "Poison Lily / Ob Lily",  seg = segment } -- Poison Lily / Ob Lily
 m[14] =     { color = 0xFFFFFF00, display = true, height = 27, heightTarg = 15, width = 5, cate = "Nar Lily / Mil Lily",    seg = segment } -- Nar Lily / Mil Lily
-m[15] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Nano Dragon",            seg = segment } -- Nano Dragon
-m[16] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Evil Shark / Vulmer",    seg = segment } -- Evil Shark / Vulmer
-m[17] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Pal Shark / Govulmer",   seg = segment } -- Pal Shark / Govulmer
-m[18] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Guil Shark / Melqueek",  seg = segment } -- Guil Shark / Melqueek
+m[15] =     { color = 0xFFFFFFFF, display = true, height = 10, width = 5, cate = "Nano Dragon",            seg = segment } -- Nano Dragon
+m[16] =     { color = 0xFFFFFFFF, display = true, height = 12, width = 5, cate = "Evil Shark / Vulmer",    seg = segment } -- Evil Shark / Vulmer
+m[17] =     { color = 0xFFFFFFFF, display = true, height = 12, width = 5, cate = "Pal Shark / Govulmer",   seg = segment } -- Pal Shark / Govulmer
+m[18] =     { color = 0xFFFFFFFF, display = true, height = 12, width = 5, cate = "Guil Shark / Melqueek",  seg = segment } -- Guil Shark / Melqueek
 m[19] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Pofuilly Slime",         seg = segment } -- Pofuilly Slime
 m[20] =     { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Pouilly Slime",          seg = segment } -- Pouilly Slime
 m[21] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Pan Arms",               seg = segment } -- Pan Arms
