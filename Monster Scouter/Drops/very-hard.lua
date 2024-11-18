@@ -163,14 +163,14 @@ return
 					dar = 100
 				}
 			},
-			['DUBCHIC/DUBCHICH'] = {
+			['DUBCHIC/DUBCHICH/NERDCHIC'] = {
 				{
 					item = 'God/Body',
 					rare = 1.56250,
 					dar = 30
 				}
 			},
-			['GILLCHIC/GILLCHICH'] = {
+			['GILLCHIC/GILLCHICH/BIGGIL'] = {
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
