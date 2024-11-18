@@ -193,6 +193,28 @@ local function SaveOptions(options)
     end
 end
 
+local function splitDropChartTargets()
+    local dt = {}
+    for difficulty, charts in pairs(drop_charts) do
+        dt[difficulty] = {}
+        for episode, chart in pairs(charts) do
+            dt[difficulty][episode] = {}
+            for sectionid, section_sub in pairs(chart) do
+                dt[difficulty][episode][sectionid] = {}
+
+                for targets, drops in pairs(section_sub) do
+                    for target in string.gmatch(targets, "[^/]+") do
+                        dt[difficulty][episode][sectionid][target] = drops
+                    end
+                end
+
+            end
+        end
+    end
+    drop_charts = dt
+end
+splitDropChartTargets()
+
 local playerSelfAddr = nil
 local playerSelfCoords = nil
 local playerSelfDirs = nil
@@ -232,29 +254,29 @@ local _CameraZoomLevel = 0x009ACEDC
 
 -- section id list 
 local section = {
-    "Bluefull",
-    "Greenill",
-    "Oran",
-    "Pinkal",
-    "Purplenum",
-    "Redria",
-    "Skyly",
-    "Viridia",
-    "Yellowboze",
-    "Whitill"
+    "BLUEFULL",
+    "GREENILL",
+    "ORAN",
+    "PINKAL",
+    "PURPLENUM",
+    "REDRIA",
+    "SKYLY",
+    "VIRIDIA",
+    "YELLOWBOZE",
+    "WHITILL"
 }
 -- section id colors
 local section_color = {
-    ["Bluefull"]    = 0xFF0088F4,
-    ["Greenill"]    = 0xFF74FB40,
-    ["Oran"]        = 0xFFFFAA00,
-    ["Pinkal"]      = 0xFFFF3898,
-    ["Purplenum"]   = 0xFFA020F0,
-    ["Redria"]      = 0xFFFF2031,
-    ["Skyly"]       = 0xFF00DDF4,
-    ["Viridia"]     = 0xFF00AE6C,
-    ["Yellowboze"]  = 0xFFEAF718,
-    ["Whitill"]     = 0xFFFFFFFF
+    ["BLUEFULL"]    = 0xFF0088F4,
+    ["GREENILL"]    = 0xFF74FB40,
+    ["ORAN"]        = 0xFFFFAA00,
+    ["PINKAL"]      = 0xFFFF3898,
+    ["PURPLENUM"]   = 0xFFA020F0,
+    ["REDRIA"]      = 0xFFFF2031,
+    ["SKYLY"]       = 0xFF00DDF4,
+    ["VIRIDIA"]     = 0xFF00AE6C,
+    ["YELLOWBOZE"]  = 0xFFEAF718,
+    ["WHITILL"]     = 0xFFFFFFFF
 }
 
 local episodes = {
@@ -266,11 +288,11 @@ local episodes = {
 -- episode order
 local episode = {
     "EPISODE 1",
-    "EPISODE 1 Boxes",
+    "EPISODE 1 BOXES",
     "EPISODE 2",
-    "EPISODE 2 Boxes",
+    "EPISODE 2 BOXES",
     "EPISODE 4",
-    "EPISODE 4 Boxes",
+    "EPISODE 4 BOXES",
     "QUEST"
 }
 
@@ -413,7 +435,7 @@ local function parse_side_message(text)
     
     data.dar = tonumber(string.match(dropStr, "%d+"))
     data.rare = tonumber(string.match(rareStr, "%d+"))
-    data.id = string.match(idStr,"%a+")
+    data.id = string.upper( string.match(idStr,"%a+") )
     data.difficulty = difficulty[_difficulty + 1]
     data.episode = episodes[_episode]
 
@@ -1373,7 +1395,7 @@ local function PresentTargetMonster(monster, section)
 		elseif pEquipData.isWeapConfusionSE then -- Panic, Riot, Havoc, Chaos - Confusion Status Effect
 			specAilment = ((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux*pEquipData.v50xStatusBoost
             calcSpecDamage()
-            print(specDMG, myMinSpecDamage, myMaxSpecDamage, pData.specPower+1, monster.Efr)
+            --print(specDMG, myMinSpecDamage, myMaxSpecDamage, pData.specPower+1, monster.Efr)
 
 		elseif pEquipData.isWeapHPCut then -- Devil's, Demon's - HP Cut
 			if monster.isBoss == 0 then
@@ -1638,16 +1660,22 @@ local function PresentTargetMonster(monster, section)
 		
 		if moptions.showRares then
 			if cacheSide then
-				local row = drop_charts[party.difficulty][party.episode][party.id]
-				for j = 1, #row do
-					if string.find(string.lower(row[j].target), string.lower(monster.name), 1, true) then
-						lib_helpers.Text(true, "1/")
-						lib_helpers.Text(false, "%i", 1/((party.dar*row[j].dar)*(party.rare*row[j].rare))*100000000)
-						lib_helpers.Text(false, " ")
-						lib_helpers.TextC(false, section_color[party.id], row[j].item)
-						break
-					end
-				end
+                local mName = string.upper(monster.name)
+                if drop_charts[party.difficulty]
+                    and drop_charts[party.difficulty][party.episode]
+                    and drop_charts[party.difficulty][party.episode][party.id]
+                    and drop_charts[party.difficulty][party.episode][party.id][mName]
+                then
+                    local mDrops = drop_charts[party.difficulty][party.episode][party.id][mName]
+                    for i,drop in pairs(mDrops) do
+                        if drop.item and drop.rare and drop.dar then
+                            lib_helpers.Text(true, "1/")
+                            lib_helpers.Text(false, "%i", 1/((party.dar*drop.dar)*(party.rare*drop.rare))*100000000)
+                            lib_helpers.Text(false, " ")
+                            lib_helpers.TextC(false, section_color[party.id], drop.item)
+                        end
+                    end
+                end
 			else
 				lib_helpers.Text(true, "Type /partyinfo to refresh...")
 			end
@@ -1930,7 +1958,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.1.1",
+        version = "0.1.2",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,
