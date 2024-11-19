@@ -29,6 +29,8 @@ jobs:
         run: cd ./updater && python dropchart_updater.py
 
       - name: Commit and Push Updates
+        id: pushupdate
+        continue-on-error: true
         env: 
           CI_COMMIT_MESSAGE: 'ci: update dropcharts'
           CI_COMMIT_AUTHOR: Github Actions
@@ -41,11 +43,13 @@ jobs:
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "actions@users.noreply.github.com"
           git add *.lua
-          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push -u origin "${{ env.CI_BRANCH }}"
-
-      - name: create pull request
-        run: gh pr create -B main -H dropchart_update --title 'Update Drop Charts' --body 'Created by Github action'
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}" \
+            && git push -u origin "${{ env.CI_BRANCH }}" \
+            || echo "NOCHANGES=true" >> $GITHUB_OUTPUT
+          
+      - name: Create Pull Request
+        if: ${{ steps.pushupdate.outputs.NOCHANGES != 'true' }}
+        run: gh pr create -B main -H dropchart_update --title 'Update Drop Charts' --body 'Review the Changes and Approve and Merge if good.'
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
