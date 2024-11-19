@@ -170,7 +170,7 @@ return
 					dar = 30
 				}
 			},
-			['GILLCHIC/GILLCHICH/NERBCHIC'] = {
+			['GILLCHIC/GILLCHICH'] = {
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
