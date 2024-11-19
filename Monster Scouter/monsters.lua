@@ -29,26 +29,26 @@ segment = "Cave"
 m[12] =     { color = 0xFFFFFFFF, display = true, height = 26, width = 5, cate = "Grass Assassin / Crimson Assassin", seg = segment } -- Grass Assassin / Crimson Assassin
 m[13] =     { color = 0xFFFFFFFF, display = true, height = 27, heightTarg = 15, width = 5, cate = "Poison Lily / Ob Lily",  seg = segment } -- Poison Lily / Ob Lily
 m[14] =     { color = 0xFFFFFF00, display = true, height = 27, heightTarg = 15, width = 5, cate = "Nar Lily / Mil Lily",    seg = segment } -- Nar Lily / Mil Lily
-m[15] =     { color = 0xFFFFFFFF, display = true, height = 10, width = 5, cate = "Nano Dragon",            seg = segment } -- Nano Dragon
+m[15] =     { color = 0xFFFFFFFF, display = true, height = 5, width = 5, cate = "Nano Dragon",            seg = segment } -- Nano Dragon
 m[16] =     { color = 0xFFFFFFFF, display = true, height = 12, width = 5, cate = "Evil Shark / Vulmer",    seg = segment } -- Evil Shark / Vulmer
 m[17] =     { color = 0xFFFFFFFF, display = true, height = 12, width = 5, cate = "Pal Shark / Govulmer",   seg = segment } -- Pal Shark / Govulmer
 m[18] =     { color = 0xFFFFFFFF, display = true, height = 12, width = 5, cate = "Guil Shark / Melqueek",  seg = segment } -- Guil Shark / Melqueek
-m[19] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Pofuilly Slime",         seg = segment } -- Pofuilly Slime
-m[20] =     { color = 0xFFFFFF00, display = true, height = 14, width = 5, cate = "Pouilly Slime",          seg = segment } -- Pouilly Slime
+m[19] =     { color = 0xFFFFFFFF, display = true, height = 21, width = 5, cate = "Pofuilly Slime",         seg = segment } -- Pofuilly Slime
+m[20] =     { color = 0xFFFFFF00, display = true, height = 21, width = 5, cate = "Pouilly Slime",          seg = segment } -- Pouilly Slime
 m[21] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Pan Arms",               seg = segment } -- Pan Arms
-m[22] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Migium",                 seg = segment } -- Migium
-m[23] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Hidoom",                 seg = segment } -- Hidoom
+m[22] =     { color = 0xFFFFFFFF, display = true, height = 19, width = 5, cate = "Migium",                 seg = segment } -- Migium
+m[23] =     { color = 0xFFFFFFFF, display = true, height = 19, width = 5, cate = "Hidoom",                 seg = segment } -- Hidoom
 
 -- Mine
 segment = "Mine"
-m[24] =     { color = 0xFFFFFFFF, display = true, height = 4, width = 5, cate = "Dubchic / Dubchich",      seg = segment } -- Dubchic / Dubchich
+m[24] =     { color = 0xFFFFFFFF, display = true, height = 13, width = 5, cate = "Dubchic / Dubchich", seg = segment } -- Dubchic / Dubchich
 m[25] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Garanz / Baranz",         seg = segment } -- Garanz / Baranz
-m[26] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Sinow Beat / Sinow Blue", seg = segment } -- Sinow Beat / Sinow Blue
-m[27] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Sinow Gold / Sinow Red",  seg = segment } -- Sinow Gold / Sinow Red
-m[28] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Canadine / Canabin",      seg = segment } -- Canadine / Canabin
-m[29] =     { color = 0xFFFFFFFF, display = true, height = 14, width = 5, cate = "Canane / Canune",         seg = segment } -- Canane / Canune
+m[26] =     { color = 0xFFFFFFFF, display = true, height = 11, width = 5, cate = "Sinow Beat / Sinow Blue", seg = segment } -- Sinow Beat / Sinow Blue
+m[27] =     { color = 0xFFFFFFFF, display = true, height = 11, width = 5, cate = "Sinow Gold / Sinow Red",  seg = segment } -- Sinow Gold / Sinow Red
+m[28] =     { color = 0xFFFFFFFF, display = true, height = 5, width = 5, cate = "Canadine / Canabin",      seg = segment } -- Canadine / Canabin
+m[29] =     { color = 0xFFFFFFFF, display = true, height = 5, width = 5, cate = "Canane / Canune",         seg = segment } -- Canane / Canune
 m[49] =     { color = 0xFFFFFFFF, display = true, height = 3, width = 5, cate = "Dubwitch",                seg = segment } -- Dubwitch
-m[50] =     { color = 0xFFFFFFFF, display = true, height = 4, width = 5, cate = "Gillchic / Gillchich",    seg = segment } -- Gillchic / Gillchich
+m[50] =     { color = 0xFFFFFFFF, display = true, height = 13, width = 5, cate = "Gillchic / Gillchich",    seg = segment } -- Gillchic / Gillchich
 
 -- Ruins
 segment = "Ruins"

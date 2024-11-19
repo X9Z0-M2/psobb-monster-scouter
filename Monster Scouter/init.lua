@@ -16,6 +16,7 @@ local drop_charts = {
     ["Ultimate"] = require("Monster Scouter/Drops.ultimate")
   }
 cfgMonsters.m[-1] = {cate = "Default", segment = "General"}
+cfgMonsters.m[-20] = {cate = "Default", segment = "Slime Origin", color = 0xFFFFFFFF, display = true}
 
 local optionsFileName = "addons/Monster Scouter/options.lua"
 local ConfigurationWindow
@@ -93,11 +94,29 @@ local function LoadOptions()
     SetDefaultValue( options[section], "clampItemView", true )
     SetDefaultValue( options[section], "ignoreItemMaxDist", 420 )
     
+    -- Initialise options with empty tables
     for id,monster in pairs(cfgMonsters.m) do
         if monster.cate then
             if options[section][id] == nil then
                 options[section][id] = {}
             end
+        end
+    end
+
+    -- Slime Origin
+    local id = -20
+    SetDefaultValue( options[section][id], "enabled", true )
+    SetDefaultValue( options[section][id], "overriden", true )
+    SetDefaultValue( options[section][id], "showName", true )
+    SetDefaultValue( options[section][id], "showHealthBar", true )
+    SetDefaultValue( options[section][id], "showDamage", false )
+    SetDefaultValue( options[section][id], "showHit", false )
+    SetDefaultValue( options[section][id], "showWeakness", false )
+    SetDefaultValue( options[section][id], "showStatusEffects", false )
+    SetDefaultValue( options[section][id], "showRares", false )
+
+    for id,monster in pairs(cfgMonsters.m) do
+        if monster.cate then
             SetDefaultValue( options[section][id], "enabled", true )
             SetDefaultValue( options[section][id], "overriden", false )
             SetDefaultValue( options[section][id], "showName", true )
@@ -218,18 +237,13 @@ splitDropChartTargets()
 local playerSelfAddr = nil
 local playerSelfCoords = nil
 local playerSelfDirs = nil
-local playerSelfNormDir = nil
+local playerSelfAttackComboStep = nil
 local pCoord = nil
 local pEquipData = {}
 local lData = {}
 local pData = {}
 local cameraCoords = nil
 local cameraDirs = nil
-local cameraNormDirVec2 = nil
-local cameraNormDirVec3 = nil
-local item_graph_data = {}
-local toolLookupTable = {}
-local invToolLookupTable = {}
 local resolutionWidth = {}
 local resolutionHeight = {}
 local trackerBox = {}
@@ -324,6 +338,7 @@ local _Room2 = 0x2E
 local _PosX = 0x38
 local _PosY = 0x3C
 local _PosH = 0x78
+local _PosH2 = 0x304
 local _PosZ = 0x40
 
 local _targetPointerOffset = 0x18
@@ -376,6 +391,10 @@ local _MonsterBarbaRaySkullHP = 0x708
 local _MonsterBarbaRaySkullHPMax = 0x20
 local _MonsterBarbaRayShellHP = 0x7AC
 local _MonsterBarbaRayShellHPMax = 0x1C
+
+-- Special addresses for Pofuilly/Pouilly Slime
+local _MonsterPofuillySlimeOriginEntityPointer = 0x3F8
+local _MonsterOriginSlimePointer = 0x3C4
 
 -- Special address for Ephinea
 local _ephineaMonsterArrayPointer = 0x00B5F800
@@ -597,6 +616,8 @@ local function GetMonsterDataBarbaRay(monster)
     return monster
 end
 
+local entityAddressLookup = {}
+
 local function GetMonsterData(monster)
     local ephineaMonsters = pso.read_u32(_ephineaMonsterArrayPointer)
     
@@ -608,9 +629,9 @@ local function GetMonsterData(monster)
 
     monster.isBoss = 0
     
-    if monster.name == "Unknown" then
-        return monster
-    end
+    -- if monster.name == "Unknown" then
+    --     return monster
+    -- end
     
     if ephineaMonsters ~= 0 then
         monster.HPMax = pso.read_u32(ephineaMonsters + (monster.id * 32))
@@ -652,6 +673,8 @@ local function GetMonsterData(monster)
     monster.posX = pso.read_f32(monster.address + _PosX)
     monster.posY = pso.read_f32(monster.address + _PosY)
     monster.posH = pso.read_f32(monster.address + _PosH)
+    --print(string.format("%x",monster.address),string.format("%x",monster.address + _PosH2))
+    monster.posH2 = pso.read_f32(monster.address + _PosH2)
     monster.posZ = pso.read_f32(monster.address + _PosZ)
         
     -- Other stuff
@@ -667,9 +690,22 @@ local function GetMonsterData(monster)
 
     if monster.unitxtID == 45 then
         monster = GetMonsterDataDeRolLe(monster)
-    end
-    if monster.unitxtID == 73 then
+    elseif monster.unitxtID == 73 then
         monster = GetMonsterDataBarbaRay(monster)
+    elseif monster.unitxtID == 0 then
+        local mParentAddress = pso.read_u32(monster.address + _MonsterOriginSlimePointer)
+        if mParentAddress ~= 0 and entityAddressLookup[mParentAddress] then
+            local mParent = entityAddressLookup[mParentAddress]
+            local UnitxtID = pso.read_u32(mParent.address + _MonsterUnitxtID)
+            if UnitxtID == 19 or UnitxtID == 20 then
+                monster.slimeEntityAddress = mParent.address
+                monster.isSlimeOrigin = true
+                monster.name = "Slime Origin"
+                monster.HP = 1
+                monster.HPMax = 1
+                monster.unitxtID = -20
+            end
+        end
     end
 
     return monster
@@ -772,8 +808,11 @@ local function isMonsterShowEnabled(monster, section)
     return false
 end
 
+
 local function GetMonsterList(section)
     local monsterList = {}
+    local monsterPreList = {}
+    entityAddressLookup = {}
 
     local difficulty = pso.read_u32(_Difficulty)
     _Ultimate = difficulty == 3
@@ -794,23 +833,33 @@ local function GetMonsterList(section)
     local playerCount = pso.read_u32(_PlayerCount)
     local entityCount = pso.read_u32(_EntityCount)
 
+    for i=0, entityCount-1, 1 do
+        local addr = pso.read_u32(_EntityArray + 4 * (i + playerCount))
+        monsterPreList[i] = {
+            display = true,
+            index = i,
+            address = addr,
+        }
+        if addr ~= 0 then
+            entityAddressLookup[addr] = monsterPreList[i]
+        end
+    end
+
     local i = 0
     while i < entityCount do
-        local monster = {}
-
-        monster.display = true
-        monster.index = i
-        monster.address = pso.read_u32(_EntityArray + 4 * (i + playerCount))
+        local monster = monsterPreList[i]
 
         -- If we got a pointer, then read from it
         if monster.address ~= 0 then
             monster = GetMonsterData(monster)
-
-            -- if monster.name == 'Mothmant' then
+            
+            --print(string.format('%X',monster.address),monster.name, monster.unitxtID, monster.HPMax, monster.HP, monster.posX,monster.posY,monster.posZ)
+            -- if monster.name == 'Nano Dragon' then
             --     print(string.format("%x",monster.address))
             -- end
 
-            if isMonsterShowEnabled(monster, section)
+            --if isMonsterShowEnabled(monster, section)
+            if true
             then
                 monster.color = cfgMonsters.m[monster.unitxtID].color
                 monster.display = cfgMonsters.m[monster.unitxtID].display
@@ -820,12 +869,16 @@ local function GetMonsterList(section)
                     monster.height = cfgMonsters.m[monster.unitxtID].height
                 elseif cfgMonsters.m[monster.unitxtID].heightTarg ~= nil then
                     monster.height = cfgMonsters.m[monster.unitxtID].heightTarg
-                else
+                elseif cfgMonsters.m[monster.unitxtID].height ~= nil then
                     monster.height = cfgMonsters.m[monster.unitxtID].height
+                else
+                    monster.height = 0
                 end
 
-                if monster.posH then
+                if monster.posH > 0 then
                     monster.posY = monster.posH
+                elseif monster.posH2 > 0 then
+                    monster.posY = monster.posH2
                 end
 
                 -- Calculate the distance between it and the player
@@ -833,7 +886,7 @@ local function GetMonsterList(section)
                 monster.pos3 = mgl.vec3(monster.posX, monster.posY, monster.posZ)
                 monster.curPlayerDistance = mgl.length(monster.pos3 - pCoord)
                 if monster.curPlayerDistance == nil then
-                    monster.curPlayerDistance = math.maxinteger
+                    monster.curPlayerDistance = lua_biginteger
                 end
 
                 if cfgMonsters.maxDistance ~= 0 and tDist > cfgMonsters.maxDistance then
@@ -849,6 +902,7 @@ local function GetMonsterList(section)
                 if monster.HP <= 0 then
                     monster.display = false
                 end
+
 
                 -- Get the monster's 3d position to a 2d pixel position
                 if monster.display ~= false then
@@ -957,6 +1011,30 @@ local function GetPlayerDirection(player)
     }
 end
 
+local function GetPlayerCurAttackComboStep(player)
+    local step = 0
+    if player ~= 0 then
+        -- 1 = idle
+        -- 2 = walking
+        -- 4 = running
+        -- 5 = 1st shot
+        -- 6 = 2st shot
+        -- 7 = 3rd shot
+        step = pso.read_u8(player + 0x348)
+        if step < 5 then
+            step = 0
+        elseif step == 5 then
+            step = 1
+        elseif step == 6 then 
+            step = 2
+        elseif step == 7 then -- end of triple combo
+            step = 3
+        end
+
+    end
+    return step
+end
+
 local function getCameraZoom()
     return pso.read_u32(_CameraZoomLevel)
 end
@@ -996,6 +1074,30 @@ local function shiftHexColor(color)
         bit.band(bit.rshift(color, 8), 0xFF),
         bit.band(color, 0xFF)
     }
+end
+local function ARGBtoHexColor(Clr)
+    return  bit.lshift(Clr.a, 24) +
+            bit.lshift(Clr.r, 16) +
+            bit.lshift(Clr.g, 8) +
+            bit.lshift(Clr.b, 0)
+end
+local function HextoARGBColor(Clr)
+    return
+    {
+        a = bit.band(bit.rshift(Clr, 24), 0xFF),
+        r = bit.band(bit.rshift(Clr, 16), 0xFF),
+        g = bit.band(bit.rshift(Clr, 8), 0xFF),
+        b = bit.band(Clr, 0xFF)
+    }
+end
+
+local function LerpColor(Norm,Color1,Color2)
+	local Ctbl = {}
+	Ctbl.a = Lerp(Norm,Color1.a,Color2.a)
+	Ctbl.r = Lerp(Norm,Color1.r,Color2.r)
+	Ctbl.g = Lerp(Norm,Color1.g,Color2.g)
+	Ctbl.b = Lerp(Norm,Color1.b,Color2.b)
+    return Ctbl
 end
 
 
@@ -1096,6 +1198,88 @@ local function getWText(wText,Default)
     end
 end
 
+local updatePlayerWeaponSpec = {}
+local function genFuncs_UpdatePlayerWeaponSpec()
+    updatePlayerWeaponSpec = {}
+    local maxWeapSpec = 40
+    local nospec_func = function (equipData)
+        equipData.isWeapNoSpec = true
+        equipData.weapSpecialCategory = 0
+    end
+    local hpsteal_func = function (equipData)
+        equipData.isWeapHPSteal = true
+        equipData.weapSpecialCategory = 1
+    end
+    local tpsteal_func = function (equipData)
+        equipData.isWeapTPSteal = true
+        equipData.weapSpecialCategory = 2
+    end
+    local expsteal_func = function (equipData)
+        equipData.isWeapEXPSteal = true
+        equipData.weapSpecialCategory = 3
+    end
+    local sacrificial_func = function (equipData)
+        equipData.isWeapSacrificial = true
+        equipData.weapSpecialCategory = 4
+    end
+    local frozense_func = function (equipData)
+        equipData.isWeapFrozenSE = true
+        equipData.weapSpecialCategory = 5
+    end
+    local paralysisse_func = function (equipData)
+        equipData.isWeapParalysisSE = true
+        equipData.weapSpecialCategory = 6
+    end
+    local fireele_func = function (equipData)
+        equipData.isWeapFireElement = true
+        equipData.weapSpecialCategory = 7
+    end
+    local shockele_func = function (equipData)
+        equipData.isWeapLightningElement = true
+        equipData.weapSpecialCategory = 8
+    end
+    local instantkill_func = function (equipData)
+        equipData.isWeapInstantKill = true
+        equipData.weapSpecialCategory = 9
+    end
+    local confusionse_func = function (equipData)
+        equipData.isWeapConfusionSE = true
+        equipData.weapSpecialCategory = 10
+    end
+    local hpcut_func = function (equipData)
+        equipData.isWeapHPCut = true
+        equipData.weapSpecialCategory = 11
+    end
+    for i=0, maxWeapSpec, 1 do
+        if i > 0 and i < 5 then -- Draw, Drain, Fill, Gush - HP Steal
+            updatePlayerWeaponSpec[i] = hpsteal_func
+        elseif i > 4 and i < 9 then -- Heart, Mind, Soul, Geist - TP Steal
+            updatePlayerWeaponSpec[i] = tpsteal_func
+        elseif i > 8 and i < 12 then -- Master's, Lord's, King's - EXP Steal
+            updatePlayerWeaponSpec[i] = expsteal_func
+        elseif i > 11 and i < 15 then -- Charge, Spirit, Berserk - Sacrificial
+            updatePlayerWeaponSpec[i] = sacrificial_func
+        elseif i > 14 and i < 19 then -- Ice, Frost, Freeze, Blizzard - Frozen Status Effect
+            updatePlayerWeaponSpec[i] = frozense_func
+        elseif i > 18 and i < 23 then -- Bind, Hold, Seize, Arrest - Paralysis Status Effect
+            updatePlayerWeaponSpec[i] = paralysisse_func
+        elseif i > 22 and i < 27 then -- Heat, Fire, Flame, Burning - Fire Elemental Damage
+            updatePlayerWeaponSpec[i] = fireele_func
+        elseif i > 26 and i < 31 then -- Shock, Thunder, Storm, Tempest - Lightning Elemental Damage
+            updatePlayerWeaponSpec[i] = shockele_func
+        elseif i > 30 and i < 35 then -- Dim, Shadow, Dark, Hell - Instant Kill
+            updatePlayerWeaponSpec[i] = instantkill_func
+        elseif i > 34 and i < 39 then -- Panic, Riot, Havoc, Chaos - Confusion Status Effect
+            updatePlayerWeaponSpec[i] = confusionse_func
+        elseif i > 38 and i < 41 then -- Devil's, Demon's - HP Cut
+            updatePlayerWeaponSpec[i] = hpcut_func
+        else
+            updatePlayerWeaponSpec[i] = nospec_func
+        end
+    end
+end
+genFuncs_UpdatePlayerWeaponSpec()
+
 local function UpdatePlayerItemStats()
     local equipData = { -- fill in data to represent no data for items equipped
         NAstat = 0,
@@ -1157,39 +1341,8 @@ local function UpdatePlayerItemStats()
                         equipData.specRedux = 0.33
                     end
                 end
-                if item.weapon.special > 0 and item.weapon.special < 5 then -- Draw, Drain, Fill, Gush - HP Steal
-                    equipData.isWeapHPSteal = true
-                    equipData.weapSpecialCategory = 1
-                elseif item.weapon.special > 4 and item.weapon.special < 9 then -- Heart, Mind, Soul, Geist - TP Steal
-                    equipData.isWeapTPSteal = true
-                    equipData.weapSpecialCategory = 2
-                elseif item.weapon.special > 8 and item.weapon.special < 12 then -- Master's, Lord's, King's - EXP Steal
-                    equipData.isWeapEXPSteal = true
-                    equipData.weapSpecialCategory = 3
-                elseif item.weapon.special > 11 and item.weapon.special < 15 then -- Charge, Spirit, Berserk - Sacrificial
-                    equipData.isWeapSacrificial = true
-                    equipData.weapSpecialCategory = 4
-                elseif item.weapon.special > 14 and item.weapon.special < 19 then -- Ice, Frost, Freeze, Blizzard - Frozen Status Effect
-                    equipData.isWeapFrozenSE = true
-                    equipData.weapSpecialCategory = 5
-                elseif item.weapon.special > 18 and item.weapon.special < 23 then -- Bind, Hold, Seize, Arrest - Paralysis Status Effect
-                    equipData.isWeapParalysisSE = true
-                    equipData.weapSpecialCategory = 6
-                elseif item.weapon.special > 22 and item.weapon.special < 27 then -- Heat, Fire, Flame, Burning - Fire Elemental Damage
-                    equipData.isWeapFireElement = true
-                    equipData.weapSpecialCategory = 7
-                elseif item.weapon.special > 26 and item.weapon.special < 31 then -- Shock, Thunder, Storm, Tempest - Lightning Elemental Damage
-                    equipData.isWeapLightningElement = true
-                    equipData.weapSpecialCategory = 8
-                elseif item.weapon.special > 30 and item.weapon.special < 35 then -- Dim, Shadow, Dark, Hell - Instant Kill
-                    equipData.isWeapInstantKill = true
-                    equipData.weapSpecialCategory = 9
-                elseif item.weapon.special > 34 and item.weapon.special < 39 then -- Panic, Riot, Havoc, Chaos - Confusion Status Effect
-                    equipData.isWeapConfusionSE = true
-                    equipData.weapSpecialCategory = 10
-                elseif item.weapon.special > 38 and item.weapon.special < 41 then -- Devil's, Demon's - HP Cut
-                    equipData.isWeapHPCut = true
-                    equipData.weapSpecialCategory = 11
+                if updatePlayerWeaponSpec[item.weapon.special] then -- sanity check
+                    updatePlayerWeaponSpec[item.weapon.special](equipData)
                 end
             end
             if item.hex == 0x010351 then -- is "Smartlink" unit
@@ -1262,12 +1415,99 @@ local function UpdatePlayerData()
     end
 end
 
+updateMonsterWeaponSpecDmg = {}
+local function genFuncs_UpdateMonsterWeaponSpecDmg()
+
+    local function calcSpecDamage(dmg)
+        if dmg.specDMG >= 0 then
+            dmg.minSpec = dmg.specDMG
+            dmg.maxSpec = dmg.specDMG
+        elseif dmg.specDMG < 0 then
+            dmg.minSpec = dmg.minBase * pData.specialDmgMult
+            dmg.maxSpec = dmg.maxBase * pData.specialDmgMult
+        end
+    end
+
+    updateMonsterWeaponSpecDmg = {
+        [0] = function (monster, dmg) -- no special
+
+        end,
+        [1] = function (monster, dmg) -- Draw, Drain, Fill, Gush - HP Steal
+            dmg.specDraw = math.min(((pData.specPower+pData.castBoost)/100)*monster.HP,(lData.difficulty+1)*30)*pEquipData.specRedux
+            dmg.specAilment = 100
+            calcSpecDamage(dmg)
+        end,
+        [2] = function (monster, dmg) -- Heart, Mind, Soul, Geist - TP Steal
+            if pData.isCast == false then
+                dmg.specDraw = math.min((pData.specPower/100)*pData.maxTP,(lData.difficulty+1)*25)*pEquipData.specRedux
+                dmg.specAilment = 100
+            end
+            calcSpecDamage(dmg)
+        end,
+        [3] = function (monster, dmg) -- Master's, Lord's, King's - EXP Steal
+            dmg.specDraw = math.min(((pData.specPower+pData.castBoost)/100)*monster.Exp,(lData.difficulty+1)*20)*pEquipData.specRedux
+            dmg.specAilment = 100
+            calcSpecDamage(dmg)
+        end,
+        [4] = function (monster, dmg) -- Charge, Spirit, Berserk - Sacrificial
+            if pEquipData.EqVjaya == 1 then
+                dmg.minSpec = dmg.minBase * pData.vjayaDmgMult
+                dmg.maxSpec = dmg.maxBase * pData.vjayaDmgMult
+            else
+                dmg.minSpec = dmg.minBase * pData.sacrificialDmgMult
+                dmg.maxSpec = dmg.maxBase * pData.sacrificialDmgMult
+            end
+            dmg.specAilment = 100
+        end,
+        [5] = function (monster, dmg) -- Ice, Frost, Freeze, Blizzard - Frozen Status Effect
+            dmg.specAilment = math.min((((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux),40)*pEquipData.v50xStatusBoost
+            calcSpecDamage(dmg)
+        end,
+        [6] = function (monster, dmg) -- Bind, Hold, Seize, Arrest - Paralysis Status Effect
+            dmg.specAilment = ((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux*pEquipData.v50xStatusBoost
+            calcSpecDamage(dmg)
+        end,
+        [7] = function (monster, dmg) -- Heat, Fire, Flame, Burning - Fire Elemental Damage
+            dmg.specDMG = (((pData.level-1)/(5-pData.specPower)+((pData.specPower+1)*20))*(100-(monster.Efr))*0.01)
+            dmg.specAilment = 100
+            calcSpecDamage(dmg)
+        end,
+        [8] = function (monster, dmg) -- Shock, Thunder, Storm, Tempest - Lightning Elemental Damage
+            dmg.specDMG = (((pData.level-1)/(5-pData.specPower)+((pData.specPower+1)*20))*(100-(monster.Eth))*0.01)
+            dmg.specAilment = 100
+            calcSpecDamage(dmg)
+        end,
+        [9] = function (monster, dmg) -- Dim, Shadow, Dark, Hell - Instant Kill
+            if monster.isBoss == 0 then
+                dmg.specAilment = (pData.specPower-monster.Edk)*pEquipData.specRedux*pEquipData.v50xHellBoost
+                dmg.specDMG = monster.HP
+            end
+            calcSpecDamage(dmg)
+        end,
+        [10] = function (monster, dmg) -- Panic, Riot, Havoc, Chaos - Confusion Status Effect
+            dmg.specAilment = ((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux*pEquipData.v50xStatusBoost
+            calcSpecDamage(dmg)
+        end,
+        [11] = function (monster, dmg) -- Devil's, Demon's - HP Cut
+            if monster.isBoss == 0 then
+                dmg.specDMG = (monster.HP*(1-(((pData.specPower+pData.castBoost)/100))))*pEquipData.specRedux
+                dmg.specAilment = 50
+            end
+            calcSpecDamage(dmg)
+        end
+    }
+end
+genFuncs_UpdateMonsterWeaponSpecDmg()
+
+
 local function PresentTargetMonster(monster, section)
     if monster ~= nil then
         if playerSelfAddr == 0 then return end
         
         local moptions
-        if options[section][monster.unitxtID].overriden then
+        if  options[section][monster.unitxtID]
+            and options[section][monster.unitxtID].overriden
+        then
             moptions = options[section][monster.unitxtID]
         else -- not overridden, so use default
             moptions = options[section][-1]
@@ -1285,10 +1525,11 @@ local function PresentTargetMonster(monster, section)
 		local shocked = lib_characters.GetPlayerShockedStatus(monster.address)
 		
 		local MDistance = 0
-		local specDMG = -1
-		local specAilment = 0
-		local specDraw = 0
-		
+        local dmg = {
+            specDMG = -1,
+            specAilment = 0,
+            specDraw = 0
+        }
 
 		if monster.attribute == 1 then
 			pData.maxAtp = lib_characters.GetPlayerMaxATP(playerSelfAddr,pEquipData.NAstat)
@@ -1307,103 +1548,30 @@ local function PresentTargetMonster(monster, section)
         -- weapons with high base atp will not correctly calculate damage
         -- ... might also be related to weapon attributes...? more testing needed, but damage numbers are still incorrect..
 		
-		local myMaxBaseDamage = ((pData.maxAtp - monster.Dfp)/5)
-		local myMinBaseDamage = ((pData.minAtp - monster.Dfp)/5)
+		dmg.maxBase = ((pData.maxAtp - monster.Dfp)/5)
+		dmg.minBase = ((pData.minAtp - monster.Dfp)/5)
 		if defTech.type ~= 0 then -- monster zalured? 
-			myMaxBaseDamage = ((pData.maxAtp - (monster.Dfp*(1-((((pData.zalure-1)*1.3)+10)/100))))/5)
-			myMinBaseDamage = ((pData.minAtp - (monster.Dfp*(1-((((pData.zalure-1)*1.3)+10)/100))))/5)
+			dmg.maxBase = ((pData.maxAtp - (monster.Dfp*(1-((((pData.zalure-1)*1.3)+10)/100))))/5)
+			dmg.minBase = ((pData.minAtp - (monster.Dfp*(1-((((pData.zalure-1)*1.3)+10)/100))))/5)
 		end
 		
-        local myMinNormalDamage = myMinBaseDamage * pData.normalDmgMult
-        local myMaxNormalDamage = myMaxBaseDamage * pData.normalDmgMult
-        local myMinHeavyDamage  = myMinBaseDamage * pData.heavyDmgMult
-        local myMaxHeavyDamage  = myMaxBaseDamage * pData.heavyDmgMult
-        local myMinSpecDamage   = 0
-		local myMaxSpecDamage   = 0
-		if myMinNormalDamage < 1 then myMinNormalDamage = 0 end
-		if myMaxNormalDamage < 1 then myMaxNormalDamage = 0 end
-		if myMinHeavyDamage  < 1 then myMinHeavyDamage  = 0 end
-		if myMaxHeavyDamage  < 1 then myMaxHeavyDamage  = 0 end
+        dmg.minNormal = dmg.minBase * pData.normalDmgMult
+        dmg.maxNormal = dmg.maxBase * pData.normalDmgMult
+        dmg.minHeavy  = dmg.minBase * pData.heavyDmgMult
+        dmg.maxHeavy  = dmg.maxBase * pData.heavyDmgMult
+        dmg.minSpec   = 0
+		dmg.maxSpec   = 0
+		if dmg.minNormal < 1 then dmg.minNormal = 0 end
+		if dmg.maxNormal < 1 then dmg.maxNormal = 0 end
+		if dmg.minHeavy  < 1 then dmg.minHeavy  = 0 end
+		if dmg.maxHeavy  < 1 then dmg.maxHeavy  = 0 end
 
 -- convert from text string analysis to integer
 		if (string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerSelfAddr)),1,2) == "FO" or string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerSelfAddr)),1,2) == "HU") and pEquipData.EqSmartlink == 0 and pEquipData.ataPenalty == 1 then
 			MDistance = (math.sqrt(((monster.posX-playerSelfCoords.x)^2)+((monster.posZ-playerSelfCoords.z)^2)))*0.33
 		end
 
-        local function calcSpecDamage()
-            if specDMG >= 0 then
-                myMinSpecDamage = specDMG
-                myMaxSpecDamage = specDMG
-            elseif specDMG < 0 then
-                myMinSpecDamage = myMinBaseDamage * pData.specialDmgMult
-                myMaxSpecDamage = myMaxBaseDamage * pData.specialDmgMult
-            end
-        end
-
-        if pEquipData.isWeapHPSteal then -- Draw, Drain, Fill, Gush - HP Steal
-			specDraw = math.min(((pData.specPower+pData.castBoost)/100)*mHP,(lData.difficulty+1)*30)*pEquipData.specRedux
-			specAilment = 100
-            calcSpecDamage()
-
-		elseif pEquipData.isWeapTPSteal then -- Heart, Mind, Soul, Geist - TP Steal
-			if pData.isCast == false then
-				specDraw = math.min((pData.specPower/100)*pData.maxTP,(lData.difficulty+1)*25)*pEquipData.specRedux
-				specAilment = 100
-			end
-            calcSpecDamage()
-
-		elseif pEquipData.isWeapEXPSteal then -- Master's, Lord's, King's - EXP Steal
-			specDraw = math.min(((pData.specPower+pData.castBoost)/100)*monster.Exp,(lData.difficulty+1)*20)*pEquipData.specRedux
-			specAilment = 100
-            calcSpecDamage()
-
-		elseif pEquipData.isWeapSacrificial then -- Charge, Spirit, Berserk - Sacrificial
-            if pEquipData.EqVjaya == 1 then
-			    specAilment = 100
-                myMinSpecDamage = myMinBaseDamage * pData.vjayaDmgMult
-                myMaxSpecDamage = myMaxBaseDamage * pData.vjayaDmgMult
-            else
-                myMinSpecDamage = myMinBaseDamage * pData.sacrificialDmgMult
-                myMaxSpecDamage = myMaxBaseDamage * pData.sacrificialDmgMult
-            end
-
-		elseif pEquipData.isWeapFrozenSE then -- Ice, Frost, Freeze, Blizzard - Frozen Status Effect
-			specAilment = math.min((((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux),40)*pEquipData.v50xStatusBoost
-            calcSpecDamage()
-            
-		elseif pEquipData.isWeapParalysisSE then -- Bind, Hold, Seize, Arrest - Paralysis Status Effect
-			specAilment = ((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux*pEquipData.v50xStatusBoost
-            calcSpecDamage()
-
-        elseif pEquipData.isWeapFireElement then -- Heat, Fire, Flame, Burning - Fire Elemental Damage
-			specDMG = (((pData.level-1)/(5-pData.specPower)+((pData.specPower+1)*20))*(100-(monster.Efr))*0.01)
-			specAilment = 100
-            calcSpecDamage()
-
-		elseif pEquipData.isWeapLightningElement then -- Shock, Thunder, Storm, Tempest - Lightning Elemental Damage
-			specDMG = (((pData.level-1)/(5-pData.specPower)+((pData.specPower+1)*20))*(100-(monster.Eth))*0.01)
-			specAilment = 100
-            calcSpecDamage()
-            
-		elseif pEquipData.isWeapInstantKill then -- Dim, Shadow, Dark, Hell - Instant Kill
-			if monster.isBoss == 0 then
-                specAilment = (pData.specPower-monster.Edk)*pEquipData.specRedux*pEquipData.v50xHellBoost
-			    specDMG = mHP
-            end
-            calcSpecDamage()
-
-		elseif pEquipData.isWeapConfusionSE then -- Panic, Riot, Havoc, Chaos - Confusion Status Effect
-			specAilment = ((pData.specPower+pData.castBoost)-monster.Esp)*pEquipData.specRedux*pEquipData.v50xStatusBoost
-            calcSpecDamage()
-            --print(specDMG, myMinSpecDamage, myMaxSpecDamage, pData.specPower+1, monster.Efr)
-
-		elseif pEquipData.isWeapHPCut then -- Devil's, Demon's - HP Cut
-			if monster.isBoss == 0 then
-                specDMG = (mHP*(1-(((pData.specPower+pData.castBoost)/100))))*pEquipData.specRedux
-                specAilment = 50
-            end
-            calcSpecDamage()
-		end
+        updateMonsterWeaponSpecDmg[pEquipData.weapSpecialCategory](monster, dmg)
 
         -- Calculate all 9 types of attack combinations
         local mEvp = monster.Evp * 0.2 - MDistance
@@ -1417,9 +1585,9 @@ local function PresentTargetMonster(monster, section)
         local hardAtk3_Acc = clampVal(pData.ataHardAtk3 - mEvp, 0, 100)
         local specAtk3_Acc = clampVal(pData.ataSpecAtk3 - mEvp, 0, 100)
         
-        local specAtk1_Hit = clampVal(specAtk1_Acc*specAilment/100,0,100)
-        local specAtk2_Hit = clampVal(specAtk2_Acc*specAilment/100,0,100)
-        local specAtk3_Hit = clampVal(specAtk3_Acc*specAilment/100,0,100)
+        local specAtk1_Hit = clampVal(specAtk1_Acc*dmg.specAilment/100,0,100)
+        local specAtk2_Hit = clampVal(specAtk2_Acc*dmg.specAilment/100,0,100)
+        local specAtk3_Hit = clampVal(specAtk3_Acc*dmg.specAilment/100,0,100)
 
 
         local curX = imgui.GetCursorPosX()
@@ -1473,9 +1641,9 @@ local function PresentTargetMonster(monster, section)
 		if moptions.showHealthBar then
 			-- Draw enemy HP bar
             local mHPRatio  = clampVal(mHP/mHPMax,0,1)
-            local NDmgRatio = clampVal(myMinNormalDamage/mHPMax,0,1)
-            local HDmgRatio = clampVal(myMinHeavyDamage/mHPMax,0,1)
-            local SDmgRatio = clampVal(myMinSpecDamage/mHPMax,0,1)
+            local NDmgRatio = clampVal(dmg.minNormal/mHPMax,0,1)
+            local HDmgRatio = clampVal(dmg.minHeavy/mHPMax,0,1)
+            local SDmgRatio = clampVal(dmg.minSpec/mHPMax,0,1)
             local bWidth -- = 220
             local dmgBHeigth = imgui.GetFontSize()/3
             local wPaddingX = 8
@@ -1503,25 +1671,71 @@ local function PresentTargetMonster(monster, section)
             local xNClamp = clampVal(xNPos, wPaddingX, bWidth+wPaddingX)
             local normalDmgBarWidth = math.max(curLen * NDmgRatio - math.abs(xNPos-xNClamp),0)
 
+            local attSpecHit = specAtk1_Hit
+            local attNormHit = normAtk1_Acc
+            local attHeavyHit = hardAtk1_Acc
+            if playerSelfAttackComboStep == 1 then 
+                attSpecHit = specAtk2_Hit
+                attNormHit = normAtk2_Acc
+                attHeavyHit = hardAtk2_Acc
+            elseif playerSelfAttackComboStep == 2 then 
+                attSpecHit = specAtk3_Hit
+                attNormHit = normAtk3_Acc
+                attHeavyHit = hardAtk3_Acc
+            elseif playerSelfAttackComboStep == 3 then 
+                attSpecHit = specAtk3_Hit
+                attNormHit = normAtk3_Acc
+                attHeavyHit = hardAtk3_Acc
+            end
+            attSpecHit = clampVal(attSpecHit,0,100)/100
+            attNormHit = clampVal(attNormHit,0,100)/100
+            attHeavyHit = clampVal(attHeavyHit,0,100)/100
+
             local function showSpecDmgBar()
                 if specDmgBarWidth > 0 then
                     imgui.SetCursorPosX(xSClamp)
                     imgui.SetCursorPosY(curY - dmgBHeigth)
-                    lib_helpers.imguiProgressBar(true, 1.0, specDmgBarWidth, dmgBHeigth, pEquipData.weapSpecialColor, nil)
+                    --print(specAtk1_Hit)
+                    --print(string.format("%X",pEquipData.weapSpecialColor),HextoARGBColor(pEquipData.weapSpecialColor).a,HextoARGBColor(pEquipData.weapSpecialColor).r,HextoARGBColor(pEquipData.weapSpecialColor).g,HextoARGBColor(pEquipData.weapSpecialColor).b)
+
+                    local specColor = ARGBtoHexColor(
+                        LerpColor(
+                            attSpecHit,
+                            {a=255,r=70,g=70,b=70},
+                            --HextoARGBColor(pEquipData.weapSpecialColor),
+                            HextoARGBColor(pEquipData.weapSpecialColor)
+                            --HextoARGBColor(pEquipData.weapSpecialColor)
+                        )
+                    )
+                    lib_helpers.imguiProgressBar(true, 1.0, specDmgBarWidth, dmgBHeigth, specColor, nil)
                 end
             end
             local function showHeavyDmgBar()
                 if heavyDmgBarWidth > 0 then
                     imgui.SetCursorPosX(xHClamp)
                     imgui.SetCursorPosY(curY - dmgBHeigth)
-                    lib_helpers.imguiProgressBar(true, 1.0, heavyDmgBarWidth, dmgBHeigth, 0xFFFFAA00, nil)
+                    local heavyColor = ARGBtoHexColor(
+                        LerpColor(
+                            attHeavyHit,
+                            {a=255,r=70,g=70,b=70},
+                            HextoARGBColor(0xFFFFAA00)
+                        )
+                    )
+                    lib_helpers.imguiProgressBar(true, 1.0, heavyDmgBarWidth, dmgBHeigth, heavyColor, nil)
                 end
             end
             local function showNormalDmgBar()
                 if normalDmgBarWidth > 0 then
                     imgui.SetCursorPosX(xNClamp)
                     imgui.SetCursorPosY(curY - dmgBHeigth)
-                    lib_helpers.imguiProgressBar(true, 1.0, normalDmgBarWidth, dmgBHeigth, 0xFF00FF00, nil)  
+                    local normalColor = ARGBtoHexColor(
+                        LerpColor(
+                            attNormHit,
+                            {a=255,r=70,g=70,b=70},
+                            HextoARGBColor(0xFF00FF00)
+                        )
+                    )
+                    lib_helpers.imguiProgressBar(true, 1.0, normalDmgBarWidth, dmgBHeigth, normalColor, nil)  
                 end
             end
 
@@ -1559,41 +1773,41 @@ local function PresentTargetMonster(monster, section)
 		end
 
 		if moptions.showDamage then
-			lib_helpers.Text(true, "%i", myMinNormalDamage)
+			lib_helpers.Text(true, "%i", dmg.minNormal)
 			lib_helpers.Text(false, "-")
-			lib_helpers.Text(false, "%i", myMaxNormalDamage)
+			lib_helpers.Text(false, "%i", dmg.maxNormal)
 			lib_helpers.Text(false, " Weak Hit")
-			lib_helpers.Text(true, "%i", myMinHeavyDamage)
+			lib_helpers.Text(true, "%i", dmg.minHeavy)
 			lib_helpers.Text(false, "-")
-			lib_helpers.Text(false, "%i", myMaxHeavyDamage)
+			lib_helpers.Text(false, "%i", dmg.maxHeavy)
 			lib_helpers.Text(false, " Heavy Hit")
 		end
 	
 		
 		if pEquipData.weapSpecial > 0 then
 			if moptions.showDamage then
-                if myMinSpecDamage == myMaxSpecDamage then
-					lib_helpers.TextC(true, pEquipData.weapSpecialColor, "%i", specDMG)
+                if dmg.minSpec == dmg.maxSpec then
+					lib_helpers.TextC(true, pEquipData.weapSpecialColor, "%i", dmg.specDMG)
 				else
-					lib_helpers.Text(true, "%i", myMinSpecDamage)
+					lib_helpers.Text(true, "%i", dmg.minSpec)
 					lib_helpers.Text(false, "-")
-					lib_helpers.Text(false, "%i", myMaxSpecDamage)
+					lib_helpers.Text(false, "%i", dmg.maxSpec)
 				end
 				lib_helpers.Text(false, " Special Hit [")
 				lib_helpers.TextC(false, pEquipData.weapSpecialColor, pEquipData.weapSpecialName)
 				lib_helpers.Text(false, "] ")
-				if specAilment > 0 then
+				if dmg.specAilment > 0 then
                     if pEquipData.isWeapEXPSteal then
                         lib_helpers.Text(false, "steal ")
-                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(specDraw,0))
+                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
                         lib_helpers.Text(false, " EXP")
                     elseif pEquipData.isWeapTPSteal and pData.isCast == false then
                         lib_helpers.Text(false, "steal ")
-                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(specDraw,0))
+                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
                         lib_helpers.Text(false, " TP")
                     elseif pEquipData.isWeapHPSteal then	
                         lib_helpers.Text(false, "steal ")
-                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(specDraw,0))
+                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
                         lib_helpers.Text(false, " HP")
                     elseif pEquipData.isWeapInstantKill and monster.isBoss == 0 then	
                         lib_helpers.Text(false, "chance to Instant Kill")
@@ -1602,7 +1816,7 @@ local function PresentTargetMonster(monster, section)
                     elseif pEquipData.isWeapParalysisSE and (monster.attribute == 1 or monster.attribute == 2 or monster.attribute == 8) and monster.isBoss == 0 then
                         lib_helpers.Text(false, "chance to Paralyze")
                     elseif pEquipData.isWeapLightningElement and monster.attribute == 4 and monster.isBoss == 0 and monster.name ~= "Epsilon" then	
-                        specAilment = pData.ailRedux*pEquipData.v50xStatusBoost
+                        dmg.specAilment = pData.ailRedux*pEquipData.v50xStatusBoost
                         lib_helpers.Text(false, "chance to Shock")
                     elseif pEquipData.isWeapFrozenSE and not (monster.isBoss == 1 or monster.name == "Epsilon" or monster.name == "Zu" or monster.name == "Pazuzu" or monster.name == "Dorphon" or monster.name == "Dorphon Eclair" or monster.name == "Girtablulu" ) then
                         lib_helpers.Text(false, "chance to Freeze")
@@ -1797,6 +2011,7 @@ local function present()
     playerSelfAddr    = lib_characters.GetSelf()
     playerSelfCoords  = GetPlayerCoordinates(playerSelfAddr)
     playerSelfDirs    = GetPlayerDirection(playerSelfAddr)
+    playerSelfAttackComboStep = GetPlayerCurAttackComboStep(playerSelfAddr)
     pCoord            = mgl.vec3(playerSelfCoords.x,playerSelfCoords.y,playerSelfCoords.z)
     cameraCoords      = getCameraCoordinates()
     cameraDirs        = getCameraDirection()
@@ -1958,7 +2173,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.1.2",
+        version = "0.2.0",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,

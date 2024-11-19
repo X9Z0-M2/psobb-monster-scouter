@@ -5,6 +5,7 @@ local function getMonstersBySegment()
     local mt = {}
     mt["General"] = {}
     table.insert(mt["General"], {id=-1, cate = "Default" } )
+    table.insert(mt["General"], {id=-20, cate = "Slime Origin" } )
     for k,v in pairs(cfgMonsters.m) do
         if v.seg then
             v.id = k
@@ -239,7 +240,10 @@ local function ConfigurationWindow(configuration)
             end
 
             if Additional ~= nil then
-
+                -- if imgui.Checkbox("Show Slime Origin", cateTabl.showOrigin) then
+                --     cateTabl.showOrigin = not cateTabl.showOrigin
+                --     this.changed = true
+                -- end
             end
 
             -- if imgui.Checkbox("Custom Color", cateTabl.useCustomColor) then
@@ -521,7 +525,6 @@ local function ConfigurationWindow(configuration)
                             if monster.cate then
 
                                 if imgui.TreeNodeEx(monster.cate) then
-
                                     configureMonster(monster, monster.id, section)
                                     imgui.TreePop()
                                 end
