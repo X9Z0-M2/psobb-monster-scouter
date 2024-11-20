@@ -48,7 +48,6 @@ local function LoadOptions()
     -- If options loaded, make sure we have all those we need
     SetDefaultValue( options, "configurationEnableWindow", true )
     SetDefaultValue( options, "enable", true )
-    SetDefaultValue( options, "ignoreMeseta", false )
     SetDefaultValue( options, "maxNumTrackers", 100 )
     SetDefaultValue( options, "numTrackers", 25 )
     SetDefaultValue( options, "updateThrottle", 0 )
@@ -123,6 +122,7 @@ local function LoadOptions()
             SetDefaultValue( options[section][id], "showHealthBar", true )
             SetDefaultValue( options[section][id], "showDamage", false )
             SetDefaultValue( options[section][id], "showHit", false )
+            SetDefaultValue( options[section][id], "showRecommended", false )
             -- options[section][id]["showDamage"] = true
             -- options[section][id]["showHit"] = true
             -- options[section][id]["targetHardThreshold"] = 90
@@ -1391,16 +1391,26 @@ local function UpdatePlayerData()
         specialDmgMult      =  5/9,
         sacrificialDmgMult  = 10/3,
         vjayaDmgMult        = 17/3,
+        normAtk             = {},
+        heavyAtk            = {},
+        specAtk             = {}
     }
-    pData.ataNormAtk1 = pData.ata         -- ata * 1.0 * 1.0
-    pData.ataHardAtk1 = pData.ata * 0.7   -- ata * 0.7 * 1.0
-    pData.ataSpecAtk1 = pData.ata * 0.5   -- ata * 0.5 * 1.0
-    pData.ataNormAtk2 = pData.ata * 1.3   -- ata * 1.0 * 1.3
-    pData.ataHardAtk2 = pData.ata * 0.91  -- ata * 0.7 * 1.3
-    pData.ataSpecAtk2 = pData.ata * 0.65  -- ata * 0.5 * 1.3
-    pData.ataNormAtk3 = pData.ata * 1.69  -- ata * 1.0 * 1.69
-    pData.ataHardAtk3 = pData.ata * 1.183 -- ata * 0.7 * 1.69
-    pData.ataSpecAtk3 = pData.ata * 0.845 -- ata * 0.5 * 1.69
+
+    for i=1, 3 do
+        pData.normAtk[i]  = {}
+        pData.heavyAtk[i] = {}
+        pData.specAtk[i]  = {}
+    end
+
+    pData.normAtk[1].ata  = pData.ata         -- ata * 1.0 * 1.0
+    pData.heavyAtk[1].ata = pData.ata * 0.7   -- ata * 0.7 * 1.0
+    pData.specAtk[1].ata  = pData.ata * 0.5   -- ata * 0.5 * 1.0
+    pData.normAtk[2].ata  = pData.ata * 1.3   -- ata * 1.0 * 1.3
+    pData.heavyAtk[2].ata = pData.ata * 0.91  -- ata * 0.7 * 1.3
+    pData.specAtk[2].ata  = pData.ata * 0.65  -- ata * 0.5 * 1.3
+    pData.normAtk[3].ata  = pData.ata * 1.69  -- ata * 1.0 * 1.69
+    pData.heavyAtk[3].ata = pData.ata * 1.183 -- ata * 0.7 * 1.69
+    pData.specAtk[3].ata  = pData.ata * 0.845 -- ata * 0.5 * 1.69
 
     if pData.isCast == true and lData.difficulty == 3 then
         pData.castBoost = 30
@@ -1528,8 +1538,16 @@ local function PresentTargetMonster(monster, section)
         local dmg = {
             specDMG = -1,
             specAilment = 0,
-            specDraw = 0
+            specDraw = 0,
+            normAtt = {},
+            heavyAtt = {},
+            specAtt = {},
         }
+        for i=1, 3 do
+            dmg.normAtt[i] = {}
+            dmg.heavyAtt[i] = {}
+            dmg.specAtt[i] = {}
+        end
 
 		if monster.attribute == 1 then
 			pData.maxAtp = lib_characters.GetPlayerMaxATP(playerSelfAddr,pEquipData.NAstat)
@@ -1575,325 +1593,340 @@ local function PresentTargetMonster(monster, section)
 
         -- Calculate all 9 types of attack combinations
         local mEvp = monster.Evp * 0.2 - MDistance
-        local normAtk1_Acc = clampVal(pData.ataNormAtk1 - mEvp, 0, 100)
-        local hardAtk1_Acc = clampVal(pData.ataHardAtk1 - mEvp, 0, 100)
-        local specAtk1_Acc = clampVal(pData.ataSpecAtk1 - mEvp, 0, 100)
-        local normAtk2_Acc = clampVal(pData.ataNormAtk2 - mEvp, 0, 100)
-        local hardAtk2_Acc = clampVal(pData.ataHardAtk2 - mEvp, 0, 100)
-        local specAtk2_Acc = clampVal(pData.ataSpecAtk2 - mEvp, 0, 100)
-        local normAtk3_Acc = clampVal(pData.ataNormAtk3 - mEvp, 0, 100)
-        local hardAtk3_Acc = clampVal(pData.ataHardAtk3 - mEvp, 0, 100)
-        local specAtk3_Acc = clampVal(pData.ataSpecAtk3 - mEvp, 0, 100)
-        
-        local specAtk1_Hit = clampVal(specAtk1_Acc*dmg.specAilment/100,0,100)
-        local specAtk2_Hit = clampVal(specAtk2_Acc*dmg.specAilment/100,0,100)
-        local specAtk3_Hit = clampVal(specAtk3_Acc*dmg.specAilment/100,0,100)
+        for i=1, 3 do
+            dmg.normAtt[i].acc  = clampVal(pData.normAtk[i].ata  - mEvp, 0, 100)
+            dmg.heavyAtt[i].acc = clampVal(pData.heavyAtk[i].ata - mEvp, 0, 100)
+            dmg.specAtt[i].acc  = clampVal(pData.specAtk[i].ata  - mEvp, 0, 100)
+            dmg.specAtt[i].hit  = clampVal(dmg.specAtt[i].acc    * dmg.specAilment/100, 0, 100)
+        end
 
 
         local curX = imgui.GetCursorPosX()
 
-		if moptions.showName then
-            --local mName = monster.name .. " " .. monster.id .. " " .. string.format("%X",monster.windowNameId)
-            local mName = monster.name
-            if moptions.showWeakness and not monster.bossCore then
-                if (monster.Efr <= monster.Eth) and (monster.Efr <= monster.Eic) then
-                    lib_helpers.TextC(true, 0xFFFF6600, mName)
-                elseif (monster.Eth <= monster.Efr) and (monster.Eth <= monster.Eic) then
-                    lib_helpers.TextC(true, 0xFFFFFF00, mName)
-                elseif (monster.Eic <= monster.Efr) and (monster.Eic <= monster.Eth) then
-                    lib_helpers.TextC(true, 0xFF00FFFF, mName)
+        local function showName_Text()
+            if moptions.showName then
+                --local mName = monster.name .. " " .. monster.id .. " " .. string.format("%X",monster.windowNameId)
+                local mName = monster.name
+                if moptions.showWeakness and not monster.bossCore then
+                    if (monster.Efr <= monster.Eth) and (monster.Efr <= monster.Eic) then
+                        lib_helpers.TextC(true, 0xFFFF6600, mName)
+                    elseif (monster.Eth <= monster.Efr) and (monster.Eth <= monster.Eic) then
+                        lib_helpers.TextC(true, 0xFFFFFF00, mName)
+                    elseif (monster.Eic <= monster.Efr) and (monster.Eic <= monster.Eth) then
+                        lib_helpers.TextC(true, 0xFF00FFFF, mName)
+                    else
+                        lib_helpers.TextC(true, monster.color, mName)
+                    end
                 else
                     lib_helpers.TextC(true, monster.color, mName)
                 end
-            else
-                lib_helpers.TextC(true, monster.color, mName)
-            end
-		end
-		
-		-- Show J/Z status and Frozen, Confuse, or Paralyzed status
-        if moptions.showStatusEffects then
-            if atkTech.type == 0 then
-                lib_helpers.TextC(true, 0, "    ")
-            else
-                lib_helpers.TextC(true, 0xFFFF2031, atkTech.name .. atkTech.level .. string.rep(" ", 2 - #tostring(atkTech.level)) .. " ")
-            end
-
-            if defTech.type == 0 then
-                lib_helpers.TextC(false, 0, "    ")
-            else
-                lib_helpers.TextC(false, 0xFF0088F4, defTech.name .. defTech.level .. string.rep(" ", 2 - #tostring(defTech.level)) .. " ")
-            end
-
-            if frozen then
-                lib_helpers.TextC(false, 0xFF00FFFF, "F ")
-            elseif confused then
-                lib_helpers.TextC(false, 0xFFFF00FF, "C ")
-            elseif shocked then
-                lib_helpers.TextC(false, 0xFFFFFF00, "S ")
-            else
-                lib_helpers.TextC(false, 0, "  ")
-            end
-            if paralyzed then
-                lib_helpers.TextC(false, 0xFFFF4000, "P ")
             end
         end
-		
-		if moptions.showHealthBar then
-			-- Draw enemy HP bar
-            local mHPRatio  = clampVal(mHP/mHPMax,0,1)
-            local NDmgRatio = clampVal(dmg.minNormal/mHPMax,0,1)
-            local HDmgRatio = clampVal(dmg.minHeavy/mHPMax,0,1)
-            local SDmgRatio = clampVal(dmg.minSpec/mHPMax,0,1)
-            local bWidth -- = 220
-            local dmgBHeigth = imgui.GetFontSize()/3
-            local wPaddingX = 8
 
-            local curY = imgui.GetCursorPosY()
-			lib_helpers.imguiProgressBar(true, mHPRatio, -1, imgui.GetFontSize(), lib_helpers.HPToGreenRedGradient(mHPRatio), nil, mHP)
-            --local endCurX = imgui.GetCursorPosX()
-            local windowSizeX = imgui.GetWindowSize()
-            local endCurX = windowSizeX - 1
-            
-            imgui.PushStyleColor("FrameBg", 0, 0, 0, 0)
+    -- Show J/Z status and Frozen, Confuse, or Paralyzed status
+        local function showStatusEffects_Text()
+            if moptions.showStatusEffects then
+                if atkTech.type == 0 then
+                    lib_helpers.TextC(true, 0, "    ")
+                else
+                    lib_helpers.TextC(true, 0xFFFF2031, atkTech.name .. atkTech.level .. string.rep(" ", 2 - #tostring(atkTech.level)) .. " ")
+                end
 
+                if defTech.type == 0 then
+                    lib_helpers.TextC(false, 0, "    ")
+                else
+                    lib_helpers.TextC(false, 0xFF0088F4, defTech.name .. defTech.level .. string.rep(" ", 2 - #tostring(defTech.level)) .. " ")
+                end
 
-            local curLen = (endCurX - curX) - wPaddingX
-            bWidth = curLen
-            local xSPos = (curLen)*mHPRatio - curLen * SDmgRatio + wPaddingX
-            local xSClamp = clampVal(xSPos, wPaddingX, bWidth+wPaddingX)
-            local specDmgBarWidth = math.max(curLen * SDmgRatio - math.abs(xSPos-xSClamp),0)
-            
-            local xHPos = (curLen)*mHPRatio - curLen * HDmgRatio + wPaddingX
-            local xHClamp = clampVal(xHPos, wPaddingX, bWidth+wPaddingX)
-            local heavyDmgBarWidth = math.max(curLen * HDmgRatio - math.abs(xHPos-xHClamp),0)
-
-            local xNPos = (curLen)*mHPRatio - curLen * NDmgRatio + wPaddingX
-            local xNClamp = clampVal(xNPos, wPaddingX, bWidth+wPaddingX)
-            local normalDmgBarWidth = math.max(curLen * NDmgRatio - math.abs(xNPos-xNClamp),0)
-
-            local attSpecHit = specAtk1_Hit
-            local attNormHit = normAtk1_Acc
-            local attHeavyHit = hardAtk1_Acc
-            if playerSelfAttackComboStep == 1 then 
-                attSpecHit = specAtk2_Hit
-                attNormHit = normAtk2_Acc
-                attHeavyHit = hardAtk2_Acc
-            elseif playerSelfAttackComboStep == 2 then 
-                attSpecHit = specAtk3_Hit
-                attNormHit = normAtk3_Acc
-                attHeavyHit = hardAtk3_Acc
-            elseif playerSelfAttackComboStep == 3 then 
-                attSpecHit = specAtk3_Hit
-                attNormHit = normAtk3_Acc
-                attHeavyHit = hardAtk3_Acc
-            end
-            attSpecHit = clampVal(attSpecHit,0,100)/100
-            attNormHit = clampVal(attNormHit,0,100)/100
-            attHeavyHit = clampVal(attHeavyHit,0,100)/100
-
-            local function showSpecDmgBar()
-                if specDmgBarWidth > 0 then
-                    imgui.SetCursorPosX(xSClamp)
-                    imgui.SetCursorPosY(curY - dmgBHeigth)
-                    --print(specAtk1_Hit)
-                    --print(string.format("%X",pEquipData.weapSpecialColor),HextoARGBColor(pEquipData.weapSpecialColor).a,HextoARGBColor(pEquipData.weapSpecialColor).r,HextoARGBColor(pEquipData.weapSpecialColor).g,HextoARGBColor(pEquipData.weapSpecialColor).b)
-
-                    local specColor = ARGBtoHexColor(
-                        LerpColor(
-                            attSpecHit,
-                            {a=255,r=70,g=70,b=70},
-                            --HextoARGBColor(pEquipData.weapSpecialColor),
-                            HextoARGBColor(pEquipData.weapSpecialColor)
-                            --HextoARGBColor(pEquipData.weapSpecialColor)
-                        )
-                    )
-                    lib_helpers.imguiProgressBar(true, 1.0, specDmgBarWidth, dmgBHeigth, specColor, nil)
+                if frozen then
+                    lib_helpers.TextC(false, 0xFF00FFFF, "F ")
+                elseif confused then
+                    lib_helpers.TextC(false, 0xFFFF00FF, "C ")
+                elseif shocked then
+                    lib_helpers.TextC(false, 0xFFFFFF00, "S ")
+                else
+                    lib_helpers.TextC(false, 0, "  ")
+                end
+                if paralyzed then
+                    lib_helpers.TextC(false, 0xFFFF4000, "P ")
                 end
             end
-            local function showHeavyDmgBar()
-                if heavyDmgBarWidth > 0 then
-                    imgui.SetCursorPosX(xHClamp)
-                    imgui.SetCursorPosY(curY - dmgBHeigth)
-                    local heavyColor = ARGBtoHexColor(
-                        LerpColor(
-                            attHeavyHit,
-                            {a=255,r=70,g=70,b=70},
-                            HextoARGBColor(0xFFFFAA00)
-                        )
-                    )
-                    lib_helpers.imguiProgressBar(true, 1.0, heavyDmgBarWidth, dmgBHeigth, heavyColor, nil)
+        end
+
+        local function showHealth_Bar()
+            if moptions.showHealthBar then
+                -- Draw enemy HP bar
+                local mHPRatio  = clampVal(mHP/mHPMax,0,1)
+                local NDmgRatio = clampVal(dmg.minNormal/mHPMax,0,1)
+                local HDmgRatio = clampVal(dmg.minHeavy/mHPMax,0,1)
+                local SDmgRatio = clampVal(dmg.minSpec/mHPMax,0,1)
+                local bWidth -- = 220
+                local dmgBHeigth = imgui.GetFontSize()/3
+                local wPaddingX = 8
+
+                local curY = imgui.GetCursorPosY()
+                lib_helpers.imguiProgressBar(true, mHPRatio, -1, imgui.GetFontSize(), lib_helpers.HPToGreenRedGradient(mHPRatio), nil, mHP)
+                --local endCurX = imgui.GetCursorPosX()
+                local windowSizeX = imgui.GetWindowSize()
+                local endCurX = windowSizeX - 1
+                
+                imgui.PushStyleColor("FrameBg", 0, 0, 0, 0)
+
+
+                local curLen = (endCurX - curX) - wPaddingX
+                bWidth = curLen
+                local xSPos = (curLen)*mHPRatio - curLen * SDmgRatio + wPaddingX
+                local xSClamp = clampVal(xSPos, wPaddingX, bWidth+wPaddingX)
+                local specDmgBarWidth = math.max(curLen * SDmgRatio - math.abs(xSPos-xSClamp),0)
+                
+                local xHPos = (curLen)*mHPRatio - curLen * HDmgRatio + wPaddingX
+                local xHClamp = clampVal(xHPos, wPaddingX, bWidth+wPaddingX)
+                local heavyDmgBarWidth = math.max(curLen * HDmgRatio - math.abs(xHPos-xHClamp),0)
+
+                local xNPos = (curLen)*mHPRatio - curLen * NDmgRatio + wPaddingX
+                local xNClamp = clampVal(xNPos, wPaddingX, bWidth+wPaddingX)
+                local normalDmgBarWidth = math.max(curLen * NDmgRatio - math.abs(xNPos-xNClamp),0)
+
+                local attSpecHit = dmg.specAtt[1].hit
+                local attNormHit = dmg.normAtt[1].acc
+                local attHeavyHit = dmg.heavyAtt[1].acc
+                if playerSelfAttackComboStep == 1 then 
+                    attSpecHit = dmg.specAtt[2].hit
+                    attNormHit = dmg.normAtt[2].acc
+                    attHeavyHit = dmg.heavyAtt[2].acc
+                elseif playerSelfAttackComboStep == 2 then 
+                    attSpecHit = dmg.specAtt[3].hit
+                    attNormHit = dmg.normAtt[3].acc
+                    attHeavyHit = dmg.heavyAtt[3].acc
+                elseif playerSelfAttackComboStep == 3 then 
+                    attSpecHit = dmg.specAtt[3].hit
+                    attNormHit = dmg.normAtt[3].acc
+                    attHeavyHit = dmg.heavyAtt[3].acc
                 end
-            end
-            local function showNormalDmgBar()
-                if normalDmgBarWidth > 0 then
-                    imgui.SetCursorPosX(xNClamp)
-                    imgui.SetCursorPosY(curY - dmgBHeigth)
-                    local normalColor = ARGBtoHexColor(
-                        LerpColor(
-                            attNormHit,
-                            {a=255,r=70,g=70,b=70},
-                            HextoARGBColor(0xFF00FF00)
+                attSpecHit = clampVal(attSpecHit,0,100)/100
+                attNormHit = clampVal(attNormHit,0,100)/100
+                attHeavyHit = clampVal(attHeavyHit,0,100)/100
+
+                local function showSpecDmgBar()
+                    if specDmgBarWidth > 0 then
+                        imgui.SetCursorPosX(xSClamp)
+                        imgui.SetCursorPosY(curY - dmgBHeigth)
+                        --print(dmg.specAtt[1].hit)
+                        --print(string.format("%X",pEquipData.weapSpecialColor),HextoARGBColor(pEquipData.weapSpecialColor).a,HextoARGBColor(pEquipData.weapSpecialColor).r,HextoARGBColor(pEquipData.weapSpecialColor).g,HextoARGBColor(pEquipData.weapSpecialColor).b)
+
+                        local specColor = ARGBtoHexColor(
+                            LerpColor(
+                                attSpecHit,
+                                {a=255,r=70,g=70,b=70},
+                                --HextoARGBColor(pEquipData.weapSpecialColor),
+                                HextoARGBColor(pEquipData.weapSpecialColor)
+                                --HextoARGBColor(pEquipData.weapSpecialColor)
+                            )
                         )
-                    )
-                    lib_helpers.imguiProgressBar(true, 1.0, normalDmgBarWidth, dmgBHeigth, normalColor, nil)  
-                end
-            end
-
-            local damageBars = {
-                {
-                    width = specDmgBarWidth,
-                    showBar = showSpecDmgBar,
-                },
-                {
-                    width = normalDmgBarWidth,
-                    showBar = showNormalDmgBar,
-                },
-                {
-                    width = heavyDmgBarWidth,
-                    showBar = showHeavyDmgBar,
-                },
-            }
-
-            local function sortByWidth(a,b)
-                return a.width > b.width
-            end
-            table.sort(damageBars, sortByWidth)
-            for i=1, table.getn(damageBars), 1 do
-                damageBars[i].showBar()
-            end
-            
-
-            imgui.SetCursorPosY(curY + imgui.GetFontSize())
-            
-            -- imgui.SetCursorPosX(curX)
-            -- imgui.SetCursorPosY(curY)
-            --lib_helpers.imguiProgressBar(true, NDmgRatio, bWidth, imgui.GetFontSize(), 0xFF7070f9, nil)
-
-            imgui.PopStyleColor()
-		end
-
-		if moptions.showDamage then
-			lib_helpers.Text(true, "%i", dmg.minNormal)
-			lib_helpers.Text(false, "-")
-			lib_helpers.Text(false, "%i", dmg.maxNormal)
-			lib_helpers.Text(false, " Weak Hit")
-			lib_helpers.Text(true, "%i", dmg.minHeavy)
-			lib_helpers.Text(false, "-")
-			lib_helpers.Text(false, "%i", dmg.maxHeavy)
-			lib_helpers.Text(false, " Heavy Hit")
-		end
-	
-		
-		if pEquipData.weapSpecial > 0 then
-			if moptions.showDamage then
-                if dmg.minSpec == dmg.maxSpec then
-					lib_helpers.TextC(true, pEquipData.weapSpecialColor, "%i", dmg.specDMG)
-				else
-					lib_helpers.Text(true, "%i", dmg.minSpec)
-					lib_helpers.Text(false, "-")
-					lib_helpers.Text(false, "%i", dmg.maxSpec)
-				end
-				lib_helpers.Text(false, " Special Hit [")
-				lib_helpers.TextC(false, pEquipData.weapSpecialColor, pEquipData.weapSpecialName)
-				lib_helpers.Text(false, "] ")
-				if dmg.specAilment > 0 then
-                    if pEquipData.isWeapEXPSteal then
-                        lib_helpers.Text(false, "steal ")
-                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
-                        lib_helpers.Text(false, " EXP")
-                    elseif pEquipData.isWeapTPSteal and pData.isCast == false then
-                        lib_helpers.Text(false, "steal ")
-                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
-                        lib_helpers.Text(false, " TP")
-                    elseif pEquipData.isWeapHPSteal then	
-                        lib_helpers.Text(false, "steal ")
-                        lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
-                        lib_helpers.Text(false, " HP")
-                    elseif pEquipData.isWeapInstantKill and monster.isBoss == 0 then	
-                        lib_helpers.Text(false, "chance to Instant Kill")
-                    elseif pEquipData.isWeapConfusionSE and monster.isBoss == 0 then
-                        lib_helpers.Text(false, "chance to Confuse")
-                    elseif pEquipData.isWeapParalysisSE and (monster.attribute == 1 or monster.attribute == 2 or monster.attribute == 8) and monster.isBoss == 0 then
-                        lib_helpers.Text(false, "chance to Paralyze")
-                    elseif pEquipData.isWeapLightningElement and monster.attribute == 4 and monster.isBoss == 0 and monster.name ~= "Epsilon" then	
-                        dmg.specAilment = pData.ailRedux*pEquipData.v50xStatusBoost
-                        lib_helpers.Text(false, "chance to Shock")
-                    elseif pEquipData.isWeapFrozenSE and not (monster.isBoss == 1 or monster.name == "Epsilon" or monster.name == "Zu" or monster.name == "Pazuzu" or monster.name == "Dorphon" or monster.name == "Dorphon Eclair" or monster.name == "Girtablulu" ) then
-                        lib_helpers.Text(false, "chance to Freeze")
+                        lib_helpers.imguiProgressBar(true, 1.0, specDmgBarWidth, dmgBHeigth, specColor, nil)
                     end
-				end
-			end
-			if moptions.showHit then
-				lib_helpers.Text(true, "Spec1: ")
-				lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", specAtk1_Hit)
-				lib_helpers.Text(false, " > Spec2: ")
-				lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", specAtk2_Hit)
-				lib_helpers.Text(false, " > Spec3: ")
-				lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", specAtk3_Hit)
-			end
-		end
-		
-		if moptions.showHit then
-			-- Display best first attack
-			lib_helpers.Text(true, "[")
-			if specAtk1_Acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
-				lib_helpers.TextC(false, 0xFFFF2031, "Spec1: %i%% ", specAtk1_Acc)
-			elseif hardAtk1_Acc >= moptions.targetHardThreshold then
-				lib_helpers.TextC(false, 0xFFFFAA00, "Hard1: %i%% ", hardAtk1_Acc)
-			elseif normAtk1_Acc > 0 then
-				lib_helpers.TextC(false, 0xFF00FF00, "Norm1: %i%% ", normAtk1_Acc)
-			else
-				lib_helpers.TextC(false, 0xFFBB0000, "Norm1: 0%%")
-			end
+                end
+                local function showHeavyDmgBar()
+                    if heavyDmgBarWidth > 0 then
+                        imgui.SetCursorPosX(xHClamp)
+                        imgui.SetCursorPosY(curY - dmgBHeigth)
+                        local heavyColor = ARGBtoHexColor(
+                            LerpColor(
+                                attHeavyHit,
+                                {a=255,r=70,g=70,b=70},
+                                HextoARGBColor(0xFFFFAA00)
+                            )
+                        )
+                        lib_helpers.imguiProgressBar(true, 1.0, heavyDmgBarWidth, dmgBHeigth, heavyColor, nil)
+                    end
+                end
+                local function showNormalDmgBar()
+                    if normalDmgBarWidth > 0 then
+                        imgui.SetCursorPosX(xNClamp)
+                        imgui.SetCursorPosY(curY - dmgBHeigth)
+                        local normalColor = ARGBtoHexColor(
+                            LerpColor(
+                                attNormHit,
+                                {a=255,r=70,g=70,b=70},
+                                HextoARGBColor(0xFF00FF00)
+                            )
+                        )
+                        lib_helpers.imguiProgressBar(true, 1.0, normalDmgBarWidth, dmgBHeigth, normalColor, nil)  
+                    end
+                end
 
-			-- Display best second attack
-			lib_helpers.Text(false, " > ")
-			if specAtk2_Acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
-				lib_helpers.TextC(false, 0xFFFF2031, "Spec2: %i%% ", specAtk2_Acc)
-			elseif hardAtk2_Acc >= moptions.targetHardThreshold then
-				lib_helpers.TextC(false, 0xFFFFAA00, "Hard2: %i%% ", hardAtk2_Acc)
-			elseif normAtk2_Acc > 0 then
-				lib_helpers.TextC(false, 0xFF00FF00, "Norm2: %i%% ", normAtk2_Acc)
-			else
-				lib_helpers.TextC(false, 0xFFBB0000, "Norm2: 0%%")
-			end
+                local damageBars = {
+                    {
+                        width = specDmgBarWidth,
+                        showBar = showSpecDmgBar,
+                    },
+                    {
+                        width = normalDmgBarWidth,
+                        showBar = showNormalDmgBar,
+                    },
+                    {
+                        width = heavyDmgBarWidth,
+                        showBar = showHeavyDmgBar,
+                    },
+                }
 
-			-- Display best third attack
-			lib_helpers.Text(false, "> ")
-			if specAtk3_Acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
-				lib_helpers.TextC(false, 0xFFFF2031, "Spec3: %i%%", specAtk3_Acc)
-			elseif hardAtk3_Acc >= moptions.targetHardThreshold then
-				lib_helpers.TextC(false, 0xFFFFAA00, "Hard3: %i%%", hardAtk3_Acc)
-			elseif normAtk3_Acc > 0 then
-				lib_helpers.TextC(false, 0xFF00FF00, "Norm3: %i%%", normAtk3_Acc)
-			else
-				lib_helpers.TextC(false, 0xFFBB0000, "Norm3: 0%%")
-			end
-			lib_helpers.Text(false, "]")
-		end
-		
-		if moptions.showRares then
-			if cacheSide then
-                local mName = string.upper(monster.name)
-                if drop_charts[party.difficulty]
-                    and drop_charts[party.difficulty][party.episode]
-                    and drop_charts[party.difficulty][party.episode][party.id]
-                    and drop_charts[party.difficulty][party.episode][party.id][mName]
-                then
-                    local mDrops = drop_charts[party.difficulty][party.episode][party.id][mName]
-                    for i,drop in pairs(mDrops) do
-                        if drop.item and drop.rare and drop.dar then
-                            lib_helpers.Text(true, "1/")
-                            lib_helpers.Text(false, "%i", 1/((party.dar*drop.dar)*(party.rare*drop.rare))*100000000)
-                            lib_helpers.Text(false, " ")
-                            lib_helpers.TextC(false, section_color[party.id], drop.item)
+                local function sortByWidth(a,b)
+                    return a.width > b.width
+                end
+                table.sort(damageBars, sortByWidth)
+                for i=1, table.getn(damageBars), 1 do
+                    damageBars[i].showBar()
+                end
+                
+
+                imgui.SetCursorPosY(curY + imgui.GetFontSize())
+                
+                -- imgui.SetCursorPosX(curX)
+                -- imgui.SetCursorPosY(curY)
+                --lib_helpers.imguiProgressBar(true, NDmgRatio, bWidth, imgui.GetFontSize(), 0xFF7070f9, nil)
+
+                imgui.PopStyleColor()
+            end
+        end
+
+        local function showDamage_Text()
+            if moptions.showDamage then
+                lib_helpers.Text(true, "%i", dmg.minNormal)
+                lib_helpers.Text(false, "-")
+                lib_helpers.Text(false, "%i", dmg.maxNormal)
+                lib_helpers.Text(false, " Weak Hit")
+                lib_helpers.Text(true, "%i", dmg.minHeavy)
+                lib_helpers.Text(false, "-")
+                lib_helpers.Text(false, "%i", dmg.maxHeavy)
+                lib_helpers.Text(false, " Heavy Hit")
+            end
+        end
+
+        local function showSpecialDamage_Text()
+            if pEquipData.weapSpecial > 0 then
+                if moptions.showDamage then
+                    if dmg.minSpec == dmg.maxSpec then
+                        lib_helpers.TextC(true, pEquipData.weapSpecialColor, "%i", dmg.specDMG)
+                    else
+                        lib_helpers.Text(true, "%i", dmg.minSpec)
+                        lib_helpers.Text(false, "-")
+                        lib_helpers.Text(false, "%i", dmg.maxSpec)
+                    end
+                    lib_helpers.Text(false, " Special Hit [")
+                    lib_helpers.TextC(false, pEquipData.weapSpecialColor, pEquipData.weapSpecialName)
+                    lib_helpers.Text(false, "] ")
+                    if dmg.specAilment > 0 then
+                        if pEquipData.isWeapEXPSteal then
+                            lib_helpers.Text(false, "steal ")
+                            lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
+                            lib_helpers.Text(false, " EXP")
+                        elseif pEquipData.isWeapTPSteal and pData.isCast == false then
+                            lib_helpers.Text(false, "steal ")
+                            lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
+                            lib_helpers.Text(false, " TP")
+                        elseif pEquipData.isWeapHPSteal then	
+                            lib_helpers.Text(false, "steal ")
+                            lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
+                            lib_helpers.Text(false, " HP")
+                        elseif pEquipData.isWeapInstantKill and monster.isBoss == 0 then	
+                            lib_helpers.Text(false, "chance to Instant Kill")
+                        elseif pEquipData.isWeapConfusionSE and monster.isBoss == 0 then
+                            lib_helpers.Text(false, "chance to Confuse")
+                        elseif pEquipData.isWeapParalysisSE and (monster.attribute == 1 or monster.attribute == 2 or monster.attribute == 8) and monster.isBoss == 0 then
+                            lib_helpers.Text(false, "chance to Paralyze")
+                        elseif pEquipData.isWeapLightningElement and monster.attribute == 4 and monster.isBoss == 0 and monster.name ~= "Epsilon" then	
+                            dmg.specAilment = pData.ailRedux*pEquipData.v50xStatusBoost
+                            lib_helpers.Text(false, "chance to Shock")
+                        elseif pEquipData.isWeapFrozenSE and not (monster.isBoss == 1 or monster.name == "Epsilon" or monster.name == "Zu" or monster.name == "Pazuzu" or monster.name == "Dorphon" or monster.name == "Dorphon Eclair" or monster.name == "Girtablulu" ) then
+                            lib_helpers.Text(false, "chance to Freeze")
                         end
                     end
                 end
-			else
-				lib_helpers.Text(true, "Type /partyinfo to refresh...")
-			end
-		end
+                if moptions.showHit then
+                    lib_helpers.Text(true, "S1: ")
+                    lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", dmg.specAtt[1].hit)
+                    lib_helpers.Text(false, " > S2: ")
+                    lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", dmg.specAtt[2].hit)
+                    lib_helpers.Text(false, " > S3: ")
+                    lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", dmg.specAtt[3].hit)
+                end
+            end
+        end
+
+        local function showRecommended_Text()
+            if moptions.showRecommended then
+                -- Display best first attack
+                lib_helpers.Text(true, "[")
+                if dmg.specAtt[1].acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
+                    lib_helpers.TextC(false, 0xFFFF2031, "S1: %i%% ", dmg.specAtt[1].acc)
+                elseif dmg.heavyAtt[1].acc >= moptions.targetHardThreshold then
+                    lib_helpers.TextC(false, 0xFFFFAA00, "H1: %i%% ", dmg.heavyAtt[1].acc)
+                elseif dmg.normAtt[1].acc > 0 then
+                    lib_helpers.TextC(false, 0xFF00FF00, "N1: %i%% ", dmg.normAtt[1].acc)
+                else
+                    lib_helpers.TextC(false, 0xFFBB0000, "N1: 0%%")
+                end
+
+                -- Display best second attack
+                lib_helpers.Text(false, " > ")
+                if dmg.specAtt[2].acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
+                    lib_helpers.TextC(false, 0xFFFF2031, "S2: %i%% ", dmg.specAtt[2].acc)
+                elseif dmg.heavyAtt[2].acc >= moptions.targetHardThreshold then
+                    lib_helpers.TextC(false, 0xFFFFAA00, "H2: %i%% ", dmg.heavyAtt[2].acc)
+                elseif dmg.normAtt[2].acc > 0 then
+                    lib_helpers.TextC(false, 0xFF00FF00, "N2: %i%% ", dmg.normAtt[2].acc)
+                else
+                    lib_helpers.TextC(false, 0xFFBB0000, "N2: 0%%")
+                end
+
+                -- Display best third attack
+                lib_helpers.Text(false, "> ")
+                if dmg.specAtt[3].acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
+                    lib_helpers.TextC(false, 0xFFFF2031, "S3: %i%%", dmg.specAtt[3].acc)
+                elseif dmg.heavyAtt[3].acc >= moptions.targetHardThreshold then
+                    lib_helpers.TextC(false, 0xFFFFAA00, "H3: %i%%", dmg.heavyAtt[3].acc)
+                elseif dmg.normAtt[3].acc > 0 then
+                    lib_helpers.TextC(false, 0xFF00FF00, "N3: %i%%", dmg.normAtt[3].acc)
+                else
+                    lib_helpers.TextC(false, 0xFFBB0000, "N3: 0%%")
+                end
+                lib_helpers.Text(false, "]")
+            end
+        end
+
+        local function showRares_Text()
+            if moptions.showRares then
+                if cacheSide then
+                    local mName = string.upper(monster.name)
+                    if drop_charts[party.difficulty]
+                        and drop_charts[party.difficulty][party.episode]
+                        and drop_charts[party.difficulty][party.episode][party.id]
+                        and drop_charts[party.difficulty][party.episode][party.id][mName]
+                    then
+                        local mDrops = drop_charts[party.difficulty][party.episode][party.id][mName]
+                        for i,drop in pairs(mDrops) do
+                            if drop.item and drop.rare and drop.dar then
+                                lib_helpers.Text(true, "1/")
+                                lib_helpers.Text(false, "%i", 1/((party.dar*drop.dar)*(party.rare*drop.rare))*100000000)
+                                lib_helpers.Text(false, " ")
+                                lib_helpers.TextC(false, section_color[party.id], drop.item)
+                            end
+                        end
+                    end
+                else
+                    lib_helpers.Text(true, "Type /partyinfo to refresh...")
+                end
+            end
+        end
+
+        showName_Text()
+        showStatusEffects_Text()
+        showHealth_Bar()
+        showDamage_Text()
+        showSpecialDamage_Text()
+        showRecommended_Text()
+        showRares_Text()
+
     end
 end
 
@@ -2173,7 +2206,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.2.0",
+        version = "0.2.1",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,

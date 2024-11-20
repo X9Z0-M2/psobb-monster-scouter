@@ -211,6 +211,10 @@ local function ConfigurationWindow(configuration)
                 cateTabl.showHit = not cateTabl.showHit
                 this.changed = true
             end
+            if imgui.Checkbox("Show Recommended", cateTabl.showRecommended) then
+                cateTabl.showRecommended = not cateTabl.showRecommended
+                this.changed = true
+            end
             if imgui.Checkbox("Show Weakness", cateTabl.showWeakness) then
                 cateTabl.showWeakness = not cateTabl.showWeakness
                 this.changed = true
