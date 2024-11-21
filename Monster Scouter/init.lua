@@ -107,6 +107,7 @@ local function LoadOptions()
         "recommended",
         "rare",
         "resist",
+        "probability",
     }
     local function EstablishDisplayWidgets(section, id)
         local shownOptionOrderWasMissing = false
@@ -137,6 +138,7 @@ local function LoadOptions()
     SetDefaultValue( options[section][id].recommended, "show", false )
     SetDefaultValue( options[section][id].rare, "show", false )
     SetDefaultValue( options[section][id].resist, "show", false )
+    SetDefaultValue( options[section][id].probability, "show", false )
 
     for id,monster in pairs(cfgMonsters.m) do
         if monster.cate then
@@ -157,8 +159,10 @@ local function LoadOptions()
             SetDefaultValue( options[section][id].recommended, "targHeavyThresh", 90 )
             SetDefaultValue( options[section][id].recommended, "targSpecThresh", 90 )
             SetDefaultValue( options[section][id].rare, "show", true )
-            SetDefaultValue( options[section][id].resist, "show", true )
+            SetDefaultValue( options[section][id].resist, "show", false )
             SetDefaultValue( options[section][id].resist, "type", "vbar" )
+            SetDefaultValue( options[section][id].probability, "show", false )
+            SetDefaultValue( options[section][id].probability, "type", "vbar" )
         end
     end
 end
@@ -2015,7 +2019,6 @@ local function PresentTargetMonster(monster, section)
             return false
         end
 
-
         local function showResistances_VBar(order)
             if moptions.resist.show and moptions.resist.type == "vbar" then
                 imgui.PushStyleVar_2("FramePadding", 0.5, 0.5)
@@ -2057,6 +2060,52 @@ local function PresentTargetMonster(monster, section)
             return false
         end
 
+        local function showProbability_VBar(order)
+            if moptions.probability.show and moptions.probability.type == "vbar" then
+                imgui.PushStyleVar_2("FramePadding", 0.5, 0.5)
+                local height = imgui.GetFontSize()
+                local prob = {
+                    43.31,
+                    79.43,
+                    130.39,
+                    198.25,
+                    285.01,
+                    392.55,
+                    522.74,
+                }
+                local width = 3 * #prob
+
+                local rareRate = lua_biginteger
+                if cacheSide then
+                    local mName = string.upper(monster.name)
+                    if drop_charts[party.difficulty]
+                        and drop_charts[party.difficulty][party.episode]
+                        and drop_charts[party.difficulty][party.episode][party.id]
+                        and drop_charts[party.difficulty][party.episode][party.id][mName]
+                    then
+                        local mDrops = drop_charts[party.difficulty][party.episode][party.id][mName]
+                        for i,drop in pairs(mDrops) do
+                            if drop.item and drop.rare and drop.dar then
+                                rareRate = 1/((party.dar*drop.dar)*(party.rare*drop.rare))*100000000
+                            end
+                        end
+                    end
+                end
+
+                for i=1, #prob do
+                    prob[i] = (1 - ( (rareRate-1)/rareRate ) ^ prob[i]) * 100
+                end
+
+                imgui.PushStyleColor("PlotHistogram", 0, 1, 1, 1)
+                imgui.PlotHistogram("##b1", prob, #prob, 0, "", 0, 100, width, height)
+                imgui.PopStyleColor()
+
+                imgui.PopStyleVar()
+                return true
+            end
+            return false
+        end
+
 
         monster_shown_options = {
             showName_Text,
@@ -2067,6 +2116,7 @@ local function PresentTargetMonster(monster, section)
             showRecommended_Text,
             showRares_Text,
             showResistances_VBar,
+            showProbability_VBar,
         }
 
         local showOrder = 1
@@ -2368,7 +2418,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.2.3",
+        version = "0.2.4",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,
