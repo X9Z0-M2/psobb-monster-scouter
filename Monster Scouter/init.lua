@@ -106,11 +106,20 @@ local function LoadOptions()
         "hit",
         "recommended",
         "rare",
+        "resist",
     }
     local function EstablishDisplayWidgets(section, id)
+        local shownOptionOrderWasMissing = false
+        if options[section][id].shownOptionOrder == nil then
+            options[section][id].shownOptionOrder = {}
+            shownOptionOrderWasMissing = true
+        end
         for i=1, #displayWidgets do
             if options[section][id][displayWidgets[i]] == nil then
                 options[section][id][displayWidgets[i]] = {}
+            end
+            if shownOptionOrderWasMissing then
+                options[section][id].shownOptionOrder[i] = i
             end
         end
     end
@@ -118,7 +127,6 @@ local function LoadOptions()
     -- Slime Origin
     local id = -20
     EstablishDisplayWidgets(section, id)
-
     SetDefaultValue( options[section][id].name, "show", true )
     SetDefaultValue( options[section][id].name, "colorAsWeakness", false )
     SetDefaultValue( options[section][id].se, "show", false )
@@ -128,6 +136,7 @@ local function LoadOptions()
     SetDefaultValue( options[section][id].hit, "show", false )
     SetDefaultValue( options[section][id].recommended, "show", false )
     SetDefaultValue( options[section][id].rare, "show", false )
+    SetDefaultValue( options[section][id].resist, "show", false )
 
     for id,monster in pairs(cfgMonsters.m) do
         if monster.cate then
@@ -148,6 +157,8 @@ local function LoadOptions()
             SetDefaultValue( options[section][id].recommended, "targHeavyThresh", 90 )
             SetDefaultValue( options[section][id].recommended, "targSpecThresh", 90 )
             SetDefaultValue( options[section][id].rare, "show", true )
+            SetDefaultValue( options[section][id].resist, "show", true )
+            SetDefaultValue( options[section][id].resist, "type", "vbar" )
         end
     end
 end
@@ -1642,32 +1653,46 @@ local function PresentTargetMonster(monster, section)
                 if moptions.name.fontScale ~= 1.0 then
                     imgui.SetWindowFontScale(moptions.name.fontScale)
                 end
+                
+                local cPosY = imgui.GetCursorPosY()
+                local winX = imgui.GetWindowSize()
+                local tSizex = imgui.CalcTextSize(mName)
 
-                if moptions.name.justify ~= 0 then
-                    local winX = imgui.GetWindowSize()
-                    local cPosX = imgui.GetCursorPosX()
-                    local tSizex = imgui.CalcTextSize(mName)
-                    if moptions.name.justify == 1 then
-                        local xPos = clampVal(winX*0.5 - cPosX - tSizex*0.5 + trackerWindowPadding.x, cPosX, winX)
-                        if not moptions.name.newLine then
-                            imgui.SameLine(xPos)
-                        else
-                            imgui.SetCursorPosX(xPos)
-                        end
+                if moptions.name.justify == 0 then
+                    if moptions.name.newLine then
+                        imgui.SetCursorPosX(trackerWindowPadding.x)
                     else
-                        local xPos = clampVal(winX - tSizex - trackerWindowPadding.x -1, cPosX, winX) -- subtract 1 extra so "AlwaysAutoResize" will work
-                        if not moptions.name.newLine then
-                            imgui.SameLine(xPos)
-                        else
-                            imgui.SetCursorPosX(xPos)
+                        imgui.SameLine(0,0)
+                    end
+                elseif moptions.name.justify == 1 then
+                    local rePosX = winX*0.5 - tSizex*0.5
+                    if moptions.name.newLine then
+                        local cPosX = imgui.GetCursorPosX()
+                        local xPos = clampVal(rePosX, cPosX, winX)
+                        imgui.SetCursorPosX(xPos)
+                    else
+                        if order ~= 1 then
+                            imgui.SameLine(0,0)
                         end
+                        local cPosX = imgui.GetCursorPosX()
+                        local xPos = clampVal(rePosX, cPosX, winX)
+                        imgui.SameLine(xPos,0)
                     end
                 else
-                    if not moptions.name.newLine then
-                        imgui.SameLine(0)
+                    local rePosX = winX - tSizex - trackerWindowPadding.x -1 -- subtract 1 extra so "AlwaysAutoResize" will work
+                    if moptions.name.newLine then
+                        local cPosX = imgui.GetCursorPosX()
+                        local xPos = clampVal(rePosX, cPosX, winX)
+                        imgui.SetCursorPosX(xPos)
+                    else
+                        if order ~= 1 then
+                            imgui.SameLine(0,0)
+                        end
+                        local cPosX = imgui.GetCursorPosX()
+                        local xPos = clampVal(rePosX, cPosX, winX)
+                        imgui.SameLine(xPos,0)
                     end
                 end
-
 
                 lib_helpers.TextC(true, mColor, mName)
 
@@ -1991,6 +2016,48 @@ local function PresentTargetMonster(monster, section)
         end
 
 
+        local function showResistances_VBar(order)
+            if moptions.resist.show and moptions.resist.type == "vbar" then
+                imgui.PushStyleVar_2("FramePadding", 0.5, 0.5)
+                local height = imgui.GetFontSize()
+                local width = 4
+
+                imgui.PushStyleColor("PlotHistogram", 0, 1, 1, 1)
+                imgui.PlotHistogram("##efr", {monster.Efr}, 1, 0, "", 0, 100, width, height)
+                imgui.PopStyleColor()
+
+                imgui.SameLine(0,0)
+                imgui.PushStyleColor("PlotHistogram", 1, 1, 0, 1)
+                imgui.PlotHistogram("##eth", {monster.Eth}, 1, 0, "", 0, 100, width, height)
+                imgui.PopStyleColor()
+
+                imgui.SameLine(0,0)
+                imgui.PushStyleColor("PlotHistogram", 1, 0.4, 0, 1)
+                imgui.PlotHistogram("##eic", {monster.Eic}, 1, 0, "", 0, 100, width, height)
+                imgui.PopStyleColor()
+
+                imgui.SameLine(0,0)
+                imgui.PushStyleColor("PlotHistogram", 0.933, 0.098, 0.863, 1)
+                imgui.PlotHistogram("##edk", {monster.Edk}, 1, 0, "", 0, 100, width, height)
+                imgui.PopStyleColor()
+
+                imgui.SameLine(0,0)
+                imgui.PushStyleColor("PlotHistogram", 1, 1, 0.70196, 1)
+                imgui.PlotHistogram("##elt", {monster.Elt}, 1, 0, "", 0, 100, width, height)
+                imgui.PopStyleColor()
+
+                imgui.SameLine(0,0)
+                imgui.PushStyleColor("PlotHistogram", 1, 0.125, 0.19215, 1)
+                imgui.PlotHistogram("##esp", {monster.Esp}, 1, 0, "", 0, 100, width, height)
+                imgui.PopStyleColor()
+
+                imgui.PopStyleVar()
+                return true
+            end
+            return false
+        end
+
+
         monster_shown_options = {
             showName_Text,
             showStatusEffects_Text,
@@ -1999,6 +2066,7 @@ local function PresentTargetMonster(monster, section)
             showHit_Text,
             showRecommended_Text,
             showRares_Text,
+            showResistances_VBar,
         }
 
         local showOrder = 1
@@ -2300,7 +2368,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.2.2",
+        version = "0.2.3",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,

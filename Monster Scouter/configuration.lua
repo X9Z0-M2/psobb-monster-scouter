@@ -211,6 +211,9 @@ local function ConfigurationWindow(configuration)
             local function showRares_Option(cateTabl, n)
                 showEnableRow(cateTabl, "rare", "Show Rare Drops", n)
             end
+            local function showResistances_Option(cateTabl, n)
+                showEnableRow(cateTabl, "resist", "Show Resistances", n)
+            end
 
             local function reorder_cateTabl_Options(items) -- user interaction reorders these options
                 local active_item = nil
@@ -257,6 +260,7 @@ local function ConfigurationWindow(configuration)
                     showHit_Option,
                     showRecommended_Option,
                     showRares_Option,
+                    showResistances_Option,
                 }
             end
 
@@ -390,6 +394,13 @@ local function ConfigurationWindow(configuration)
                 elseif cm_persist.selected_widget == 7 then
                     local optionCate = "rare"
                     if imgui.TreeNodeEx("Rare Options", "DefaultOpen") then
+
+                        imgui.TreePop()
+                    end
+
+                elseif cm_persist.selected_widget == 8 then
+                    local optionCate = "resist"
+                    if imgui.TreeNodeEx("Resistance Options", "DefaultOpen") then
 
                         imgui.TreePop()
                     end
