@@ -17,8 +17,8 @@ local function getMonstersBySegment()
     end
     return mt
 end
-monstersBySegment = getMonstersBySegment()
-monsterSegmentOrder = {
+local monstersBySegment = getMonstersBySegment()
+local monsterSegmentOrder = {
     "General",
     "Forest",
     "Cave",
@@ -146,15 +146,7 @@ local function ConfigurationWindow(configuration)
         return custom
     end
 
-    local function CopyOverridedSettings(buttonName, section)
-        if _configuration[section].AdditionalTrackerOverrides then
-            local overrideName = buttonName .. "Override"
-            if _configuration[section][overrideName] then
-                _configuration[section][buttonName] = _configuration["tracker1"][buttonName]
-                _configuration[section].changed = true
-            end
-        end
-    end
+    local configureMonster_persist = {}
 
     local _showWindowSettings = function()
         local success
@@ -168,7 +160,13 @@ local function ConfigurationWindow(configuration)
 
         local function configureMonster(monster, category, section, Additional)
             imgui.PushID(section..category.."cfg")
-            local cateTabl    = _configuration[section][category]
+            local cateTabl        = _configuration[section][category]
+            local defaultCateTabl = _configuration[section][-1]
+            
+            if configureMonster_persist[category] == nil then
+                configureMonster_persist[category] = {}
+            end
+            local cm_persist = configureMonster_persist[category]
 
 
             if imgui.Checkbox("Enable", cateTabl.enabled) then
@@ -176,71 +174,230 @@ local function ConfigurationWindow(configuration)
                 this.changed = true
             end
 
-            if category ~= -1 and imgui.Checkbox("Override General > Default", cateTabl.overriden) then
-                cateTabl.overriden = not cateTabl.overriden
-                this.overriden = true
+            if category ~= -1 and imgui.Checkbox("Override General > Default", cateTabl.overridden) then
+                cateTabl.overridden = not cateTabl.overridden
+                this.overridden = true
             end
 
-            -- imgui.SameLine(0, 4)
-            -- if imgui.Checkbox("Show in Current Room Only", cateTabl.showName) then
-            --     cateTabl.showName = not cateTabl.showName
-            --     this.changed = true
-            -- end
-
-            if imgui.Checkbox("Show Name", cateTabl.showName) then
-                cateTabl.showName = not cateTabl.showName
-                this.changed = true
+            local function showEnableRow(cateTabl, widgetName, buttonText, n)
+                if imgui.Checkbox("##"..buttonText, cateTabl[widgetName].show) then
+                    cateTabl[widgetName].show = not cateTabl[widgetName].show
+                    this.changed = true
+                end
+                if imgui.IsItemActive() then
+                    cm_persist.selected_widget = n
+                end
+                imgui.SameLine(0, 4)
+                imgui.Selectable(buttonText)
             end
-            if imgui.Checkbox("Show Health Percent", cateTabl.showHealthPercent) then
-                cateTabl.showHealthPercent = not cateTabl.showHealthPercent
-                this.changed = true
+            local function showName_Option(cateTabl, n)
+                showEnableRow(cateTabl, "name", "Show Name", n)
             end
-            if imgui.Checkbox("Show Health Amount", cateTabl.showHealthAmount) then
-                cateTabl.showHealthAmount = not cateTabl.showHealthAmount
-                this.changed = true
+            local function showStatusEffects_Option(cateTabl, n)
+                showEnableRow(cateTabl, "se", "Show Status Effects", n)
             end
-            if imgui.Checkbox("Show Health Bar", cateTabl.showHealthBar) then
-                cateTabl.showHealthBar = not cateTabl.showHealthBar
-                this.changed = true
+            local function showHealth_Option(cateTabl, n)
+                showEnableRow(cateTabl, "hp", "Show Health", n)
             end
-            if imgui.Checkbox("Show Damage", cateTabl.showDamage) then
-                cateTabl.showDamage = not cateTabl.showDamage
-                this.changed = true
+            local function showDamage_Option(cateTabl, n)
+                showEnableRow(cateTabl, "damage", "Show Damage", n)
             end
-            if imgui.Checkbox("Show Hit", cateTabl.showHit) then
-                cateTabl.showHit = not cateTabl.showHit
-                this.changed = true
+            local function showHit_Option(cateTabl, n)
+                showEnableRow(cateTabl, "hit", "Show Hit", n)
             end
-            if imgui.Checkbox("Show Recommended", cateTabl.showRecommended) then
-                cateTabl.showRecommended = not cateTabl.showRecommended
-                this.changed = true
+            local function showRecommended_Option(cateTabl, n)
+                showEnableRow(cateTabl, "recommended", "Show Recommended", n)
             end
-            if imgui.Checkbox("Show Weakness", cateTabl.showWeakness) then
-                cateTabl.showWeakness = not cateTabl.showWeakness
-                this.changed = true
-            end
-            if imgui.Checkbox("Show Status Effects", cateTabl.showStatusEffects) then
-                cateTabl.showStatusEffects = not cateTabl.showStatusEffects
-                this.changed = true
-            end
-            if imgui.Checkbox("Show Rare Drops", cateTabl.showRares) then
-                cateTabl.showRares = not cateTabl.showRares
-                this.changed = true
+            local function showRares_Option(cateTabl, n)
+                showEnableRow(cateTabl, "rare", "Show Rare Drops", n)
             end
 
-            local SWidthP = 110
-            imgui.PushItemWidth(SWidthP)
-            success, cateTabl.targetHardThreshold = imgui.SliderInt("Target Hard Damage Threshold", cateTabl.targetHardThreshold, 1, 100)
-            imgui.PopItemWidth()
-            if success then
+            local function reorder_cateTabl_Options(items) -- user interaction reorders these options
+                local active_item = nil
+                local hovered_item = nil
+                local active_item_val = nil
+                for n=1, #items do
+                    local item = items[n]
+                    cateTabl_Shown_Reordering_Options[item](cateTabl,item)
+                    if imgui.IsItemActive() then
+                        active_item = n
+                    end
+                    if imgui.IsItemHoveredRect() then
+                        hovered_item = n
+                    end
+                    if active_item_val == nil and active_item ~= nil and active_item == hovered_item then
+                        cm_persist.selected_widget = item
+                        active_item_val = item
+                    end
+                end
+                
+                for n=1, #items do
+                    if active_item == n and hovered_item ~= nil and hovered_item ~= n then
+                        if hovered_item > 0 and hovered_item <= #items then
+                            while hovered_item ~= active_item do
+                                local prev_item_val = items[active_item]
+                                local prev_active_item = active_item
+                                active_item = active_item + ((hovered_item - active_item) < 0.0 and -1 or 1)
+
+                                items[prev_active_item] = items[active_item]
+                                items[active_item] = prev_item_val
+                            end
+                            this.changed = true
+                        end
+                    end
+                end
+            end
+
+            if not cateTabl_Shown_Reordering_Options then
+                cateTabl_Shown_Reordering_Options = {
+                    showName_Option,
+                    showStatusEffects_Option,
+                    showHealth_Option,
+                    showDamage_Option,
+                    showHit_Option,
+                    showRecommended_Option,
+                    showRares_Option,
+                }
+            end
+
+            local function resetShowOptionOrder()
+                cateTabl.shownOptionOrder = {}
+                for i=1, #cateTabl_Shown_Reordering_Options do 
+                    table.insert(cateTabl.shownOptionOrder, i)
+                end
                 this.changed = true
             end
 
-            imgui.PushItemWidth(SWidthP)
-            success, cateTabl.targetSpecialThreshold = imgui.SliderInt("Target Special Damage Threshold", cateTabl.targetSpecialThreshold, 1, 100)
-            imgui.PopItemWidth()
-            if success then
-                this.changed = true
+            if not cateTabl.shownOptionOrder then
+                resetShowOptionOrder()
+            end
+
+            if  (category == -1 and defaultCateTabl.enabled)
+                or (category ~= -1 and cateTabl.overridden and cateTabl.enabled)
+            then
+                imgui.PushStyleColor("Border", 0.33, 0.33, 0.33, 1.0)
+                
+                local childWindowSizeX = imgui.CalcTextSize("Show Status Effects") + 42
+                local childWindowSizeY = #cateTabl.shownOptionOrder * 24 +10
+                imgui.BeginChild( "##" .. section..category.."reorder", childWindowSizeX, childWindowSizeY, true )
+                reorder_cateTabl_Options(cateTabl.shownOptionOrder)
+                imgui.EndChild()
+
+                imgui.SameLine(0,1)
+                imgui.BeginChild( "##" .. section..category.."options", 0, childWindowSizeY, true )
+                if imgui.Button("Revert Order") then
+                    resetShowOptionOrder()
+                end
+
+                if cm_persist.selected_widget == 1 then
+                    local optionCate = "name"
+                    local optionTabl = cateTabl[optionCate]
+
+                    if imgui.TreeNodeEx("Name Options", "DefaultOpen") then
+                        if imgui.RadioButton("Right",  optionTabl.justify, 0) then
+                            optionTabl.justify = 0
+                            this.changed = true
+                        end
+                        imgui.SameLine()
+                        if imgui.RadioButton("Center",  optionTabl.justify, 1) then
+                            optionTabl.justify = 1
+                            this.changed = true
+                        end
+                        imgui.SameLine()
+                        if imgui.RadioButton("Left",  optionTabl.justify, 2) then
+                            optionTabl.justify = 2
+                            this.changed = true
+                        end
+
+                        imgui.PushItemWidth(120)
+                        success, optionTabl.fontScale = imgui.InputFloat("Font Scale", optionTabl.fontScale)
+                        imgui.PopItemWidth()
+                        if success then
+                            this.changed = true
+                        end
+                        if optionTabl.fontScale ~= 1.0 then
+                            imgui.SameLine(0,4)
+                            if imgui.Button("Revert") then
+                                optionTabl.fontScale = 1.0
+                                this.changed = true
+                            end
+                        end
+
+                        if imgui.Checkbox("New Line", optionTabl.newLine) then
+                            optionTabl.newLine = not optionTabl.newLine
+                            this.changed = true
+                        end
+
+                        if imgui.Checkbox("Color As Weakness", optionTabl.colorAsWeakness) then
+                            optionTabl.colorAsWeakness = not optionTabl.colorAsWeakness
+                            this.changed = true
+                        end
+
+                        imgui.TreePop()
+                    end
+
+                elseif cm_persist.selected_widget == 2 then
+                    local optionCate = "se"
+                    if imgui.TreeNodeEx("Status Effects Options", "DefaultOpen") then
+
+                        imgui.TreePop()
+                    end
+
+                elseif cm_persist.selected_widget == 3 then
+                    local optionCate = "hp"
+                    -- add combo box for alt ways to show hp
+                    if imgui.TreeNodeEx("Health Options", "DefaultOpen") then
+
+                        imgui.TreePop()
+                    end
+
+                elseif cm_persist.selected_widget == 4 then
+                    local optionCate = "damage"
+                    if imgui.TreeNodeEx("Damage Options", "DefaultOpen") then
+
+                        imgui.TreePop()
+                    end
+
+                elseif cm_persist.selected_widget == 5 then
+                    local optionCate = "hit"
+                    if imgui.TreeNodeEx("Hit Options", "DefaultOpen") then
+
+                        imgui.TreePop()
+                    end
+
+                elseif cm_persist.selected_widget == 6 then
+                    local optionCate = "recommended"
+                    if imgui.TreeNodeEx("'Recommended' Options", "DefaultOpen") then
+                        local SWidthP = 200
+
+                        imgui.PushItemWidth(SWidthP)
+                        success, cateTabl[optionCate].targHeavyThresh = imgui.SliderInt("Target Hard Damage Threshold", cateTabl[optionCate].targHeavyThresh, 1, 100)
+                        imgui.PopItemWidth()
+                        if success then
+                            this.changed = true
+                        end
+            
+                        imgui.PushItemWidth(SWidthP)
+                        success, cateTabl[optionCate].targSpecThresh = imgui.SliderInt("Target Special Damage Threshold", cateTabl[optionCate].targSpecThresh, 1, 100)
+                        imgui.PopItemWidth()
+                        if success then
+                            this.changed = true
+                        end
+                        imgui.TreePop()
+                    end
+
+
+                elseif cm_persist.selected_widget == 7 then
+                    local optionCate = "rare"
+                    if imgui.TreeNodeEx("Rare Options", "DefaultOpen") then
+
+                        imgui.TreePop()
+                    end
+                end
+
+                imgui.EndChild()
+
+                imgui.PopStyleColor()
             end
 
             if Additional ~= nil then

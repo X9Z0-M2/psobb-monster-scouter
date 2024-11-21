@@ -8,18 +8,14 @@ local lib_items_list = require("solylib.items.items_list")
 local lib_items_cfg = require("solylib.items.items_configuration")
 local cfg = require("Monster Scouter.configuration")
 local cfgMonsters = require("Monster Scouter.monsters")
-local optionsLoaded, options = pcall(require, "Monster Scouter.options")
-local drop_charts = {
-    ["Normal"] = require("Monster Scouter/Drops.normal"),
-    ["Hard"] = require("Monster Scouter/Drops.hard"),
-    ["Very Hard"] = require("Monster Scouter/Drops.very-hard"),
-    ["Ultimate"] = require("Monster Scouter/Drops.ultimate")
-  }
 cfgMonsters.m[-1] = {cate = "Default", segment = "General"}
 cfgMonsters.m[-20] = {cate = "Default", segment = "Slime Origin", color = 0xFFFFFFFF, display = true}
 
+local optionsLoaded, options = pcall(require, "Monster Scouter.options")
 local optionsFileName = "addons/Monster Scouter/options.lua"
+
 local ConfigurationWindow
+local drop_charts
 
 local origPackagePath = package.path
 package.path = './addons/Monster Scouter/lua-xtype/src/?.lua;' .. package.path
@@ -102,44 +98,64 @@ local function LoadOptions()
         end
     end
 
+    local displayWidgets = {
+        "name",
+        "se",
+        "hp",
+        "damage",
+        "hit",
+        "recommended",
+        "rare",
+    }
+    local function EstablishDisplayWidgets(section, id)
+        for i=1, #displayWidgets do
+            if options[section][id][displayWidgets[i]] == nil then
+                options[section][id][displayWidgets[i]] = {}
+            end
+        end
+    end
+
     -- Slime Origin
     local id = -20
-    SetDefaultValue( options[section][id], "enabled", true )
-    SetDefaultValue( options[section][id], "overriden", true )
-    SetDefaultValue( options[section][id], "showName", true )
-    SetDefaultValue( options[section][id], "showHealthBar", true )
-    SetDefaultValue( options[section][id], "showDamage", false )
-    SetDefaultValue( options[section][id], "showHit", false )
-    SetDefaultValue( options[section][id], "showWeakness", false )
-    SetDefaultValue( options[section][id], "showStatusEffects", false )
-    SetDefaultValue( options[section][id], "showRares", false )
+    EstablishDisplayWidgets(section, id)
+
+    SetDefaultValue( options[section][id].name, "show", true )
+    SetDefaultValue( options[section][id].name, "colorAsWeakness", false )
+    SetDefaultValue( options[section][id].se, "show", false )
+    SetDefaultValue( options[section][id].hp, "show", true )
+    SetDefaultValue( options[section][id].hp, "type", "bar" )
+    SetDefaultValue( options[section][id].damage, "show", false )
+    SetDefaultValue( options[section][id].hit, "show", false )
+    SetDefaultValue( options[section][id].recommended, "show", false )
+    SetDefaultValue( options[section][id].rare, "show", false )
 
     for id,monster in pairs(cfgMonsters.m) do
         if monster.cate then
             SetDefaultValue( options[section][id], "enabled", true )
-            SetDefaultValue( options[section][id], "overriden", false )
-            SetDefaultValue( options[section][id], "showName", true )
-            SetDefaultValue( options[section][id], "showHealthBar", true )
-            SetDefaultValue( options[section][id], "showDamage", false )
-            SetDefaultValue( options[section][id], "showHit", false )
-            SetDefaultValue( options[section][id], "showRecommended", false )
-            -- options[section][id]["showDamage"] = true
-            -- options[section][id]["showHit"] = true
-            -- options[section][id]["targetHardThreshold"] = 90
-            -- options[section][id]["targetSpecialThreshold"] = 90
-            SetDefaultValue( options[section][id], "showWeakness", true )
-            SetDefaultValue( options[section][id], "showStatusEffects", true )
-            SetDefaultValue( options[section][id], "showRares", true )
-            SetDefaultValue( options[section][id], "targetHardThreshold", 90 )
-            SetDefaultValue( options[section][id], "targetSpecialThreshold", 90 )
+
+            EstablishDisplayWidgets(section, id)
+            SetDefaultValue( options[section][id].name, "show", true )
+            SetDefaultValue( options[section][id].name, "justify", 0 )
+            SetDefaultValue( options[section][id].name, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].name, "newLine", true )
+            SetDefaultValue( options[section][id].name, "colorAsWeakness", true )
+            SetDefaultValue( options[section][id].se, "show", true )
+            SetDefaultValue( options[section][id].hp, "show", true )
+            SetDefaultValue( options[section][id].hp, "type", "bar" )
+            SetDefaultValue( options[section][id].damage, "show", false )
+            SetDefaultValue( options[section][id].hit, "show", false )
+            SetDefaultValue( options[section][id].recommended, "show", false )
+            SetDefaultValue( options[section][id].recommended, "targHeavyThresh", 90 )
+            SetDefaultValue( options[section][id].recommended, "targSpecThresh", 90 )
+            SetDefaultValue( options[section][id].rare, "show", true )
         end
     end
-
 end
 LoadOptions()
 
--- Append server specific items
-lib_items_list.AddServerItems(options.server)
+local this = {
+    first = true,
+}
 
 local optionsStringBuilder = ""
 local function BuildOptionsString(table, depth)
@@ -232,7 +248,7 @@ local function splitDropChartTargets()
     end
     drop_charts = dt
 end
-splitDropChartTargets()
+
 
 local playerSelfAddr = nil
 local playerSelfCoords = nil
@@ -242,11 +258,16 @@ local pCoord = nil
 local pEquipData = {}
 local lData = {}
 local pData = {}
+local updatePlayerWeaponSpec = {}
+local updateMonsterWeaponSpecDmg = {}
 local cameraCoords = nil
 local cameraDirs = nil
 local resolutionWidth = {}
 local resolutionHeight = {}
 local trackerBox = {}
+local trackerWindowPadding = {}
+trackerWindowPadding.x = 8.0
+trackerWindowPadding.y = 1.0
 local screenFov = nil
 local aspectRatio = nil
 local eyeWorld    = nil
@@ -795,11 +816,11 @@ local function isMonsterShowEnabled(monster, section)
     if  cfgMonsters.m[monster.unitxtID] ~= nil
     and options[section][monster.unitxtID] ~= nil
     then
-        if options[section][monster.unitxtID].overriden then
+        if options[section][monster.unitxtID].overridden then
             if options[section][monster.unitxtID].enabled then
                 return true
             end
-        else -- overriden is false
+        else -- overridden is false
             if options[section][-1].enabled then
                 return true
             end
@@ -858,8 +879,7 @@ local function GetMonsterList(section)
             --     print(string.format("%x",monster.address))
             -- end
 
-            --if isMonsterShowEnabled(monster, section)
-            if true
+            if isMonsterShowEnabled(monster, section)
             then
                 monster.color = cfgMonsters.m[monster.unitxtID].color
                 monster.display = cfgMonsters.m[monster.unitxtID].display
@@ -1110,7 +1130,8 @@ local lastnumTrackers = options.numTrackers
 local firstLoad = true
 local last_inventory_index = -1
 local last_inventory_time = 0
-local lastFontScale = options["tracker"].fontScale
+local curFontScale = options["tracker"].customFontScaleEnabled and options["tracker"].fontScale or 1.0
+local lastFontScale = curFontScale
 local cache_inventory = nil
 local invItemCount = 0
 local windowTextSizes = {}
@@ -1198,7 +1219,6 @@ local function getWText(wText,Default)
     end
 end
 
-local updatePlayerWeaponSpec = {}
 local function genFuncs_UpdatePlayerWeaponSpec()
     updatePlayerWeaponSpec = {}
     local maxWeapSpec = 40
@@ -1278,7 +1298,6 @@ local function genFuncs_UpdatePlayerWeaponSpec()
         end
     end
 end
-genFuncs_UpdatePlayerWeaponSpec()
 
 local function UpdatePlayerItemStats()
     local equipData = { -- fill in data to represent no data for items equipped
@@ -1425,7 +1444,6 @@ local function UpdatePlayerData()
     end
 end
 
-updateMonsterWeaponSpecDmg = {}
 local function genFuncs_UpdateMonsterWeaponSpecDmg()
 
     local function calcSpecDamage(dmg)
@@ -1507,7 +1525,6 @@ local function genFuncs_UpdateMonsterWeaponSpecDmg()
         end
     }
 end
-genFuncs_UpdateMonsterWeaponSpecDmg()
 
 
 local function PresentTargetMonster(monster, section)
@@ -1516,7 +1533,7 @@ local function PresentTargetMonster(monster, section)
         
         local moptions
         if  options[section][monster.unitxtID]
-            and options[section][monster.unitxtID].overriden
+            and options[section][monster.unitxtID].overridden
         then
             moptions = options[section][monster.unitxtID]
         else -- not overridden, so use default
@@ -1603,29 +1620,68 @@ local function PresentTargetMonster(monster, section)
 
         local curX = imgui.GetCursorPosX()
 
-        local function showName_Text()
-            if moptions.showName then
+        local function showName_Text(order)
+            if moptions.name.show then
                 --local mName = monster.name .. " " .. monster.id .. " " .. string.format("%X",monster.windowNameId)
                 local mName = monster.name
-                if moptions.showWeakness and not monster.bossCore then
+                local mColor, winX, cPosX
+                if moptions.name.colorAsWeakness and not monster.bossCore then
                     if (monster.Efr <= monster.Eth) and (monster.Efr <= monster.Eic) then
-                        lib_helpers.TextC(true, 0xFFFF6600, mName)
+                        mColor = 0xFFFF6600
                     elseif (monster.Eth <= monster.Efr) and (monster.Eth <= monster.Eic) then
-                        lib_helpers.TextC(true, 0xFFFFFF00, mName)
+                        mColor = 0xFFFFFF00
                     elseif (monster.Eic <= monster.Efr) and (monster.Eic <= monster.Eth) then
-                        lib_helpers.TextC(true, 0xFF00FFFF, mName)
+                        mColor = 0xFF00FFFF
                     else
-                        lib_helpers.TextC(true, monster.color, mName)
+                        mColor = monster.color
                     end
                 else
-                    lib_helpers.TextC(true, monster.color, mName)
+                    mColor = monster.color
                 end
+
+                if moptions.name.fontScale ~= 1.0 then
+                    imgui.SetWindowFontScale(moptions.name.fontScale)
+                end
+
+                if moptions.name.justify ~= 0 then
+                    local winX = imgui.GetWindowSize()
+                    local cPosX = imgui.GetCursorPosX()
+                    local tSizex = imgui.CalcTextSize(mName)
+                    if moptions.name.justify == 1 then
+                        local xPos = clampVal(winX*0.5 - cPosX - tSizex*0.5 + trackerWindowPadding.x, cPosX, winX)
+                        if not moptions.name.newLine then
+                            imgui.SameLine(xPos)
+                        else
+                            imgui.SetCursorPosX(xPos)
+                        end
+                    else
+                        local xPos = clampVal(winX - tSizex - trackerWindowPadding.x -1, cPosX, winX) -- subtract 1 extra so "AlwaysAutoResize" will work
+                        if not moptions.name.newLine then
+                            imgui.SameLine(xPos)
+                        else
+                            imgui.SetCursorPosX(xPos)
+                        end
+                    end
+                else
+                    if not moptions.name.newLine then
+                        imgui.SameLine(0)
+                    end
+                end
+
+
+                lib_helpers.TextC(true, mColor, mName)
+
+                if moptions.name.fontScale ~= 1.0 then
+                    imgui.SetWindowFontScale(curFontScale)
+                end
+                return true
             end
+            return false
         end
 
-    -- Show J/Z status and Frozen, Confuse, or Paralyzed status
-        local function showStatusEffects_Text()
-            if moptions.showStatusEffects then
+        -- Show J/Z status and Frozen, Confuse, or Paralyzed status
+        local function showStatusEffects_Text(order)
+            if moptions.se.show then
                 if atkTech.type == 0 then
                     lib_helpers.TextC(true, 0, "    ")
                 else
@@ -1650,11 +1706,13 @@ local function PresentTargetMonster(monster, section)
                 if paralyzed then
                     lib_helpers.TextC(false, 0xFFFF4000, "P ")
                 end
+                return true
             end
+            return false
         end
 
-        local function showHealth_Bar()
-            if moptions.showHealthBar then
+        local function showHealth_Bar(order)
+            if moptions.hp.show and moptions.hp.type == "bar" then
                 -- Draw enemy HP bar
                 local mHPRatio  = clampVal(mHP/mHPMax,0,1)
                 local NDmgRatio = clampVal(dmg.minNormal/mHPMax,0,1)
@@ -1664,7 +1722,8 @@ local function PresentTargetMonster(monster, section)
                 local dmgBHeigth = imgui.GetFontSize()/3
                 local wPaddingX = 8
 
-                local curY = imgui.GetCursorPosY()
+                local curY = order == 1 and imgui.GetCursorPosY() + dmgBHeigth + 6 or imgui.GetCursorPosY() + 6
+                imgui.SetCursorPosY(curY)
                 lib_helpers.imguiProgressBar(true, mHPRatio, -1, imgui.GetFontSize(), lib_helpers.HPToGreenRedGradient(mHPRatio), nil, mHP)
                 --local endCurX = imgui.GetCursorPosX()
                 local windowSizeX = imgui.GetWindowSize()
@@ -1786,11 +1845,13 @@ local function PresentTargetMonster(monster, section)
                 --lib_helpers.imguiProgressBar(true, NDmgRatio, bWidth, imgui.GetFontSize(), 0xFF7070f9, nil)
 
                 imgui.PopStyleColor()
+                return true
             end
+            return false
         end
 
-        local function showDamage_Text()
-            if moptions.showDamage then
+        local function showDamage_Text(order)
+            if moptions.damage.show then
                 lib_helpers.Text(true, "%i", dmg.minNormal)
                 lib_helpers.Text(false, "-")
                 lib_helpers.Text(false, "%i", dmg.maxNormal)
@@ -1799,12 +1860,8 @@ local function PresentTargetMonster(monster, section)
                 lib_helpers.Text(false, "-")
                 lib_helpers.Text(false, "%i", dmg.maxHeavy)
                 lib_helpers.Text(false, " Heavy Hit")
-            end
-        end
 
-        local function showSpecialDamage_Text()
-            if pEquipData.weapSpecial > 0 then
-                if moptions.showDamage then
+                if pEquipData.weapSpecial > 0 then
                     if dmg.minSpec == dmg.maxSpec then
                         lib_helpers.TextC(true, pEquipData.weapSpecialColor, "%i", dmg.specDMG)
                     else
@@ -1842,24 +1899,34 @@ local function PresentTargetMonster(monster, section)
                         end
                     end
                 end
-                if moptions.showHit then
+
+                return true
+            end
+            return false
+        end
+
+        local function showHit_Text(order)
+            if moptions.hit.show then
+                if pEquipData.weapSpecial > 0 then
                     lib_helpers.Text(true, "S1: ")
                     lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", dmg.specAtt[1].hit)
                     lib_helpers.Text(false, " > S2: ")
                     lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", dmg.specAtt[2].hit)
                     lib_helpers.Text(false, " > S3: ")
                     lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", dmg.specAtt[3].hit)
+                    return true
                 end
             end
+            return false
         end
 
-        local function showRecommended_Text()
-            if moptions.showRecommended then
+        local function showRecommended_Text(order)
+            if moptions.recommended.show then
                 -- Display best first attack
                 lib_helpers.Text(true, "[")
-                if dmg.specAtt[1].acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
+                if dmg.specAtt[1].acc >= moptions.recommended.targSpecThresh and pEquipData.weapSpecial > 0 then
                     lib_helpers.TextC(false, 0xFFFF2031, "S1: %i%% ", dmg.specAtt[1].acc)
-                elseif dmg.heavyAtt[1].acc >= moptions.targetHardThreshold then
+                elseif dmg.heavyAtt[1].acc >= moptions.recommended.targHeavyThresh then
                     lib_helpers.TextC(false, 0xFFFFAA00, "H1: %i%% ", dmg.heavyAtt[1].acc)
                 elseif dmg.normAtt[1].acc > 0 then
                     lib_helpers.TextC(false, 0xFF00FF00, "N1: %i%% ", dmg.normAtt[1].acc)
@@ -1869,9 +1936,9 @@ local function PresentTargetMonster(monster, section)
 
                 -- Display best second attack
                 lib_helpers.Text(false, " > ")
-                if dmg.specAtt[2].acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
+                if dmg.specAtt[2].acc >= moptions.recommended.targSpecThresh and pEquipData.weapSpecial > 0 then
                     lib_helpers.TextC(false, 0xFFFF2031, "S2: %i%% ", dmg.specAtt[2].acc)
-                elseif dmg.heavyAtt[2].acc >= moptions.targetHardThreshold then
+                elseif dmg.heavyAtt[2].acc >= moptions.recommended.targHeavyThresh then
                     lib_helpers.TextC(false, 0xFFFFAA00, "H2: %i%% ", dmg.heavyAtt[2].acc)
                 elseif dmg.normAtt[2].acc > 0 then
                     lib_helpers.TextC(false, 0xFF00FF00, "N2: %i%% ", dmg.normAtt[2].acc)
@@ -1881,9 +1948,9 @@ local function PresentTargetMonster(monster, section)
 
                 -- Display best third attack
                 lib_helpers.Text(false, "> ")
-                if dmg.specAtt[3].acc >= moptions.targetSpecialThreshold and pEquipData.weapSpecial > 0 then
+                if dmg.specAtt[3].acc >= moptions.recommended.targSpecThresh and pEquipData.weapSpecial > 0 then
                     lib_helpers.TextC(false, 0xFFFF2031, "S3: %i%%", dmg.specAtt[3].acc)
-                elseif dmg.heavyAtt[3].acc >= moptions.targetHardThreshold then
+                elseif dmg.heavyAtt[3].acc >= moptions.recommended.targHeavyThresh then
                     lib_helpers.TextC(false, 0xFFFFAA00, "H3: %i%%", dmg.heavyAtt[3].acc)
                 elseif dmg.normAtt[3].acc > 0 then
                     lib_helpers.TextC(false, 0xFF00FF00, "N3: %i%%", dmg.normAtt[3].acc)
@@ -1891,11 +1958,13 @@ local function PresentTargetMonster(monster, section)
                     lib_helpers.TextC(false, 0xFFBB0000, "N3: 0%%")
                 end
                 lib_helpers.Text(false, "]")
+                return true
             end
+            return false
         end
 
-        local function showRares_Text()
-            if moptions.showRares then
+        local function showRares_Text(order)
+            if moptions.rare.show then
                 if cacheSide then
                     local mName = string.upper(monster.name)
                     if drop_charts[party.difficulty]
@@ -1916,16 +1985,29 @@ local function PresentTargetMonster(monster, section)
                 else
                     lib_helpers.Text(true, "Type /partyinfo to refresh...")
                 end
+                return true
             end
+            return false
         end
 
-        showName_Text()
-        showStatusEffects_Text()
-        showHealth_Bar()
-        showDamage_Text()
-        showSpecialDamage_Text()
-        showRecommended_Text()
-        showRares_Text()
+
+        monster_shown_options = {
+            showName_Text,
+            showStatusEffects_Text,
+            showHealth_Bar,
+            showDamage_Text,
+            showHit_Text,
+            showRecommended_Text,
+            showRares_Text,
+        }
+
+        local showOrder = 1
+        for i=1, #monster_shown_options do
+            local wasShown = monster_shown_options[moptions.shownOptionOrder[i]](showOrder)
+            if wasShown then 
+                showOrder = showOrder + 1
+            end
+        end
 
     end
 end
@@ -2011,7 +2093,7 @@ local function present()
             LoadOptions()
             lastnumTrackers = options.numTrackers
         end
-        local curFontScale
+
         if options[section].customFontScaleEnabled then
             curFontScale = options[section].fontScale
         else
@@ -2031,6 +2113,22 @@ local function present()
     -- Global enable here to let the configuration window work
     if options.enable == false then
         return
+    end
+
+    -- perform one time, ever
+    if this.first == true then
+        drop_charts = {
+            ["Normal"] = require("Monster Scouter/Drops.normal"),
+            ["Hard"] = require("Monster Scouter/Drops.hard"),
+            ["Very Hard"] = require("Monster Scouter/Drops.very-hard"),
+            ["Ultimate"] = require("Monster Scouter/Drops.ultimate"),
+        }
+        splitDropChartTargets()
+
+        lib_items_list.AddServerItems(options.server)     -- Append server specific items
+        genFuncs_UpdatePlayerWeaponSpec()
+        genFuncs_UpdateMonsterWeaponSpecDmg()
+        this.first = false
     end
 
     --- Update timer for update throttle
@@ -2104,7 +2202,7 @@ local function present()
                         if imgui.Begin( "##Monster Scouter - FontDummy",
                             nil, { "NoTitleBar", "NoResize", "NoMove", "NoInputs", "NoSavedSettings" } )
                         then
-                            imgui.SetWindowFontScale(options[section].fontScale)
+                            imgui.SetWindowFontScale(curFontScale)
                             tx, ty = imgui.CalcTextSize(textP)
                             windowTextSizes[textP] = {
                                 x = tx,
@@ -2154,16 +2252,12 @@ local function present()
 
                 
                 --local windowName = "Monster Scouter - Hud" .. cache_monster[monsterIdx].windowNameId
-                imgui.PushStyleVar_2("WindowPadding", 8.0, 1.0)
+                imgui.PushStyleVar_2("WindowPadding", trackerWindowPadding.x, trackerWindowPadding.y)
                 local windowName = "Monster Scouter - Hud"  .. string.format("%x",cache_monster[monsterIdx].windowNameId)
                 if imgui.Begin( windowName,
                     nil, windowParams )
                 then
-                    if options[section].customFontScaleEnabled then
-                        imgui.SetWindowFontScale(options[section].fontScale)
-                    else
-                        imgui.SetWindowFontScale(1.0)
-                    end
+                    imgui.SetWindowFontScale(curFontScale)
                     PresentTargetMonster(cache_monster[monsterIdx], section)
                     local wx, wy = imgui.GetWindowSize()
                     local ps =  lib_helpers.GetPosBySizeAndAnchor( sx, sy, wx, wy, 5 )
@@ -2206,7 +2300,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.2.1",
+        version = "0.2.2",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,
