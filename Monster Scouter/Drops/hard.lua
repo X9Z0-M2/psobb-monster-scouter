@@ -156,7 +156,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,
@@ -459,7 +459,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,
@@ -762,7 +762,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,
@@ -1065,7 +1065,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,
@@ -1368,7 +1368,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,
@@ -1671,7 +1671,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,
@@ -1974,7 +1974,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,
@@ -2277,7 +2277,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,
@@ -2580,7 +2580,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,
@@ -2883,7 +2883,7 @@ return
 					dar = 40
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Talis',
 					rare = 6.25000,

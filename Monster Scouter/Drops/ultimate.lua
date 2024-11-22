@@ -163,7 +163,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'L&K38 Combat',
 					rare = 2.53906,
@@ -480,7 +480,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Holy Ray',
 					rare = 3.12500,
@@ -797,7 +797,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Laconium Axe',
 					rare = 2.53906,
@@ -1114,7 +1114,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Asteron Belt',
 					rare = 2.53906,
@@ -1431,7 +1431,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Phonon Maser',
 					rare = 2.73438,
@@ -1748,7 +1748,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Holy Ray',
 					rare = 3.12500,
@@ -2065,7 +2065,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'De Rol Le Shell',
 					rare = 4.29688,
@@ -2382,7 +2382,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'De Rol Le Shell',
 					rare = 4.29688,
@@ -2699,7 +2699,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Holy Ray',
 					rare = 3.12500,
@@ -3016,7 +3016,7 @@ return
 					dar = 45
 				}
 			},
-			['DE ROL LE/DAL RAL LIE'] = {
+			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Heavenly/Resist',
 					rare = 4.29688,
