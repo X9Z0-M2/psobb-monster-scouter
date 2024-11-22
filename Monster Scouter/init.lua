@@ -7,6 +7,7 @@ local lib_menu = require("solylib.menu")
 local lib_items_list = require("solylib.items.items_list")
 local lib_items_cfg = require("solylib.items.items_configuration")
 local cfg = require("Monster Scouter.configuration")
+local cfgWidgets = require("Monster Scouter.widgets")
 local cfgMonsters = require("Monster Scouter.monsters")
 cfgMonsters.m[-1] = {cate = "Default", segment = "General"}
 cfgMonsters.m[-20] = {cate = "Default", segment = "Slime Origin", color = 0xFFFFFFFF, display = true}
@@ -98,26 +99,15 @@ local function LoadOptions()
         end
     end
 
-    local displayWidgets = {
-        "name",
-        "se",
-        "hp",
-        "damage",
-        "hit",
-        "recommended",
-        "rare",
-        "resist",
-        "probability",
-    }
     local function EstablishDisplayWidgets(section, id)
         local shownOptionOrderWasMissing = false
         if options[section][id].shownOptionOrder == nil then
             options[section][id].shownOptionOrder = {}
             shownOptionOrderWasMissing = true
         end
-        for i=1, #displayWidgets do
-            if options[section][id][displayWidgets[i]] == nil then
-                options[section][id][displayWidgets[i]] = {}
+        for i=1, #cfgWidgets.names do
+            if options[section][id][cfgWidgets.names[i]] == nil then
+                options[section][id][cfgWidgets.names[i]] = {}
             end
             if shownOptionOrderWasMissing then
                 options[section][id].shownOptionOrder[i] = i
@@ -130,9 +120,9 @@ local function LoadOptions()
     EstablishDisplayWidgets(section, id)
     SetDefaultValue( options[section][id].name, "show", true )
     SetDefaultValue( options[section][id].name, "colorAsWeakness", false )
+    SetDefaultValue( options[section][id].debuff, "show", false )
     SetDefaultValue( options[section][id].se, "show", false )
     SetDefaultValue( options[section][id].hp, "show", true )
-    SetDefaultValue( options[section][id].hp, "type", "bar" )
     SetDefaultValue( options[section][id].damage, "show", false )
     SetDefaultValue( options[section][id].hit, "show", false )
     SetDefaultValue( options[section][id].recommended, "show", false )
@@ -146,23 +136,31 @@ local function LoadOptions()
 
             EstablishDisplayWidgets(section, id)
             SetDefaultValue( options[section][id].name, "show", true )
+            SetDefaultValue( options[section][id].name, "type", cfgWidgets.getTypeIndex("name","text") )
             SetDefaultValue( options[section][id].name, "justify", 0 )
             SetDefaultValue( options[section][id].name, "fontScale", 1.0 )
             SetDefaultValue( options[section][id].name, "newLine", true )
             SetDefaultValue( options[section][id].name, "colorAsWeakness", true )
+            SetDefaultValue( options[section][id].debuff, "show", true )
+            SetDefaultValue( options[section][id].debuff, "type", cfgWidgets.getTypeIndex("debuff","text") )
             SetDefaultValue( options[section][id].se, "show", true )
+            SetDefaultValue( options[section][id].se, "type", cfgWidgets.getTypeIndex("se","text") )
             SetDefaultValue( options[section][id].hp, "show", true )
-            SetDefaultValue( options[section][id].hp, "type", "bar" )
+            SetDefaultValue( options[section][id].hp, "type", cfgWidgets.getTypeIndex("hp","hbar") )
             SetDefaultValue( options[section][id].damage, "show", false )
+            SetDefaultValue( options[section][id].damage, "type", cfgWidgets.getTypeIndex("damage","text") )
             SetDefaultValue( options[section][id].hit, "show", false )
+            SetDefaultValue( options[section][id].hit, "type", cfgWidgets.getTypeIndex("hit","text") )
             SetDefaultValue( options[section][id].recommended, "show", false )
+            SetDefaultValue( options[section][id].recommended, "type", cfgWidgets.getTypeIndex("recommended","text") )
             SetDefaultValue( options[section][id].recommended, "targHeavyThresh", 90 )
             SetDefaultValue( options[section][id].recommended, "targSpecThresh", 90 )
             SetDefaultValue( options[section][id].rare, "show", true )
+            SetDefaultValue( options[section][id].rare, "type", cfgWidgets.getTypeIndex("rare","text") )
             SetDefaultValue( options[section][id].resist, "show", false )
-            SetDefaultValue( options[section][id].resist, "type", "vbar" )
+            SetDefaultValue( options[section][id].resist, "type", cfgWidgets.getTypeIndex("resist","vbar") )
             SetDefaultValue( options[section][id].probability, "show", false )
-            SetDefaultValue( options[section][id].probability, "type", "vbar" )
+            SetDefaultValue( options[section][id].probability, "type", cfgWidgets.getTypeIndex("probability","vbar") )
         end
     end
 end
@@ -272,7 +270,6 @@ local playerSelfAttackComboStep = nil
 local pCoord = nil
 local pEquipData = {}
 local lData = {}
-local pData = {}
 local updatePlayerWeaponSpec = {}
 local updateMonsterWeaponSpecDmg = {}
 local cameraCoords = nil
@@ -280,9 +277,7 @@ local cameraDirs = nil
 local resolutionWidth = {}
 local resolutionHeight = {}
 local trackerBox = {}
-local trackerWindowPadding = {}
-trackerWindowPadding.x = 8.0
-trackerWindowPadding.y = 1.0
+local trackerWindowPadding = { x = 8.0, y = 1.0 }
 local screenFov = nil
 local aspectRatio = nil
 local eyeWorld    = nil
@@ -1152,6 +1147,7 @@ local invItemCount = 0
 local windowTextSizes = {}
 local usedWindowNameIdLookup = {}
 
+
 local function sortByDistanceP(a,b)
     return a.curPlayerDistance < b.curPlayerDistance
 end
@@ -1343,9 +1339,9 @@ local function UpdatePlayerItemStats()
         isWeapConfusionSE = false,
         isWeapHPCut = false,
     }
-    for i=1,invItemCount,1 do -- process currently equipped items
+    for i=1,invItemCount,1 do -- iter all inventory items
         local item = cache_inventory.items[i]
-        if item.equipped then
+        if item.equipped then -- process currently equipped items
             equipData.item = item
             if item.data[1] == 0x00 then -- is weapon
                 if not item.weapon.isSRank then
@@ -1407,53 +1403,65 @@ local function UpdateLevelData()
     }
 end
 
+local pData = {
+    maxTP               = nil,
+    maxAtp              = nil,
+    minAtp              = nil,
+    ata                 = nil,
+    lck                 = nil,
+    zalure              = nil,
+    isCast              = nil,
+    level               = nil,
+    specPower           = nil,
+    normalDmgMult       = 0.9,
+    heavyDmgMult        = 17/9,
+    specialDmgMult      = 5/9,
+    sacrificialDmgMult  = 10/3,
+    vjayaDmgMult        = 17/3,
+    castBoost           = nil,
+}
+
 local function UpdatePlayerData()
     if playerSelfAddr == 0 then return end
 
-    pData = {
-        maxTP  = lib_characters.GetPlayerMaxTP( playerSelfAddr),
-        maxAtp = lib_characters.GetPlayerMaxATP(playerSelfAddr,0),
-        minAtp = lib_characters.GetPlayerMinATP(playerSelfAddr,0),
-        ata    = lib_characters.GetPlayerATA(   playerSelfAddr),
-        lck    = lib_characters.GetPlayerLCK(   playerSelfAddr),
-        zalure = lib_characters.GetPlayerTechniqueLevel(playerSelfAddr, lib_characters.Techniques.Zalure),
-        isCast = lib_characters.GetPlayerIsCast(playerSelfAddr),
-        specPower = pso.read_u16(playerSelfAddr + 0x118),
-        level  = lib_characters.GetPlayerLevel( playerSelfAddr),
-        normalDmgMult       =  0.9,
-        heavyDmgMult        = 17/9,
-        specialDmgMult      =  5/9,
-        sacrificialDmgMult  = 10/3,
-        vjayaDmgMult        = 17/3,
-        normAtk             = {},
-        heavyAtk            = {},
-        specAtk             = {}
-    }
+    local lastAta = pData.ata
+    pData.maxTP               = lib_characters.GetPlayerMaxTP( playerSelfAddr)
+    pData.maxAtp              = lib_characters.GetPlayerMaxATP(playerSelfAddr,0)
+    pData.minAtp              = lib_characters.GetPlayerMinATP(playerSelfAddr,0)
+    pData.ata                 = lib_characters.GetPlayerATA(   playerSelfAddr)
+    pData.lck                 = lib_characters.GetPlayerLCK(   playerSelfAddr)
+    pData.zalure              = lib_characters.GetPlayerTechniqueLevel(playerSelfAddr, lib_characters.Techniques.Zalure)
+    pData.isCast              = lib_characters.GetPlayerIsCast(playerSelfAddr)
+    pData.level               = lib_characters.GetPlayerLevel( playerSelfAddr)
+    pData.specPower           = pso.read_u16(playerSelfAddr + 0x118)
+    pData.castBoost           = 0
 
-    for i=1, 3 do
-        pData.normAtk[i]  = {}
-        pData.heavyAtk[i] = {}
-        pData.specAtk[i]  = {}
+    if pData.ata ~= lastAta then
+        pData.normAtk  = {}
+        pData.heavyAtk = {}
+        pData.specAtk  = {}
+        for i=1, 3 do
+            pData.normAtk[i]  = {}
+            pData.heavyAtk[i] = {}
+            pData.specAtk[i]  = {}
+        end
+
+        pData.normAtk[1].ata  = pData.ata         -- ata * 1.0 * 1.0
+        pData.heavyAtk[1].ata = pData.ata * 0.7   -- ata * 0.7 * 1.0
+        pData.specAtk[1].ata  = pData.ata * 0.5   -- ata * 0.5 * 1.0
+        pData.normAtk[2].ata  = pData.ata * 1.3   -- ata * 1.0 * 1.3
+        pData.heavyAtk[2].ata = pData.ata * 0.91  -- ata * 0.7 * 1.3
+        pData.specAtk[2].ata  = pData.ata * 0.65  -- ata * 0.5 * 1.3
+        pData.normAtk[3].ata  = pData.ata * 1.69  -- ata * 1.0 * 1.69
+        pData.heavyAtk[3].ata = pData.ata * 1.183 -- ata * 0.7 * 1.69
+        pData.specAtk[3].ata  = pData.ata * 0.845 -- ata * 0.5 * 1.69
     end
 
-    pData.normAtk[1].ata  = pData.ata         -- ata * 1.0 * 1.0
-    pData.heavyAtk[1].ata = pData.ata * 0.7   -- ata * 0.7 * 1.0
-    pData.specAtk[1].ata  = pData.ata * 0.5   -- ata * 0.5 * 1.0
-    pData.normAtk[2].ata  = pData.ata * 1.3   -- ata * 1.0 * 1.3
-    pData.heavyAtk[2].ata = pData.ata * 0.91  -- ata * 0.7 * 1.3
-    pData.specAtk[2].ata  = pData.ata * 0.65  -- ata * 0.5 * 1.3
-    pData.normAtk[3].ata  = pData.ata * 1.69  -- ata * 1.0 * 1.69
-    pData.heavyAtk[3].ata = pData.ata * 1.183 -- ata * 0.7 * 1.69
-    pData.specAtk[3].ata  = pData.ata * 0.845 -- ata * 0.5 * 1.69
-
-    if pData.isCast == true and lData.difficulty == 3 then
-        pData.castBoost = 30
-    else
-        pData.castBoost = 0
-    end
-    
     if lData.difficulty == 3 then
         pData.ailRedux = 2.5
+        if pData.isCast == true then
+            pData.castBoost = 30
+        end
     else
         pData.ailRedux = 6.67
     end
@@ -1594,10 +1602,11 @@ local function PresentTargetMonster(monster, section)
 			pData.maxAtp = lib_characters.GetPlayerMaxATP(playerSelfAddr,pEquipData.DAstat)
 			pData.minAtp = lib_characters.GetPlayerMinATP(playerSelfAddr,pEquipData.DAstat)
 		end
---TODO: obtain min and maxWeapon base ATP and grind in formula
-        -- weapons with high base atp will not correctly calculate damage
-        -- ... might also be related to weapon attributes...? more testing needed, but damage numbers are still incorrect..
-		
+
+        --TODO: obtain min and maxWeapon base ATP and grind in formula
+                -- weapons with high base atp will not correctly calculate damage
+                -- ... might also be related to weapon attributes...? more testing needed, but damage numbers are still incorrect..
+
 		dmg.maxBase = ((pData.maxAtp - monster.Dfp)/5)
 		dmg.minBase = ((pData.minAtp - monster.Dfp)/5)
 		if defTech.type ~= 0 then -- monster zalured? 
@@ -1616,7 +1625,7 @@ local function PresentTargetMonster(monster, section)
 		if dmg.minHeavy  < 1 then dmg.minHeavy  = 0 end
 		if dmg.maxHeavy  < 1 then dmg.maxHeavy  = 0 end
 
--- convert from text string analysis to integer
+        -- convert from text string analysis to integer
 		if (string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerSelfAddr)),1,2) == "FO" or string.sub(lib_unitxt.GetClassName(lib_characters.GetPlayerClass(playerSelfAddr)),1,2) == "HU") and pEquipData.EqSmartlink == 0 and pEquipData.ataPenalty == 1 then
 			MDistance = (math.sqrt(((monster.posX-playerSelfCoords.x)^2)+((monster.posZ-playerSelfCoords.z)^2)))*0.33
 		end
@@ -1635,497 +1644,7 @@ local function PresentTargetMonster(monster, section)
 
         local curX = imgui.GetCursorPosX()
 
-        local function showName_Text(order)
-            if moptions.name.show then
-                --local mName = monster.name .. " " .. monster.id .. " " .. string.format("%X",monster.windowNameId)
-                local mName = monster.name
-                local mColor, winX, cPosX
-                if moptions.name.colorAsWeakness and not monster.bossCore then
-                    if (monster.Efr <= monster.Eth) and (monster.Efr <= monster.Eic) then
-                        mColor = 0xFFFF6600
-                    elseif (monster.Eth <= monster.Efr) and (monster.Eth <= monster.Eic) then
-                        mColor = 0xFFFFFF00
-                    elseif (monster.Eic <= monster.Efr) and (monster.Eic <= monster.Eth) then
-                        mColor = 0xFF00FFFF
-                    else
-                        mColor = monster.color
-                    end
-                else
-                    mColor = monster.color
-                end
-
-                if moptions.name.fontScale ~= 1.0 then
-                    imgui.SetWindowFontScale(moptions.name.fontScale)
-                end
-                
-                local cPosY = imgui.GetCursorPosY()
-                local winX = imgui.GetWindowSize()
-                local tSizex = imgui.CalcTextSize(mName)
-
-                if moptions.name.justify == 0 then
-                    if moptions.name.newLine then
-                        imgui.SetCursorPosX(trackerWindowPadding.x)
-                    else
-                        imgui.SameLine(0,0)
-                    end
-                elseif moptions.name.justify == 1 then
-                    local rePosX = winX*0.5 - tSizex*0.5
-                    if moptions.name.newLine then
-                        local cPosX = imgui.GetCursorPosX()
-                        local xPos = clampVal(rePosX, cPosX, winX)
-                        imgui.SetCursorPosX(xPos)
-                    else
-                        if order ~= 1 then
-                            imgui.SameLine(0,0)
-                        end
-                        local cPosX = imgui.GetCursorPosX()
-                        local xPos = clampVal(rePosX, cPosX, winX)
-                        imgui.SameLine(xPos,0)
-                    end
-                else
-                    local rePosX = winX - tSizex - trackerWindowPadding.x -1 -- subtract 1 extra so "AlwaysAutoResize" will work
-                    if moptions.name.newLine then
-                        local cPosX = imgui.GetCursorPosX()
-                        local xPos = clampVal(rePosX, cPosX, winX)
-                        imgui.SetCursorPosX(xPos)
-                    else
-                        if order ~= 1 then
-                            imgui.SameLine(0,0)
-                        end
-                        local cPosX = imgui.GetCursorPosX()
-                        local xPos = clampVal(rePosX, cPosX, winX)
-                        imgui.SameLine(xPos,0)
-                    end
-                end
-
-                lib_helpers.TextC(true, mColor, mName)
-
-                if moptions.name.fontScale ~= 1.0 then
-                    imgui.SetWindowFontScale(curFontScale)
-                end
-                return true
-            end
-            return false
-        end
-
-        -- Show J/Z status and Frozen, Confuse, or Paralyzed status
-        local function showStatusEffects_Text(order)
-            if moptions.se.show then
-                if atkTech.type == 0 then
-                    lib_helpers.TextC(true, 0, "    ")
-                else
-                    lib_helpers.TextC(true, 0xFFFF2031, atkTech.name .. atkTech.level .. string.rep(" ", 2 - #tostring(atkTech.level)) .. " ")
-                end
-
-                if defTech.type == 0 then
-                    lib_helpers.TextC(false, 0, "    ")
-                else
-                    lib_helpers.TextC(false, 0xFF0088F4, defTech.name .. defTech.level .. string.rep(" ", 2 - #tostring(defTech.level)) .. " ")
-                end
-
-                if frozen then
-                    lib_helpers.TextC(false, 0xFF00FFFF, "F ")
-                elseif confused then
-                    lib_helpers.TextC(false, 0xFFFF00FF, "C ")
-                elseif shocked then
-                    lib_helpers.TextC(false, 0xFFFFFF00, "S ")
-                else
-                    lib_helpers.TextC(false, 0, "  ")
-                end
-                if paralyzed then
-                    lib_helpers.TextC(false, 0xFFFF4000, "P ")
-                end
-                return true
-            end
-            return false
-        end
-
-        local function showHealth_Bar(order)
-            if moptions.hp.show and moptions.hp.type == "bar" then
-                -- Draw enemy HP bar
-                local mHPRatio  = clampVal(mHP/mHPMax,0,1)
-                local NDmgRatio = clampVal(dmg.minNormal/mHPMax,0,1)
-                local HDmgRatio = clampVal(dmg.minHeavy/mHPMax,0,1)
-                local SDmgRatio = clampVal(dmg.minSpec/mHPMax,0,1)
-                local bWidth -- = 220
-                local dmgBHeigth = imgui.GetFontSize()/3
-                local wPaddingX = 8
-
-                local curY = order == 1 and imgui.GetCursorPosY() + dmgBHeigth + 6 or imgui.GetCursorPosY() + 6
-                imgui.SetCursorPosY(curY)
-                lib_helpers.imguiProgressBar(true, mHPRatio, -1, imgui.GetFontSize(), lib_helpers.HPToGreenRedGradient(mHPRatio), nil, mHP)
-                --local endCurX = imgui.GetCursorPosX()
-                local windowSizeX = imgui.GetWindowSize()
-                local endCurX = windowSizeX - 1
-                
-                imgui.PushStyleColor("FrameBg", 0, 0, 0, 0)
-
-
-                local curLen = (endCurX - curX) - wPaddingX
-                bWidth = curLen
-                local xSPos = (curLen)*mHPRatio - curLen * SDmgRatio + wPaddingX
-                local xSClamp = clampVal(xSPos, wPaddingX, bWidth+wPaddingX)
-                local specDmgBarWidth = math.max(curLen * SDmgRatio - math.abs(xSPos-xSClamp),0)
-                
-                local xHPos = (curLen)*mHPRatio - curLen * HDmgRatio + wPaddingX
-                local xHClamp = clampVal(xHPos, wPaddingX, bWidth+wPaddingX)
-                local heavyDmgBarWidth = math.max(curLen * HDmgRatio - math.abs(xHPos-xHClamp),0)
-
-                local xNPos = (curLen)*mHPRatio - curLen * NDmgRatio + wPaddingX
-                local xNClamp = clampVal(xNPos, wPaddingX, bWidth+wPaddingX)
-                local normalDmgBarWidth = math.max(curLen * NDmgRatio - math.abs(xNPos-xNClamp),0)
-
-                local attSpecHit = dmg.specAtt[1].hit
-                local attNormHit = dmg.normAtt[1].acc
-                local attHeavyHit = dmg.heavyAtt[1].acc
-                if playerSelfAttackComboStep == 1 then 
-                    attSpecHit = dmg.specAtt[2].hit
-                    attNormHit = dmg.normAtt[2].acc
-                    attHeavyHit = dmg.heavyAtt[2].acc
-                elseif playerSelfAttackComboStep == 2 then 
-                    attSpecHit = dmg.specAtt[3].hit
-                    attNormHit = dmg.normAtt[3].acc
-                    attHeavyHit = dmg.heavyAtt[3].acc
-                elseif playerSelfAttackComboStep == 3 then 
-                    attSpecHit = dmg.specAtt[3].hit
-                    attNormHit = dmg.normAtt[3].acc
-                    attHeavyHit = dmg.heavyAtt[3].acc
-                end
-                attSpecHit = clampVal(attSpecHit,0,100)/100
-                attNormHit = clampVal(attNormHit,0,100)/100
-                attHeavyHit = clampVal(attHeavyHit,0,100)/100
-
-                local function showSpecDmgBar()
-                    if specDmgBarWidth > 0 then
-                        imgui.SetCursorPosX(xSClamp)
-                        imgui.SetCursorPosY(curY - dmgBHeigth)
-                        --print(dmg.specAtt[1].hit)
-                        --print(string.format("%X",pEquipData.weapSpecialColor),HextoARGBColor(pEquipData.weapSpecialColor).a,HextoARGBColor(pEquipData.weapSpecialColor).r,HextoARGBColor(pEquipData.weapSpecialColor).g,HextoARGBColor(pEquipData.weapSpecialColor).b)
-
-                        local specColor = ARGBtoHexColor(
-                            LerpColor(
-                                attSpecHit,
-                                {a=255,r=70,g=70,b=70},
-                                --HextoARGBColor(pEquipData.weapSpecialColor),
-                                HextoARGBColor(pEquipData.weapSpecialColor)
-                                --HextoARGBColor(pEquipData.weapSpecialColor)
-                            )
-                        )
-                        lib_helpers.imguiProgressBar(true, 1.0, specDmgBarWidth, dmgBHeigth, specColor, nil)
-                    end
-                end
-                local function showHeavyDmgBar()
-                    if heavyDmgBarWidth > 0 then
-                        imgui.SetCursorPosX(xHClamp)
-                        imgui.SetCursorPosY(curY - dmgBHeigth)
-                        local heavyColor = ARGBtoHexColor(
-                            LerpColor(
-                                attHeavyHit,
-                                {a=255,r=70,g=70,b=70},
-                                HextoARGBColor(0xFFFFAA00)
-                            )
-                        )
-                        lib_helpers.imguiProgressBar(true, 1.0, heavyDmgBarWidth, dmgBHeigth, heavyColor, nil)
-                    end
-                end
-                local function showNormalDmgBar()
-                    if normalDmgBarWidth > 0 then
-                        imgui.SetCursorPosX(xNClamp)
-                        imgui.SetCursorPosY(curY - dmgBHeigth)
-                        local normalColor = ARGBtoHexColor(
-                            LerpColor(
-                                attNormHit,
-                                {a=255,r=70,g=70,b=70},
-                                HextoARGBColor(0xFF00FF00)
-                            )
-                        )
-                        lib_helpers.imguiProgressBar(true, 1.0, normalDmgBarWidth, dmgBHeigth, normalColor, nil)  
-                    end
-                end
-
-                local damageBars = {
-                    {
-                        width = specDmgBarWidth,
-                        showBar = showSpecDmgBar,
-                    },
-                    {
-                        width = normalDmgBarWidth,
-                        showBar = showNormalDmgBar,
-                    },
-                    {
-                        width = heavyDmgBarWidth,
-                        showBar = showHeavyDmgBar,
-                    },
-                }
-
-                local function sortByWidth(a,b)
-                    return a.width > b.width
-                end
-                table.sort(damageBars, sortByWidth)
-                for i=1, table.getn(damageBars), 1 do
-                    damageBars[i].showBar()
-                end
-                
-
-                imgui.SetCursorPosY(curY + imgui.GetFontSize())
-                
-                -- imgui.SetCursorPosX(curX)
-                -- imgui.SetCursorPosY(curY)
-                --lib_helpers.imguiProgressBar(true, NDmgRatio, bWidth, imgui.GetFontSize(), 0xFF7070f9, nil)
-
-                imgui.PopStyleColor()
-                return true
-            end
-            return false
-        end
-
-        local function showDamage_Text(order)
-            if moptions.damage.show then
-                lib_helpers.Text(true, "%i", dmg.minNormal)
-                lib_helpers.Text(false, "-")
-                lib_helpers.Text(false, "%i", dmg.maxNormal)
-                lib_helpers.Text(false, " Weak Hit")
-                lib_helpers.Text(true, "%i", dmg.minHeavy)
-                lib_helpers.Text(false, "-")
-                lib_helpers.Text(false, "%i", dmg.maxHeavy)
-                lib_helpers.Text(false, " Heavy Hit")
-
-                if pEquipData.weapSpecial > 0 then
-                    if dmg.minSpec == dmg.maxSpec then
-                        lib_helpers.TextC(true, pEquipData.weapSpecialColor, "%i", dmg.specDMG)
-                    else
-                        lib_helpers.Text(true, "%i", dmg.minSpec)
-                        lib_helpers.Text(false, "-")
-                        lib_helpers.Text(false, "%i", dmg.maxSpec)
-                    end
-                    lib_helpers.Text(false, " Special Hit [")
-                    lib_helpers.TextC(false, pEquipData.weapSpecialColor, pEquipData.weapSpecialName)
-                    lib_helpers.Text(false, "] ")
-                    if dmg.specAilment > 0 then
-                        if pEquipData.isWeapEXPSteal then
-                            lib_helpers.Text(false, "steal ")
-                            lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
-                            lib_helpers.Text(false, " EXP")
-                        elseif pEquipData.isWeapTPSteal and pData.isCast == false then
-                            lib_helpers.Text(false, "steal ")
-                            lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
-                            lib_helpers.Text(false, " TP")
-                        elseif pEquipData.isWeapHPSteal then	
-                            lib_helpers.Text(false, "steal ")
-                            lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i", math.max(dmg.specDraw,0))
-                            lib_helpers.Text(false, " HP")
-                        elseif pEquipData.isWeapInstantKill and monster.isBoss == 0 then	
-                            lib_helpers.Text(false, "chance to Instant Kill")
-                        elseif pEquipData.isWeapConfusionSE and monster.isBoss == 0 then
-                            lib_helpers.Text(false, "chance to Confuse")
-                        elseif pEquipData.isWeapParalysisSE and (monster.attribute == 1 or monster.attribute == 2 or monster.attribute == 8) and monster.isBoss == 0 then
-                            lib_helpers.Text(false, "chance to Paralyze")
-                        elseif pEquipData.isWeapLightningElement and monster.attribute == 4 and monster.isBoss == 0 and monster.name ~= "Epsilon" then	
-                            dmg.specAilment = pData.ailRedux*pEquipData.v50xStatusBoost
-                            lib_helpers.Text(false, "chance to Shock")
-                        elseif pEquipData.isWeapFrozenSE and not (monster.isBoss == 1 or monster.name == "Epsilon" or monster.name == "Zu" or monster.name == "Pazuzu" or monster.name == "Dorphon" or monster.name == "Dorphon Eclair" or monster.name == "Girtablulu" ) then
-                            lib_helpers.Text(false, "chance to Freeze")
-                        end
-                    end
-                end
-
-                return true
-            end
-            return false
-        end
-
-        local function showHit_Text(order)
-            if moptions.hit.show then
-                if pEquipData.weapSpecial > 0 then
-                    lib_helpers.Text(true, "S1: ")
-                    lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", dmg.specAtt[1].hit)
-                    lib_helpers.Text(false, " > S2: ")
-                    lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", dmg.specAtt[2].hit)
-                    lib_helpers.Text(false, " > S3: ")
-                    lib_helpers.TextC(false, pEquipData.weapSpecialColor, "%i%% ", dmg.specAtt[3].hit)
-                    return true
-                end
-            end
-            return false
-        end
-
-        local function showRecommended_Text(order)
-            if moptions.recommended.show then
-                -- Display best first attack
-                lib_helpers.Text(true, "[")
-                if dmg.specAtt[1].acc >= moptions.recommended.targSpecThresh and pEquipData.weapSpecial > 0 then
-                    lib_helpers.TextC(false, 0xFFFF2031, "S1: %i%% ", dmg.specAtt[1].acc)
-                elseif dmg.heavyAtt[1].acc >= moptions.recommended.targHeavyThresh then
-                    lib_helpers.TextC(false, 0xFFFFAA00, "H1: %i%% ", dmg.heavyAtt[1].acc)
-                elseif dmg.normAtt[1].acc > 0 then
-                    lib_helpers.TextC(false, 0xFF00FF00, "N1: %i%% ", dmg.normAtt[1].acc)
-                else
-                    lib_helpers.TextC(false, 0xFFBB0000, "N1: 0%%")
-                end
-
-                -- Display best second attack
-                lib_helpers.Text(false, " > ")
-                if dmg.specAtt[2].acc >= moptions.recommended.targSpecThresh and pEquipData.weapSpecial > 0 then
-                    lib_helpers.TextC(false, 0xFFFF2031, "S2: %i%% ", dmg.specAtt[2].acc)
-                elseif dmg.heavyAtt[2].acc >= moptions.recommended.targHeavyThresh then
-                    lib_helpers.TextC(false, 0xFFFFAA00, "H2: %i%% ", dmg.heavyAtt[2].acc)
-                elseif dmg.normAtt[2].acc > 0 then
-                    lib_helpers.TextC(false, 0xFF00FF00, "N2: %i%% ", dmg.normAtt[2].acc)
-                else
-                    lib_helpers.TextC(false, 0xFFBB0000, "N2: 0%%")
-                end
-
-                -- Display best third attack
-                lib_helpers.Text(false, "> ")
-                if dmg.specAtt[3].acc >= moptions.recommended.targSpecThresh and pEquipData.weapSpecial > 0 then
-                    lib_helpers.TextC(false, 0xFFFF2031, "S3: %i%%", dmg.specAtt[3].acc)
-                elseif dmg.heavyAtt[3].acc >= moptions.recommended.targHeavyThresh then
-                    lib_helpers.TextC(false, 0xFFFFAA00, "H3: %i%%", dmg.heavyAtt[3].acc)
-                elseif dmg.normAtt[3].acc > 0 then
-                    lib_helpers.TextC(false, 0xFF00FF00, "N3: %i%%", dmg.normAtt[3].acc)
-                else
-                    lib_helpers.TextC(false, 0xFFBB0000, "N3: 0%%")
-                end
-                lib_helpers.Text(false, "]")
-                return true
-            end
-            return false
-        end
-
-        local function showRares_Text(order)
-            if moptions.rare.show then
-                if cacheSide then
-                    local mName = string.upper(monster.name)
-                    if drop_charts[party.difficulty]
-                        and drop_charts[party.difficulty][party.episode]
-                        and drop_charts[party.difficulty][party.episode][party.id]
-                        and drop_charts[party.difficulty][party.episode][party.id][mName]
-                    then
-                        local mDrops = drop_charts[party.difficulty][party.episode][party.id][mName]
-                        for i,drop in pairs(mDrops) do
-                            if drop.item and drop.rare and drop.dar then
-                                lib_helpers.Text(true, "1/")
-                                lib_helpers.Text(false, "%i", 1/((party.dar*drop.dar)*(party.rare*drop.rare))*100000000)
-                                lib_helpers.Text(false, " ")
-                                lib_helpers.TextC(false, section_color[party.id], drop.item)
-                            end
-                        end
-                    end
-                else
-                    lib_helpers.Text(true, "Type /partyinfo to refresh...")
-                end
-                return true
-            end
-            return false
-        end
-
-        local function showResistances_VBar(order)
-            if moptions.resist.show and moptions.resist.type == "vbar" then
-                imgui.PushStyleVar_2("FramePadding", 0.5, 0.5)
-                local height = imgui.GetFontSize()
-                local width = 4
-
-                imgui.PushStyleColor("PlotHistogram", 0, 1, 1, 1)
-                imgui.PlotHistogram("##efr", {monster.Efr}, 1, 0, "", 0, 100, width, height)
-                imgui.PopStyleColor()
-
-                imgui.SameLine(0,0)
-                imgui.PushStyleColor("PlotHistogram", 1, 1, 0, 1)
-                imgui.PlotHistogram("##eth", {monster.Eth}, 1, 0, "", 0, 100, width, height)
-                imgui.PopStyleColor()
-
-                imgui.SameLine(0,0)
-                imgui.PushStyleColor("PlotHistogram", 1, 0.4, 0, 1)
-                imgui.PlotHistogram("##eic", {monster.Eic}, 1, 0, "", 0, 100, width, height)
-                imgui.PopStyleColor()
-
-                imgui.SameLine(0,0)
-                imgui.PushStyleColor("PlotHistogram", 0.933, 0.098, 0.863, 1)
-                imgui.PlotHistogram("##edk", {monster.Edk}, 1, 0, "", 0, 100, width, height)
-                imgui.PopStyleColor()
-
-                imgui.SameLine(0,0)
-                imgui.PushStyleColor("PlotHistogram", 1, 1, 0.70196, 1)
-                imgui.PlotHistogram("##elt", {monster.Elt}, 1, 0, "", 0, 100, width, height)
-                imgui.PopStyleColor()
-
-                imgui.SameLine(0,0)
-                imgui.PushStyleColor("PlotHistogram", 1, 0.125, 0.19215, 1)
-                imgui.PlotHistogram("##esp", {monster.Esp}, 1, 0, "", 0, 100, width, height)
-                imgui.PopStyleColor()
-
-                imgui.PopStyleVar()
-                return true
-            end
-            return false
-        end
-
-        local function showProbability_VBar(order)
-            if moptions.probability.show and moptions.probability.type == "vbar" then
-                imgui.PushStyleVar_2("FramePadding", 0.5, 0.5)
-                local height = imgui.GetFontSize()
-                local prob = {
-                    43.31,
-                    79.43,
-                    130.39,
-                    198.25,
-                    285.01,
-                    392.55,
-                    522.74,
-                }
-                local width = 3 * #prob
-
-                local rareRate = lua_biginteger
-                if cacheSide then
-                    local mName = string.upper(monster.name)
-                    if drop_charts[party.difficulty]
-                        and drop_charts[party.difficulty][party.episode]
-                        and drop_charts[party.difficulty][party.episode][party.id]
-                        and drop_charts[party.difficulty][party.episode][party.id][mName]
-                    then
-                        local mDrops = drop_charts[party.difficulty][party.episode][party.id][mName]
-                        for i,drop in pairs(mDrops) do
-                            if drop.item and drop.rare and drop.dar then
-                                rareRate = 1/((party.dar*drop.dar)*(party.rare*drop.rare))*100000000
-                            end
-                        end
-                    end
-                end
-
-                for i=1, #prob do
-                    prob[i] = (1 - ( (rareRate-1)/rareRate ) ^ prob[i]) * 100
-                end
-
-                imgui.PushStyleColor("PlotHistogram", 0, 1, 1, 1)
-                imgui.PlotHistogram("##b1", prob, #prob, 0, "", 0, 100, width, height)
-                imgui.PopStyleColor()
-
-                imgui.PopStyleVar()
-                return true
-            end
-            return false
-        end
-
-
-        monster_shown_options = {
-            showName_Text,
-            showStatusEffects_Text,
-            showHealth_Bar,
-            showDamage_Text,
-            showHit_Text,
-            showRecommended_Text,
-            showRares_Text,
-            showResistances_VBar,
-            showProbability_VBar,
-        }
-
-        local showOrder = 1
-        for i=1, #monster_shown_options do
-            local wasShown = monster_shown_options[moptions.shownOptionOrder[i]](showOrder)
-            if wasShown then 
-                showOrder = showOrder + 1
-            end
-        end
+        cfgWidgets.showAll(moptions,moptions.shownOptionOrder)
 
     end
 end

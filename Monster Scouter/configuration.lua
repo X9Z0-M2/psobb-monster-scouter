@@ -1,5 +1,6 @@
 local lib_helpers = require("solylib.helpers")
 local cfgMonsters = require("Monster Scouter.monsters")
+local cfgWidgets = require("Monster Scouter.widgets")
 
 local function getMonstersBySegment()
     local mt = {}
@@ -168,17 +169,6 @@ local function ConfigurationWindow(configuration)
             end
             local cm_persist = configureMonster_persist[category]
 
-
-            if imgui.Checkbox("Enable", cateTabl.enabled) then
-                cateTabl.enabled = not cateTabl.enabled
-                this.changed = true
-            end
-
-            if category ~= -1 and imgui.Checkbox("Override General > Default", cateTabl.overridden) then
-                cateTabl.overridden = not cateTabl.overridden
-                this.overridden = true
-            end
-
             local function showEnableRow(cateTabl, widgetName, buttonText, n)
                 if imgui.Checkbox("##"..buttonText, cateTabl[widgetName].show) then
                     cateTabl[widgetName].show = not cateTabl[widgetName].show
@@ -189,30 +179,6 @@ local function ConfigurationWindow(configuration)
                 end
                 imgui.SameLine(0, 4)
                 imgui.Selectable(buttonText)
-            end
-            local function showName_Option(cateTabl, n)
-                showEnableRow(cateTabl, "name", "Show Name", n)
-            end
-            local function showStatusEffects_Option(cateTabl, n)
-                showEnableRow(cateTabl, "se", "Show Status Effects", n)
-            end
-            local function showHealth_Option(cateTabl, n)
-                showEnableRow(cateTabl, "hp", "Show Health", n)
-            end
-            local function showDamage_Option(cateTabl, n)
-                showEnableRow(cateTabl, "damage", "Show Damage", n)
-            end
-            local function showHit_Option(cateTabl, n)
-                showEnableRow(cateTabl, "hit", "Show Hit", n)
-            end
-            local function showRecommended_Option(cateTabl, n)
-                showEnableRow(cateTabl, "recommended", "Show Recommended", n)
-            end
-            local function showRares_Option(cateTabl, n)
-                showEnableRow(cateTabl, "rare", "Show Rare Drops", n)
-            end
-            local function showResistances_Option(cateTabl, n)
-                showEnableRow(cateTabl, "resist", "Show Resistances", n)
             end
 
             local function reorder_cateTabl_Options(items) -- user interaction reorders these options
@@ -253,20 +219,42 @@ local function ConfigurationWindow(configuration)
 
             if not cateTabl_Shown_Reordering_Options then
                 cateTabl_Shown_Reordering_Options = {
-                    showName_Option,
-                    showStatusEffects_Option,
-                    showHealth_Option,
-                    showDamage_Option,
-                    showHit_Option,
-                    showRecommended_Option,
-                    showRares_Option,
-                    showResistances_Option,
+                    [cfgWidgets.getNameIndex("name")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "name", "Show Name", n)
+                    end,
+                    [cfgWidgets.getNameIndex("debuff")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "debuff", "Show Debuff", n)
+                    end,
+                    [cfgWidgets.getNameIndex("se")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "se", "Show Status Effects", n)
+                    end,
+                    [cfgWidgets.getNameIndex("hp")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "hp", "Show Health", n)
+                    end,
+                    [cfgWidgets.getNameIndex("damage")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "damage", "Show Damage", n)
+                    end,
+                    [cfgWidgets.getNameIndex("hit")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "hit", "Show Hit", n)
+                    end,
+                    [cfgWidgets.getNameIndex("recommended")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "recommended", "Show Recommended", n)
+                    end,
+                    [cfgWidgets.getNameIndex("rare")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "rare", "Show Rare Drops", n)
+                    end,
+                    [cfgWidgets.getNameIndex("resist")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "resist", "Show Resistances", n)
+                    end,
+                    [cfgWidgets.getNameIndex("probability")] = function (cateTabl, n)
+                        showEnableRow(cateTabl, "probability", "Show Probabilities", n)
+                    end,
                 }
             end
 
             local function resetShowOptionOrder()
                 cateTabl.shownOptionOrder = {}
-                for i=1, #cateTabl_Shown_Reordering_Options do 
+                for i=1, cfgWidgets.numWidgets do 
                     table.insert(cateTabl.shownOptionOrder, i)
                 end
                 this.changed = true
@@ -276,13 +264,84 @@ local function ConfigurationWindow(configuration)
                 resetShowOptionOrder()
             end
 
+            if imgui.Checkbox("Enable", cateTabl.enabled) then
+                cateTabl.enabled = not cateTabl.enabled
+                this.changed = true
+            end
+
+            if category ~= -1 and imgui.Checkbox("Override General > Default", cateTabl.overridden) then
+                cateTabl.overridden = not cateTabl.overridden
+                this.overridden = true
+            end
+
             if  (category == -1 and defaultCateTabl.enabled)
                 or (category ~= -1 and cateTabl.overridden and cateTabl.enabled)
             then
                 imgui.PushStyleColor("Border", 0.33, 0.33, 0.33, 1.0)
                 
-                local childWindowSizeX = imgui.CalcTextSize("Show Status Effects") + 42
-                local childWindowSizeY = #cateTabl.shownOptionOrder * 24 +10
+                local function PresentTypeSelectOptions(optionCate, optionTabl)
+                    
+                    local typesList = cfgWidgets.getTypesByName(optionCate)
+                    success, optionTabl.type = imgui.Combo("Type", optionTabl.type, typesList, #typesList)
+                    if success then
+                        this.changed = true
+                    end
+                end
+
+                local function PresentTextOptions(optionTabl)
+                    if imgui.RadioButton("Right",  optionTabl.justify, 0) then
+                        optionTabl.justify = 0
+                        this.changed = true
+                    end
+                    imgui.SameLine()
+                    if imgui.RadioButton("Center",  optionTabl.justify, 1) then
+                        optionTabl.justify = 1
+                        this.changed = true
+                    end
+                    imgui.SameLine()
+                    if imgui.RadioButton("Left",  optionTabl.justify, 2) then
+                        optionTabl.justify = 2
+                        this.changed = true
+                    end
+
+                    imgui.PushItemWidth(120)
+                    success, optionTabl.fontScale = imgui.InputFloat("Font Scale", optionTabl.fontScale)
+                    imgui.PopItemWidth()
+                    if success then
+                        this.changed = true
+                    end
+                    if optionTabl.fontScale ~= 1.0 then
+                        imgui.SameLine(0,4)
+                        if imgui.Button("Revert") then
+                            optionTabl.fontScale = 1.0
+                            this.changed = true
+                        end
+                    end
+
+                    if imgui.Checkbox("New Line", optionTabl.newLine) then
+                        optionTabl.newLine = not optionTabl.newLine
+                        this.changed = true
+                    end
+                end
+                local function PresentVBarOptions(optionTabl)
+
+                end
+                local function PresentHBarOptions(optionTabl)
+
+                end
+                print(cfgWidgets.getTypeIndex("text"))
+                local selectedTypePresentLookup = {
+                    [cfgWidgets.getTypeIndex("text")] = PresentTextOptions,
+                    [cfgWidgets.getTypeIndex("vbar")] = PresentVBarOptions,
+                    [cfgWidgets.getTypeIndex("hbar")] = PresentHBarOptions,
+                }
+                local function PresentSelectedTypeOptions(optionTabl)
+                    selectedTypePresentLookup[optionTabl.type](optionTabl)
+                end
+
+
+                local childWindowSizeX = imgui.CalcTextSize("Show Status Effects") + 42 -- get longest text
+                local childWindowSizeY = #cateTabl.shownOptionOrder * imgui.GetFontSize() + 10
                 imgui.BeginChild( "##" .. section..category.."reorder", childWindowSizeX, childWindowSizeY, true )
                 reorder_cateTabl_Options(cateTabl.shownOptionOrder)
                 imgui.EndChild()
@@ -293,44 +352,13 @@ local function ConfigurationWindow(configuration)
                     resetShowOptionOrder()
                 end
 
-                if cm_persist.selected_widget == 1 then
+                if cm_persist.selected_widget == cfgWidgets.getNameIndex("name") then
                     local optionCate = "name"
                     local optionTabl = cateTabl[optionCate]
-
                     if imgui.TreeNodeEx("Name Options", "DefaultOpen") then
-                        if imgui.RadioButton("Right",  optionTabl.justify, 0) then
-                            optionTabl.justify = 0
-                            this.changed = true
-                        end
-                        imgui.SameLine()
-                        if imgui.RadioButton("Center",  optionTabl.justify, 1) then
-                            optionTabl.justify = 1
-                            this.changed = true
-                        end
-                        imgui.SameLine()
-                        if imgui.RadioButton("Left",  optionTabl.justify, 2) then
-                            optionTabl.justify = 2
-                            this.changed = true
-                        end
 
-                        imgui.PushItemWidth(120)
-                        success, optionTabl.fontScale = imgui.InputFloat("Font Scale", optionTabl.fontScale)
-                        imgui.PopItemWidth()
-                        if success then
-                            this.changed = true
-                        end
-                        if optionTabl.fontScale ~= 1.0 then
-                            imgui.SameLine(0,4)
-                            if imgui.Button("Revert") then
-                                optionTabl.fontScale = 1.0
-                                this.changed = true
-                            end
-                        end
-
-                        if imgui.Checkbox("New Line", optionTabl.newLine) then
-                            optionTabl.newLine = not optionTabl.newLine
-                            this.changed = true
-                        end
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
 
                         if imgui.Checkbox("Color As Weakness", optionTabl.colorAsWeakness) then
                             optionTabl.colorAsWeakness = not optionTabl.colorAsWeakness
@@ -340,38 +368,69 @@ local function ConfigurationWindow(configuration)
                         imgui.TreePop()
                     end
 
-                elseif cm_persist.selected_widget == 2 then
+                elseif cm_persist.selected_widget == cfgWidgets.getNameIndex("debuff") then
+                    local optionCate = "debuff"
+                    local optionTabl = cateTabl[optionCate]
+                    if imgui.TreeNodeEx("Debuff Options", "DefaultOpen") then
+
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
+
+                        imgui.TreePop()
+                    end
+
+                elseif cm_persist.selected_widget == cfgWidgets.getNameIndex("se") then
                     local optionCate = "se"
+                    local optionTabl = cateTabl[optionCate]
                     if imgui.TreeNodeEx("Status Effects Options", "DefaultOpen") then
 
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
+
                         imgui.TreePop()
                     end
 
-                elseif cm_persist.selected_widget == 3 then
+                elseif cm_persist.selected_widget == cfgWidgets.getNameIndex("hp") then
                     local optionCate = "hp"
-                    -- add combo box for alt ways to show hp
+                    local optionTabl = cateTabl[optionCate]
                     if imgui.TreeNodeEx("Health Options", "DefaultOpen") then
 
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
+
                         imgui.TreePop()
                     end
 
-                elseif cm_persist.selected_widget == 4 then
+                elseif cm_persist.selected_widget == cfgWidgets.getNameIndex("damage") then
                     local optionCate = "damage"
+                    local optionTabl = cateTabl[optionCate]
                     if imgui.TreeNodeEx("Damage Options", "DefaultOpen") then
 
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
+
                         imgui.TreePop()
                     end
 
-                elseif cm_persist.selected_widget == 5 then
+                elseif cm_persist.selected_widget == cfgWidgets.getNameIndex("hit") then
                     local optionCate = "hit"
+                    local optionTabl = cateTabl[optionCate]
                     if imgui.TreeNodeEx("Hit Options", "DefaultOpen") then
 
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
+
                         imgui.TreePop()
                     end
 
-                elseif cm_persist.selected_widget == 6 then
+                elseif cm_persist.selected_widget == cfgWidgets.getNameIndex("recommended") then
                     local optionCate = "recommended"
+                    local optionTabl = cateTabl[optionCate]
                     if imgui.TreeNodeEx("'Recommended' Options", "DefaultOpen") then
+
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
+
                         local SWidthP = 200
 
                         imgui.PushItemWidth(SWidthP)
@@ -391,16 +450,35 @@ local function ConfigurationWindow(configuration)
                     end
 
 
-                elseif cm_persist.selected_widget == 7 then
+                elseif cm_persist.selected_widget == cfgWidgets.getNameIndex("rare") then
                     local optionCate = "rare"
+                    local optionTabl = cateTabl[optionCate]
                     if imgui.TreeNodeEx("Rare Options", "DefaultOpen") then
+
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
 
                         imgui.TreePop()
                     end
 
-                elseif cm_persist.selected_widget == 8 then
+                elseif cm_persist.selected_widget == cfgWidgets.getNameIndex("resist") then
                     local optionCate = "resist"
+                    local optionTabl = cateTabl[optionCate]
                     if imgui.TreeNodeEx("Resistance Options", "DefaultOpen") then
+
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
+
+                        imgui.TreePop()
+                    end
+                
+                elseif cm_persist.selected_widget == cfgWidgets.getNameIndex("probability") then
+                    local optionCate = "probability"
+                    local optionTabl = cateTabl[optionCate]
+                    if imgui.TreeNodeEx("Probability Options", "DefaultOpen") then
+
+                        PresentTypeSelectOptions(optionCate, optionTabl)
+                        PresentSelectedTypeOptions(optionTabl)
 
                         imgui.TreePop()
                     end
