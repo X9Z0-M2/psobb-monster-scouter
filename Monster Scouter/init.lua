@@ -2418,7 +2418,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.2.4",
+        version = "0.2.5",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,

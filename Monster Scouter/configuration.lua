@@ -214,6 +214,9 @@ local function ConfigurationWindow(configuration)
             local function showResistances_Option(cateTabl, n)
                 showEnableRow(cateTabl, "resist", "Show Resistances", n)
             end
+            local function showProbability_Option(cateTabl, n)
+                showEnableRow(cateTabl, "probability", "Show Probability", n)
+            end
 
             local function reorder_cateTabl_Options(items) -- user interaction reorders these options
                 local active_item = nil
@@ -261,6 +264,7 @@ local function ConfigurationWindow(configuration)
                     showRecommended_Option,
                     showRares_Option,
                     showResistances_Option,
+                    showProbability_Option,
                 }
             end
 
@@ -401,6 +405,13 @@ local function ConfigurationWindow(configuration)
                 elseif cm_persist.selected_widget == 8 then
                     local optionCate = "resist"
                     if imgui.TreeNodeEx("Resistance Options", "DefaultOpen") then
+
+                        imgui.TreePop()
+                    end
+
+                elseif cm_persist.selected_widget == 9 then
+                    local optionCate = "probability"
+                    if imgui.TreeNodeEx("Probability Options", "DefaultOpen") then
 
                         imgui.TreePop()
                     end
