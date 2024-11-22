@@ -143,24 +143,51 @@ local function LoadOptions()
             SetDefaultValue( options[section][id].name, "colorAsWeakness", true )
             SetDefaultValue( options[section][id].debuff, "show", true )
             SetDefaultValue( options[section][id].debuff, "type", cfgWidgets.getTypeIndex("debuff","text") )
+            SetDefaultValue( options[section][id].debuff, "justify", 0 )
+            SetDefaultValue( options[section][id].debuff, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].debuff, "newLine", false )
             SetDefaultValue( options[section][id].se, "show", true )
             SetDefaultValue( options[section][id].se, "type", cfgWidgets.getTypeIndex("se","text") )
+            SetDefaultValue( options[section][id].se, "justify", 0 )
+            SetDefaultValue( options[section][id].se, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].se, "newLine", true )
             SetDefaultValue( options[section][id].hp, "show", true )
             SetDefaultValue( options[section][id].hp, "type", cfgWidgets.getTypeIndex("hp","hbar") )
+            SetDefaultValue( options[section][id].hp, "justify", 0 )
+            SetDefaultValue( options[section][id].hp, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].hp, "newLine", true )
             SetDefaultValue( options[section][id].damage, "show", false )
             SetDefaultValue( options[section][id].damage, "type", cfgWidgets.getTypeIndex("damage","text") )
+            SetDefaultValue( options[section][id].damage, "justify", 0 )
+            SetDefaultValue( options[section][id].damage, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].damage, "newLine", true )
             SetDefaultValue( options[section][id].hit, "show", false )
             SetDefaultValue( options[section][id].hit, "type", cfgWidgets.getTypeIndex("hit","text") )
+            SetDefaultValue( options[section][id].hit, "justify", 0 )
+            SetDefaultValue( options[section][id].hit, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].hit, "newLine", true )
             SetDefaultValue( options[section][id].recommended, "show", false )
             SetDefaultValue( options[section][id].recommended, "type", cfgWidgets.getTypeIndex("recommended","text") )
             SetDefaultValue( options[section][id].recommended, "targHeavyThresh", 90 )
             SetDefaultValue( options[section][id].recommended, "targSpecThresh", 90 )
+            SetDefaultValue( options[section][id].recommended, "justify", 0 )
+            SetDefaultValue( options[section][id].recommended, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].recommended, "newLine", true )
             SetDefaultValue( options[section][id].rare, "show", true )
             SetDefaultValue( options[section][id].rare, "type", cfgWidgets.getTypeIndex("rare","text") )
+            SetDefaultValue( options[section][id].rare, "justify", 0 )
+            SetDefaultValue( options[section][id].rare, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].rare, "newLine", true )
             SetDefaultValue( options[section][id].resist, "show", false )
             SetDefaultValue( options[section][id].resist, "type", cfgWidgets.getTypeIndex("resist","vbar") )
+            SetDefaultValue( options[section][id].resist, "justify", 0 )
+            SetDefaultValue( options[section][id].resist, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].resist, "newLine", true )
             SetDefaultValue( options[section][id].probability, "show", false )
             SetDefaultValue( options[section][id].probability, "type", cfgWidgets.getTypeIndex("probability","vbar") )
+            SetDefaultValue( options[section][id].probability, "justify", 0 )
+            SetDefaultValue( options[section][id].probability, "fontScale", 1.0 )
+            SetDefaultValue( options[section][id].probability, "newLine", true )
         end
     end
 end
@@ -1566,8 +1593,8 @@ local function PresentTargetMonster(monster, section)
         local mHP = monster.HP
         local mHPMax = monster.HPMax
 
-        local atkTech = lib_characters.GetPlayerTechniqueStatus(monster.address, 0)
-        local defTech = lib_characters.GetPlayerTechniqueStatus(monster.address, 1)
+        monster.atkTech = lib_characters.GetPlayerTechniqueStatus(monster.address, 0)
+        monster.defTech = lib_characters.GetPlayerTechniqueStatus(monster.address, 1)
 
         local frozen = lib_characters.GetPlayerFrozenStatus(monster.address)
         local confused = lib_characters.GetPlayerConfusedStatus(monster.address)
@@ -1609,7 +1636,7 @@ local function PresentTargetMonster(monster, section)
 
 		dmg.maxBase = ((pData.maxAtp - monster.Dfp)/5)
 		dmg.minBase = ((pData.minAtp - monster.Dfp)/5)
-		if defTech.type ~= 0 then -- monster zalured? 
+		if monster.defTech.type ~= 0 then -- monster zalured? 
 			dmg.maxBase = ((pData.maxAtp - (monster.Dfp*(1-((((pData.zalure-1)*1.3)+10)/100))))/5)
 			dmg.minBase = ((pData.minAtp - (monster.Dfp*(1-((((pData.zalure-1)*1.3)+10)/100))))/5)
 		end
@@ -1644,7 +1671,7 @@ local function PresentTargetMonster(monster, section)
 
         local curX = imgui.GetCursorPosX()
 
-        cfgWidgets.showAll(moptions,moptions.shownOptionOrder)
+        cfgWidgets.showAll(monster,moptions,moptions.shownOptionOrder,trackerWindowPadding)
 
     end
 end

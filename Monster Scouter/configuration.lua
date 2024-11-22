@@ -148,6 +148,8 @@ local function ConfigurationWindow(configuration)
     end
 
     local configureMonster_persist = {}
+    local cateTabl_Shown_Reordering_Options = nil
+    local selectedTypePresentLookup = nil
 
     local _showWindowSettings = function()
         local success
@@ -329,14 +331,26 @@ local function ConfigurationWindow(configuration)
                 local function PresentHBarOptions(optionTabl)
 
                 end
-                print(cfgWidgets.getTypeIndex("text"))
-                local selectedTypePresentLookup = {
-                    [cfgWidgets.getTypeIndex("text")] = PresentTextOptions,
-                    [cfgWidgets.getTypeIndex("vbar")] = PresentVBarOptions,
-                    [cfgWidgets.getTypeIndex("hbar")] = PresentHBarOptions,
-                }
-                local function PresentSelectedTypeOptions(optionTabl)
-                    selectedTypePresentLookup[optionTabl.type](optionTabl)
+                
+                if not selectedTypePresentLookup then
+                    selectedTypePresentLookup = {}
+                    for i=1, cfgWidgets.numWidgets do
+                        selectedTypePresentLookup[i] = {}
+                        local types = cfgWidgets.types[i]
+                        for j=1, #types do
+                            if cfgWidgets.getTypeIndex(cfgWidgets.names[i], "text") == j then
+                                selectedTypePresentLookup[i][j] = PresentTextOptions
+                            elseif cfgWidgets.getTypeIndex(cfgWidgets.names[i], "vbar") == j then
+                                selectedTypePresentLookup[i][j] = PresentTextOptions
+                            elseif cfgWidgets.getTypeIndex(cfgWidgets.names[i], "hbar") == j then
+                                selectedTypePresentLookup[i][j] = PresentTextOptions
+                            end
+                        end
+                    end
+                end
+
+                local function PresentSelectedTypeOptions(nameNum, optionTabl)
+                    selectedTypePresentLookup[nameNum][optionTabl.type](optionTabl)
                 end
 
 
@@ -358,7 +372,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("Name Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         if imgui.Checkbox("Color As Weakness", optionTabl.colorAsWeakness) then
                             optionTabl.colorAsWeakness = not optionTabl.colorAsWeakness
@@ -374,7 +388,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("Debuff Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         imgui.TreePop()
                     end
@@ -385,7 +399,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("Status Effects Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         imgui.TreePop()
                     end
@@ -396,7 +410,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("Health Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         imgui.TreePop()
                     end
@@ -407,7 +421,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("Damage Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         imgui.TreePop()
                     end
@@ -418,7 +432,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("Hit Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         imgui.TreePop()
                     end
@@ -429,7 +443,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("'Recommended' Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         local SWidthP = 200
 
@@ -456,7 +470,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("Rare Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         imgui.TreePop()
                     end
@@ -467,7 +481,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("Resistance Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         imgui.TreePop()
                     end
@@ -478,7 +492,7 @@ local function ConfigurationWindow(configuration)
                     if imgui.TreeNodeEx("Probability Options", "DefaultOpen") then
 
                         PresentTypeSelectOptions(optionCate, optionTabl)
-                        PresentSelectedTypeOptions(optionTabl)
+                        PresentSelectedTypeOptions(cm_persist.selected_widget,optionTabl)
 
                         imgui.TreePop()
                     end

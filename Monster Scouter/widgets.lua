@@ -1,3 +1,4 @@
+local lib_helpers = require("solylib.helpers")
 
 local widgetNames = {
     "name",
@@ -133,8 +134,11 @@ widgetProperties[getNameIndex("probability")] = {
 }
 
 
+local function clampVal(clamp, min, max)
+    return clamp < min and min or clamp > max and max or clamp
+end
 
-local function PrintWText(widgetOptions, text, color, forceSameLine, widgetOrder)
+local function PrintWText(widgetOptions, text, color, forceSameLine, widgetOrder, windowPadding)
     if widgetOptions.fontScale ~= 1.0 then
         imgui.SetWindowFontScale(widgetOptions.fontScale)
     end
@@ -144,7 +148,7 @@ local function PrintWText(widgetOptions, text, color, forceSameLine, widgetOrder
 
     if widgetOptions.justify == 0 then
         if widgetOptions.newLine then
-            imgui.SetCursorPosX(trackerWindowPadding.x)
+            imgui.SetCursorPosX(windowPadding.x)
         else
             imgui.SameLine(0,0)
         end
@@ -163,7 +167,7 @@ local function PrintWText(widgetOptions, text, color, forceSameLine, widgetOrder
             imgui.SameLine(xPos,0) -- and then place the cursor where it needs to go with an absolute (window's content!) x coordinate
         end
     else
-        local rePosX = winX - tSizex - trackerWindowPadding.x -1 -- subtract 1 extra so "AlwaysAutoResize" will work
+        local rePosX = winX - tSizex - windowPadding.x -1 -- subtract 1 extra so "AlwaysAutoResize" will work
         if widgetOptions.newLine then
             local cPosX = imgui.GetCursorPosX()
             local xPos = clampVal(rePosX, cPosX, winX)
@@ -185,7 +189,7 @@ local function PrintWText(widgetOptions, text, color, forceSameLine, widgetOrder
     end
 end
 
-local function showName_Widget(options, order)
+local function showName_Widget(monster, options, order, windowPadding)
     local woptions = options.name
     if woptions.show then
         local wtypes = widgetTypeIdx.debuff
@@ -208,7 +212,7 @@ local function showName_Widget(options, order)
                 mColor = monster.color
             end
 
-            PrintMText(options.name, mName, mColor, false, order)
+            PrintWText(options.name, mName, mColor, false, order, windowPadding)
 
             return true
         end
@@ -218,39 +222,39 @@ local function showName_Widget(options, order)
 end
 
 -- Show J/Z status
-local function showDebuff_Widget(options, order)
+local function showDebuff_Widget(monster, options, order, windowPadding)
     local woptions = options.debuff
     if woptions.show then
         local wtypes = widgetTypeIdx.debuff
 
         if woptions.type == wtypes.text then
-            if atkTech.type == 0 then
-                PrintMText(options.debuff, "    ", 0, false, order)
+            if monster.atkTech.type == 0 then
+                PrintWText(options.debuff, "    ", 0, false, order, windowPadding)
             else
-                local atkTechText = atkTech.name .. atkTech.level .. string.rep(" ", 3 - #tostring(atkTech.level))
-                PrintMText(options.debuff, atkTechText, 0xFFFF2031, false, order)
+                local atkTechText = monster.atkTech.name .. monster.atkTech.level .. string.rep(" ", 3 - #tostring(monster.atkTech.level))
+                PrintWText(options.debuff, atkTechText, 0xFFFF2031, false, order, windowPadding)
             end
 
-            if defTech.type == 0 then
-                PrintMText(options.debuff, "    ", 0, true, order)
+            if monster.defTech.type == 0 then
+                PrintWText(options.debuff, "    ", 0, true, order, windowPadding)
             else
-                local defTechText = defTech.name .. defTech.level .. string.rep(" ", 3 - #tostring(defTech.level))
-                PrintMText(options.debuff, defTechText, 0xFF0088F4, true, order)
+                local defTechText = monster.defTech.name .. monster.defTech.level .. string.rep(" ", 3 - #tostring(monster.defTech.level))
+                PrintWText(options.debuff, defTechText, 0xFF0088F4, true, order, windowPadding)
             end
             return true
         elseif woptions.type == wtypes.vbar then
-            if atkTech.type == 0 then
-                PrintMText(options.debuff, "    ", 0, false, order)
+            if monster.atkTech.type == 0 then
+                PrintWText(options.debuff, "    ", 0, false, order, windowPadding)
             else
-                local atkTechText = atkTech.name .. atkTech.level .. string.rep(" ", 3 - #tostring(atkTech.level))
-                PrintMText(options.debuff, atkTechText, 0xFFFF2031, false, order)
+                local atkTechText = monster.atkTech.name .. monster.atkTech.level .. string.rep(" ", 3 - #tostring(monster.atkTech.level))
+                PrintWText(options.debuff, atkTechText, 0xFFFF2031, false, order, windowPadding)
             end
 
-            if defTech.type == 0 then
-                PrintMText(options.debuff, "    ", 0, true, order)
+            if monster.defTech.type == 0 then
+                PrintWText(options.debuff, "    ", 0, true, order, windowPadding)
             else
-                local defTechText = defTech.name .. defTech.level .. string.rep(" ", 3 - #tostring(defTech.level))
-                PrintMText(options.debuff, defTechText, 0xFF0088F4, true, order)
+                local defTechText = monster.defTech.name .. monster.defTech.level .. string.rep(" ", 3 - #tostring(monster.defTech.level))
+                PrintWText(options.debuff, defTechText, 0xFF0088F4, true, order, windowPadding)
             end
             return true
         end
@@ -260,23 +264,23 @@ local function showDebuff_Widget(options, order)
 end
 
 -- Show Frozen, Confuse, Shocked, or Paralyzed status
-local function showStatusEffects_Widget(options, order)
+local function showStatusEffects_Widget(monster, options, order, windowPadding)
     local woptions = options.se
     if woptions.show then
         local wtypes = widgetTypeIdx.se
 
         if woptions.type == wtypes.text then
             if frozen then
-                PrintMText(options.se, "F ", 0xFF00FFFF, false, order)
+                PrintWText(options.se, "F ", 0xFF00FFFF, false, order, windowPadding)
             elseif confused then
-                PrintMText(options.se, "C ", 0xFFFF00FF, false, order)
+                PrintWText(options.se, "C ", 0xFFFF00FF, false, order, windowPadding)
             elseif shocked then
-                PrintMText(options.se, "S ", 0xFFFFFF00, false, order)
+                PrintWText(options.se, "S ", 0xFFFFFF00, false, order, windowPadding)
             else
-                PrintMText(options.se, "  ", 0, false, order)
+                PrintWText(options.se, "  ", 0, false, order, windowPadding)
             end
             if paralyzed then
-                PrintMText(options.se, "P ", 0xFFFF4000, true, order)
+                PrintWText(options.se, "P ", 0xFFFF4000, true, order, windowPadding)
             end
             return true
         end
@@ -285,7 +289,7 @@ local function showStatusEffects_Widget(options, order)
     return false
 end
 
-local function showHealth_Widget(options, order)
+local function showHealth_Widget(monster, options, order, windowPadding)
     local woptions = options.hp
     if woptions.show then
         local wtypes = widgetTypeIdx.hp
@@ -430,7 +434,7 @@ local function showHealth_Widget(options, order)
     return false
 end
 
-local function showDamage_Widget(options, order)
+local function showDamage_Widget(monster, options, order, windowPadding)
     local woptions = options.damage
     if woptions.show then
         local wtypes = widgetTypeIdx.damage
@@ -491,7 +495,7 @@ local function showDamage_Widget(options, order)
     return false
 end
 
-local function showHit_Widget(options, order)
+local function showHit_Widget(monster, options, order, windowPadding)
     local woptions = options.hit
     if woptions.show then
         local wtypes = widgetTypeIdx.hit
@@ -512,7 +516,7 @@ local function showHit_Widget(options, order)
     return false
 end
 
-local function showRecommended_Widget(options, order)
+local function showRecommended_Widget(monster, options, order, windowPadding)
     local woptions = options.recommended
     if woptions.show then
         local wtypes = widgetTypeIdx.recommended
@@ -561,7 +565,7 @@ local function showRecommended_Widget(options, order)
     return false
 end
 
-local function showRares_Widget(options, order)
+local function showRares_Widget(monster, options, order, windowPadding)
     local woptions = options.rare
     if woptions.show then
         local wtypes = widgetTypeIdx.rare
@@ -594,7 +598,7 @@ local function showRares_Widget(options, order)
     return false
 end
 
-local function showResistances_Widget(options, order)
+local function showResistances_Widget(monster, options, order, windowPadding)
     local woptions = options.resist
     if woptions.show then
         local wtypes = widgetTypeIdx.resist
@@ -641,7 +645,7 @@ local function showResistances_Widget(options, order)
     return false
 end
 
-local function showProbability_Widget(options, options, order)
+local function showProbability_Widget(monster, options, order, windowPadding)
     local woptions = options.probability
     if woptions.show then
         local wtypes = widgetTypeIdx.probability
@@ -708,10 +712,10 @@ local allShowWidgetFuncs = {
 }
 local allShowWidgetFuncs_Count = #allShowWidgetFuncs
 
-local function showAllWidgets(widgetOptions, showOrdering) -- example: showOrdering = {[1] = 2, [2] = 4, [3] = 1, [4] = 3}
+local function showAllWidgets(monster, widgetOptions, showOrdering, windowPadding) -- example: showOrdering = {[1] = 2, [2] = 4, [3] = 1, [4] = 3}
     local shownOrder = 1
     for i=1, #showOrdering do
-        local wasShown = allShowWidgetFuncs[showOrdering[i]](widgetOptions, shownOrder)
+        local wasShown = allShowWidgetFuncs[showOrdering[i]](monster, widgetOptions, shownOrder, windowPadding)
         if wasShown then 
             shownOrder = shownOrder + 1
         end
