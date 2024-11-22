@@ -54,6 +54,9 @@ def parseDropTables(root):
             if target.upper() == 'GILCHIC/GILCHICH': # check spelling of monster name for fuck up circa ~aug/2024
                 target = 'Gillchic/Gillchich'
 
+            if target.upper() == 'DE ROL LE/DAL RAL LIE': # de rol le ultimate isn't RAL its RA
+                target = 'DE ROL LE/DAL RA LIE'
+            
             if target.upper() == 'VOL OPT/VOL OPT VER. 2': # vol opt ultimate doesn't have a space char ' ' between "ver." and "2".
                 target = 'VOL OPT/VOL OPT VER.2'
 
