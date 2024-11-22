@@ -212,7 +212,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
@@ -515,7 +515,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
@@ -818,7 +818,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
@@ -1121,7 +1121,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
@@ -1424,7 +1424,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
@@ -1727,7 +1727,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
@@ -2030,7 +2030,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
@@ -2333,7 +2333,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
@@ -2636,7 +2636,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
@@ -2939,7 +2939,7 @@ return
 					dar = 31
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Photon Launcher',
 					rare = 6.25000,
