@@ -212,7 +212,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,
@@ -515,7 +515,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,
@@ -818,7 +818,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,
@@ -1121,7 +1121,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,
@@ -1424,7 +1424,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,
@@ -1727,7 +1727,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,
@@ -2030,7 +2030,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,
@@ -2333,7 +2333,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,
@@ -2636,7 +2636,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,
@@ -2939,7 +2939,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
 					rare = 9.37500,

@@ -219,7 +219,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Ruby Bullet',
 					rare = 4.29688,
@@ -536,7 +536,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Ruby Bullet',
 					rare = 4.29688,
@@ -853,7 +853,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Rianov 303SNR-1',
 					rare = 2.73438,
@@ -1170,7 +1170,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Rianov 303SNR-3',
 					rare = 2.73438,
@@ -1487,7 +1487,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Ruby Bullet',
 					rare = 4.29688,
@@ -1804,7 +1804,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Ruby Bullet',
 					rare = 4.29688,
@@ -2121,7 +2121,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Heavenly/HP',
 					rare = 2.14844,
@@ -2438,7 +2438,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Zero Divide',
 					rare = 2.14844,
@@ -2755,7 +2755,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Stink Shield',
 					rare = 2.14844,
@@ -3072,7 +3072,7 @@ return
 					dar = 35
 				}
 			},
-			['VOL OPT/VOL OPT VER. 2'] = {
+			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Ruby Bullet',
 					rare = 4.29688,
