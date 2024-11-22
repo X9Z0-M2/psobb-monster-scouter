@@ -54,6 +54,9 @@ def parseDropTables(root):
             if target.upper() == 'GILCHIC/GILCHICH': # check spelling of monster name for fuck up circa ~aug/2024
                 target = 'Gillchic/Gillchich'
 
+            if target.upper() == 'VOL OPT/VOL OPT VER. 2': # vol opt ultimate doesn't have a space char ' ' between "ver." and "2".
+                target = 'VOL OPT/VOL OPT VER.2'
+
             # iter over ever cell from 2nd dell to last cell in row
             for col in range( 1, len(dropchart_cell) ):
                 drop_names = dropchart_cell[col].xpath('./b')
