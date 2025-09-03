@@ -2003,11 +2003,54 @@ local function PresentTargetMonster(monster, section)
                     then
                         local mDrops = drop_charts[party.difficulty][party.episode][party.id][mName]
                         for i,drop in pairs(mDrops) do
-                            if drop.item and drop.rare and drop.dar then
-                                lib_helpers.Text(true, "1/")
-                                lib_helpers.Text(false, "%i", 1/((party.dar*drop.dar)*(party.rare*drop.rare))*100000000)
-                                lib_helpers.Text(false, " ")
-                                lib_helpers.TextC(false, section_color[party.id], drop.item)
+                            if drop.item and drop.dar then
+
+                                if drop.rare_d then
+                                    -- assume rare_n(umerator) is 1 until another is specified
+                                    local rare_n = 1
+                                    if drop.rare_n ~= nil then
+                                        rare_n = drop.rare_n
+                                    end
+
+                                    local rate =1 / (
+                                                    -- on ephinea DAR is capped at 100% and is a whole integer percent value such as 54% and not 54.55% for example.
+                                                    -- this is calculated and truncated before multiplying against the rare drop probability.
+
+                                                    math.min( 10000, (math.floor((party.dar*drop.dar)/100)*100) )
+
+                                                    -- https://wiki.pioneer2.net/w/Drop_charts#Drop_anything_rate
+                                                    -- excerpt about RDR on Ephinea server:  'A monster's RDR cannot be boosted above 7/8 (87.5%).'
+                                                   *math.min( 87.50, (party.rare*(rare_n/drop.rare_d)))
+
+                                                ) * 1000000
+
+                                    if rate < 10 then
+                                        rate = math.floor(rate * 10) / 10 --chop off after the first decimal place
+                                    else
+                                        rate = math.floor(rate)           --chop off decimal to improve readability
+                                    end
+
+                                    lib_helpers.Text(true, "1/")
+                                    lib_helpers.Text(false, "%g", rate)
+                                    lib_helpers.Text(false, " ")
+                                    lib_helpers.TextC(false, section_color[party.id], drop.item)
+                                
+                                -- backup method incase `rare_d` doesn't exist, but shouldn't ever fallback here
+                                elseif drop.rare then
+                                    local rate = 1/(math.min(10000, (math.floor((party.dar*drop.dar)/100)*100))
+                                                  *(math.min(8750, (party.rare*drop.rare))))*100000000
+
+                                    if rate < 10 then
+                                        rate = math.floor(rate * 10) / 10
+                                    else
+                                        rate = math.floor(rate)
+                                    end
+
+                                    lib_helpers.Text(true, "1/")
+                                    lib_helpers.Text(false, "%g", rate)
+                                    lib_helpers.Text(false, " ")
+                                    lib_helpers.TextC(false, section_color[party.id], drop.item)
+                                end
                             end
                         end
                     end
@@ -2418,7 +2461,7 @@ local function init()
     return
     {
         name = "Monster Scouter",
-        version = "0.2.5",
+        version = "0.2.6",
         author = "X9Z0.M2",
         description = "DBZ-like Scouter for Monsters showing weaknesses, current HP, Drops, and Special Chance over their head",
         present = present,

@@ -79,12 +79,26 @@ def parseDropTables(root):
                 for n, cell_drop in enumerate(drop_names):
                     item = plainText(cell_drop.text_content())
                     abbrs = dropchart_cell[col].xpath('./abbr')
+                    rare_n = None
+                    rare_d = None
                     
                     if item != "":
                         if len(abbrs) > 0:
                             rates = abbrs[n].get('title') # the 'next' line char doesn't print() correctly - only showing the first or last of the two lines
                             dar =  float(plainText( re.search( 'Drop Rate:.*?\((.*?)%\)', rates ).group(1) ))
-                            rare = float(plainText( re.search( 'Rare Rate:.*?\((.*?)%\)', rates ).group(1) ))
+                            rare_capture = re.search( 'Rare Rate:\s?(.*?)\/(.*?)\s?\((.*?)%\)', rates )
+                            rare = float(plainText( rare_capture.group(3) ))
+                            
+                            sup = dropchart_cell[col].xpath('./sup')
+                            sub = dropchart_cell[col].xpath('./sub')
+                            
+                            if len(sup) == 0 and len(sup) == 0:
+                                rare_n = float(plainText( rare_capture.group(1) ))
+                                rare_d = float(plainText( rare_capture.group(2) ))
+                            else:
+                                rare_n = float(plainText(sup[n].text_content())),
+                                rare_d = float(plainText(sub[n].text_content())),
+                                
                         else:
                             sup = dropchart_cell[col].xpath('./sup')
                             sub = dropchart_cell[col].xpath('./sub')
@@ -95,12 +109,19 @@ def parseDropTables(root):
                                 dar = 100                       # we ASSUME dar is 100 - there's no explicit value and since there appears to be a rare rate, 
                                                                 #                        we ASSUME the monster will always drop something,
                                                                 #                        otherwise the RARE rate would be LESS than advertised, but again.. who f-in knows!??!!
-                                rare = ( float(plainText(sup[n].text_content())) / float(plainText(sub[n].text_content())) ) * 100
+                                rare_n = float(plainText(sup[n].text_content()))
+                                rare_d = float(plainText(sub[n].text_content()))
+                                rare = ( rare_n / rare_d ) * 100
 
                         dctable[episode_text][Section_IDs[col]][target].append({
                             "item": item,
-                            "rare": rare,
-                            "dar": dar,
+                            "rare": rare,     # rare when obtained from 'Rare Rate:' has rounding problems and can lead to slightly off calculations
+                            "rare_n": rare_n, # for future reference rare_n is not exported if == 1 since it would be redundant.
+                            "rare_d": rare_d, # this should be used when calculating the absolute drop chance, assuming available.
+                            "dar": dar,       
+                                              # keep in mind for ephinea, they have a hidden cap of 7/8 chance, so items will not drop at rates advertised.
+                                              # ... this is particularly noticable during boosted drops.
+                                              # excerpt: 'A monster's RDR cannot be boosted above 7/8 (87.5%)'
                         })
     return dctable
 
@@ -125,12 +146,27 @@ def writeDropCharts(droptable, filename):
                         elif is_int(drop["rare"]):
                             stringbuilder += '\t\t\t\t\trare = {0:n},\n'.format(drop["rare"])
                         else:
-                            stringbuilder += '\t\t\t\t\trare = {0:0.5f},\n'.format(drop["rare"])
+                            stringbuilder += '\t\t\t\t\trare = {0:0.7g},\n'.format(drop["rare"])
+                            
+                        if drop["rare_n"] is None:
+                            stringbuilder += '\t\t\t\t\trare_n = {0},\n'.format("nil") # ~ lua equivalent of None
+                        elif isinstance(drop["rare_n"], (int, float)) and (drop["rare_n"] == 1 or drop["rare_n"] == 1.0):
+                            #stringbuilder += '\t\t\t\t\trare_n = {0:n},\n'.format(drop["rare_n"])
+                            pass
+                        else:
+                            stringbuilder += '\t\t\t\t\trare_n = {0:0.7g},\n'.format(drop["rare_n"])
+                            
+                        if drop["rare_d"] is None:
+                            stringbuilder += '\t\t\t\t\trare_d = {0},\n'.format("nil") # ~ lua equivalent of None
+                        elif is_int(drop["rare_d"]):
+                            stringbuilder += '\t\t\t\t\trare_d = {0:n},\n'.format(drop["rare_d"])
+                        else:
+                            stringbuilder += '\t\t\t\t\trare_d = {0:0.7g},\n'.format(drop["rare_d"])
 
                         if is_int(drop["dar"]):
                             stringbuilder += '\t\t\t\t\tdar = {0:n}\n'.format(drop["dar"])
                         else:
-                            stringbuilder += '\t\t\t\t\tdar = {0:0.5f}\n'.format(drop["dar"])
+                            stringbuilder += '\t\t\t\t\tdar = {0:0.7g}\n'.format(drop["dar"])
 
                         if dropcount > 1 and dropcount != num:
                             stringbuilder += '\t\t\t\t},\n'

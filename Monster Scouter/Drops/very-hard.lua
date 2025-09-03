@@ -6,13 +6,15 @@ return
 				{
 					item = 'Hildebear\'s Head',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Final Impact',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -20,13 +22,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Bravace',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -34,6 +38,7 @@ return
 				{
 					item = 'Crush Bullet',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -41,6 +46,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -48,6 +54,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -55,27 +62,31 @@ return
 				{
 					item = 'Gobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
 			['GIGOBOOMA/TOLLAW'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -83,20 +94,23 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Devil/Battle',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -104,6 +118,7 @@ return
 				{
 					item = 'Stag Cutlery',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -111,27 +126,31 @@ return
 				{
 					item = 'Crush Bullet',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GUIL SHARK/MELQUEEK'] = {
 				{
 					item = 'Kaladbolg',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Brave Knuckle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
 			['POUILLY SLIME/POUILLY SLIME'] = {
 				{
 					item = 'God/Power',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -139,6 +158,7 @@ return
 				{
 					item = 'Final Impact',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -146,6 +166,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -153,20 +174,23 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'God/Body',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -174,6 +198,7 @@ return
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -181,20 +206,23 @@ return
 				{
 					item = 'Final Impact',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'S-beat\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'Agito (2001)',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -202,6 +230,7 @@ return
 				{
 					item = 'Brionac',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -209,20 +238,23 @@ return
 				{
 					item = 'Smoking Plate',
 					rare = 0.09766,
+					rare_d = 1024,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Delsaber\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -230,6 +262,7 @@ return
 				{
 					item = 'Talis',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -237,6 +270,7 @@ return
 				{
 					item = 'Custom Frame ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -244,6 +278,7 @@ return
 				{
 					item = 'Custom Frame ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -251,13 +286,15 @@ return
 				{
 					item = 'Final Impact',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -265,20 +302,23 @@ return
 				{
 					item = 'Brionac',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'DB\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'DB\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -286,6 +326,7 @@ return
 				{
 					item = 'Brionac',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -293,6 +334,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -300,6 +342,7 @@ return
 				{
 					item = 'Inferno Bazooka',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -309,13 +352,15 @@ return
 				{
 					item = 'Hildebear\'s Head',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Elysion',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -323,13 +368,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -337,6 +384,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -344,6 +392,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -351,6 +400,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -358,27 +408,31 @@ return
 				{
 					item = 'Gobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
 			['GIGOBOOMA/TOLLAW'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -386,20 +440,23 @@ return
 				{
 					item = 'Blade Dance',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Hero/Ability',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'Double Saber',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -407,6 +464,7 @@ return
 				{
 					item = 'Blade Dance',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -414,27 +472,31 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GUIL SHARK/MELQUEEK'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Brave Knuckle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
 			['POUILLY SLIME/POUILLY SLIME'] = {
 				{
 					item = 'Cure/Paralysis',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -442,6 +504,7 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -449,6 +512,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -456,20 +520,23 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'God/Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -477,6 +544,7 @@ return
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -484,20 +552,23 @@ return
 				{
 					item = 'Justy-23ST',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'S-beat\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'Agito (2001)',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -505,6 +576,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -512,20 +584,23 @@ return
 				{
 					item = 'Regene Gear Adv.',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Delsaber\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -533,6 +608,7 @@ return
 				{
 					item = 'Talis',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -540,6 +616,7 @@ return
 				{
 					item = 'D-Parts ver1.01',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -547,6 +624,7 @@ return
 				{
 					item = 'D-Parts ver1.01',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -554,13 +632,15 @@ return
 				{
 					item = 'Star Atomizer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -568,20 +648,23 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'DB\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'DB\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -589,6 +672,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -596,6 +680,7 @@ return
 				{
 					item = 'Inferno Bazooka',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -603,6 +688,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -612,13 +698,15 @@ return
 				{
 					item = 'Dragon Slayer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'God/Arm',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -626,13 +714,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Last Survivor',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -640,6 +730,7 @@ return
 				{
 					item = 'Flowen\'s Sword',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -647,6 +738,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -654,6 +746,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -661,6 +754,7 @@ return
 				{
 					item = 'Gobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
@@ -668,20 +762,23 @@ return
 				{
 					item = 'Gigobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -689,20 +786,23 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'God/HP',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'Double Saber',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -710,6 +810,7 @@ return
 				{
 					item = 'Flowen\'s Sword',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -717,27 +818,31 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GUIL SHARK/MELQUEEK'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Brave Knuckle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
 			['POUILLY SLIME/POUILLY SLIME'] = {
 				{
 					item = 'God/Body',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -745,6 +850,7 @@ return
 				{
 					item = 'Dragon Slayer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -752,6 +858,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -759,20 +866,23 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'God/Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -780,6 +890,7 @@ return
 				{
 					item = 'Graviton Plate',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -787,20 +898,23 @@ return
 				{
 					item = 'Dragon Slayer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'S-beat\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -808,6 +922,7 @@ return
 				{
 					item = 'Visk-235W',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -815,20 +930,23 @@ return
 				{
 					item = 'DB\'s Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Delsaber\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -836,6 +954,7 @@ return
 				{
 					item = 'Talis',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -843,6 +962,7 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -850,6 +970,7 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -857,13 +978,15 @@ return
 				{
 					item = 'Dragon Slayer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Power Material',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -871,20 +994,23 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'DB\'s Armor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'DB\'s Armor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -892,6 +1018,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -899,6 +1026,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -906,6 +1034,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -915,13 +1044,15 @@ return
 				{
 					item = 'Hildebear\'s Head',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Hildeblue\'s Head',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -929,13 +1060,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Elysion',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -943,6 +1076,7 @@ return
 				{
 					item = 'Battle Verge',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -950,6 +1084,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -957,6 +1092,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -964,6 +1100,7 @@ return
 				{
 					item = 'Gobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
@@ -971,20 +1108,23 @@ return
 				{
 					item = 'Branch of Pakupaku',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -992,20 +1132,23 @@ return
 				{
 					item = 'Kaladbolg',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Cure/Confuse',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1013,6 +1156,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1020,20 +1164,23 @@ return
 				{
 					item = 'Battle Verge',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GUIL SHARK/MELQUEEK'] = {
 				{
 					item = 'Stag Cutlery',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Angry Fist',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
@@ -1041,6 +1188,7 @@ return
 				{
 					item = 'Heart of Wok of Akiko\'s Shop',
 					rare = 10.15625,
+					rare_d = 9.85,
 					dar = 100
 				}
 			},
@@ -1048,6 +1196,7 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -1055,6 +1204,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -1062,20 +1212,23 @@ return
 				{
 					item = 'Vjaya',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Devil/Battle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -1083,6 +1236,7 @@ return
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1090,20 +1244,23 @@ return
 				{
 					item = 'Gae Bolg',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'S-beat\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'AddSlot',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1111,6 +1268,7 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1118,20 +1276,23 @@ return
 				{
 					item = 'Regene Gear Adv.',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Delsaber\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -1139,6 +1300,7 @@ return
 				{
 					item = 'Mahu',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -1146,6 +1308,7 @@ return
 				{
 					item = 'Custom Frame ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -1153,6 +1316,7 @@ return
 				{
 					item = 'Custom Frame ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -1160,13 +1324,15 @@ return
 				{
 					item = 'Gae Bolg',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Brave Hammer',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -1174,20 +1340,23 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'D-Parts ver2.10',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'D-Parts ver2.10',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -1195,6 +1364,7 @@ return
 				{
 					item = 'Gae Bolg',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1202,6 +1372,7 @@ return
 				{
 					item = 'Gae Bolg',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1209,6 +1380,7 @@ return
 				{
 					item = 'Caduceus',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1218,13 +1390,15 @@ return
 				{
 					item = 'Hildebear\'s Head',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Hildeblue\'s Head',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -1232,13 +1406,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Elysion',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -1246,6 +1422,7 @@ return
 				{
 					item = 'Blade Dance',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1253,6 +1430,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -1260,6 +1438,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1267,27 +1446,31 @@ return
 				{
 					item = 'Gobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
 			['GIGOBOOMA/TOLLAW'] = {
 				{
 					item = 'Branch of Pakupaku',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1295,20 +1478,23 @@ return
 				{
 					item = 'M&A60 Vise',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'God/Mind',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'AddSlot',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1316,6 +1502,7 @@ return
 				{
 					item = 'Varista',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1323,27 +1510,31 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GUIL SHARK/MELQUEEK'] = {
 				{
 					item = 'Stag Cutlery',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Brave Knuckle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
 			['POUILLY SLIME/POUILLY SLIME'] = {
 				{
 					item = 'HP/Revival',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -1351,6 +1542,7 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -1358,6 +1550,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -1365,20 +1558,23 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'God/Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -1386,6 +1582,7 @@ return
 				{
 					item = 'DB\'s Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1393,20 +1590,23 @@ return
 				{
 					item = 'L&K14 Combat',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'AddSlot',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1414,6 +1614,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1421,20 +1622,23 @@ return
 				{
 					item = 'Regene Gear Adv.',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Delsaber\'s Left Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -1442,6 +1646,7 @@ return
 				{
 					item = 'Talis',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -1449,6 +1654,7 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -1456,6 +1662,7 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -1463,13 +1670,15 @@ return
 				{
 					item = 'L&K14 Combat',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Mace of Adaman',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -1477,20 +1686,23 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'DB\'s Armor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'DB\'s Armor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -1498,6 +1710,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1505,6 +1718,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1512,6 +1726,7 @@ return
 				{
 					item = 'Inferno Bazooka',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1521,13 +1736,15 @@ return
 				{
 					item = 'Hildebear\'s Head',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Hildeblue\'s Head',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -1535,13 +1752,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Elysion',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -1549,6 +1768,7 @@ return
 				{
 					item = 'Fire Scepter: Agni',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1556,6 +1776,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -1563,6 +1784,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1570,27 +1792,31 @@ return
 				{
 					item = 'Branch of Pakupaku',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
 			['GIGOBOOMA/TOLLAW'] = {
 				{
 					item = 'Stink Frame',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1598,20 +1824,23 @@ return
 				{
 					item = 'Brionac',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'God/Mind',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'Double Saber',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1619,6 +1848,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1626,6 +1856,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1633,20 +1864,23 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Mace of Adaman',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
 			['POUILLY SLIME/POUILLY SLIME'] = {
 				{
 					item = 'Cure/Slow',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -1654,6 +1888,7 @@ return
 				{
 					item = 'Storm Wand: Indra',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -1661,6 +1896,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -1668,20 +1904,23 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'TP/Revival',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -1689,6 +1928,7 @@ return
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1696,20 +1936,23 @@ return
 				{
 					item = 'Storm Wand: Indra',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'S-beat\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'Agito (2001)',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1717,6 +1960,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1724,20 +1968,23 @@ return
 				{
 					item = 'Regene Gear Adv.',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Delsaber\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -1745,6 +1992,7 @@ return
 				{
 					item = 'Mahu',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -1752,6 +2000,7 @@ return
 				{
 					item = 'DB\'s Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -1759,6 +2008,7 @@ return
 				{
 					item = 'DB\'s Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -1766,13 +2016,15 @@ return
 				{
 					item = 'Storm Wand: Indra',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Mace of Adaman',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -1780,20 +2032,23 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'D-Parts ver2.10',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'D-Parts ver2.10',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -1801,6 +2056,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1808,6 +2064,7 @@ return
 				{
 					item = 'Inferno Bazooka',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1815,6 +2072,7 @@ return
 				{
 					item = 'Caduceus',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -1824,13 +2082,15 @@ return
 				{
 					item = 'Custom Frame ver.OO',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Cure/Shock',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -1838,13 +2098,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -1852,6 +2114,7 @@ return
 				{
 					item = 'Crush Bullet',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1859,6 +2122,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -1866,6 +2130,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1873,27 +2138,31 @@ return
 				{
 					item = 'Gobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
 			['GIGOBOOMA/TOLLAW'] = {
 				{
 					item = 'Gigobooma\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1901,20 +2170,23 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'God/Body',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'Double Saber',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -1922,6 +2194,7 @@ return
 				{
 					item = 'Cure/Poison',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1929,27 +2202,31 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GUIL SHARK/MELQUEEK'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Angry Fist',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
 			['POUILLY SLIME/POUILLY SLIME'] = {
 				{
 					item = 'Devil/Technique',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -1957,6 +2234,7 @@ return
 				{
 					item = 'God/Arm',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -1964,6 +2242,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -1971,20 +2250,23 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Cure/Paralysis',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -1992,6 +2274,7 @@ return
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -1999,20 +2282,23 @@ return
 				{
 					item = 'Diska of Braveman',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'S-beat\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2020,6 +2306,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2027,20 +2314,23 @@ return
 				{
 					item = 'Regene Gear Adv.',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Delsaber\'s Left Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2048,6 +2338,7 @@ return
 				{
 					item = 'Talis',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -2055,6 +2346,7 @@ return
 				{
 					item = 'DB\'s Armor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2062,6 +2354,7 @@ return
 				{
 					item = 'DB\'s Armor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2069,13 +2362,15 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'DB\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2083,20 +2378,23 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'D-Parts ver2.10',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'D-Parts ver2.10',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2104,6 +2402,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2111,6 +2410,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2118,6 +2418,7 @@ return
 				{
 					item = 'Inferno Bazooka',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2127,13 +2428,15 @@ return
 				{
 					item = 'Hildebear\'s Head',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Hildeblue\'s Head',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -2141,13 +2444,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Elysion',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -2155,6 +2460,7 @@ return
 				{
 					item = 'Flowen\'s Sword',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2162,6 +2468,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2169,6 +2476,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2176,27 +2484,31 @@ return
 				{
 					item = 'Gobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
 			['GIGOBOOMA/TOLLAW'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2204,20 +2516,23 @@ return
 				{
 					item = 'Blade Dance',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'HP/Revival',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2225,6 +2540,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2232,27 +2548,31 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GUIL SHARK/MELQUEEK'] = {
 				{
 					item = 'Stag Cutlery',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Angry Fist',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
 			['POUILLY SLIME/POUILLY SLIME'] = {
 				{
 					item = 'Devil/Battle',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -2260,6 +2580,7 @@ return
 				{
 					item = 'Cross Scar',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -2267,6 +2588,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -2274,20 +2596,23 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'God/TP',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -2295,6 +2620,7 @@ return
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2302,20 +2628,23 @@ return
 				{
 					item = 'Cross Scar',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'S-beat\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2323,6 +2652,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2330,20 +2660,23 @@ return
 				{
 					item = 'Regene Gear Adv.',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2351,6 +2684,7 @@ return
 				{
 					item = 'Mahu',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -2358,6 +2692,7 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2365,6 +2700,7 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2372,13 +2708,15 @@ return
 				{
 					item = 'Cross Scar',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'DB\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2386,20 +2724,23 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'D-Parts ver2.10',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'D-Parts ver2.10',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2407,6 +2748,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2414,6 +2756,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2421,6 +2764,7 @@ return
 				{
 					item = 'Inferno Bazooka',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2430,13 +2774,15 @@ return
 				{
 					item = 'Hildebear\'s Head',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Hildeblue\'s Head',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -2444,13 +2790,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Branch of Pakupaku',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -2458,6 +2806,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2465,6 +2814,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2472,6 +2822,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2479,27 +2830,31 @@ return
 				{
 					item = 'Gobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
 			['GIGOBOOMA/TOLLAW'] = {
 				{
 					item = 'Gigobooma\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2507,20 +2862,23 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Cure/Confuse',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'Double Saber',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2528,6 +2886,7 @@ return
 				{
 					item = 'Custom Ray ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2535,27 +2894,31 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GUIL SHARK/MELQUEEK'] = {
 				{
 					item = 'Ice Staff: Dagon',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Brave Knuckle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
 			['POUILLY SLIME/POUILLY SLIME'] = {
 				{
 					item = 'Cure/Shock',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -2563,6 +2926,7 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -2570,6 +2934,7 @@ return
 				{
 					item = 'Kaladbolg',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -2577,20 +2942,23 @@ return
 				{
 					item = 'Vjaya',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Devil/Battle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -2598,6 +2966,7 @@ return
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2605,20 +2974,23 @@ return
 				{
 					item = 'AddSlot',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'S-beat\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'Agito (2001)',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2626,6 +2998,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2633,20 +3006,23 @@ return
 				{
 					item = 'Regene Gear Adv.',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Delsaber\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2654,6 +3030,7 @@ return
 				{
 					item = 'Talis',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -2661,6 +3038,7 @@ return
 				{
 					item = 'Custom Frame ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2668,6 +3046,7 @@ return
 				{
 					item = 'Custom Frame ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2675,13 +3054,15 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2689,20 +3070,23 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'DB\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'DB\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2710,6 +3094,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2717,6 +3102,7 @@ return
 				{
 					item = 'Star Atomizer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2724,6 +3110,7 @@ return
 				{
 					item = 'Caduceus',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2733,13 +3120,15 @@ return
 				{
 					item = 'Varista',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -2747,13 +3136,15 @@ return
 				{
 					item = 'Rappy\'s Wing',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['AL RAPPY/PAL RAPPY'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -2761,6 +3152,7 @@ return
 				{
 					item = 'Slicer of Assassin',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2768,6 +3160,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2775,6 +3168,7 @@ return
 				{
 					item = 'Booma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2782,27 +3176,31 @@ return
 				{
 					item = 'Gobooma\'s Right Arm',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 38
 				}
 			},
 			['GIGOBOOMA/TOLLAW'] = {
 				{
 					item = 'Gigobooma\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DRAGON/SIL DRAGON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Grass Assassin\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2810,20 +3208,23 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 25
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Perfect/Resist',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['NANO DRAGON/NANO DRAGON'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2831,6 +3232,7 @@ return
 				{
 					item = 'M&A60 Vise',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2838,27 +3240,31 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GUIL SHARK/MELQUEEK'] = {
 				{
 					item = 'Stag Cutlery',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 15
 				}
 			},
 			['POFUILLY SLIME/POFUILLY SLIME'] = {
 				{
 					item = 'Angry Fist',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 27
 				}
 			},
 			['POUILLY SLIME/POUILLY SLIME'] = {
 				{
 					item = 'Cure/Freeze',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -2866,6 +3272,7 @@ return
 				{
 					item = 'Diska of Braveman',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 90
 				}
 			},
@@ -2873,6 +3280,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -2880,20 +3288,23 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DE ROL LE/DAL RA LIE'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'PB/Create',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -2901,6 +3312,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -2908,20 +3320,23 @@ return
 				{
 					item = 'Diska of Braveman',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 85
 				}
 			},
 			['SINOW BEAT/SINOW BLUE'] = {
 				{
 					item = 'Trigrinder',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 60
 				}
 			},
 			['SINOW GOLD/SINOW RED'] = {
 				{
 					item = 'AddSlot',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 55
 				}
 			},
@@ -2929,6 +3344,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -2936,20 +3352,23 @@ return
 				{
 					item = 'Proto Regene Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['VOL OPT/VOL OPT VER.2'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Delsaber\'s Right Arm',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -2957,6 +3376,7 @@ return
 				{
 					item = 'Talis',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 35
 				}
 			},
@@ -2964,6 +3384,7 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2971,6 +3392,7 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 45
 				}
 			},
@@ -2978,6 +3400,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 88
 				}
 			},
@@ -2985,6 +3408,7 @@ return
 				{
 					item = 'Heart of DB\'s Saber',
 					rare = 0.03357,
+					rare_d = 2978.91,
 					dar = 45
 				}
 			},
@@ -2992,20 +3416,23 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BULK/BULK'] = {
 				{
 					item = 'DB\'s Armor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['BULCLAW/BULCLAW'] = {
 				{
 					item = 'DB\'s Armor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
@@ -3013,6 +3440,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3020,6 +3448,7 @@ return
 				{
 					item = 'Inferno Bazooka',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -3027,6 +3456,7 @@ return
 				{
 					item = 'Caduceus',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -3038,13 +3468,15 @@ return
 				{
 					item = 'Crush Bullet',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Final Impact',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -3052,20 +3484,23 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'Final Impact',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Victor Axe',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -3073,20 +3508,23 @@ return
 				{
 					item = 'Mind Material',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Final Impact',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
@@ -3094,13 +3532,15 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['LA DIMENIAN/MERLAN'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 31
 				}
 			},
@@ -3108,34 +3548,39 @@ return
 				{
 					item = 'Double Saber',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -3143,6 +3588,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3150,6 +3596,7 @@ return
 				{
 					item = 'Light Relief',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3157,6 +3604,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -3164,6 +3612,7 @@ return
 				{
 					item = 'Final Impact',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -3171,13 +3620,15 @@ return
 				{
 					item = 'Twin Psychogun',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -3185,6 +3636,7 @@ return
 				{
 					item = 'Brave Knuckle',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3192,13 +3644,15 @@ return
 				{
 					item = 'Flowen\'s Shield',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 25
 				}
 			},
@@ -3206,13 +3660,15 @@ return
 				{
 					item = 'Suppressed Gun',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -3220,6 +3676,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3227,6 +3684,7 @@ return
 				{
 					item = 'Custom Barrier ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -3234,6 +3692,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3241,6 +3700,7 @@ return
 				{
 					item = 'Fatsia',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3248,6 +3708,7 @@ return
 				{
 					item = 'Yamato',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3255,6 +3716,7 @@ return
 				{
 					item = 'Gae Bolg',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3262,6 +3724,7 @@ return
 				{
 					item = 'Guilty Light',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3269,6 +3732,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3276,6 +3740,7 @@ return
 				{
 					item = 'Attribute Plate',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -3283,27 +3748,31 @@ return
 				{
 					item = 'Sting Tip',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -3311,6 +3780,7 @@ return
 				{
 					item = 'Silence Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3318,62 +3788,71 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'Revival Garment',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'Agito (1991)',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DELBITER/DELBITER'] = {
 				{
 					item = 'Madam\'s Umbrella',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'Final Impact',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'Final Impact',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Gae Bolg',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -3383,13 +3862,15 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -3397,20 +3878,23 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Light Relief',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -3418,20 +3902,23 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
@@ -3439,6 +3926,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3446,6 +3934,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 31
 				}
 			},
@@ -3453,34 +3942,39 @@ return
 				{
 					item = 'Flowen\'s Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -3488,6 +3982,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3495,6 +3990,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3502,6 +3998,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -3509,6 +4006,7 @@ return
 				{
 					item = 'Twin Psychogun',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -3516,13 +4014,15 @@ return
 				{
 					item = 'Justy-23ST',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -3530,6 +4030,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3537,13 +4038,15 @@ return
 				{
 					item = 'S-Parts ver1.16',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 25
 				}
 			},
@@ -3551,13 +4054,15 @@ return
 				{
 					item = 'Justy-23ST',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -3565,6 +4070,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3572,6 +4078,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -3579,6 +4086,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3586,6 +4094,7 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3593,6 +4102,7 @@ return
 				{
 					item = 'Plantain Leaf',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3600,6 +4110,7 @@ return
 				{
 					item = 'Justy-23ST',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3607,6 +4118,7 @@ return
 				{
 					item = 'Mahu',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3614,6 +4126,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3621,6 +4134,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -3628,27 +4142,31 @@ return
 				{
 					item = 'Revival Garment',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Sinow Berill\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -3656,6 +4174,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3663,34 +4182,39 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Light Relief',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -3698,27 +4222,31 @@ return
 				{
 					item = 'Suppressed Gun',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'Cross Scar',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -3728,13 +4256,15 @@ return
 				{
 					item = 'Dragon Slayer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Mahu',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -3742,20 +4272,23 @@ return
 				{
 					item = 'Combat Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'Dragon Slayer',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -3763,20 +4296,23 @@ return
 				{
 					item = 'Flowen\'s Sword',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Regenerate Gear',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
@@ -3784,6 +4320,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3791,6 +4328,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 31
 				}
 			},
@@ -3798,34 +4336,39 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Stag Cutlery',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -3833,6 +4376,7 @@ return
 				{
 					item = 'Flowen\'s Sword',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3840,6 +4384,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3847,6 +4392,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -3854,6 +4400,7 @@ return
 				{
 					item = 'Dragon Slayer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -3861,13 +4408,15 @@ return
 				{
 					item = 'Dragon Slayer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -3875,6 +4424,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3882,13 +4432,15 @@ return
 				{
 					item = 'Dragon Slayer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Attribute Wall',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 25
 				}
 			},
@@ -3896,13 +4448,15 @@ return
 				{
 					item = 'Sting Tip',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -3910,6 +4464,7 @@ return
 				{
 					item = 'Flowen\'s Sword',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3917,6 +4472,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -3924,6 +4480,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3931,6 +4488,7 @@ return
 				{
 					item = 'Custom Barrier ver.OO',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3938,6 +4496,7 @@ return
 				{
 					item = 'Fatsia',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3945,6 +4504,7 @@ return
 				{
 					item = 'Dragon Slayer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3952,6 +4512,7 @@ return
 				{
 					item = 'Guilty Light',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -3959,6 +4520,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -3966,6 +4528,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -3973,27 +4536,31 @@ return
 				{
 					item = 'Victor Axe',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Sinow Berill\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Angry Fist',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -4001,6 +4568,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4008,34 +4576,39 @@ return
 				{
 					item = 'Flowen\'s Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'Silence Claw',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Flowen\'s Frame',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -4043,27 +4616,31 @@ return
 				{
 					item = 'God/Battle',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'Dragon Slayer',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Dragon Slayer',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -4073,13 +4650,15 @@ return
 				{
 					item = 'Vjaya',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Victor Axe',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -4087,20 +4666,23 @@ return
 				{
 					item = 'Custom Barrier ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'Gae Bolg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Stag Cutlery',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -4108,20 +4690,23 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Gae Bolg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
@@ -4129,6 +4714,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4136,6 +4722,7 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 31
 				}
 			},
@@ -4143,34 +4730,39 @@ return
 				{
 					item = 'Silence Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -4178,6 +4770,7 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4185,6 +4778,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4192,6 +4786,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -4199,6 +4794,7 @@ return
 				{
 					item = 'Angry Fist',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -4206,13 +4802,15 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -4220,6 +4818,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4227,13 +4826,15 @@ return
 				{
 					item = 'Regenerate Gear',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Flowen\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 25
 				}
 			},
@@ -4241,13 +4842,15 @@ return
 				{
 					item = 'Sting Tip',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Heart of Blade Dance',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -4255,6 +4858,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4262,6 +4866,7 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -4269,6 +4874,7 @@ return
 				{
 					item = 'Flowen\'s Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4276,6 +4882,7 @@ return
 				{
 					item = 'Gae Bolg',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4283,6 +4890,7 @@ return
 				{
 					item = 'Yamato',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4290,6 +4898,7 @@ return
 				{
 					item = 'Attribute Plate',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4297,6 +4906,7 @@ return
 				{
 					item = 'Guilty Light',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4304,6 +4914,7 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4311,34 +4922,39 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['GIBBLES/GIBBLES'] = {
 				{
 					item = 'Madam\'s Umbrella',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Sinow Berill\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Plantain Leaf',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -4346,6 +4962,7 @@ return
 				{
 					item = 'Fatsia',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4353,34 +4970,39 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'God/Battle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Attribute Wall',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -4388,27 +5010,31 @@ return
 				{
 					item = 'Suppressed Gun',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'Gae Bolg',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'Alive Aqhu',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Gae Bolg',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -4418,13 +5044,15 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'L&K14 Combat',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -4432,20 +5060,23 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'L&K14 Combat',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Twin Psychogun',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -4453,20 +5084,23 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Flowen\'s Frame',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Silence Claw',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
@@ -4474,6 +5108,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4481,6 +5116,7 @@ return
 				{
 					item = 'Double Saber',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 31
 				}
 			},
@@ -4488,34 +5124,39 @@ return
 				{
 					item = 'Spirit Garment',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -4523,6 +5164,7 @@ return
 				{
 					item = 'M&A60 Vise',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4530,6 +5172,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4537,6 +5180,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -4544,6 +5188,7 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -4551,13 +5196,15 @@ return
 				{
 					item = 'L&K14 Combat',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'H&S25 Justice',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -4565,6 +5212,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4572,13 +5220,15 @@ return
 				{
 					item = 'S-Parts ver1.16',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Combat Gear',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 25
 				}
 			},
@@ -4586,13 +5236,15 @@ return
 				{
 					item = 'L&K14 Combat',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -4600,6 +5252,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4607,6 +5260,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -4614,6 +5268,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4621,6 +5276,7 @@ return
 				{
 					item = 'Attribute Wall',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4628,6 +5284,7 @@ return
 				{
 					item = 'Yamato',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4635,6 +5292,7 @@ return
 				{
 					item = 'Cross Scar',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4642,6 +5300,7 @@ return
 				{
 					item = 'Guilty Light',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4649,6 +5308,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4656,6 +5316,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -4663,27 +5324,31 @@ return
 				{
 					item = 'Cross Scar',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Sinow Berill\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Custom Barrier ver.OO',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -4691,6 +5356,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4698,34 +5364,39 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'Stink Frame',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'H&S25 Justice',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'Agito (1991)',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Mahu',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -4733,27 +5404,31 @@ return
 				{
 					item = 'Suppressed Gun',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'L&K14 Combat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'L&K14 Combat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Cross Scar',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -4763,13 +5438,15 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Storm Wand: Indra',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -4777,20 +5454,23 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'Sting Tip',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Light Relief',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -4798,20 +5478,23 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Storm Wand: Indra',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Silence Claw',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
@@ -4819,6 +5502,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4826,6 +5510,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 31
 				}
 			},
@@ -4833,34 +5518,39 @@ return
 				{
 					item = 'Flowen\'s Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -4868,6 +5558,7 @@ return
 				{
 					item = 'Fire Scepter: Agni',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4875,6 +5566,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4882,6 +5574,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -4889,6 +5582,7 @@ return
 				{
 					item = 'Gae Bolg',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -4896,13 +5590,15 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Brave Knuckle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -4910,6 +5606,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4917,13 +5614,15 @@ return
 				{
 					item = 'S-Parts ver1.16',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Vjaya',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 25
 				}
 			},
@@ -4931,13 +5630,15 @@ return
 				{
 					item = 'Silence Claw',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -4945,6 +5646,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4952,6 +5654,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -4959,6 +5662,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -4966,6 +5670,7 @@ return
 				{
 					item = 'Fatsia',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4973,6 +5678,7 @@ return
 				{
 					item = 'Yamato',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4980,6 +5686,7 @@ return
 				{
 					item = 'Plantain Leaf',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4987,6 +5694,7 @@ return
 				{
 					item = 'Guilty Light',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -4994,6 +5702,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5001,6 +5710,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -5008,27 +5718,31 @@ return
 				{
 					item = 'Attribute Wall',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Sinow Berill\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Storm Wand: Indra',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -5036,6 +5750,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5043,62 +5758,71 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'Spirit Garment',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'Ice Staff: Dagon',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'Storm Wand: Indra',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Gae Bolg',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DELBITER/DELBITER'] = {
 				{
 					item = 'Madam\'s Umbrella',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'Gae Bolg',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'Storm Wand: Indra',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Storm Wand: Indra',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -5108,13 +5832,15 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Victor Axe',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -5122,20 +5848,23 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'God/Luck',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Light Relief',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -5143,20 +5872,23 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Custom Barrier ver.OO',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Silence Claw',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
@@ -5164,6 +5896,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5171,6 +5904,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 31
 				}
 			},
@@ -5178,34 +5912,39 @@ return
 				{
 					item = 'God/Power',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Stag Cutlery',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -5213,6 +5952,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5220,6 +5960,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5227,6 +5968,7 @@ return
 				{
 					item = 'Light Relief',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -5234,6 +5976,7 @@ return
 				{
 					item = 'Cure/Freeze',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -5241,13 +5984,15 @@ return
 				{
 					item = 'God/TP',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Magic Rock "Moola"',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -5255,6 +6000,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5262,13 +6008,15 @@ return
 				{
 					item = 'Combat Gear',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Flowen\'s Shield',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 25
 				}
 			},
@@ -5276,13 +6024,15 @@ return
 				{
 					item = 'Diska of Braveman',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -5290,6 +6040,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5297,6 +6048,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -5304,6 +6056,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5311,6 +6064,7 @@ return
 				{
 					item = 'Plantain Leaf',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -5318,6 +6072,7 @@ return
 				{
 					item = 'Yamato',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -5325,6 +6080,7 @@ return
 				{
 					item = 'Agito (1991)',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -5332,6 +6088,7 @@ return
 				{
 					item = 'Angry Fist',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -5339,6 +6096,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5346,6 +6104,7 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -5353,27 +6112,31 @@ return
 				{
 					item = 'Spirit Garment',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Sinow Berill\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Final Impact',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -5381,6 +6144,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5388,34 +6152,39 @@ return
 				{
 					item = 'HP/Revival',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'Stink Frame',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'God/Battle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Attribute Wall',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -5423,27 +6192,31 @@ return
 				{
 					item = 'Suppressed Gun',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'Spirit Garment',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -5453,13 +6226,15 @@ return
 				{
 					item = 'Cross Scar',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Victor Axe',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -5467,20 +6242,23 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'Light Relief',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -5488,13 +6266,15 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Flowen\'s Shield',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -5502,6 +6282,7 @@ return
 				{
 					item = 'Heart of Ancient Saber',
 					rare = 0.04272,
+					rare_d = 2340.57,
 					dar = 35
 				}
 			},
@@ -5509,6 +6290,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5516,6 +6298,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 31
 				}
 			},
@@ -5523,34 +6306,39 @@ return
 				{
 					item = 'Regenerate Gear',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -5558,6 +6346,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5565,6 +6354,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5572,6 +6362,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -5579,6 +6370,7 @@ return
 				{
 					item = 'Cross Scar',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -5586,13 +6378,15 @@ return
 				{
 					item = 'Brave Knuckle',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -5600,6 +6394,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5607,13 +6402,15 @@ return
 				{
 					item = 'Combat Gear',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 25
 				}
 			},
@@ -5621,13 +6418,15 @@ return
 				{
 					item = 'Cross Scar',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -5635,6 +6434,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5642,6 +6442,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -5649,6 +6450,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5656,6 +6458,7 @@ return
 				{
 					item = 'Double Saber',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -5663,6 +6466,7 @@ return
 				{
 					item = 'Yamato',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -5670,6 +6474,7 @@ return
 				{
 					item = 'Cross Scar',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -5677,6 +6482,7 @@ return
 				{
 					item = 'Guilty Light',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -5684,6 +6490,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5691,6 +6498,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -5698,27 +6506,31 @@ return
 				{
 					item = 'Revival Garment',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -5726,6 +6538,7 @@ return
 				{
 					item = 'Blade Dance',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5733,34 +6546,39 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'Fire Scepter: Agni',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'God/Battle',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Sting Tip',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -5768,27 +6586,31 @@ return
 				{
 					item = 'Attribute Plate',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'Cross Scar',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'Cross Scar',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Dragon Slayer',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -5798,13 +6620,15 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Bloody Art',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -5812,20 +6636,23 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Light Relief',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -5833,20 +6660,23 @@ return
 				{
 					item = 'Meteor Smash',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Justy-23ST',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'Alive Aqhu',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
@@ -5854,6 +6684,7 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5861,6 +6692,7 @@ return
 				{
 					item = 'Custom Barrier ver.OO',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 31
 				}
 			},
@@ -5868,34 +6700,39 @@ return
 				{
 					item = 'Silence Claw',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Angry Fist',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -5903,6 +6740,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5910,6 +6748,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5917,6 +6756,7 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -5924,6 +6764,7 @@ return
 				{
 					item = 'Bravace',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -5931,13 +6772,15 @@ return
 				{
 					item = 'Club of Zumiuran',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -5945,6 +6788,7 @@ return
 				{
 					item = 'Wals-MK2',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5952,6 +6796,7 @@ return
 				{
 					item = 'Regenerate Gear',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -5959,6 +6804,7 @@ return
 				{
 					item = 'Heart of Delsaber\'s Buster',
 					rare = 0.06104,
+					rare_d = 1638.4,
 					dar = 25
 				}
 			},
@@ -5966,13 +6812,15 @@ return
 				{
 					item = 'Light Relief',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Stag Cutlery',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -5980,6 +6828,7 @@ return
 				{
 					item = 'Kaladbolg',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -5987,6 +6836,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -5994,6 +6844,7 @@ return
 				{
 					item = 'Brave Hammer',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6001,6 +6852,7 @@ return
 				{
 					item = 'Mahu',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -6008,6 +6860,7 @@ return
 				{
 					item = 'Madam\'s Umbrella',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -6015,6 +6868,7 @@ return
 				{
 					item = 'Guilty Light',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -6022,6 +6876,7 @@ return
 				{
 					item = 'Attribute Plate',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -6029,6 +6884,7 @@ return
 				{
 					item = 'Mace of Adaman',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6036,6 +6892,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -6043,27 +6900,31 @@ return
 				{
 					item = 'Spirit Garment',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Sinow Berill\'s Arms',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -6071,6 +6932,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6078,34 +6940,39 @@ return
 				{
 					item = 'Stink Frame',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'Stink Frame',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'Last Survivor',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'Bloody Art',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Guilty Light',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -6113,27 +6980,31 @@ return
 				{
 					item = 'Twin Psychogun',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'Gae Bolg',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'Storm Wand: Indra',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Final Impact',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -6143,13 +7014,15 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['HILDEBLUE/HILDETORR'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -6157,20 +7030,23 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 100
 				}
 			},
 			['LOVE RAPPY/LOVE RAPPY'] = {
 				{
 					item = 'Regenerate Gear',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['GRASS ASSASSIN/CRIMSON ASSASSIN'] = {
 				{
 					item = 'Double Saber',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -6178,20 +7054,23 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['NAR LILY/MIL LILY'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['DARK BELRA/INDI BELRA'] = {
 				{
 					item = 'L&K14 Combat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
@@ -6199,6 +7078,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6206,6 +7086,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 31
 				}
 			},
@@ -6213,34 +7094,39 @@ return
 				{
 					item = 'Diska of Braveman',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
 			['BARBA RAY/BARBA RAY'] = {
 				{
 					item = 'Yamato',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
 			['ST. RAPPY/ST. RAPPY'] = {
 				{
 					item = 'Christmas Present',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['HALO RAPPY/HALO RAPPY'] = {
 				{
 					item = 'Jack-O\'-Lantern',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
 			['EGG RAPPY/EGG RAPPY'] = {
 				{
 					item = 'Easter Egg',
-					rare = 87.50000,
+					rare = 87.5,
+					rare_d = 1.14,
 					dar = 100
 				}
 			},
@@ -6248,6 +7134,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6255,6 +7142,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6262,6 +7150,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
@@ -6269,6 +7158,7 @@ return
 				{
 					item = 'Silence Claw',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
@@ -6276,13 +7166,15 @@ return
 				{
 					item = 'Silence Claw',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 45
 				}
 			},
 			['DUBCHIC/DUBCHICH'] = {
 				{
 					item = 'Twin Psychogun',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -6290,6 +7182,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6297,13 +7190,15 @@ return
 				{
 					item = 'Combat Gear',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 50
 				}
 			},
 			['DELSABER/DELSABER'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 25
 				}
 			},
@@ -6311,13 +7206,15 @@ return
 				{
 					item = 'Diska of Braveman',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 25
 				}
 			},
 			['GOL DRAGON/GOL DRAGON'] = {
 				{
 					item = 'Guilty Light',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -6325,6 +7222,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6332,6 +7230,7 @@ return
 				{
 					item = 'M&A60 Vise',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -6339,6 +7238,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6346,6 +7246,7 @@ return
 				{
 					item = 'Attribute Plate',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -6353,6 +7254,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -6360,6 +7262,7 @@ return
 				{
 					item = 'Yamato',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -6367,6 +7270,7 @@ return
 				{
 					item = 'Fatsia',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
@@ -6374,6 +7278,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6381,6 +7286,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
@@ -6388,27 +7294,31 @@ return
 				{
 					item = 'Victor Axe',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['SINOW BERILL/SINOW BERILL'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW SPIGELL/SINOW SPIGELL'] = {
 				{
 					item = 'Mahu',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 45
 				}
 			},
 			['GAL GRYPHON/GAL GRYPHON'] = {
 				{
 					item = 'Mahu',
-					rare = 9.37500,
+					rare = 9.375,
+					rare_d = 10.67,
 					dar = 100
 				}
 			},
@@ -6416,6 +7326,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6423,34 +7334,39 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 35
 				}
 			},
 			['MORFOS/MORFOS'] = {
 				{
 					item = 'Stink Frame',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['SINOW ZOA/SINOW ZOA'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
 			['SINOW ZELE/SINOW ZELE'] = {
 				{
 					item = 'L&K14 Combat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['DELDEPTH/DELDEPTH'] = {
 				{
 					item = 'Spirit Garment',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
@@ -6458,27 +7374,31 @@ return
 				{
 					item = 'Sting Tip',
 					rare = 2.73438,
+					rare_d = 36.57,
 					dar = 80
 				}
 			},
 			['ILL GILL/ILL GILL'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 40
 				}
 			},
 			['DEL LILY/DEL LILY'] = {
 				{
 					item = 'L&K14 Combat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 35
 				}
 			},
 			['EPSILON/EPSILON'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -6489,7 +7409,8 @@ return
 			['BOOTA'] = {
 				{
 					item = 'Select Cloak',
-					rare = 0.17090,
+					rare = 0.1709,
+					rare_d = 585.14,
 					dar = 30
 				}
 			},
@@ -6497,6 +7418,7 @@ return
 				{
 					item = 'Cursed Cloak',
 					rare = 0.13428,
+					rare_d = 744.73,
 					dar = 38
 				}
 			},
@@ -6504,6 +7426,7 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 35
 				}
 			},
@@ -6511,6 +7434,7 @@ return
 				{
 					item = 'Red Scorpio',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 80
 				}
 			},
@@ -6518,6 +7442,7 @@ return
 				{
 					item = 'God/Battle',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6525,6 +7450,7 @@ return
 				{
 					item = 'Rappy\'s Beak',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
@@ -6532,6 +7458,7 @@ return
 				{
 					item = 'Heavenly/Body',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6539,6 +7466,7 @@ return
 				{
 					item = 'Alliance Uniform',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 30
 				}
 			},
@@ -6546,6 +7474,7 @@ return
 				{
 					item = 'Officer Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 45
 				}
 			},
@@ -6553,6 +7482,7 @@ return
 				{
 					item = 'Photon Crystal',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 80
 				}
 			},
@@ -6560,6 +7490,7 @@ return
 				{
 					item = 'Rianov 303SNR',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6567,6 +7498,7 @@ return
 				{
 					item = 'Snake Spire',
 					rare = 0.26855,
+					rare_d = 372.36,
 					dar = 85
 				}
 			},
@@ -6574,6 +7506,7 @@ return
 				{
 					item = 'Ano Bazooka',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 30
 				}
 			},
@@ -6581,6 +7514,7 @@ return
 				{
 					item = 'Commander Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 35
 				}
 			},
@@ -6588,6 +7522,7 @@ return
 				{
 					item = 'Infantry Gear',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 35
 				}
 			},
@@ -6595,6 +7530,7 @@ return
 				{
 					item = 'Heavenly/Legs',
 					rare = 0.63477,
+					rare_d = 157.54,
 					dar = 27
 				}
 			},
@@ -6602,27 +7538,31 @@ return
 				{
 					item = 'Maguwa',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
 			['GIRTABLULU'] = {
 				{
 					item = 'Heaven Striker Coat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Revival Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -6630,6 +7570,7 @@ return
 				{
 					item = 'Phoenix Claw',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6639,6 +7580,7 @@ return
 				{
 					item = 'Visk-235W',
 					rare = 0.87891,
+					rare_d = 113.78,
 					dar = 30
 				}
 			},
@@ -6646,6 +7588,7 @@ return
 				{
 					item = 'Alliance Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 38
 				}
 			},
@@ -6653,6 +7596,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 1.07422,
+					rare_d = 93.09,
 					dar = 35
 				}
 			},
@@ -6660,6 +7604,7 @@ return
 				{
 					item = 'Guilty Light',
 					rare = 2.53906,
+					rare_d = 39.38,
 					dar = 80
 				}
 			},
@@ -6667,6 +7612,7 @@ return
 				{
 					item = 'Holy Ray',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6674,6 +7620,7 @@ return
 				{
 					item = 'Rappy\'s Beak',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
@@ -6681,6 +7628,7 @@ return
 				{
 					item = 'Heavenly/Body',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6688,6 +7636,7 @@ return
 				{
 					item = 'Heavenly/Arms',
 					rare = 0.13428,
+					rare_d = 744.73,
 					dar = 30
 				}
 			},
@@ -6695,6 +7644,7 @@ return
 				{
 					item = 'Officer Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 45
 				}
 			},
@@ -6702,6 +7652,7 @@ return
 				{
 					item = 'Cure/Paralysis',
 					rare = 0.53711,
+					rare_d = 186.18,
 					dar = 80
 				}
 			},
@@ -6709,6 +7660,7 @@ return
 				{
 					item = 'Rianov 303SNR',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6716,13 +7668,15 @@ return
 				{
 					item = 'Infantry Mantle',
 					rare = 0.26855,
+					rare_d = 372.36,
 					dar = 85
 				}
 			},
 			['GORAN'] = {
 				{
 					item = 'Commander Uniform',
-					rare = 0.34180,
+					rare = 0.3418,
+					rare_d = 292.57,
 					dar = 30
 				}
 			},
@@ -6730,6 +7684,7 @@ return
 				{
 					item = 'Ano Bazooka',
 					rare = 0.26855,
+					rare_d = 372.36,
 					dar = 35
 				}
 			},
@@ -6737,13 +7692,15 @@ return
 				{
 					item = 'Photon Crystal',
 					rare = 1.07422,
+					rare_d = 93.09,
 					dar = 35
 				}
 			},
 			['MERISSA A'] = {
 				{
 					item = 'Regenerate Gear B.P.',
-					rare = 0.34180,
+					rare = 0.3418,
+					rare_d = 292.57,
 					dar = 27
 				}
 			},
@@ -6751,6 +7708,7 @@ return
 				{
 					item = 'Snake Spire',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6758,20 +7716,23 @@ return
 				{
 					item = 'Maguwa',
 					rare = 10.15625,
+					rare_d = 9.85,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Revival Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -6779,6 +7740,7 @@ return
 				{
 					item = 'Glide Divine',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6788,6 +7750,7 @@ return
 				{
 					item = 'Stag Cutlery',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -6795,6 +7758,7 @@ return
 				{
 					item = 'Durandal',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 38
 				}
 			},
@@ -6802,6 +7766,7 @@ return
 				{
 					item = 'Commander Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 35
 				}
 			},
@@ -6809,6 +7774,7 @@ return
 				{
 					item = 'Cursed Cloak',
 					rare = 0.06714,
+					rare_d = 1489.45,
 					dar = 80
 				}
 			},
@@ -6816,6 +7782,7 @@ return
 				{
 					item = 'Chain Sawd',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6823,6 +7790,7 @@ return
 				{
 					item = 'Infantry Mantle',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
@@ -6830,6 +7798,7 @@ return
 				{
 					item = 'Rianov 303SNR',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6837,6 +7806,7 @@ return
 				{
 					item = 'Alliance Uniform',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 30
 				}
 			},
@@ -6844,6 +7814,7 @@ return
 				{
 					item = 'Kaladbolg',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 45
 				}
 			},
@@ -6851,6 +7822,7 @@ return
 				{
 					item = 'Snake Spire',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 80
 				}
 			},
@@ -6858,6 +7830,7 @@ return
 				{
 					item = 'God/Battle',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6865,6 +7838,7 @@ return
 				{
 					item = 'Last Survivor',
 					rare = 0.53711,
+					rare_d = 186.18,
 					dar = 85
 				}
 			},
@@ -6872,6 +7846,7 @@ return
 				{
 					item = 'Infantry Gear',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 30
 				}
 			},
@@ -6879,6 +7854,7 @@ return
 				{
 					item = 'Ano Bazooka',
 					rare = 0.26855,
+					rare_d = 372.36,
 					dar = 35
 				}
 			},
@@ -6886,6 +7862,7 @@ return
 				{
 					item = 'Tempest Cloak',
 					rare = 0.14648,
+					rare_d = 682.67,
 					dar = 35
 				}
 			},
@@ -6893,13 +7870,15 @@ return
 				{
 					item = 'Heavenly/Legs',
 					rare = 0.63477,
+					rare_d = 157.54,
 					dar = 27
 				}
 			},
 			['MERISSA AA'] = {
 				{
 					item = 'Heart of The Sigh of a God',
-					rare = 4.68750,
+					rare = 4.6875,
+					rare_d = 21.33,
 					dar = 100
 				}
 			},
@@ -6907,20 +7886,23 @@ return
 				{
 					item = 'Stink Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Spirit Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -6928,6 +7910,7 @@ return
 				{
 					item = 'Kusanagi',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6937,6 +7920,7 @@ return
 				{
 					item = 'Gae Bolg',
 					rare = 0.87891,
+					rare_d = 113.78,
 					dar = 30
 				}
 			},
@@ -6944,6 +7928,7 @@ return
 				{
 					item = 'Asuka',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 38
 				}
 			},
@@ -6951,6 +7936,7 @@ return
 				{
 					item = 'Photon Crystal',
 					rare = 0.39063,
+					rare_d = 256,
 					dar = 35
 				}
 			},
@@ -6958,6 +7944,7 @@ return
 				{
 					item = 'Select Cloak',
 					rare = 0.06714,
+					rare_d = 1489.45,
 					dar = 80
 				}
 			},
@@ -6965,6 +7952,7 @@ return
 				{
 					item = 'Cure/Confuse',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -6972,13 +7960,15 @@ return
 				{
 					item = 'Rappy\'s Beak',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
 			['DEL RAPPY'] = {
 				{
 					item = 'Ignition Cloak',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
@@ -6986,6 +7976,7 @@ return
 				{
 					item = 'Heavenly/Arms',
 					rare = 0.13428,
+					rare_d = 744.73,
 					dar = 30
 				}
 			},
@@ -6993,6 +7984,7 @@ return
 				{
 					item = 'Photon Crystal',
 					rare = 0.63477,
+					rare_d = 157.54,
 					dar = 45
 				}
 			},
@@ -7000,6 +7992,7 @@ return
 				{
 					item = 'Congeal Cloak',
 					rare = 0.07935,
+					rare_d = 1260.31,
 					dar = 80
 				}
 			},
@@ -7007,6 +8000,7 @@ return
 				{
 					item = 'Heavenly/Luck',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7014,6 +8008,7 @@ return
 				{
 					item = 'Caduceus',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 85
 				}
 			},
@@ -7021,6 +8016,7 @@ return
 				{
 					item = 'Angry Fist',
 					rare = 1.26953,
+					rare_d = 78.77,
 					dar = 30
 				}
 			},
@@ -7028,6 +8024,7 @@ return
 				{
 					item = 'Ano Bazooka',
 					rare = 0.26855,
+					rare_d = 372.36,
 					dar = 35
 				}
 			},
@@ -7035,6 +8032,7 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 35
 				}
 			},
@@ -7042,6 +8040,7 @@ return
 				{
 					item = 'Vjaya',
 					rare = 0.97656,
+					rare_d = 102.4,
 					dar = 27
 				}
 			},
@@ -7049,27 +8048,31 @@ return
 				{
 					item = 'Maguwa',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
 			['GIRTABLULU'] = {
 				{
 					item = 'Heaven Striker Coat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Revival Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -7077,6 +8080,7 @@ return
 				{
 					item = 'Rianov 303SNR',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7086,6 +8090,7 @@ return
 				{
 					item = 'H&S25 Justice',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -7093,6 +8098,7 @@ return
 				{
 					item = 'Yamato',
 					rare = 0.87891,
+					rare_d = 113.78,
 					dar = 38
 				}
 			},
@@ -7100,6 +8106,7 @@ return
 				{
 					item = 'Double Saber',
 					rare = 1.75781,
+					rare_d = 56.89,
 					dar = 35
 				}
 			},
@@ -7107,6 +8114,7 @@ return
 				{
 					item = 'Select Cloak',
 					rare = 0.06714,
+					rare_d = 1489.45,
 					dar = 80
 				}
 			},
@@ -7114,6 +8122,7 @@ return
 				{
 					item = 'Heavenly/Power',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7121,6 +8130,7 @@ return
 				{
 					item = 'Rappy\'s Beak',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
@@ -7128,6 +8138,7 @@ return
 				{
 					item = 'Rianov 303SNR',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7135,6 +8146,7 @@ return
 				{
 					item = 'Alliance Uniform',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 30
 				}
 			},
@@ -7142,6 +8154,7 @@ return
 				{
 					item = 'Photon Crystal',
 					rare = 0.63477,
+					rare_d = 157.54,
 					dar = 45
 				}
 			},
@@ -7149,6 +8162,7 @@ return
 				{
 					item = 'Snake Spire',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 80
 				}
 			},
@@ -7156,6 +8170,7 @@ return
 				{
 					item = 'God/Battle',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7163,6 +8178,7 @@ return
 				{
 					item = 'Bloody Art',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 85
 				}
 			},
@@ -7170,6 +8186,7 @@ return
 				{
 					item = 'Alliance Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 30
 				}
 			},
@@ -7177,6 +8194,7 @@ return
 				{
 					item = 'Tyrell\'s Parasol',
 					rare = 0.14648,
+					rare_d = 682.67,
 					dar = 35
 				}
 			},
@@ -7184,6 +8202,7 @@ return
 				{
 					item = 'Heavenly/Legs',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 35
 				}
 			},
@@ -7191,6 +8210,7 @@ return
 				{
 					item = 'Infantry Gear',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 27
 				}
 			},
@@ -7198,6 +8218,7 @@ return
 				{
 					item = 'Maguwa',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7205,20 +8226,23 @@ return
 				{
 					item = 'Stink Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Spirit Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -7226,6 +8250,7 @@ return
 				{
 					item = 'Rianov 303SNR',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7235,6 +8260,7 @@ return
 				{
 					item = 'Fire Scepter: Agni',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -7242,6 +8268,7 @@ return
 				{
 					item = 'Ice Staff: Dagon',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 38
 				}
 			},
@@ -7249,6 +8276,7 @@ return
 				{
 					item = 'Storm Wand: Indra',
 					rare = 1.07422,
+					rare_d = 93.09,
 					dar = 35
 				}
 			},
@@ -7256,6 +8284,7 @@ return
 				{
 					item = 'Cursed Cloak',
 					rare = 0.06714,
+					rare_d = 1489.45,
 					dar = 80
 				}
 			},
@@ -7263,6 +8292,7 @@ return
 				{
 					item = 'Heavenly/Mind',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7270,6 +8300,7 @@ return
 				{
 					item = 'Infantry Mantle',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
@@ -7277,6 +8308,7 @@ return
 				{
 					item = 'Heavenly/Body',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7284,6 +8316,7 @@ return
 				{
 					item = 'Mace of Adaman',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 30
 				}
 			},
@@ -7291,6 +8324,7 @@ return
 				{
 					item = 'Battle Verge',
 					rare = 0.58594,
+					rare_d = 170.67,
 					dar = 45
 				}
 			},
@@ -7298,6 +8332,7 @@ return
 				{
 					item = 'Congeal Cloak',
 					rare = 0.07935,
+					rare_d = 1260.31,
 					dar = 80
 				}
 			},
@@ -7305,6 +8340,7 @@ return
 				{
 					item = 'Heavenly/Luck',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7312,6 +8348,7 @@ return
 				{
 					item = 'Caduceus',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 85
 				}
 			},
@@ -7319,6 +8356,7 @@ return
 				{
 					item = 'Alliance Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 30
 				}
 			},
@@ -7326,6 +8364,7 @@ return
 				{
 					item = 'Tyrell\'s Parasol',
 					rare = 0.14648,
+					rare_d = 682.67,
 					dar = 35
 				}
 			},
@@ -7333,6 +8372,7 @@ return
 				{
 					item = 'Photon Claw',
 					rare = 3.51563,
+					rare_d = 28.44,
 					dar = 35
 				}
 			},
@@ -7340,6 +8380,7 @@ return
 				{
 					item = 'Infantry Gear',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 27
 				}
 			},
@@ -7347,6 +8388,7 @@ return
 				{
 					item = 'Spirit Cuirass',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7354,20 +8396,23 @@ return
 				{
 					item = 'Stink Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Spirit Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -7375,6 +8420,7 @@ return
 				{
 					item = 'Glide Divine',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7384,6 +8430,7 @@ return
 				{
 					item = 'Slicer of Assassin',
 					rare = 0.87891,
+					rare_d = 113.78,
 					dar = 30
 				}
 			},
@@ -7391,6 +8438,7 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 38
 				}
 			},
@@ -7398,6 +8446,7 @@ return
 				{
 					item = 'Select Cloak',
 					rare = 0.14648,
+					rare_d = 682.67,
 					dar = 35
 				}
 			},
@@ -7405,6 +8454,7 @@ return
 				{
 					item = 'Cursed Cloak',
 					rare = 0.06714,
+					rare_d = 1489.45,
 					dar = 80
 				}
 			},
@@ -7412,6 +8462,7 @@ return
 				{
 					item = 'Heart of Diska of Liberator',
 					rare = 10.15625,
+					rare_d = 9.85,
 					dar = 100
 				}
 			},
@@ -7419,6 +8470,7 @@ return
 				{
 					item = 'Infantry Mantle',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
@@ -7426,6 +8478,7 @@ return
 				{
 					item = 'Rianov 303SNR',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7433,6 +8486,7 @@ return
 				{
 					item = 'Heavenly/Arms',
 					rare = 0.13428,
+					rare_d = 744.73,
 					dar = 30
 				}
 			},
@@ -7440,6 +8494,7 @@ return
 				{
 					item = 'Officer Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 45
 				}
 			},
@@ -7447,6 +8502,7 @@ return
 				{
 					item = 'Snake Spire',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 80
 				}
 			},
@@ -7454,6 +8510,7 @@ return
 				{
 					item = 'Tanegashima',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7461,6 +8518,7 @@ return
 				{
 					item = 'Mahu',
 					rare = 0.43945,
+					rare_d = 227.56,
 					dar = 85
 				}
 			},
@@ -7468,6 +8526,7 @@ return
 				{
 					item = 'Infantry Gear',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 30
 				}
 			},
@@ -7475,6 +8534,7 @@ return
 				{
 					item = 'Tyrell\'s Parasol',
 					rare = 0.14648,
+					rare_d = 682.67,
 					dar = 35
 				}
 			},
@@ -7482,6 +8542,7 @@ return
 				{
 					item = 'Diska of Braveman',
 					rare = 1.95313,
+					rare_d = 51.2,
 					dar = 35
 				}
 			},
@@ -7489,6 +8550,7 @@ return
 				{
 					item = 'Photon Crystal',
 					rare = 0.43945,
+					rare_d = 227.56,
 					dar = 27
 				}
 			},
@@ -7496,27 +8558,31 @@ return
 				{
 					item = 'Cure/Paralysis',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
 			['GIRTABLULU'] = {
 				{
 					item = 'Heaven Striker Coat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Spirit Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -7524,6 +8590,7 @@ return
 				{
 					item = 'Asuka',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7533,6 +8600,7 @@ return
 				{
 					item = 'Blade Dance',
 					rare = 0.87891,
+					rare_d = 113.78,
 					dar = 30
 				}
 			},
@@ -7540,6 +8608,7 @@ return
 				{
 					item = 'Congeal Cloak',
 					rare = 0.13428,
+					rare_d = 744.73,
 					dar = 38
 				}
 			},
@@ -7547,6 +8616,7 @@ return
 				{
 					item = 'Asuka',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 35
 				}
 			},
@@ -7554,6 +8624,7 @@ return
 				{
 					item = 'Select Cloak',
 					rare = 0.06714,
+					rare_d = 1489.45,
 					dar = 80
 				}
 			},
@@ -7561,6 +8632,7 @@ return
 				{
 					item = 'Photon Crystal',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7568,13 +8640,15 @@ return
 				{
 					item = 'Rappy\'s Beak',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
 			['DEL RAPPY'] = {
 				{
 					item = 'Ignition Cloak',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
@@ -7582,6 +8656,7 @@ return
 				{
 					item = 'Alliance Uniform',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 30
 				}
 			},
@@ -7589,6 +8664,7 @@ return
 				{
 					item = 'Officer Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 45
 				}
 			},
@@ -7596,6 +8672,7 @@ return
 				{
 					item = 'Angry Fist',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 80
 				}
 			},
@@ -7603,6 +8680,7 @@ return
 				{
 					item = 'Heavenly/Luck',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7610,13 +8688,15 @@ return
 				{
 					item = 'Infantry Mantle',
 					rare = 0.26855,
+					rare_d = 372.36,
 					dar = 85
 				}
 			},
 			['GORAN'] = {
 				{
 					item = 'Cross Scar',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -7624,6 +8704,7 @@ return
 				{
 					item = 'Yamato',
 					rare = 1.26953,
+					rare_d = 78.77,
 					dar = 35
 				}
 			},
@@ -7631,6 +8712,7 @@ return
 				{
 					item = 'Heart of Plantain Huge Fan',
 					rare = 0.04272,
+					rare_d = 2340.57,
 					dar = 35
 				}
 			},
@@ -7638,6 +8720,7 @@ return
 				{
 					item = 'Infantry Gear',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 27
 				}
 			},
@@ -7645,6 +8728,7 @@ return
 				{
 					item = 'Maguwa',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7652,20 +8736,23 @@ return
 				{
 					item = 'Stink Shield',
 					rare = 0.78125,
+					rare_d = 128,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Revival Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -7673,6 +8760,7 @@ return
 				{
 					item = 'Asuka',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7682,6 +8770,7 @@ return
 				{
 					item = 'Heavenly/Body',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 30
 				}
 			},
@@ -7689,6 +8778,7 @@ return
 				{
 					item = 'Infantry Mantle',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 38
 				}
 			},
@@ -7696,6 +8786,7 @@ return
 				{
 					item = 'Asuka',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 35
 				}
 			},
@@ -7703,13 +8794,15 @@ return
 				{
 					item = 'Tempest Cloak',
 					rare = 0.06714,
+					rare_d = 1489.45,
 					dar = 80
 				}
 			},
 			['DORPHON ECLAIR'] = {
 				{
 					item = 'Congeal Cloak',
-					rare = 15.62500,
+					rare = 15.625,
+					rare_d = 6.4,
 					dar = 100
 				}
 			},
@@ -7717,13 +8810,15 @@ return
 				{
 					item = 'Rappy\'s Beak',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
 			['DEL RAPPY'] = {
 				{
 					item = 'Ignition Cloak',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
@@ -7731,6 +8826,7 @@ return
 				{
 					item = 'Alliance Uniform',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 30
 				}
 			},
@@ -7738,6 +8834,7 @@ return
 				{
 					item = 'Officer Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 45
 				}
 			},
@@ -7745,6 +8842,7 @@ return
 				{
 					item = 'Photon Crystal',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 80
 				}
 			},
@@ -7752,6 +8850,7 @@ return
 				{
 					item = 'Rianov 303SNR',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7759,13 +8858,15 @@ return
 				{
 					item = 'Heavenly/Arms',
 					rare = 0.10986,
+					rare_d = 910.22,
 					dar = 85
 				}
 			},
 			['GORAN'] = {
 				{
 					item = 'Bravace',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -7773,6 +8874,7 @@ return
 				{
 					item = 'Tyrell\'s Parasol',
 					rare = 0.14648,
+					rare_d = 682.67,
 					dar = 35
 				}
 			},
@@ -7780,6 +8882,7 @@ return
 				{
 					item = 'Magic Rock "Moola"',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 35
 				}
 			},
@@ -7787,6 +8890,7 @@ return
 				{
 					item = 'Infantry Gear',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 27
 				}
 			},
@@ -7794,27 +8898,31 @@ return
 				{
 					item = 'Maguwa',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
 			['GIRTABLULU'] = {
 				{
 					item = 'Heaven Striker Coat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Revival Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -7822,6 +8930,7 @@ return
 				{
 					item = 'Kusanagi',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7830,7 +8939,8 @@ return
 			['BOOTA'] = {
 				{
 					item = 'Congeal Cloak',
-					rare = 0.17090,
+					rare = 0.1709,
+					rare_d = 585.14,
 					dar = 30
 				}
 			},
@@ -7838,6 +8948,7 @@ return
 				{
 					item = 'Slicer of Assassin',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 38
 				}
 			},
@@ -7845,6 +8956,7 @@ return
 				{
 					item = 'Tempest Cloak',
 					rare = 0.14648,
+					rare_d = 682.67,
 					dar = 35
 				}
 			},
@@ -7852,6 +8964,7 @@ return
 				{
 					item = 'Photon Crystal',
 					rare = 0.63477,
+					rare_d = 157.54,
 					dar = 80
 				}
 			},
@@ -7859,6 +8972,7 @@ return
 				{
 					item = 'Heavenly/Body',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7866,6 +8980,7 @@ return
 				{
 					item = 'Rappy\'s Beak',
 					rare = 0.19531,
+					rare_d = 512,
 					dar = 100
 				}
 			},
@@ -7873,6 +8988,7 @@ return
 				{
 					item = 'Rianov 303SNR',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7880,6 +8996,7 @@ return
 				{
 					item = 'Alliance Uniform',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 30
 				}
 			},
@@ -7887,6 +9004,7 @@ return
 				{
 					item = 'Officer Uniform',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 45
 				}
 			},
@@ -7894,6 +9012,7 @@ return
 				{
 					item = 'Snake Spire',
 					rare = 0.48828,
+					rare_d = 204.8,
 					dar = 80
 				}
 			},
@@ -7901,6 +9020,7 @@ return
 				{
 					item = 'Tanegashima',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7908,13 +9028,15 @@ return
 				{
 					item = 'Diska of Liberator',
 					rare = 0.31738,
+					rare_d = 315.08,
 					dar = 85
 				}
 			},
 			['GORAN'] = {
 				{
 					item = 'Diska of Braveman',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 30
 				}
 			},
@@ -7922,13 +9044,15 @@ return
 				{
 					item = 'L&K14 Combat',
 					rare = 1.36719,
+					rare_d = 73.14,
 					dar = 35
 				}
 			},
 			['GORAN DETONATOR'] = {
 				{
 					item = 'Infantry Mantle',
-					rare = 0.34180,
+					rare = 0.3418,
+					rare_d = 292.57,
 					dar = 35
 				}
 			},
@@ -7936,6 +9060,7 @@ return
 				{
 					item = 'Infantry Gear',
 					rare = 0.68359,
+					rare_d = 146.29,
 					dar = 27
 				}
 			},
@@ -7943,27 +9068,31 @@ return
 				{
 					item = 'Revival Cuirass',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
 			['GIRTABLULU'] = {
 				{
 					item = 'Heaven Striker Coat',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 80
 				}
 			},
 			['SAINT MILLION'] = {
 				{
 					item = 'Spirit Cuirass',
-					rare = 6.25000,
+					rare = 6.25,
+					rare_d = 16,
 					dar = 100
 				}
 			},
 			['SHAMBERTIN'] = {
 				{
 					item = 'Dragon Scale',
-					rare = 1.56250,
+					rare = 1.5625,
+					rare_d = 64,
 					dar = 100
 				}
 			},
@@ -7971,6 +9100,7 @@ return
 				{
 					item = 'Phoenix Claw',
 					rare = 50,
+					rare_d = 2,
 					dar = 100
 				}
 			},
@@ -7981,170 +9111,200 @@ return
 			['FOREST 1'] = {
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['FOREST 2'] = {
 				{
 					item = 'Crush Bullet',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Berdys',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Barta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 2'] = {
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 3'] = {
 				{
 					item = 'Crush Bullet',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Gungnir',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				}
 			},
 			['MINE 2'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Brionac',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 			},
 			['RUINS 1'] = {
 				{
 					item = 'Amplifier of Rabarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Blue Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 2'] = {
 				{
 					item = 'Amplifier of Rafoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 3'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Brionac',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -8153,166 +9313,196 @@ return
 			['FOREST 2'] = {
 				{
 					item = 'Visk-235W',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Edge',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Barta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['CAVE 2'] = {
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 3'] = {
 				{
 					item = 'Visk-235W',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Ripper',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				}
 			},
 			['MINE 2'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Blade Dance',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 1'] = {
 				{
 					item = 'Amplifier of Rabarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Blue',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 3'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Blade Dance',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
@@ -8321,166 +9511,196 @@ return
 			['FOREST 2'] = {
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Beam',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 3'] = {
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Laser',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Red Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				}
 			},
 			['MINE 2'] = {
 				{
 					item = 'Last Survivor',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Visk-235W',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 1'] = {
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['RUINS 2'] = {
 				{
 					item = 'Amplifier of Rafoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Red',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 3'] = {
 				{
 					item = 'Last Survivor',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Visk-235W',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
@@ -8489,166 +9709,196 @@ return
 			['FOREST 1'] = {
 				{
 					item = 'Amplifier of Zonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['FOREST 2'] = {
 				{
 					item = 'Brionac',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Pillar',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['CAVE 3'] = {
 				{
 					item = 'Brionac',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Striker',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gizonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gifoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 2'] = {
 				{
 					item = 'Vjaya',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Battle Verge',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 2'] = {
 				{
 					item = 'Amplifier of Rafoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 3'] = {
 				{
 					item = 'Vjaya',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Battle Verge',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
@@ -8657,170 +9907,200 @@ return
 			['FOREST 1'] = {
 				{
 					item = 'Amplifier of Zonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['FOREST 2'] = {
 				{
 					item = 'M&A60 Vise',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Edge',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 2'] = {
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 3'] = {
 				{
 					item = 'M&A60 Vise',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Ripper',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Yellow Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 2'] = {
 				{
 					item = 'H&S25 Justice',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Blade Dance',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Razonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 1'] = {
 				{
 					item = 'Amplifier of Rabarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['RUINS 2'] = {
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['RUINS 3'] = {
 				{
 					item = 'H&S25 Justice',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Blade Dance',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -8829,166 +10109,196 @@ return
 			['FOREST 2'] = {
 				{
 					item = 'Fire Scepter: Agni',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Barta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 2'] = {
 				{
 					item = 'Amplifier of Gibarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['CAVE 3'] = {
 				{
 					item = 'Fire Scepter: Agni',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gizonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Red Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gifoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Yellow Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 2'] = {
 				{
 					item = 'Ice Staff: Dagon',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Razonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 1'] = {
 				{
 					item = 'Amplifier of Blue',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['RUINS 3'] = {
 				{
 					item = 'Ice Staff: Dagon',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -8997,168 +10307,198 @@ return
 			['FOREST 2'] = {
 				{
 					item = 'Sawcer',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Launcher',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 2'] = {
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 3'] = {
 				{
 					item = 'Diska',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Arms',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				}
 			},
 			['MINE 2'] = {
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Crush Bullet',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 1'] = {
 				{
 					item = 'Blue Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 2'] = {
 				{
 					item = 'Amplifier of Red',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 3'] = {
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Crush Bullet',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Yellow',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
@@ -9167,166 +10507,196 @@ return
 			['FOREST 1'] = {
 				{
 					item = 'Amplifier of Zonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['FOREST 2'] = {
 				{
 					item = 'Blade Dance',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Claymore',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 3'] = {
 				{
 					item = 'Blade Dance',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Calibur',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gizonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Red Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gifoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 2'] = {
 				{
 					item = 'Bloody Art',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 2'] = {
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 3'] = {
 				{
 					item = 'Bloody Art',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -9335,170 +10705,200 @@ return
 			['FOREST 1'] = {
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['FOREST 2'] = {
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'M&A60 Vise',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Fire Scepter: Agni',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['CAVE 2'] = {
 				{
 					item = 'Blade Dance',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Crush Bullet',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['CAVE 3'] = {
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['MINE 2'] = {
 				{
 					item = 'Kaladbolg',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Battle Verge',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['RUINS 1'] = {
 				{
 					item = 'Amplifier of Blue',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Blue Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Brionac',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['RUINS 2'] = {
 				{
 					item = 'Amplifier of Red',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Visk-235W',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['RUINS 3'] = {
 				{
 					item = 'Kaladbolg',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -9507,166 +10907,196 @@ return
 			['FOREST 2'] = {
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Gatling',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Barta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['CAVE 1'] = {
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['CAVE 2'] = {
 				{
 					item = 'Amplifier of Gibarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['CAVE 3'] = {
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Vulcan',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Red Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 1'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gifoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MINE 2'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'M&A60 Vise',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['RUINS 2'] = {
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['RUINS 3'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'M&A60 Vise',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
@@ -9677,166 +11107,196 @@ return
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'Crush Bullet',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Berdys',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: ALPHA'] = {
 				{
 					item = 'Amplifier of Foie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: BETA'] = {
 				{
 					item = 'Amplifier of Gibarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'Crush Bullet',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Gungnir',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Red Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gifoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Brionac',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEASIDE / CCA'] = {
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'Meteor Smash',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Brionac',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
@@ -9845,158 +11305,186 @@ return
 			['VR TEMPLE: ALPHA'] = {
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'Visk-235W',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Edge',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: BETA'] = {
 				{
 					item = 'Amplifier of Gibarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'Visk-235W',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Ripper',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				}
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Blade Dance',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEASIDE / CCA'] = {
 				{
 					item = 'Blue Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEABED: UPPER LEVELS'] = {
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'Wals-MK2',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Blade Dance',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -10005,156 +11493,184 @@ return
 			['VR TEMPLE: ALPHA'] = {
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Beam',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: ALPHA'] = {
 				{
 					item = 'Amplifier of Foie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Laser',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gifoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'Last Survivor',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Visk-235W',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 			},
 			['SEABED: UPPER LEVELS'] = {
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'Last Survivor',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Visk-235W',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -10163,166 +11679,196 @@ return
 			['VR TEMPLE: ALPHA'] = {
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'Brionac',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Pillar',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: ALPHA'] = {
 				{
 					item = 'Amplifier of Foie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'Brionac',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Striker',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Red Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Yellow Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'Vjaya',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Battle Verge',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Razonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEABED: UPPER LEVELS'] = {
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'Vjaya',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Battle Verge',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -10331,166 +11877,196 @@ return
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'M&A60 Vise',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Edge',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Barta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: ALPHA'] = {
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['VR SPACESHIP: BETA'] = {
 				{
 					item = 'Amplifier of Gibarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'M&A60 Vise',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Ripper',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Gizonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'H&S25 Justice',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Blade Dance',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEASIDE / CCA'] = {
 				{
 					item = 'Blue Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'H&S25 Justice',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Blade Dance',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
@@ -10499,168 +12075,198 @@ return
 			['VR TEMPLE: ALPHA'] = {
 				{
 					item = 'Amplifier of Zonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'Fire Scepter: Agni',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Berdys',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: ALPHA'] = {
 				{
 					item = 'Amplifier of Foie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'Fire Scepter: Agni',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Gungnir',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				}
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'Ice Staff: Dagon',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Brionac',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 			},
 			['SEASIDE / CCA'] = {
 				{
 					item = 'Amplifier of Rabarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Blue Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEABED: UPPER LEVELS'] = {
 				{
 					item = 'Amplifier of Rafoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Red',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'Ice Staff: Dagon',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Brionac',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -10669,166 +12275,196 @@ return
 			['VR TEMPLE: ALPHA'] = {
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'Sawcer',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Launcher',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: ALPHA'] = {
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'Diska',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Arms',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Red Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Yellow Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Crush Bullet',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 			},
 			['SEASIDE / CCA'] = {
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Crush Bullet',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
@@ -10837,164 +12473,194 @@ return
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'Blade Dance',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Claymore',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: ALPHA'] = {
 				{
 					item = 'Amplifier of Foie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Anti',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'Blade Dance',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Calibur',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Yellow Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'Bloody Art',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Razonde',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Deband',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEABED: UPPER LEVELS'] = {
 				{
 					item = 'Amplifier of Rafoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'Bloody Art',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
@@ -11003,170 +12669,200 @@ return
 			['VR TEMPLE: ALPHA'] = {
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Brionac',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Crush Bullet',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: ALPHA'] = {
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Flowen\'s Sword',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: BETA'] = {
 				{
 					item = 'Battle Verge',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				}
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Red Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				},
 				{
 					item = 'Yellow Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'M&A60 Vise',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'Kaladbolg',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Blade Dance',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
 			['SEASIDE / CCA'] = {
 				{
 					item = 'Visk-235W',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				}
 			},
 			['SEABED: UPPER LEVELS'] = {
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				}
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'Kaladbolg',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Yellow',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Assist Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Fire Scepter: Agni',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -11175,168 +12871,198 @@ return
 			['VR TEMPLE: ALPHA'] = {
 				{
 					item = 'Amplifier of Resta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				}
 			},
 			['VR TEMPLE: BETA'] = {
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Gatling',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['VR SPACESHIP: ALPHA'] = {
 				{
 					item = 'Amplifier of Foie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Amplifier of Shifta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['JUNGLE NORTH'] = {
 				{
 					item = 'Slicer of Assassin',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Vulcan',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'DB\'s Saber',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Varista',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Club of Laconium',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 			},
 			['JUNGLE EAST'] = {
 				{
 					item = 'Mag',
-					rare = 0.68357,
+					rare = 0.6835737,
+					rare_d = 146.29,
 					dar = 100
 				}
 			},
 			['MOUNTAIN'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'M&A60 Vise',
-					rare = 0.17090,
+					rare = 0.1708993,
+					rare_d = 585.14,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.26856,
+					rare = 0.2685573,
+					rare_d = 372.36,
 					dar = 100
 				},
 				{
 					item = 'AddSlot',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEASIDE / CCA'] = {
 				{
 					item = 'Amplifier of Rabarta',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Blue Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEABED: UPPER LEVELS'] = {
 				{
 					item = 'Amplifier of Rafoie',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 				{
 					item = 'Recovery Barrier',
-					rare = 0.08545,
+					rare = 0.08544891,
+					rare_d = 1170.29,
 					dar = 100
 				},
 			},
 			['SEABED: LOWER LEVELS'] = {
 				{
 					item = 'Diska of Liberator',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'M&A60 Vise',
-					rare = 0.21973,
+					rare = 0.2197271,
+					rare_d = 455.11,
 					dar = 100
 				},
 				{
 					item = 'Kaladbolg',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Custom Ray ver.OO',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 				{
 					item = 'Mace of Adaman',
-					rare = 0.31738,
+					rare = 0.3173797,
+					rare_d = 315.08,
 					dar = 100
 				},
 			},
@@ -11347,63 +13073,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
@@ -11412,63 +13147,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
@@ -11477,63 +13221,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
@@ -11542,63 +13295,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
@@ -11607,63 +13369,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
@@ -11672,63 +13443,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
@@ -11737,63 +13517,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
@@ -11802,63 +13591,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
@@ -11867,63 +13665,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
@@ -11932,63 +13739,72 @@ return
 			['CRATER EAST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER WEST'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER SOUTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER NORTH'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['CRATER INT.'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 1'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 2'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['DESERT 3'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
 			['BOSS'] = {
 				{
 					item = 'Photon Crystal',
-					rare = 0.06104,
+					rare = 0.06103516,
+					rare_d = 1638.4,
 					dar = 100
 				}
 			},
